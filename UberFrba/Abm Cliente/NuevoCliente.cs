@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace UberFrba.Abm_Cliente
 {
-    public partial class Form1 : Form
+    public partial class NuevoCliente : Form
     {
-        public Form1()
+        public NuevoCliente()
         {
             InitializeComponent();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

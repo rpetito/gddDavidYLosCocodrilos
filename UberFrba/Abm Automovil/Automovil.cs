@@ -16,5 +16,24 @@ namespace UberFrba.Abm_Automovil
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            NuevoAutomovil nuevoAuto = new NuevoAutomovil();
+            nuevoAuto.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ListadoBajaAutomovil listaBaja = new ListadoBajaAutomovil();
+            listaBaja.ShowDialog();
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ListadoModAutomovil listaMod = new ListadoModAutomovil();
+            listaMod.ShowDialog();
+        }
     }
 }
