@@ -221,8 +221,9 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(75, 210);
+            this.checkBox1.Location = new System.Drawing.Point(18, 198);
             this.checkBox1.Name = "checkBox1";
+            this.checkBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox1.Size = new System.Drawing.Size(73, 17);
             this.checkBox1.TabIndex = 54;
             this.checkBox1.Text = "Habilitado";

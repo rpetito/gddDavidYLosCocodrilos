@@ -8,31 +8,31 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UberFrba
+namespace UberFrba.Abm_Rol
 {
-    public partial class Menu : Form
+    public partial class Rol : Form
     {
-        public Menu()
+        public Rol()
         {
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Abm_Automovil.Automovil auto = new Abm_Automovil.Automovil();
-            auto.ShowDialog();
+            NuevoRol rol = new NuevoRol();
+            rol.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Abm_Cliente.Clientes cliente = new Abm_Cliente.Clientes();
-            cliente.ShowDialog();
+            ListadoBajaRol bajaRol = new ListadoBajaRol();
+            bajaRol.ShowDialog();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Abm_Rol.Rol rol = new Abm_Rol.Rol();
-            rol.ShowDialog();
+            ListadoModRol modRol = new ListadoModRol();
+            modRol.ShowDialog();
         }
     }
 }
