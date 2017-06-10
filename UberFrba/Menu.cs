@@ -34,5 +34,35 @@ namespace UberFrba
             Abm_Rol.Rol rol = new Abm_Rol.Rol();
             rol.ShowDialog();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Abm_Chofer.Chofer chofer = new Abm_Chofer.Chofer();
+            chofer.ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Abm_Turno.Turno turno = new Abm_Turno.Turno();
+            turno.ShowDialog();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Registro_Viajes.Registro registro = new Registro_Viajes.Registro();
+            registro.ShowDialog();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Rendicion_Viajes.Rendicion rendicion = new Rendicion_Viajes.Rendicion();
+            rendicion.ShowDialog();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Facturacion.Facturacion facturacion = new Facturacion.Facturacion();
+            facturacion.ShowDialog();
+        }
     }
 }
