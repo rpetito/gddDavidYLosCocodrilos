@@ -190,7 +190,7 @@ CREATE TABLE DAVID_Y_LOS_COCODRILOS.AUTOMOVIL (
 	AUTOMOVIL_TURNO char(1),
 	AUTOMOVIL_CHOFER char(8),
 	AUTOMOVIL_HABILITADO bit,
-	primary key (AUTOMOVIL_PATENTE),
+	primary key (AUTOMOVIL_PATENTE, AUTOMOVIL_CHOFER, AUTOMOVIL_TURNO),
 	foreign key (AUTOMOVIL_CHOFER) references DAVID_Y_LOS_COCODRILOS.CHOFER,
 	foreign key (AUTOMOVIL_MARCA) references DAVID_Y_LOS_COCODRILOS.MARCA,
 	foreign key (AUTOMOVIL_MODELO) references DAVID_Y_LOS_COCODRILOS.MODELO
@@ -227,7 +227,7 @@ CREATE TABLE DAVID_Y_LOS_COCODRILOS.VIAJE (
 	primary key (VIAJE_ID),
 	foreign key (VIAJE_CHOFER_ID) references DAVID_Y_LOS_COCODRILOS.CHOFER,
 --	foreign key (VIAJE_CLIENTE_ID) references DAVID_Y_LOS_COCODRILOS.CLIENTE,  (todavia no esta la tabla CLIENTE en el script)
-	foreign key (VIAJE_AUTOMOVIL_PATENTE) references DAVID_Y_LOS_COCODRILOS.AUTOMOVIL,
+	foreign key (VIAJE_AUTOMOVIL_PATENTE, VIAJE_CHOFER_ID ,VIAJE_TURNO_ID) references DAVID_Y_LOS_COCODRILOS.AUTOMOVIL,
 	foreign key (VIAJE_TURNO_ID) references DAVID_Y_LOS_COCODRILOS.TURNO
 );
 
@@ -296,6 +296,12 @@ GO
 -----------------------------------------------------
 ----------------MIGRACION AUTOMOVIL------------------
 -----------------------------------------------------
+
+
+
+-----------------------------------------------------
+----------------MIGRACION AUTOMOVIL------------------
+-----------------------------------------------------
 CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.MIGRACION_AUTOMOVIL 
 AS
 BEGIN
@@ -307,7 +313,7 @@ BEGIN
 		AUTOMOVIL_TURNO,
 		AUTOMOVIL_CHOFER,
 		AUTOMOVIL_HABILITADO
-	)	SELECT	m.Auto_Patente, 
+	)	SELECT	distinct(m.Auto_Patente), 
 				m.Auto_Marca, 
 				m.Auto_Modelo,
 				DAVID_Y_LOS_COCODRILOS.fGetTurno(m.Turno_Hora_Inicio, m.Turno_Hora_Fin),
