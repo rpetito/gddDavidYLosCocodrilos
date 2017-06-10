@@ -27,6 +27,28 @@ GO
 
 
 --TABLAS
+--TABLAS
+IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.ROL') IS NOT NULL
+DROP TABLE DAVID_Y_LOS_COCODRILOS.ROL
+
+IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.FUNCIONALIDAD') IS NOT NULL
+DROP TABLE DAVID_Y_LOS_COCODRILOS.FUNCIONALIDAD
+
+IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.FUNCIONALIDAD_ROL') IS NOT NULL
+DROP TABLE DAVID_Y_LOS_COCODRILOS.FUNCIONALIDAD_ROL
+
+IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.USUARIO') IS NOT NULL
+DROP TABLE DAVID_Y_LOS_COCODRILOS.USUARIO
+
+IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.ROL_USUARIO') IS NOT NULL
+DROP TABLE DAVID_Y_LOS_COCODRILOS.ROL_USUARIO
+
+IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.ADMINISTRADOR') IS NOT NULL
+DROP TABLE DAVID_Y_LOS_COCODRILOS.ADMINISTRADOR
+
+IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.CLIENTE') IS NOT NULL
+DROP TABLE DAVID_Y_LOS_COCODRILOS.CLIENTE
+
 IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.ITEM_RENDICION') IS NOT NULL
 DROP TABLE DAVID_Y_LOS_COCODRILOS.ITEM_RENDICION
 
@@ -140,6 +162,91 @@ GO
 ----------------------------CREACION DE TABLAS--------------------------------
 --###########################################################################
 --###########################################################################
+--------------------------------------
+-------------TABLA ROL----------------
+--------------------------------------
+
+CREATE TABLE DAVID_Y_LOS_COCODRILOS.ROL (
+	ROL_ID  		varchar(8),
+	ROL_DETALLE 	varchar(255),
+	ROL_HABILITADO  integer DEFAULT 1,
+	primary key (ROL_NOMBRE),
+);
+
+--------------------------------------
+-------------TABLA FUNCIONALIDAD------
+--------------------------------------
+
+CREATE TABLE DAVID_Y_LOS_COCODRILOS.FUNCIONALIDAD (
+	FUNCIONALIDAD_ID 			varchar(8),
+	FUNCIONALIDAD_DETALLE		varchar(255),
+	FUNCIONALIDAD_HABILITADO	integer DEFAULT 1,
+	primary key (FUNCIONALIDAD_NOMBRE),
+);
+
+--------------------------------------
+-------------TABLA ROL----------------
+--------------------------------------
+
+CREATE TABLE DAVID_Y_LOS_COCODRILOS.FUNCIONALIDAD_ROL (
+	ROLFUN_FUNCIONALIDAD		char(8),
+	ROLFUN_ROL					char(8),
+	foreign key (ROLFUN_FUNCIONALIDAD) 	references DAVID_Y_LOS_COCODRILOS.FUNCIONALIDAD,
+	foreign key (ROLFUN_ROL) 			references DAVID_Y_LOS_COCODRILOS.ROL,
+	primary key (ROLFUN_FUNCIONALIDAD, ROLFUN_ROL),
+);
+
+--------------------------------------
+-------------TABLA USUARIO------------
+--------------------------------------
+
+CREATE TABLE DAVID_Y_LOS_COCODRILOS.USUARIO (
+	USUARIO_ID			char(8),
+	USUARIO_NOMBRE		varchar(255),
+	USUARIO_APELLIDO	varchar(255),
+	USUARIO_DNI			char(18),
+	USUARIO_MAIL		varchar(50),
+	USUARIO_TEL			char(18),
+	USUARIO_DIR			varchar(255),
+	USUARIO_LOCALIDAD	varchar(50),
+	USUARIO_CODPOS		varchar(10),
+	USUARIO_FNAC		datetime,
+	USUARIO_HABILITADO	integer DEFAULT 1,
+	primary key (USUARIO_ID),
+);
+
+--------------------------------------
+-------------TABLA ROL_USUARIO--------
+--------------------------------------
+
+CREATE TABLE DAVID_Y_LOS_COCODRILOS.ROL_USUARIO (
+	USROL_USUARIO			char(8),
+	USROL_ROL				char(8),
+
+	foreign key (USROL_USUARIO) 		references DAVID_Y_LOS_COCODRILOS.USUARIO,
+	foreign key (USROL_ROL) 			references DAVID_Y_LOS_COCODRILOS.ROL,
+	primary key (USROL_USUARIO, USROL_ROL),
+);
+
+--------------------------------------
+-------------TABLA ADMINISTRADOR------
+--------------------------------------
+
+CREATE TABLE DAVID_Y_LOS_COCODRILOS.ADMINISTRADOR (
+	ADMIN_USUARIO			char(8),
+	foreign key	(ADMIN_USUARIO) references DAVID_Y_LOS_COCODRILOS.USUARIO,
+	primary key (ADMIN_USUARIO),
+);
+
+--------------------------------------
+-------------TABLA CLIENTE------------
+--------------------------------------
+
+CREATE TABLE DAVID_Y_LOS_COCODRILOS.CLIENTE (
+	CLIENTE_USUARIO			char(8),
+	foreign key	(CLIENTE_USUARIO) references DAVID_Y_LOS_COCODRILOS.USUARIO,
+	primary key (CLIENTE_USUARIO),
+);
 
 
 --------------------------------------
