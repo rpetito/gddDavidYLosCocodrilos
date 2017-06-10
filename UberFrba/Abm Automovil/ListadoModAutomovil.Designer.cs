@@ -57,7 +57,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -341,13 +340,6 @@
             this.panel1.Size = new System.Drawing.Size(365, 374);
             this.panel1.TabIndex = 7;
             // 
-            // panel2
-            // 
-            this.panel2.Location = new System.Drawing.Point(379, 5);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(286, 374);
-            this.panel2.TabIndex = 0;
-            // 
             // ListadoModAutomovil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -356,7 +348,6 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel2);
             this.Name = "ListadoModAutomovil";
             this.Text = "Listado de selección";
             this.groupBox1.ResumeLayout(false);
@@ -400,7 +391,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
 
     }
 }

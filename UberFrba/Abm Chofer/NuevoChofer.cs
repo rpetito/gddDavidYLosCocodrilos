@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace UberFrba.Abm_Chofer
 {
-    public partial class Form1 : Form
+    public partial class NuevoChofer : Form
     {
-        public Form1()
+        public NuevoChofer()
         {
             InitializeComponent();
         }
