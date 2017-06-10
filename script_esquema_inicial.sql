@@ -84,6 +84,12 @@ DROP PROCEDURE DAVID_Y_LOS_COCODRIDLOS.MIGRACION_FACTURA
 IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.MIGRACION_ITEM_FACTURA') IS NOT NULL
 DROP PROCEDURE DAVID_Y_LOS_COCODRIDLOS.MIGRACION_ITEM_FACTURA
 
+IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.MIGRACION_MODELO') IS NOT NULL
+DROP PROCEDURE DAVID_Y_LOS_COCODRIDLOS.MIGRACION_MODELO
+
+IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.MIGRACION_MARCA') IS NOT NULL
+DROP PROCEDURE DAVID_Y_LOS_COCODRIDLOS.MIGRACION_MARCA
+
 
 --FUNCTIONS
 IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.fGetTurno') IS NOT NULL
@@ -164,8 +170,8 @@ CREATE TABLE DAVID_Y_LOS_COCODRILOS.CHOFER (
 -------------TABLA MODELO---------------
 ----------------------------------------
 CREATE TABLE DAVID_Y_LOS_COCODRILOS.MODELO (
-	MODELO_ID varchar(255),
-	MODELO_DETALLE varchar(40),
+	MODELO_ID Int IDENTITY(1,1),
+	MODELO_DETALLE varchar(255),
 	primary key (MODELO_ID)
 );
 
@@ -174,8 +180,8 @@ CREATE TABLE DAVID_Y_LOS_COCODRILOS.MODELO (
 -------------TABLA MARCA----------------
 ----------------------------------------
 CREATE TABLE DAVID_Y_LOS_COCODRILOS.MARCA (
-	MARCA_ID varchar(255),
-	MARCA_DETALLE varchar(40),
+	MARCA_ID Int IDENTITY(1,1),
+	MARCA_DETALLE varchar(255),
 	primary key (MARCA_ID)
 )
 
@@ -185,8 +191,8 @@ CREATE TABLE DAVID_Y_LOS_COCODRILOS.MARCA (
 -----------------------------------------
 CREATE TABLE DAVID_Y_LOS_COCODRILOS.AUTOMOVIL (
 	AUTOMOVIL_PATENTE varchar(10),
-	AUTOMOVIL_MARCA varchar(255),
-	AUTOMOVIL_MODELO varchar(255),
+	AUTOMOVIL_MARCA Int,
+	AUTOMOVIL_MODELO Int,
 	AUTOMOVIL_TURNO char(1),
 	AUTOMOVIL_CHOFER char(8),
 	AUTOMOVIL_HABILITADO bit,
@@ -294,9 +300,57 @@ GO
 
 
 -----------------------------------------------------
-----------------MIGRACION AUTOMOVIL------------------
+----------------MIGRACION MODELO---------------------
 -----------------------------------------------------
+--CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.MIGRACION_CHOFER
+--AS
+--BEGIN
 
+--	INSERT INTO DAVID_Y_LOS_COCODRILOS.CHOFER (
+--		USUARIO_ID
+--	)	
+--		FROM gd_esquema.Maestra m
+
+--END
+--GO
+
+
+-----------------------------------------------------
+----------------MIGRACION MODELO---------------------
+-----------------------------------------------------
+CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.MIGRACION_MODELO
+AS 
+BEGIN
+
+	INSERT INTO DAVID_Y_LOS_COCODRILOS.MODELO (
+		MODELO_DETALLE
+	)	SELECT distinct(m.Auto_Modelo)
+		FROM gd_esquema.Maestra m
+
+END
+GO
+
+EXEC('DAVID_Y_LOS_COCODRILOS.MIGRACION_MODELO')
+GO
+
+
+-----------------------------------------------------
+----------------MIGRACION MARCA----------------------
+-----------------------------------------------------
+CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.MIGRACION_MARCA
+AS
+BEGIN
+
+	INSERT INTO DAVID_Y_LOS_COCODRILOS.MARCA (
+		MARCA_DETALLE
+	)	SELECT distinct(m.Auto_Marca)
+		FROM gd_esquema.Maestra m
+
+END
+GO
+
+EXEC('DAVID_Y_LOS_COCODRILOS.MIGRACION_MARCA')
+GO
 
 
 -----------------------------------------------------
@@ -314,8 +368,14 @@ BEGIN
 		AUTOMOVIL_CHOFER,
 		AUTOMOVIL_HABILITADO
 	)	SELECT	distinct(m.Auto_Patente), 
-				m.Auto_Marca, 
-				m.Auto_Modelo,
+				(	SELECT marca.MARCA_ID
+					FROM DAVID_Y_LOS_COCODRILOS.MARCA marca
+					WHERE m.Auto_Marca = marca.MARCA_DETALLE 
+				), 
+				(	SELECT modelo.MODELO_ID
+					FROM DAVID_Y_LOS_COCODRILOS.MODELO modelo
+					WHERE m.Auto_Modelo = modelo.MODELO_DETALLE 
+				),
 				DAVID_Y_LOS_COCODRILOS.fGetTurno(m.Turno_Hora_Inicio, m.Turno_Hora_Fin),
 				'1', --sacar por el select de abajo cuando este la tabla usuario 
 --				(	SELECT c.USUARIO_ID
