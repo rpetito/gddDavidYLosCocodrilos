@@ -72,7 +72,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "Turno";
-            this.Text = "Turno";
+            this.Text = "Turnos";
             this.ResumeLayout(false);
 
         }

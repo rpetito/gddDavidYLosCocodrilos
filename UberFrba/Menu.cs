@@ -58,5 +58,11 @@ namespace UberFrba
             Rendicion_Viajes.Rendicion rendicion = new Rendicion_Viajes.Rendicion();
             rendicion.ShowDialog();
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Facturacion.Facturacion facturacion = new Facturacion.Facturacion();
+            facturacion.ShowDialog();
+        }
     }
 }
