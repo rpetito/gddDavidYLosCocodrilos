@@ -164,11 +164,23 @@
     <Compile Include="Abm Turno\NuevoTurno.Designer.cs">
       <DependentUpon>NuevoTurno.cs</DependentUpon>
     </Compile>
+    <Compile Include="Administrador\Administrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\Administrador.Designer.cs">
+      <DependentUpon>Administrador.cs</DependentUpon>
+    </Compile>
     <Compile Include="Facturacion\Facturacion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Facturacion\Facturacion.Designer.cs">
       <DependentUpon>Facturacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Facturacion\Clientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Facturacion\Clientes.Designer.cs">
+      <DependentUpon>Clientes.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
@@ -207,6 +219,12 @@
     </Compile>
     <Compile Include="Registro Viajes\Registro.Designer.cs">
       <DependentUpon>Registro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rendicion Viajes\Choferes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rendicion Viajes\Choferes.Designer.cs">
+      <DependentUpon>Choferes.cs</DependentUpon>
     </Compile>
     <Compile Include="Rendicion Viajes\Rendicion.cs">
       <SubType>Form</SubType>
@@ -274,6 +292,12 @@
     <EmbeddedResource Include="Abm Turno\Turno.resx">
       <DependentUpon>Turno.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\Administrador.resx">
+      <DependentUpon>Administrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Facturacion\Clientes.resx">
+      <DependentUpon>Clientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Facturacion\Facturacion.resx">
       <DependentUpon>Facturacion.cs</DependentUpon>
     </EmbeddedResource>
@@ -300,6 +324,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Registro Viajes\Registro.resx">
       <DependentUpon>Registro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rendicion Viajes\Choferes.resx">
+      <DependentUpon>Choferes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Rendicion Viajes\Rendicion.resx">
       <DependentUpon>Rendicion.cs</DependentUpon>
