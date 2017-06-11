@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace UberFrba.Rendicion_Viajes
 {
-    public partial class Rendicion : Form
+    public partial class Choferes : Form
     {
-        public Rendicion()
+        public Choferes()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Choferes chofer = new Choferes();
-            chofer.ShowDialog();
         }
     }
 }

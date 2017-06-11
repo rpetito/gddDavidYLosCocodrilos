@@ -16,5 +16,11 @@ namespace UberFrba.Facturacion
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Clientes cliente = new Clientes();
+            cliente.ShowDialog();
+        }
     }
 }

@@ -64,5 +64,11 @@ namespace UberFrba
             Facturacion.Facturacion facturacion = new Facturacion.Facturacion();
             facturacion.ShowDialog();
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Administrador.Administrador admin = new Administrador.Administrador();
+            admin.ShowDialog();
+        }
     }
 }

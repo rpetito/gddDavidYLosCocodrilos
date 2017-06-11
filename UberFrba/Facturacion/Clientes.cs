@@ -8,19 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UberFrba.Rendicion_Viajes
+namespace UberFrba.Facturacion
 {
-    public partial class Rendicion : Form
+    public partial class Clientes : Form
     {
-        public Rendicion()
+        public Clientes()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Choferes chofer = new Choferes();
-            chofer.ShowDialog();
         }
     }
 }
