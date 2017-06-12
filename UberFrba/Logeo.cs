@@ -16,6 +16,11 @@ namespace UberFrba
         public Logeo()
         {
             InitializeComponent();
+
+            comboBox1.Items.Add("admin");
+            comboBox1.Items.Add("chofer");
+            comboBox1.Items.Add("cliente");
+
         }
 
         public string Password { get; set; }
@@ -39,6 +44,8 @@ namespace UberFrba
         {
             String pUsername = userTextBox.Text;
             String pContrasenia = passwordTextBox.Text;
+            String pRol = comboBox1.Text;
+            
             Int32 id = 0;
             Int32 intentos = 0;
 
@@ -46,15 +53,19 @@ namespace UberFrba
             try
             {
                 SqlConnection Conexion = BaseDeDatos.ObternerConexion();
-                MessageBox.Show("estamos conectados");
+                MessageBox.Show("estamos conectados", pRol);
+                Console.Write(pRol);
+
 
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), "there was an issue!");
 
             }
+
+
             Menu menu = new Menu();
             menu.ShowDialog();
 
