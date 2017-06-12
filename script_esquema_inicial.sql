@@ -127,6 +127,9 @@ DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.MIGRACION_CLIENTE
 IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.MIGRACION_CHOFER') IS NOT NULL
 DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.MIGRACION_CHOFER
 
+IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.MIGRACION_PERIODO') IS NOT NULL
+DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.MIGRACION_PERIODO
+
 
 --FUNCTIONS
 IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.fGetTurno') IS NOT NULL
@@ -369,6 +372,7 @@ CREATE TABLE DAVID_Y_LOS_COCODRILOS.VIAJE (
 	foreign key (VIAJE_TURNO_ID) references DAVID_Y_LOS_COCODRILOS.TURNO
 );
 
+/*
 
 ----------------------------------------
 -------------TABLA RENDICION------------
@@ -390,7 +394,7 @@ CREATE TABLE DAVID_Y_LOS_COCODRILOS.RENDICION (
 CREATE TABLE DAVID_Y_LOS_COCODRILOS.ITEM_RENDICION (
 	ITEMR_IMPORTE numeric(18,2),
 	ITEMR_RENDICION numeric(18,0),
-	ITEMR_VIAJE char(8),
+	ITEMR_VIAJE Int,
 	primary key(ITEMR_RENDICION, ITEMR_VIAJE),
 	foreign key (ITEMR_RENDICION) references DAVID_Y_LOS_COCODRILOS.RENDICION,
 	foreign key (ITEMR_VIAJE) references DAVID_Y_LOS_COCODRILOS.VIAJE,
@@ -401,7 +405,7 @@ CREATE TABLE DAVID_Y_LOS_COCODRILOS.ITEM_RENDICION (
 -------------TABLA FACTURA-------------
 ---------------------------------------
 CREATE TABLE DAVID_Y_LOS_COCODRILOS.FACTURA (
-	FACTURA_CLIENTE_ID char(8),
+	FACTURA_CLIENTE_ID char(18),
 	FACTURA_ID numeric(18) IDENTITY(1,1),
 	FACTURA_ANIO int,
 	FACTURA_PERIODO int,
@@ -421,7 +425,11 @@ CREATE TABLE DAVID_Y_LOS_COCODRILOS.ITEM_FACTURA (
 	primary key (ITEMF_VIAJE, ITEMF_FACTURA)
 );
 
+*/
+
 GO
+
+
 
 
 --###########################################################################
@@ -716,31 +724,13 @@ BEGIN
 				m.Turno_Valor_Kilometro,
 				m.Turno_Precio_Base,
 				1, 
-				DAVID_Y_LOS_COCODRILOS.fGetTurno(m.Turno_Hora_Inicio, m.Turno_Hora_Fin) --cada turno es individual no importa si se solapan (aunque no deberian solaparse)
+				DAVID_Y_LOS_COCODRILOS.fGetTurno(m.Turno_Hora_Inicio, m.Turno_Hora_Fin) 
 		FROM gd_esquema.Maestra m
 		GROUP BY m.Turno_Hora_Inicio, m.Turno_Hora_Fin, m.Turno_Descripcion, m.Turno_Valor_Kilometro, m.Turno_Precio_Base
 END		
 GO
 
 EXEC('DAVID_Y_LOS_COCODRILOS.MIGRACION_TURNO')
-GO
-
------------------------------------------------------
-----------------MIGRACION PERIODO---------------------
------------------------------------------------------
-CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.MIGRACION_PERIODO
-AS 
-BEGIN
-
-	INSERT INTO DAVID_Y_LOS_COCODRILOS.PERIODO (
-		PERIODO_ANIO,
-		PERIODO_MES,
-		PERIODO_INICIO,
-		PERIODO_FIN
-	)	(SELECT YEAR(Factura_Fecha_Inicio), MONTH(Factura_Fecha_Inicio), Factura_Fecha_Inicio, Factura_Fecha_Fin
-		from gd_esquema.Maestra 
-		group by Factura_Fecha_Inicio, Factura_Fecha_Fin)
-END
 GO
 
 
@@ -760,47 +750,56 @@ BEGIN
 		VIAJE_FECHA_FIN,
 		VIAJE_CLIENTE_ID
 	)	SELECT	m.Auto_Patente,
-<<<<<<< HEAD
 				(	SELECT c.USUARIO_ID
 					FROM DAVID_Y_LOS_COCODRILOS.CHOFER c join
 						 DAVID_Y_LOS_COCODRILOS.AUTOMOVIL a
 							on c.USUARIO_ID = a.AUTOMOVIL_CHOFER
 					WHERE m.Auto_Patente = a.AUTOMOVIL_PATENTE
 							and DAVID_Y_LOS_COCODRILOS.fGetTurno(m.Turno_Hora_Inicio, m.Turno_Hora_Fin) = a.AUTOMOVIL_TURNO
-=======
-				(	SELECT USUARIO_ID
-					FROM DAVID_Y_LOS_COCODRILOS.USUARIO
-					WHERE m.Chofer_Dni = USUARIO_DNI
->>>>>>> develop
 				),
 				(	SELECT t.TURNO_ID
 					FROM DAVID_Y_LOS_COCODRILOS.TURNO t
 					WHERE t.TURNO_HORA_INICIO = m.Turno_Hora_Inicio 
 							and t.TURNO_HORA_FIN = m.Turno_Hora_Fin
 				),
-<<<<<<< HEAD
 				m.Viaje_Cant_Kilometros,
-				m.Viaje_Fecha,  --como sacar fecha inicio viaje ?
-				m.Viaje_Fecha,  --como sacar fecha fin viaje? 
-				(	SELECT c.CLIENTE_USUARIO 
-					FROM DAVID_Y_LOS_COCODRILOS.CLIENTE c join DAVID_Y_LOS_COCODRILOS.USUARIO u on c.CLIENTE_USUARIO = u.USUARIO_DNI
-					WHERE m.Cliente_Telefono = u.USUARIO_TEL   --falta definiar la tabla Usuario por eso rompe
-=======
-				MAX(m.Viaje_Cant_Kilometros),
-				m.Viaje_Fecha,  
-				m.Viaje_Fecha,  
-				(	SELECT c.CLIENTE_USUARIO 
-					FROM DAVID_Y_LOS_COCODRILOS.CLIENTE c join DAVID_Y_LOS_COCODRILOS.USUARIO u on c.CLIENTE_USUARIO = u.USUARIO_ID
-					WHERE m.Cliente_Telefono = u.USUARIO_TEL   
->>>>>>> develop
-				)
+				m.Viaje_Fecha,
+				m.Viaje_Fecha, 
+				m.Cliente_Dni
 		FROM gd_esquema.Maestra m
-		group by m.Chofer_Dni, m.Cliente_Dni, m.Auto_Patente, m.Turno_Hora_Inicio, m.Turno_Hora_Fin, m.Viaje_Fecha
 END
 GO
 
 EXEC('DAVID_Y_LOS_COCODRILOS.MIGRACION_VIAJE')
 GO
+
+
+/*
+
+--ERROR
+--HACE INSERT DE VALORES NULL YA QUE HAY FECHAS DE FACTURAS EN NULL
+--NO SE PUEDE HACER INSERT DE FILAS EN NULL Y ROMPE LA EJECUCION
+-----------------------------------------------------
+----------------MIGRACION PERIODO---------------------
+-----------------------------------------------------
+CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.MIGRACION_PERIODO
+AS 
+BEGIN
+
+	INSERT INTO DAVID_Y_LOS_COCODRILOS.PERIODO (
+		PERIODO_ANIO,
+		PERIODO_MES,
+		PERIODO_INICIO,
+		PERIODO_FIN
+	)	(SELECT YEAR(Factura_Fecha_Inicio), MONTH(Factura_Fecha_Inicio), Factura_Fecha_Inicio, Factura_Fecha_Fin
+		from gd_esquema.Maestra 
+		group by Factura_Fecha_Inicio, Factura_Fecha_Fin)
+END
+GO
+
+EXEC('DAVID_Y_LOS_COCODRILOS.MIGRACION_PERIODO')
+GO
+
 
 
 
@@ -818,14 +817,11 @@ BEGIN
 		RENDICION_IMPORTE
 	)	SELECT	m.Rendicion_Nro,
 				m.Rendicion_Fecha,
-				(SELECT u.USUARIO_ID
-					FROM DAVID_Y_LOS_COCODRILOS.USUARIO u
-					WHERE u.USUARIO_DNI = m.Chofer_DNI),
+				m.Chofer_Dni,
 				DAVID_Y_LOS_COCODRILOS.fGetTurno(m.Turno_Hora_Inicio, m.Turno_Hora_Fin),
-				MAX(m.Rendicion_Importe)
+				m.Rendicion_Importe
 		FROM gd_esquema.Maestra m
-		where Rendicion_Nro > 0
-		group by m.Rendicion_Nro, m.Rendicion_Fecha, m.Chofer_DNI, m.Turno_Hora_Inicio, m.Turno_Hora_Fin;
+		WHERE Rendicion_Nro > 0
 END
 GO
 
@@ -847,10 +843,9 @@ BEGIN
 		FACTURA_ANIO,
 		FACTURA_PERIODO,
 		FACTURA_IMPORTE_TOTAL
-	)	(SELECT
-				(SELECT c.USUARIO_ID FROM DAVID_Y_LOS_COCODRILOS.CLIENTE c join DAVID_Y_LOS_COCODRILOS.USUARIO on c.USUARIO_ID = u.USUARIO_ID WHERE m.Cliente_Telefono = u.USUARIO_TELEFONO),
-				m.Factura_Nro,
-				'B',
+	)	(SELECT	m.Cliente_Dni,
+				m.Factura_Nro, --ERROR --en la tabla FACTURA el FACTURA_ID esta delarado como IDENTITY, pero la tabla maestra y ofrece el factura_Nro que es el id unico de la factura, y ademas aca se hace referencia a ese id, por lo tanto el identity no tiene sentido 
+--				'B',  --ERROR  que hace? no existe la columna 
 				YEAR(m.Factura_Fecha_Inicio),
 				MONTH(m.Factura_Fecha_Inicio),
 				0
@@ -873,9 +868,17 @@ CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.MIGRACION_ITEM_RENDICION
 AS
 BEGIN
 	INSERT INTO DAVID_Y_LOS_COCODRILOS.ITEM_RENDICION (ITEMR_IMPORTE, ITEMR_RENDICION, ITEMR_VIAJE)
-		(SELECT	Rendicion_Importe, RENDICION_ID, VIAJE_ID
-		FROM (gd_esquema.Maestra JOIN DAVID_Y_LOS_COCODRILOS.RENDICION ON Rendicion_Nro = RENDICION_ID) JOIN DAVID_Y_LOS_COCODRILOS.VIAJE ON VIAJE_CHOFER_ID = RENDICION_CHOFER_ID AND VIAJE_CLIENTE_ID = RENDICION_CLIENTE_ID AND VIAJE_TURNO_ID = RENDICION_TURNO_ID AND VIAJE_FECHA_INICIO = Viaje_Fecha
-		where Rendicion_Nro > 0)
+		(	SELECT	m.Rendicion_Importe, RENDICION_ID, VIAJE_ID
+			FROM gd_esquema.Maestra m
+				 JOIN DAVID_Y_LOS_COCODRILOS.RENDICION 
+					ON m.Rendicion_Nro = RENDICION_ID 
+				 JOIN DAVID_Y_LOS_COCODRILOS.VIAJE 
+					ON VIAJE_CHOFER_ID = RENDICION_CHOFER_ID 
+--						AND VIAJE_CLIENTE_ID = RENDICION_CLIENTE_ID   el error indica que no existe RENDICION_CLIENTE_ID
+						AND VIAJE_TURNO_ID = RENDICION_TURNO_ID       --no entiendo desde donde se quiere hacer referencia a la columna que igualmente no existe en la tabla RENDICION, por eso rompe.
+						AND VIAJE_FECHA_INICIO = Viaje_Fecha
+			WHERE Rendicion_Nro > 0
+		)
 END
 GO
 
@@ -910,8 +913,8 @@ BEGIN
 	WHILE @@FETCH_STATUS = 0  
 	BEGIN  
 		IF @factura != @facturaAnterior
-		BEGIN
-			UPDATE DAVID_Y_LOS_COCODRILOS.ITEM_FACTURA SET FACTURA_IMPORTE = @importeTotal WHERE FACTURA_ID = @facturaAnterior
+		BEGIN --ERROR --COLUMNAS QUE NO EXISTEN  --ACA HACE REFERENCIA A NOMBRES DE COLUMNA DE LA TABLA FACTURA CUANDO HACE UN SET SOBRE LA TABLA ITEM_FACTURA. OTRA VEZ EL ERROR QUE MUESTRA EL IDEA CUANDO SE PASA EL MOUSE POR ARRIBA DEL SUBRAYADO ES QUE NO EXISTE TAL COLUMNA.
+			UPDATE DAVID_Y_LOS_COCODRILOS.ITEM_FACTURA SET FACTURA_IMPORTE = @importeTotal WHERE FACTURA_ID = @facturaAnterior 
 			set @facturaAnterior = @factura
 			set @importeTotal = 0
 		END
@@ -930,3 +933,4 @@ GO
 
 
 
+*/
