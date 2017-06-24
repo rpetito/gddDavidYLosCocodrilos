@@ -16,6 +16,18 @@ namespace UberFrba
         public Logeo()
         {
             InitializeComponent();
+            SqlConnection Conexion = BaseDeDatos.ObternerConexion();
+            SqlCommand cmd = new SqlCommand();
+            SqlDataReader reader;
+
+            using (cmd = new SqlCommand(" SELECT r.rol_detalle " +
+                                        "from DAVID_Y_LOS_COCODRILOS.rol r ",
+                                        Conexion) ) ;
+            reader = cmd.ExecuteReader();
+
+
+
+
 
             comboBox1.Items.Add("admin");
             comboBox1.Items.Add("chofer");
@@ -64,6 +76,7 @@ namespace UberFrba
                 MessageBox.Show(ex.ToString(), "there was an issue!");
 
             }
+
 
 
             Menu menu = new Menu();
