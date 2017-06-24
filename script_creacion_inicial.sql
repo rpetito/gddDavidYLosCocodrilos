@@ -134,6 +134,9 @@ DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.MIGRACION_CHOFER
 IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.MIGRACION_PERIODO') IS NOT NULL
 DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.MIGRACION_PERIODO
 
+IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.INGRESAR_USUARIO') IS NOT NULL
+DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.INGRESAR_USUARIO
+
 
 --FUNCTIONS
 IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.fGetTurno') IS NOT NULL
@@ -141,6 +144,7 @@ DROP FUNCTION DAVID_Y_LOS_COCODRILOS.fGetTurno
 
 IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.fGenRandomViajeID') IS NOT NULL
 DROP FUNCTION DAVID_Y_LOS_COCODRILOS.fGenRandomViajeID
+
 
 
 --TRIGGERS
@@ -256,9 +260,7 @@ CREATE TABLE DAVID_Y_LOS_COCODRILOS.USUARIO (
 	USUARIO_LOCALIDAD	varchar(50),
 	USUARIO_CODPOS		varchar(10),
 	USUARIO_FNAC		datetime,
-	USUARIO_HABILITADO	integer DEFAULT 1,
-	USUARIO_USERNAME	char(35),
-	USUARIO_PASSWORD    char(10)
+	USUARIO_HABILITADO	integer DEFAULT 1
 	primary key (USUARIO_DNI)
 );
 
@@ -269,40 +271,14 @@ CREATE TABLE DAVID_Y_LOS_COCODRILOS.USUARIO (
 CREATE TABLE DAVID_Y_LOS_COCODRILOS.ROL_USUARIO (
 	USROL_USUARIO			numeric(18,0),
 	USROL_ROL				char(1),
+	USROL_USERNAME	char(35),
+	USROL_PASSWORD    char(10),
 	foreign key (USROL_USUARIO) 		references DAVID_Y_LOS_COCODRILOS.USUARIO,
 	foreign key (USROL_ROL) 			references DAVID_Y_LOS_COCODRILOS.ROL,
 	primary key (USROL_USUARIO, USROL_ROL)
 );
 
 
---------------------------------------
--------------TABLA ADMINISTRADOR------
---------------------------------------
-CREATE TABLE DAVID_Y_LOS_COCODRILOS.ADMINISTRADOR (
-	ADMIN_USUARIO			numeric(18,0),
-	foreign key	(ADMIN_USUARIO) references DAVID_Y_LOS_COCODRILOS.USUARIO,
-	primary key (ADMIN_USUARIO)
-);
-
-
---------------------------------------
--------------TABLA CLIENTE------------
---------------------------------------
-CREATE TABLE DAVID_Y_LOS_COCODRILOS.CLIENTE (
-	CLIENTE_USUARIO			numeric(18,0),
-	foreign key	(CLIENTE_USUARIO) references DAVID_Y_LOS_COCODRILOS.USUARIO,
-	primary key (CLIENTE_USUARIO)
-);
-
-
---------------------------------------
--------------TABLA CHOFER-------------
---------------------------------------
-CREATE TABLE DAVID_Y_LOS_COCODRILOS.CHOFER (
-	CHOFER_USUARIO numeric(18,0),
-	primary key (CHOFER_USUARIO),
-	foreign key (CHOFER_USUARIO) references DAVID_Y_LOS_COCODRILOS.USUARIO
-);
 
 
 ----------------------------------------
@@ -336,7 +312,7 @@ CREATE TABLE DAVID_Y_LOS_COCODRILOS.AUTOMOVIL (
 	AUTOMOVIL_CHOFER numeric(18,0),
 	AUTOMOVIL_HABILITADO bit,
 	primary key (AUTOMOVIL_PATENTE, AUTOMOVIL_CHOFER, AUTOMOVIL_TURNO),
-	foreign key (AUTOMOVIL_CHOFER) references DAVID_Y_LOS_COCODRILOS.CHOFER,
+	foreign key (AUTOMOVIL_CHOFER) references DAVID_Y_LOS_COCODRILOS.USUARIO,
 	foreign key (AUTOMOVIL_MARCA) references DAVID_Y_LOS_COCODRILOS.MARCA,
 	foreign key (AUTOMOVIL_MODELO) references DAVID_Y_LOS_COCODRILOS.MODELO
 );
@@ -370,8 +346,8 @@ CREATE TABLE DAVID_Y_LOS_COCODRILOS.VIAJE (
 	VIAJE_FECHA_INICIO datetime,
 	VIAJE_FECHA_FIN datetime,
 	primary key (VIAJE_CHOFER, VIAJE_FECHA_INICIO, VIAJE_CLIENTE),
-	foreign key (VIAJE_CHOFER) references DAVID_Y_LOS_COCODRILOS.CHOFER,
-	foreign key (VIAJE_CLIENTE) references DAVID_Y_LOS_COCODRILOS.CLIENTE,
+	foreign key (VIAJE_CHOFER) references DAVID_Y_LOS_COCODRILOS.USUARIO,
+	foreign key (VIAJE_CLIENTE) references DAVID_Y_LOS_COCODRILOS.USUARIO,
 	foreign key (VIAJE_AUTOMOVIL_PATENTE, VIAJE_CHOFER ,VIAJE_TURNO) references DAVID_Y_LOS_COCODRILOS.AUTOMOVIL,
 	foreign key (VIAJE_TURNO) references DAVID_Y_LOS_COCODRILOS.TURNO
 );
@@ -389,7 +365,7 @@ CREATE TABLE DAVID_Y_LOS_COCODRILOS.RENDICION (
 	RENDICION_IMPORTE numeric(18,2),
 	primary key (RENDICION_CHOFER, RENDICION_FECHA, RENDICION_TURNO),
 	foreign key (RENDICION_TURNO) references DAVID_Y_LOS_COCODRILOS.TURNO,
-	foreign key (RENDICION_CHOFER) references  DAVID_Y_LOS_COCODRILOS.CHOFER
+	foreign key (RENDICION_CHOFER) references  DAVID_Y_LOS_COCODRILOS.USUARIO
 );
 
 
@@ -419,7 +395,7 @@ CREATE TABLE DAVID_Y_LOS_COCODRILOS.FACTURA (
 	FACTURA_PERIODO int,
 	FACTURA_IMPORTE numeric(18,2)
 	primary key (FACTURA_CLIENTE, FACTURA_ANIO, FACTURA_PERIODO),
-	foreign key (FACTURA_CLIENTE) references DAVID_Y_LOS_COCODRILOS.CLIENTE
+	foreign key (FACTURA_CLIENTE) references DAVID_Y_LOS_COCODRILOS.USUARIO
 );
 
 
@@ -469,10 +445,10 @@ BEGIN
 			
 
 	--CARGA USUARIO ADMIN 
-	INSERT	INTO DAVID_Y_LOS_COCODRILOS.USUARIO (USUARIO_DNI, USUARIO_USERNAME, USUARIO_PASSWORD)
-			VALUES(1,'admin', 'q23w');
-	INSERT INTO DAVID_Y_LOS_COCODRILOS.ROL_USUARIO (USROL_USUARIO, USROL_ROL)
-			VALUES(1, '1');
+	INSERT	INTO DAVID_Y_LOS_COCODRILOS.USUARIO (USUARIO_DNI)
+			VALUES(0);
+	INSERT INTO DAVID_Y_LOS_COCODRILOS.ROL_USUARIO (USROL_USUARIO, USROL_ROL, USROL_USERNAME, USROL_PASSWORD)
+			VALUES(0, '1','admin', 'q23w');
 
 END
 GO
@@ -564,9 +540,13 @@ BEGIN
 
 	INSERT INTO DAVID_Y_LOS_COCODRILOS.ROL_USUARIO (
 		USROL_USUARIO,
-		USROL_ROL
+		USROL_ROL,
+		USROL_USERNAME,
+		USROL_PASSWORD
 	)	SELECT	distinct(m.Cliente_Dni),
-				'2'
+				'2',
+				m.Cliente_Dni,
+				m.Cliente_Dni
 		FROM gd_esquema.Maestra m
 
 END
@@ -585,57 +565,19 @@ BEGIN
 
 	INSERT INTO DAVID_Y_LOS_COCODRILOS.ROL_USUARIO (
 		USROL_USUARIO,
-		USROL_ROL
+		USROL_ROL,
+		USROL_USERNAME,
+		USROL_PASSWORD
 	)	SELECT	distinct(m.Chofer_Dni),
-				'3'
+				'3',
+				m.Chofer_Dni,
+				m.Chofer_Dni
 		FROM gd_esquema.Maestra m
 
 END
 GO
 
 EXEC('DAVID_Y_LOS_COCODRILOS.MIGRACION_ROLxUSUARIO_CHOFER')
-GO
-
-
------------------------------------------------------
-----------------MIGRACION CLIENTE---------------------
------------------------------------------------------
-CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.MIGRACION_CLIENTE 
-AS
-BEGIN
-
-	INSERT INTO DAVID_Y_LOS_COCODRILOS.CLIENTE (
-		CLIENTE_USUARIO
-	)	SELECT	r.USROL_USUARIO
-		FROM ROL_USUARIO r
-		WHERE r.USROL_ROL = '2'
-	
-
-END
-GO
-
-EXEC('DAVID_Y_LOS_COCODRILOS.MIGRACION_CLIENTE') 
-GO
-
-
------------------------------------------------------
-----------------MIGRACION CHOFER---------------------
------------------------------------------------------
-CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.MIGRACION_CHOFER 
-AS
-BEGIN
-
-	INSERT INTO DAVID_Y_LOS_COCODRILOS.CHOFER (
-		CHOFER_USUARIO
-	)	SELECT	r.USROL_USUARIO
-		FROM ROL_USUARIO r
-		WHERE r.USROL_ROL = '3'
-	
-
-END
-GO
-
-EXEC('DAVID_Y_LOS_COCODRILOS.MIGRACION_CHOFER') 
 GO
 
 
@@ -701,11 +643,7 @@ BEGIN
 					WHERE m.Auto_Modelo = modelo.MODELO_DETALLE 
 				),
 				DAVID_Y_LOS_COCODRILOS.fGetTurno(m.Turno_Hora_Inicio, m.Turno_Hora_Fin),
-				(	SELECT c.CHOFER_USUARIO
-					FROM DAVID_Y_LOS_COCODRILOS.CHOFER c join DAVID_Y_LOS_COCODRILOS.USUARIO u
-						 on c.CHOFER_USUARIO = u.USUARIO_DNI
-					WHERE u.USUARIO_DNI = m.Chofer_Dni
-				), 
+				m.Chofer_Dni, 
 				1
 		FROM gd_esquema.Maestra m
 
@@ -929,3 +867,34 @@ GO
 
 EXEC('DAVID_Y_LOS_COCODRILOS.UPDATE_FACTURA')
 GO
+
+
+
+
+--###########################################################################
+--###########################################################################
+------------------------------INTERFAZ DE ABM--------------------------------
+--###########################################################################
+--###########################################################################
+
+
+CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.INGRESAR_USUARIO (
+@username char(8),
+@password char(15),
+@rol char(10))
+AS
+BEGIN
+
+	IF(	SELECT r.USROL_ROL
+		FROM DAVID_Y_LOS_COCODRILOS.ROL_USUARIO r
+		WHERE r.USROL_ROL = @rol
+				and r.USROL_USERNAME = @username 
+				and r.USROL_PASSWORD = @password) > 1
+		RETURN 1
+	ELSE
+		RETURN 0
+
+END
+
+
+
