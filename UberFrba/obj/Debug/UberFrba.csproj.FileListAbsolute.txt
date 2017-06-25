@@ -86,3 +86,4 @@ C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberF
 C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\bin\Debug\UberFrba.exe.config
 C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\bin\Debug\UberFrba.exe
 C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\bin\Debug\UberFrba.pdb
+C:\Users\admin\Desktop\Workspace\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Rendicion_Viajes.Choferes.resources

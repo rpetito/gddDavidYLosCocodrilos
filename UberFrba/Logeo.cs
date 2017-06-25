@@ -58,7 +58,6 @@ namespace UberFrba
             String pUsername = userTextBox.Text;
             String pContrasenia = passwordTextBox.Text;
             String pRol = comboBox1.Text;
-            
             Int32 id = 0;
             Int32 intentos = 0;
 
@@ -67,41 +66,36 @@ namespace UberFrba
             {
                 SqlConnection Conexion = BaseDeDatos.ObternerConexion();
                 MessageBox.Show("estamos conectados", pRol);
-                Console.Write(pRol);
                 SqlCommand loginUsuario = new SqlCommand();
                 SqlDataReader reader;
-                SqlParameter username = new SqlParameter();
-                username.ParameterName = "@username";
-                username.Value = pUsername;
-                SqlParameter password = new SqlParameter();
-                password.ParameterName = "@password";
-                password.Value = pContrasenia;
-                SqlParameter rol = new SqlParameter();
-                rol.ParameterName = "@rol";
-                rol.Value = pRol;
 
-                loginUsuario.Parameters.Add(username);
-                loginUsuario.Parameters.Add(password);
-                loginUsuario.Parameters.Add(rol);
-
-
-                using ( loginUsuario = new SqlCommand(string.Format("Select u.usuario_dni " +
-                                                                    "FROM DAVID_Y_LOS_COCODRILOS.USUARIO U join DAVID_Y_LOS_COCODRILOS.ROL_USUARIO ru " +
+                using ( loginUsuario = new SqlCommand(string.Format("Select * " +
+                                                                    "FROM DAVID_Y_LOS_COCODRILOS.USUARIO u join DAVID_Y_LOS_COCODRILOS.ROL_USUARIO ru " +
                                                                     "on u.USUARIO_DNI = ru.USROL_USUARIO join DAVID_Y_LOS_COCODRILOS.ROL r " +
-                                                                    "on r.ROL_ID = ru.USROL_ROL " +
-                                                                    "WHERE r.ROL_DETALLE = @rol and u.USUARIO_USERNAME = @username and u.USUARIO_PASSWORD = @password"
+                                                                    "on ru.USROL_ROL = r.ROL_ID " +
+                                                                    "WHERE r.ROL_DETALLE = @rol and ru.USROL_USERNAME = @username and ru.USROL_PASSWORD = @password"
                                                                     ),
-                            Conexion)) ;
-                reader = loginUsuario.ExecuteReader();
-
-                while (reader.Read())
+                            Conexion))
                 {
+                loginUsuario.Parameters.Add("@username", SqlDbType.Char);
+                loginUsuario.Parameters["@username"].Value = pUsername;
+                loginUsuario.Parameters.Add("@password", SqlDbType.Char);
+                loginUsuario.Parameters["@password"].Value = pContrasenia;
+                loginUsuario.Parameters.Add("@rol", SqlDbType.Char);
+                loginUsuario.Parameters["@rol"].Value = pRol;
+                }
 
-                    Console.WriteLine(reader.GetInt32(0));
-
+                reader = loginUsuario.ExecuteReader();
+              
+                if (reader.Read())
+                {
+                    Menu menu = new Menu();
+                    menu.ShowDialog(); ;
+                }
+                else {
+                    MessageBox.Show("Logeo incorrecto.", "Afuera");
                 }
                 reader.Close();
-
             }
 
             catch (Exception ex)
@@ -109,11 +103,6 @@ namespace UberFrba
                 MessageBox.Show(ex.ToString(), "there was an issue!");
 
             }
-
-
-
-            Menu menu = new Menu();
-            menu.ShowDialog();
 
         }
     }

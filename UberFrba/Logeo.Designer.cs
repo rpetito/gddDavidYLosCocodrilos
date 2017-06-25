@@ -120,10 +120,10 @@
         private System.Windows.Forms.Button acceptButton;
         private System.Windows.Forms.TextBox userTextBox;
         private System.Windows.Forms.TextBox passwordTextBox;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.ComboBox comboBox1;
     }
 }
 
