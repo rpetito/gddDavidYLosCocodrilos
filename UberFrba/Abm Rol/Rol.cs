@@ -17,19 +17,19 @@ namespace UberFrba.Abm_Rol
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void nuevoButton_Click(object sender, EventArgs e)
         {
             NuevoRol rol = new NuevoRol();
             rol.ShowDialog();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void bajaButton_Click(object sender, EventArgs e)
         {
             ListadoBajaRol bajaRol = new ListadoBajaRol();
             bajaRol.ShowDialog();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void modificacionButton_Click(object sender, EventArgs e)
         {
             ListadoModRol modRol = new ListadoModRol();
             modRol.ShowDialog();

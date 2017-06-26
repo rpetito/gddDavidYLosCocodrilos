@@ -16,5 +16,17 @@ namespace UberFrba.Abm_Chofer
         {
             InitializeComponent();
         }
+
+        private void cancelarButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void limpiarButton_Click(object sender, EventArgs e)
+        {
+            nombreTextBox.Clear();
+            apellidoTextBox.Clear();
+            dniTextBox.Clear();
+        }
     }
 }

@@ -28,121 +28,133 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.automovilesButton = new System.Windows.Forms.Button();
+            this.clientesButton = new System.Windows.Forms.Button();
+            this.rolesButton = new System.Windows.Forms.Button();
+            this.choferesButton = new System.Windows.Forms.Button();
+            this.turnosButton = new System.Windows.Forms.Button();
+            this.registroButton = new System.Windows.Forms.Button();
+            this.rendicionButton = new System.Windows.Forms.Button();
+            this.facturacionButton = new System.Windows.Forms.Button();
+            this.administradoresButton = new System.Windows.Forms.Button();
+            this.estadisticosButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // automovilesButton
             // 
-            this.button1.Location = new System.Drawing.Point(42, 26);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Automoviles";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.automovilesButton.Location = new System.Drawing.Point(42, 26);
+            this.automovilesButton.Name = "automovilesButton";
+            this.automovilesButton.Size = new System.Drawing.Size(75, 23);
+            this.automovilesButton.TabIndex = 0;
+            this.automovilesButton.Text = "Automoviles";
+            this.automovilesButton.UseVisualStyleBackColor = true;
+            this.automovilesButton.Click += new System.EventHandler(this.automovilesButton_Click);
             // 
-            // button2
+            // clientesButton
             // 
-            this.button2.Location = new System.Drawing.Point(245, 242);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Clientes";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.clientesButton.Location = new System.Drawing.Point(245, 242);
+            this.clientesButton.Name = "clientesButton";
+            this.clientesButton.Size = new System.Drawing.Size(75, 23);
+            this.clientesButton.TabIndex = 1;
+            this.clientesButton.Text = "Clientes";
+            this.clientesButton.UseVisualStyleBackColor = true;
+            this.clientesButton.Click += new System.EventHandler(this.clientesButton_Click);
             // 
-            // button3
+            // rolesButton
             // 
-            this.button3.Location = new System.Drawing.Point(42, 118);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Roles";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.rolesButton.Location = new System.Drawing.Point(42, 118);
+            this.rolesButton.Name = "rolesButton";
+            this.rolesButton.Size = new System.Drawing.Size(75, 23);
+            this.rolesButton.TabIndex = 2;
+            this.rolesButton.Text = "Roles";
+            this.rolesButton.UseVisualStyleBackColor = true;
+            this.rolesButton.Click += new System.EventHandler(this.rolesButton_Click);
             // 
-            // button4
+            // choferesButton
             // 
-            this.button4.Location = new System.Drawing.Point(164, 242);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Choferes";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.choferesButton.Location = new System.Drawing.Point(164, 242);
+            this.choferesButton.Name = "choferesButton";
+            this.choferesButton.Size = new System.Drawing.Size(75, 23);
+            this.choferesButton.TabIndex = 3;
+            this.choferesButton.Text = "Choferes";
+            this.choferesButton.UseVisualStyleBackColor = true;
+            this.choferesButton.Click += new System.EventHandler(this.choferesButton_Click);
             // 
-            // button5
+            // turnosButton
             // 
-            this.button5.Location = new System.Drawing.Point(42, 75);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Turnos";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.turnosButton.Location = new System.Drawing.Point(42, 75);
+            this.turnosButton.Name = "turnosButton";
+            this.turnosButton.Size = new System.Drawing.Size(75, 23);
+            this.turnosButton.TabIndex = 4;
+            this.turnosButton.Text = "Turnos";
+            this.turnosButton.UseVisualStyleBackColor = true;
+            this.turnosButton.Click += new System.EventHandler(this.turnosButton_Click);
             // 
-            // button6
+            // registroButton
             // 
-            this.button6.Location = new System.Drawing.Point(175, 26);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(117, 23);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "Registro de Viajes";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.registroButton.Location = new System.Drawing.Point(175, 26);
+            this.registroButton.Name = "registroButton";
+            this.registroButton.Size = new System.Drawing.Size(117, 23);
+            this.registroButton.TabIndex = 5;
+            this.registroButton.Text = "Registro de Viajes";
+            this.registroButton.UseVisualStyleBackColor = true;
+            this.registroButton.Click += new System.EventHandler(this.registroButton_Click);
             // 
-            // button7
+            // rendicionButton
             // 
-            this.button7.Location = new System.Drawing.Point(175, 75);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(117, 23);
-            this.button7.TabIndex = 6;
-            this.button7.Text = "Rendición de Viajes";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.rendicionButton.Location = new System.Drawing.Point(175, 75);
+            this.rendicionButton.Name = "rendicionButton";
+            this.rendicionButton.Size = new System.Drawing.Size(117, 23);
+            this.rendicionButton.TabIndex = 6;
+            this.rendicionButton.Text = "Rendición de Viajes";
+            this.rendicionButton.UseVisualStyleBackColor = true;
+            this.rendicionButton.Click += new System.EventHandler(this.rendicionButton_Click);
             // 
-            // button8
+            // facturacionButton
             // 
-            this.button8.Location = new System.Drawing.Point(175, 118);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(117, 23);
-            this.button8.TabIndex = 7;
-            this.button8.Text = "Facturación";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.facturacionButton.Location = new System.Drawing.Point(175, 118);
+            this.facturacionButton.Name = "facturacionButton";
+            this.facturacionButton.Size = new System.Drawing.Size(117, 23);
+            this.facturacionButton.TabIndex = 7;
+            this.facturacionButton.Text = "Facturación";
+            this.facturacionButton.UseVisualStyleBackColor = true;
+            this.facturacionButton.Click += new System.EventHandler(this.facturacionButton_Click);
             // 
-            // button9
+            // administradoresButton
             // 
-            this.button9.Location = new System.Drawing.Point(66, 242);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(92, 23);
-            this.button9.TabIndex = 8;
-            this.button9.Text = "Administradores";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.administradoresButton.Location = new System.Drawing.Point(66, 242);
+            this.administradoresButton.Name = "administradoresButton";
+            this.administradoresButton.Size = new System.Drawing.Size(92, 23);
+            this.administradoresButton.TabIndex = 8;
+            this.administradoresButton.Text = "Administradores";
+            this.administradoresButton.UseVisualStyleBackColor = true;
+            this.administradoresButton.Click += new System.EventHandler(this.administradoresButton_Click);
+            // 
+            // estadisticosButton
+            // 
+            this.estadisticosButton.Location = new System.Drawing.Point(175, 163);
+            this.estadisticosButton.Name = "estadisticosButton";
+            this.estadisticosButton.Size = new System.Drawing.Size(117, 23);
+            this.estadisticosButton.TabIndex = 9;
+            this.estadisticosButton.Text = "Estadísticos";
+            this.estadisticosButton.UseVisualStyleBackColor = true;
+            this.estadisticosButton.Click += new System.EventHandler(this.estadisticosButton_Click);
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(325, 277);
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.estadisticosButton);
+            this.Controls.Add(this.administradoresButton);
+            this.Controls.Add(this.facturacionButton);
+            this.Controls.Add(this.rendicionButton);
+            this.Controls.Add(this.registroButton);
+            this.Controls.Add(this.turnosButton);
+            this.Controls.Add(this.choferesButton);
+            this.Controls.Add(this.rolesButton);
+            this.Controls.Add(this.clientesButton);
+            this.Controls.Add(this.automovilesButton);
             this.Name = "Menu";
             this.Text = "Menú";
             this.ResumeLayout(false);
@@ -151,14 +163,15 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button automovilesButton;
+        private System.Windows.Forms.Button clientesButton;
+        private System.Windows.Forms.Button rolesButton;
+        private System.Windows.Forms.Button choferesButton;
+        private System.Windows.Forms.Button turnosButton;
+        private System.Windows.Forms.Button registroButton;
+        private System.Windows.Forms.Button rendicionButton;
+        private System.Windows.Forms.Button facturacionButton;
+        private System.Windows.Forms.Button administradoresButton;
+        private System.Windows.Forms.Button estadisticosButton;
     }
 }

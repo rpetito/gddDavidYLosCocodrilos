@@ -16,5 +16,33 @@ namespace UberFrba.Abm_Rol
         {
             InitializeComponent();
         }
+
+        private void limpiarButton_Click(object sender, EventArgs e)
+        {
+            nombreTextBox.Clear();
+            rolesGrid.ClearSelection();
+        }
+
+        private void cancelarButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void limpiarSelButton_Click(object sender, EventArgs e)
+        {
+            nombreSelTextBox.Clear();
+            habilitadoCheckBox.Checked = false;
+            funcionalidadesSelGrid.ClearSelection();
+        }
+
+        private void seleccionarButton_Click(object sender, EventArgs e)
+        {
+            nombreSelTextBox.Enabled = true;
+            habilitadoCheckBox.Enabled = true;
+            funcionalidadesSelGrid.Enabled = true;
+            limpiarSelButton.Enabled = true;
+            seleccionarTodoButton.Enabled = true;
+            modificarSelButton.Enabled = true;
+        }
     }
 }

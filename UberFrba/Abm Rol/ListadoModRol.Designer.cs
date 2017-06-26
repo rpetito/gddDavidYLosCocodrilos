@@ -29,38 +29,38 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.habilitadoCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.limpiarSelButton = new System.Windows.Forms.Button();
+            this.seleccionarTodoButton = new System.Windows.Forms.Button();
+            this.funcionalidadesSelGrid = new System.Windows.Forms.DataGridView();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.nombreSelTextBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
+            this.modificarSelButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.nombreTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.limpiarButton = new System.Windows.Forms.Button();
+            this.seleccionarButton = new System.Windows.Forms.Button();
+            this.buscarButton = new System.Windows.Forms.Button();
+            this.cancelarButton = new System.Windows.Forms.Button();
+            this.rolesGrid = new System.Windows.Forms.DataGridView();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.funcionalidadesSelGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rolesGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.checkBox2);
+            this.groupBox2.Controls.Add(this.habilitadoCheckBox);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.checkBox1);
-            this.groupBox2.Controls.Add(this.textBox7);
+            this.groupBox2.Controls.Add(this.nombreSelTextBox);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.button7);
+            this.groupBox2.Controls.Add(this.modificarSelButton);
             this.groupBox2.Location = new System.Drawing.Point(274, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(353, 328);
@@ -68,22 +68,23 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Rol seleccionado";
             // 
-            // checkBox2
+            // habilitadoCheckBox
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(248, 29);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox2.Size = new System.Drawing.Size(73, 17);
-            this.checkBox2.TabIndex = 12;
-            this.checkBox2.Text = "Habilitado";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.habilitadoCheckBox.AutoSize = true;
+            this.habilitadoCheckBox.Enabled = false;
+            this.habilitadoCheckBox.Location = new System.Drawing.Point(248, 29);
+            this.habilitadoCheckBox.Name = "habilitadoCheckBox";
+            this.habilitadoCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.habilitadoCheckBox.Size = new System.Drawing.Size(73, 17);
+            this.habilitadoCheckBox.TabIndex = 12;
+            this.habilitadoCheckBox.Text = "Habilitado";
+            this.habilitadoCheckBox.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button6);
-            this.groupBox3.Controls.Add(this.button8);
-            this.groupBox3.Controls.Add(this.dataGridView2);
+            this.groupBox3.Controls.Add(this.limpiarSelButton);
+            this.groupBox3.Controls.Add(this.seleccionarTodoButton);
+            this.groupBox3.Controls.Add(this.funcionalidadesSelGrid);
             this.groupBox3.Location = new System.Drawing.Point(23, 66);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(317, 218);
@@ -91,31 +92,35 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Funcionalidades";
             // 
-            // button6
+            // limpiarSelButton
             // 
-            this.button6.Location = new System.Drawing.Point(19, 178);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "Limpiar";
-            this.button6.UseVisualStyleBackColor = true;
+            this.limpiarSelButton.Enabled = false;
+            this.limpiarSelButton.Location = new System.Drawing.Point(19, 178);
+            this.limpiarSelButton.Name = "limpiarSelButton";
+            this.limpiarSelButton.Size = new System.Drawing.Size(75, 23);
+            this.limpiarSelButton.TabIndex = 7;
+            this.limpiarSelButton.Text = "Limpiar";
+            this.limpiarSelButton.UseVisualStyleBackColor = true;
+            this.limpiarSelButton.Click += new System.EventHandler(this.limpiarSelButton_Click);
             // 
-            // button8
+            // seleccionarTodoButton
             // 
-            this.button8.Location = new System.Drawing.Point(194, 178);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(104, 23);
-            this.button8.TabIndex = 8;
-            this.button8.Text = "Seleccionar Todo";
-            this.button8.UseVisualStyleBackColor = true;
+            this.seleccionarTodoButton.Enabled = false;
+            this.seleccionarTodoButton.Location = new System.Drawing.Point(194, 178);
+            this.seleccionarTodoButton.Name = "seleccionarTodoButton";
+            this.seleccionarTodoButton.Size = new System.Drawing.Size(104, 23);
+            this.seleccionarTodoButton.TabIndex = 8;
+            this.seleccionarTodoButton.Text = "Seleccionar Todo";
+            this.seleccionarTodoButton.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
+            // funcionalidadesSelGrid
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(19, 30);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(279, 142);
-            this.dataGridView2.TabIndex = 5;
+            this.funcionalidadesSelGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.funcionalidadesSelGrid.Enabled = false;
+            this.funcionalidadesSelGrid.Location = new System.Drawing.Point(19, 30);
+            this.funcionalidadesSelGrid.Name = "funcionalidadesSelGrid";
+            this.funcionalidadesSelGrid.Size = new System.Drawing.Size(279, 142);
+            this.funcionalidadesSelGrid.TabIndex = 5;
             // 
             // checkBox1
             // 
@@ -127,12 +132,13 @@
             this.checkBox1.Text = "Habilitado";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // textBox7
+            // nombreSelTextBox
             // 
-            this.textBox7.Location = new System.Drawing.Point(84, 27);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 47;
+            this.nombreSelTextBox.Enabled = false;
+            this.nombreSelTextBox.Location = new System.Drawing.Point(84, 27);
+            this.nombreSelTextBox.Name = "nombreSelTextBox";
+            this.nombreSelTextBox.Size = new System.Drawing.Size(100, 20);
+            this.nombreSelTextBox.TabIndex = 47;
             // 
             // label9
             // 
@@ -143,99 +149,103 @@
             this.label9.TabIndex = 42;
             this.label9.Text = "Nombre:";
             // 
-            // button7
+            // modificarSelButton
             // 
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(265, 290);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 51;
-            this.button7.Text = "Modificar";
-            this.button7.UseVisualStyleBackColor = true;
+            this.modificarSelButton.Enabled = false;
+            this.modificarSelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modificarSelButton.Location = new System.Drawing.Point(265, 290);
+            this.modificarSelButton.Name = "modificarSelButton";
+            this.modificarSelButton.Size = new System.Drawing.Size(75, 23);
+            this.modificarSelButton.TabIndex = 51;
+            this.modificarSelButton.Text = "Modificar";
+            this.modificarSelButton.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.nombreTextBox);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.groupBox1.Location = new System.Drawing.Point(19, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(205, 64);
+            this.groupBox1.Size = new System.Drawing.Size(228, 64);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros de Búsqueda";
             // 
-            // textBox1
+            // nombreTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(57, 27);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 4;
+            this.nombreTextBox.Location = new System.Drawing.Point(63, 27);
+            this.nombreTextBox.Name = "nombreTextBox";
+            this.nombreTextBox.Size = new System.Drawing.Size(106, 20);
+            this.nombreTextBox.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.label1.Location = new System.Drawing.Point(11, 30);
+            this.label1.Location = new System.Drawing.Point(10, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre:";
             // 
-            // button1
+            // limpiarButton
             // 
-            this.button1.Location = new System.Drawing.Point(19, 93);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Limpiar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.limpiarButton.Location = new System.Drawing.Point(19, 93);
+            this.limpiarButton.Name = "limpiarButton";
+            this.limpiarButton.Size = new System.Drawing.Size(75, 23);
+            this.limpiarButton.TabIndex = 11;
+            this.limpiarButton.Text = "Limpiar";
+            this.limpiarButton.UseVisualStyleBackColor = true;
+            this.limpiarButton.Click += new System.EventHandler(this.limpiarButton_Click);
             // 
-            // button4
+            // seleccionarButton
             // 
-            this.button4.Location = new System.Drawing.Point(149, 317);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 15;
-            this.button4.Text = "Seleccionar";
-            this.button4.UseVisualStyleBackColor = true;
+            this.seleccionarButton.Location = new System.Drawing.Point(172, 317);
+            this.seleccionarButton.Name = "seleccionarButton";
+            this.seleccionarButton.Size = new System.Drawing.Size(75, 23);
+            this.seleccionarButton.TabIndex = 15;
+            this.seleccionarButton.Text = "Seleccionar";
+            this.seleccionarButton.UseVisualStyleBackColor = true;
+            this.seleccionarButton.Click += new System.EventHandler(this.seleccionarButton_Click);
             // 
-            // button2
+            // buscarButton
             // 
-            this.button2.Location = new System.Drawing.Point(149, 93);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Buscar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buscarButton.Location = new System.Drawing.Point(172, 93);
+            this.buscarButton.Name = "buscarButton";
+            this.buscarButton.Size = new System.Drawing.Size(75, 23);
+            this.buscarButton.TabIndex = 12;
+            this.buscarButton.Text = "Buscar";
+            this.buscarButton.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // cancelarButton
             // 
-            this.button3.Location = new System.Drawing.Point(19, 317);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 14;
-            this.button3.Text = "Cancelar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.cancelarButton.Location = new System.Drawing.Point(19, 317);
+            this.cancelarButton.Name = "cancelarButton";
+            this.cancelarButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelarButton.TabIndex = 14;
+            this.cancelarButton.Text = "Cancelar";
+            this.cancelarButton.UseVisualStyleBackColor = true;
+            this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
             // 
-            // dataGridView1
+            // rolesGrid
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(19, 134);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(205, 162);
-            this.dataGridView1.TabIndex = 13;
+            this.rolesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.rolesGrid.Location = new System.Drawing.Point(19, 134);
+            this.rolesGrid.Name = "rolesGrid";
+            this.rolesGrid.Size = new System.Drawing.Size(228, 162);
+            this.rolesGrid.TabIndex = 13;
             // 
             // ListadoModRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(646, 354);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.limpiarButton);
+            this.Controls.Add(this.seleccionarButton);
+            this.Controls.Add(this.buscarButton);
+            this.Controls.Add(this.cancelarButton);
+            this.Controls.Add(this.rolesGrid);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "ListadoModRol";
@@ -243,10 +253,10 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.funcionalidadesSelGrid)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rolesGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -255,21 +265,21 @@
 
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox nombreSelTextBox;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button modificarSelButton;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox nombreTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button limpiarSelButton;
+        private System.Windows.Forms.Button seleccionarTodoButton;
+        private System.Windows.Forms.DataGridView funcionalidadesSelGrid;
+        private System.Windows.Forms.CheckBox habilitadoCheckBox;
+        private System.Windows.Forms.Button limpiarButton;
+        private System.Windows.Forms.Button seleccionarButton;
+        private System.Windows.Forms.Button buscarButton;
+        private System.Windows.Forms.Button cancelarButton;
+        private System.Windows.Forms.DataGridView rolesGrid;
     }
 }

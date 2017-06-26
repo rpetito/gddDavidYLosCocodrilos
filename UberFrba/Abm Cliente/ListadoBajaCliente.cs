@@ -16,5 +16,18 @@ namespace UberFrba.Abm_Cliente
         {
             InitializeComponent();
         }
+
+        private void limpiarButton_Click(object sender, EventArgs e)
+        {
+            nombreTextBox.Clear();
+            apellidoTextBox.Clear();
+            dniTextBox.Clear();
+            clientesGrid.ClearSelection();
+        }
+
+        private void cancelarButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

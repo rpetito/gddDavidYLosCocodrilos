@@ -28,49 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.modificacionButton = new System.Windows.Forms.Button();
+            this.bajaButton = new System.Windows.Forms.Button();
+            this.nuevoButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button3
+            // modificacionButton
             // 
-            this.button3.Location = new System.Drawing.Point(52, 139);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "Modificación";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.modificacionButton.Location = new System.Drawing.Point(52, 139);
+            this.modificacionButton.Name = "modificacionButton";
+            this.modificacionButton.Size = new System.Drawing.Size(75, 23);
+            this.modificacionButton.TabIndex = 5;
+            this.modificacionButton.Text = "Modificación";
+            this.modificacionButton.UseVisualStyleBackColor = true;
+            this.modificacionButton.Click += new System.EventHandler(this.modificacionButton_Click);
             // 
-            // button2
+            // bajaButton
             // 
-            this.button2.Location = new System.Drawing.Point(52, 89);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Baja";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.bajaButton.Location = new System.Drawing.Point(52, 89);
+            this.bajaButton.Name = "bajaButton";
+            this.bajaButton.Size = new System.Drawing.Size(75, 23);
+            this.bajaButton.TabIndex = 4;
+            this.bajaButton.Text = "Baja";
+            this.bajaButton.UseVisualStyleBackColor = true;
+            this.bajaButton.Click += new System.EventHandler(this.bajaButton_Click);
             // 
-            // button1
+            // nuevoButton
             // 
-            this.button1.Location = new System.Drawing.Point(52, 39);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Nuevo";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.nuevoButton.Location = new System.Drawing.Point(52, 39);
+            this.nuevoButton.Name = "nuevoButton";
+            this.nuevoButton.Size = new System.Drawing.Size(75, 23);
+            this.nuevoButton.TabIndex = 3;
+            this.nuevoButton.Text = "Nuevo";
+            this.nuevoButton.UseVisualStyleBackColor = true;
+            this.nuevoButton.Click += new System.EventHandler(this.nuevoButton_Click);
             // 
             // Chofer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(179, 201);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.modificacionButton);
+            this.Controls.Add(this.bajaButton);
+            this.Controls.Add(this.nuevoButton);
             this.Name = "Chofer";
             this.Text = "Chofer";
             this.ResumeLayout(false);
@@ -79,8 +79,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button modificacionButton;
+        private System.Windows.Forms.Button bajaButton;
+        private System.Windows.Forms.Button nuevoButton;
     }
 }

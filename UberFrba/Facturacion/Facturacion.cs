@@ -17,10 +17,24 @@ namespace UberFrba.Facturacion
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void busquedaCliente_Click(object sender, EventArgs e)
         {
-            Clientes cliente = new Clientes();
+            Abm_Cliente.BuscadorClientes cliente = new Abm_Cliente.BuscadorClientes();
             cliente.ShowDialog();
+        }
+
+        private void limpiarButton_Click(object sender, EventArgs e)
+        {
+            anioTextBox.Clear();
+            mesComboBox.ResetText();
+            clienteTextBox.Clear();
+            viajesGrid.ClearSelection();
+            totalTextBox.Clear();
+        }
+
+        private void cancelarButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

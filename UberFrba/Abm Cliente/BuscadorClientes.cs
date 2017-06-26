@@ -8,21 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UberFrba.Abm_Automovil
+namespace UberFrba.Abm_Cliente
 {
-    public partial class ListadoBajaAutomovil : Form
+    public partial class BuscadorClientes : Form
     {
-        public ListadoBajaAutomovil()
+        public BuscadorClientes()
         {
             InitializeComponent();
         }
 
         private void limpiarButton_Click(object sender, EventArgs e)
         {
-            marcaComboBox.ResetText();
-            patenteTextBox.Clear();
-            modeloTextBox.Clear();
-            choferTextBox.Clear();
+            nombreTextBox.Clear();
+            apellidoTextBox.Clear();
+            dniTextBox.Clear();
+            clientesGrid.ClearSelection();
         }
 
         private void cancelarButton_Click(object sender, EventArgs e)

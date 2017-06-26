@@ -28,37 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.listadoButton = new System.Windows.Forms.Button();
+            this.nuevoButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // listadoButton
             // 
-            this.button1.Location = new System.Drawing.Point(30, 55);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(131, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Listado de Viajes";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.listadoButton.Location = new System.Drawing.Point(30, 55);
+            this.listadoButton.Name = "listadoButton";
+            this.listadoButton.Size = new System.Drawing.Size(131, 23);
+            this.listadoButton.TabIndex = 0;
+            this.listadoButton.Text = "Listado de Viajes";
+            this.listadoButton.UseVisualStyleBackColor = true;
+            this.listadoButton.Click += new System.EventHandler(this.listadoButton_Click);
             // 
-            // button2
+            // nuevoButton
             // 
-            this.button2.Location = new System.Drawing.Point(30, 103);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(131, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Nuevo Viaje";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.nuevoButton.Location = new System.Drawing.Point(30, 103);
+            this.nuevoButton.Name = "nuevoButton";
+            this.nuevoButton.Size = new System.Drawing.Size(131, 23);
+            this.nuevoButton.TabIndex = 1;
+            this.nuevoButton.Text = "Nuevo Viaje";
+            this.nuevoButton.UseVisualStyleBackColor = true;
+            this.nuevoButton.Click += new System.EventHandler(this.nuevoButton_Click);
             // 
             // Registro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(189, 189);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.nuevoButton);
+            this.Controls.Add(this.listadoButton);
             this.Name = "Registro";
             this.Text = "Registro de viaje";
             this.ResumeLayout(false);
@@ -67,7 +67,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button listadoButton;
+        private System.Windows.Forms.Button nuevoButton;
     }
 }

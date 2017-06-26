@@ -17,10 +17,24 @@ namespace UberFrba.Rendicion_Viajes
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void busquedaChoferButton_Click(object sender, EventArgs e)
         {
-            Choferes chofer = new Choferes();
+            Abm_Chofer.BuscadorChoferes chofer = new Abm_Chofer.BuscadorChoferes();
             chofer.ShowDialog();
+        }
+
+        private void limpiarButton_Click(object sender, EventArgs e)
+        {
+            fechaTimePicker.ResetText();
+            choferTextBox.Clear();
+            turnoComboBox.ResetText();
+            viajesGrid.ClearSelection();
+            totalTextBox.Clear();
+        }
+
+        private void cancelarButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

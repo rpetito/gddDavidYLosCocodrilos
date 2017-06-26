@@ -17,9 +17,27 @@ namespace UberFrba.Abm_Cliente
             InitializeComponent();
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void cancelarButton_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        private void limpiarButton_Click(object sender, EventArgs e)
+        {
+            nombreTextBox.Clear();
+            apellidoTextBox.Clear();
+            dniTextBox.Clear();
+            nacimientoTextBox.Clear();
+            telefonoTextBox.Clear();
+            direccionTextBox.Clear();
+            localidadTextBox.Clear();
+            pisoTextBox.Clear();
+            departamentoTextBox.Clear();
+            codigoTextBox.Clear();
+            mailTextBox.Clear();
+            usuarioTextBox.Clear();
+            contraseniaTextBox.Clear();
+            repetirTextBox.Clear();
         }
     }
 }

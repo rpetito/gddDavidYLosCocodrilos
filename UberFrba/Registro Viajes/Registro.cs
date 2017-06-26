@@ -17,13 +17,13 @@ namespace UberFrba.Registro_Viajes
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void listadoButton_Click(object sender, EventArgs e)
         {
             ListadoViajes listadoViajes = new ListadoViajes();
             listadoViajes.ShowDialog();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void nuevoButton_Click(object sender, EventArgs e)
         {
             NuevoViaje nuevoViaje = new NuevoViaje();
             nuevoViaje.ShowDialog();
