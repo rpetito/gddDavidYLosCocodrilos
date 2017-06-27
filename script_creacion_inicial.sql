@@ -155,6 +155,18 @@ DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.MODIFICAR_NOMBRE_ROL
 IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.OBTENER_ROLES') IS NOT NULL
 DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.OBTENER_ROLES
 
+IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.ALTA_CLIENTE') IS NOT NULL
+DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.ALTA_CLIENTE
+
+IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.INHABILITAR_USUARIO') IS NOT NULL
+DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.INHABILITAR_USUARIO
+
+IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.ALTA_USUARIO') IS NOT NULL
+DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.ALTA_USUARIO
+
+IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.BUSCAR_USUARIO') IS NOT NULL
+DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.BUSCAR_USUARIO
+
 
 --FUNCTIONS
 IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.fGetTurno') IS NOT NULL
@@ -275,6 +287,8 @@ CREATE TABLE DAVID_Y_LOS_COCODRILOS.USUARIO (
 	USUARIO_MAIL		varchar(50),
 	USUARIO_TEL			char(18),
 	USUARIO_DIR			varchar(255),
+	USUARIO_PISO		int,
+	USUARIO_DPTO		char(10) DEFAULT '-',
 	USUARIO_LOCALIDAD	varchar(50),
 	USUARIO_CODPOS		varchar(10),
 	USUARIO_FNAC		datetime
@@ -1052,6 +1066,10 @@ GO
 --###########################################################################
 --###########################################################################
 
+-------------------------------
+-------ROL Y FUNCIONALIDAD-----
+-------------------------------
+
 
 --AGERGAR FUNCIONALIDAD A ROL
 CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.AGREGAR_FUNCIONALIDAD_A_ROL(@rol char(1), @funcionalidad varchar(255))
@@ -1128,3 +1146,107 @@ BEGIN
 
 END
 GO 
+
+
+
+-------------------------------------------------
+------------USUARIO (CLIENTE Y CHOFER)-----------
+-------------------------------------------------
+CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.ALTA_USUARIO(
+	@rol char(1),
+	@nombre varchar(255),
+	@apellido varchar(255),
+	@dni numeric(18,0),
+	@mail varchar(50) = NULL,
+	@telefono char(18),
+	@direccion varchar(255),
+	@piso int,
+	@departamento char(10),
+	@localidad varchar(50),
+	@codPos varchar(10),
+	@fechaNac datetime,
+	@username char(35),
+	@password char(10)
+) 
+AS
+BEGIN
+
+	DECLARE @resultCode int = 0;
+
+	IF @telefono NOT IN (SELECT USUARIO_TEL
+						 FROM DAVID_Y_LOS_COCODRILOS.USUARIO)
+
+		BEGIN
+			INSERT INTO DAVID_Y_LOS_COCODRILOS.USUARIO (
+				USUARIO_NOMBRE,
+				USUARIO_APELLIDO,
+				USUARIO_DNI,
+				USUARIO_MAIL,
+				USUARIO_TEL,
+				USUARIO_DIR,
+				USUARIO_PISO,
+				USUARIO_DPTO,
+				USUARIO_LOCALIDAD,
+				USUARIO_CODPOS,
+				USUARIO_FNAC
+			) VALUES (
+				@nombre,
+				@apellido,
+				@dni,
+				@mail,
+				@telefono,
+				@direccion,
+				@piso,
+				@departamento,
+				@localidad,
+				@codPos,
+				@fechaNac
+			)
+
+			INSERT INTO DAVID_Y_LOS_COCODRILOS.ROL_USUARIO (
+				USROL_USUARIO,
+				USROL_ROL,
+				USROL_USERNAME,
+				USROL_PASSWORD
+			) VALUES (
+				@dni,
+				@rol,
+				@username,
+				@password
+			)
+
+			SET @resultCode = 1;
+		END
+
+	SELECT @resultCode;
+
+END
+GO 
+
+
+CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.INHABILITAR_USUARIO(@rol char(1), @dni numeric(18,0)) 
+AS
+BEGIN
+	
+	UPDATE DAVID_Y_LOS_COCODRILOS.ROL_USUARIO
+	SET USROL_HABILITADO = 0
+	WHERE USROL_USUARIO = @dni 
+		  AND USROL_ROL = @rol
+
+END
+GO
+
+
+CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.BUSCAR_USUARIO(@nombre varchar(255), @apellido varchar(255), @dni numeric(18,0))
+AS 
+BEGIN
+
+	SELECT *
+	FROM DAVID_Y_LOS_COCODRILOS.USUARIO u
+	WHERE	@nombre is null or @nombre = u.USUARIO_NOMBRE and
+			@apellido is null or @apellido = u.USUARIO_APELLIDO and
+			@dni is null or @dni = u.USUARIO_DNI
+
+END
+GO
+
