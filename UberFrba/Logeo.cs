@@ -57,7 +57,7 @@ namespace UberFrba
         {
             String pUsername = userTextBox.Text;
             String pContrasenia = passwordTextBox.Text;
-            String pRol = comboBox1.Text;
+            Int32 pRol = comboBox1.SelectedIndex + 1;
             Int32 id = 0;
             Int32 intentos = 0;
 
@@ -65,30 +65,39 @@ namespace UberFrba
             try
             {
                 SqlConnection Conexion = BaseDeDatos.ObternerConexion();
-                MessageBox.Show("estamos conectados", pRol);
+                MessageBox.Show("estamos conectados");
                 SqlCommand loginUsuario = new SqlCommand();
                 SqlDataReader reader;
+               
 
-                using ( loginUsuario = new SqlCommand(string.Format("Select * " +
-                                                                    "FROM DAVID_Y_LOS_COCODRILOS.USUARIO u join DAVID_Y_LOS_COCODRILOS.ROL_USUARIO ru " +
-                                                                    "on u.USUARIO_DNI = ru.USROL_USUARIO join DAVID_Y_LOS_COCODRILOS.ROL r " +
-                                                                    "on ru.USROL_ROL = r.ROL_ID " +
-                                                                    "WHERE r.ROL_DETALLE = @rol and ru.USROL_USERNAME = @username and ru.USROL_PASSWORD = @password"
-                                                                    ),
-                            Conexion))
+                using (loginUsuario = new SqlCommand("DAVID_Y_LOS_COCODRILOS.INGRESAR_USUARIO", Conexion))
+                 
                 {
-                loginUsuario.Parameters.Add("@username", SqlDbType.Char);
-                loginUsuario.Parameters["@username"].Value = pUsername;
-                loginUsuario.Parameters.Add("@password", SqlDbType.Char);
-                loginUsuario.Parameters["@password"].Value = pContrasenia;
-                loginUsuario.Parameters.Add("@rol", SqlDbType.Char);
-                loginUsuario.Parameters["@rol"].Value = pRol;
+                    loginUsuario.CommandType = CommandType.StoredProcedure;
+                    loginUsuario.Parameters.Add("@username", SqlDbType.Char);
+                    loginUsuario.Parameters["@username"].Value = pUsername;
+                    loginUsuario.Parameters.Add("@password", SqlDbType.Char);
+                    loginUsuario.Parameters["@password"].Value = pContrasenia;
+                    loginUsuario.Parameters.Add("@rol", SqlDbType.Int);
+                    loginUsuario.Parameters["@rol"].Value = pRol;
                 }
 
                 reader = loginUsuario.ExecuteReader();
-              
-                if (reader.Read())
+
+                bool v = reader.Read();
+                if (v)
                 {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            Console.WriteLine("{0} {1}", reader.GetInt32(0), reader.GetString(1));
+                        }
+                        
+                    }
+                    DataTable dt = new DataTable();
+                    dt.Load(reader);
+                    
                     Menu menu = new Menu();
                     menu.ShowDialog(); ;
                 }
