@@ -6,3 +6,6 @@ UberFrba/obj/Debug/UberFrba.exe
 UberFrba/bin/Debug/UberFrba.exe
 *.pdb
 *.exe
+*.cache
+*.txt
+
