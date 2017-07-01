@@ -68,6 +68,12 @@
     <Compile Include="Abm Automovil\NuevoAutomovil.Designer.cs">
       <DependentUpon>NuevoAutomovil.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Chofer\BuscadorChoferes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Chofer\BuscadorChoferes.Designer.cs">
+      <DependentUpon>BuscadorChoferes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Abm Chofer\Chofer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,12 @@
     </Compile>
     <Compile Include="Abm Chofer\NuevoChofer.Designer.cs">
       <DependentUpon>NuevoChofer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Cliente\BuscadorClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Cliente\BuscadorClientes.Designer.cs">
+      <DependentUpon>BuscadorClientes.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Cliente\Clientes.cs">
       <SubType>Form</SubType>
@@ -177,12 +189,6 @@
     <Compile Include="Facturacion\Facturacion.Designer.cs">
       <DependentUpon>Facturacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Facturacion\Clientes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Facturacion\Clientes.Designer.cs">
-      <DependentUpon>Clientes.cs</DependentUpon>
-    </Compile>
     <Compile Include="GD1C2017DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -226,12 +232,6 @@
     <Compile Include="Registro Viajes\Registro.Designer.cs">
       <DependentUpon>Registro.cs</DependentUpon>
     </Compile>
-    <Compile Include="Rendicion Viajes\Choferes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Rendicion Viajes\Choferes.Designer.cs">
-      <DependentUpon>Choferes.cs</DependentUpon>
-    </Compile>
     <Compile Include="Rendicion Viajes\Rendicion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -250,6 +250,9 @@
     <EmbeddedResource Include="Abm Automovil\NuevoAutomovil.resx">
       <DependentUpon>NuevoAutomovil.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Abm Chofer\BuscadorChoferes.resx">
+      <DependentUpon>BuscadorChoferes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Abm Chofer\Chofer.resx">
       <DependentUpon>Chofer.cs</DependentUpon>
     </EmbeddedResource>
@@ -261,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Chofer\NuevoChofer.resx">
       <DependentUpon>NuevoChofer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Cliente\BuscadorClientes.resx">
+      <DependentUpon>BuscadorClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Cliente\Clientes.resx">
       <DependentUpon>Clientes.cs</DependentUpon>
@@ -301,9 +307,6 @@
     <EmbeddedResource Include="Administrador\Administrador.resx">
       <DependentUpon>Administrador.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Facturacion\Clientes.resx">
-      <DependentUpon>Clientes.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Facturacion\Facturacion.resx">
       <DependentUpon>Facturacion.cs</DependentUpon>
     </EmbeddedResource>
@@ -330,9 +333,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Registro Viajes\Registro.resx">
       <DependentUpon>Registro.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Rendicion Viajes\Choferes.resx">
-      <DependentUpon>Choferes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Rendicion Viajes\Rendicion.resx">
       <DependentUpon>Rendicion.cs</DependentUpon>

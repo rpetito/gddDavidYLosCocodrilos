@@ -29,44 +29,44 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.marcaComboBox = new System.Windows.Forms.ComboBox();
+            this.choferTextBox = new System.Windows.Forms.TextBox();
+            this.patenteTextBox = new System.Windows.Forms.TextBox();
+            this.modeloTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.habilitadoCheckBox = new System.Windows.Forms.CheckBox();
+            this.marcaSelTextBox = new System.Windows.Forms.TextBox();
+            this.turnoSelTextBox = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
+            this.limpiarSelButton = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
+            this.modificarSelButton = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.choferSelTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.patenteSelTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.modeloSelTextBox = new System.Windows.Forms.TextBox();
+            this.limpiarButton = new System.Windows.Forms.Button();
+            this.seleccionarButton = new System.Windows.Forms.Button();
+            this.buscarButton = new System.Windows.Forms.Button();
+            this.cancelarButton = new System.Windows.Forms.Button();
+            this.automovilesGrid = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.automovilesGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.marcaComboBox);
+            this.groupBox1.Controls.Add(this.choferTextBox);
+            this.groupBox1.Controls.Add(this.patenteTextBox);
+            this.groupBox1.Controls.Add(this.modeloTextBox);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
@@ -78,36 +78,35 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros de Búsqueda";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // comboBox1
+            // marcaComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(57, 26);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(100, 21);
-            this.comboBox1.TabIndex = 1;
+            this.marcaComboBox.FormattingEnabled = true;
+            this.marcaComboBox.Location = new System.Drawing.Point(57, 26);
+            this.marcaComboBox.Name = "marcaComboBox";
+            this.marcaComboBox.Size = new System.Drawing.Size(100, 21);
+            this.marcaComboBox.TabIndex = 1;
             // 
-            // textBox3
+            // choferTextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(231, 66);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 6;
+            this.choferTextBox.Location = new System.Drawing.Point(231, 66);
+            this.choferTextBox.Name = "choferTextBox";
+            this.choferTextBox.Size = new System.Drawing.Size(100, 20);
+            this.choferTextBox.TabIndex = 6;
             // 
-            // textBox2
+            // patenteTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(231, 26);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 5;
+            this.patenteTextBox.Location = new System.Drawing.Point(231, 26);
+            this.patenteTextBox.Name = "patenteTextBox";
+            this.patenteTextBox.Size = new System.Drawing.Size(100, 20);
+            this.patenteTextBox.TabIndex = 5;
             // 
-            // textBox1
+            // modeloTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(57, 66);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 4;
+            this.modeloTextBox.Location = new System.Drawing.Point(57, 66);
+            this.modeloTextBox.Name = "modeloTextBox";
+            this.modeloTextBox.Size = new System.Drawing.Size(100, 20);
+            this.modeloTextBox.TabIndex = 4;
             // 
             // label4
             // 
@@ -151,19 +150,19 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.checkBox1);
-            this.groupBox2.Controls.Add(this.textBox7);
-            this.groupBox2.Controls.Add(this.comboBox2);
+            this.groupBox2.Controls.Add(this.habilitadoCheckBox);
+            this.groupBox2.Controls.Add(this.marcaSelTextBox);
+            this.groupBox2.Controls.Add(this.turnoSelTextBox);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.button5);
+            this.groupBox2.Controls.Add(this.limpiarSelButton);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.button7);
+            this.groupBox2.Controls.Add(this.modificarSelButton);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.textBox5);
+            this.groupBox2.Controls.Add(this.choferSelTextBox);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.textBox4);
+            this.groupBox2.Controls.Add(this.patenteSelTextBox);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.textBox6);
+            this.groupBox2.Controls.Add(this.modeloSelTextBox);
             this.groupBox2.Location = new System.Drawing.Point(404, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(250, 328);
@@ -171,31 +170,34 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Automóvil seleccionado";
             // 
-            // checkBox1
+            // habilitadoCheckBox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(51, 240);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox1.Size = new System.Drawing.Size(73, 17);
-            this.checkBox1.TabIndex = 54;
-            this.checkBox1.Text = "Habilitado";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.habilitadoCheckBox.AutoSize = true;
+            this.habilitadoCheckBox.Enabled = false;
+            this.habilitadoCheckBox.Location = new System.Drawing.Point(51, 240);
+            this.habilitadoCheckBox.Name = "habilitadoCheckBox";
+            this.habilitadoCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.habilitadoCheckBox.Size = new System.Drawing.Size(73, 17);
+            this.habilitadoCheckBox.TabIndex = 54;
+            this.habilitadoCheckBox.Text = "Habilitado";
+            this.habilitadoCheckBox.UseVisualStyleBackColor = true;
             // 
-            // textBox7
+            // marcaSelTextBox
             // 
-            this.textBox7.Location = new System.Drawing.Point(101, 40);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 47;
+            this.marcaSelTextBox.Enabled = false;
+            this.marcaSelTextBox.Location = new System.Drawing.Point(101, 40);
+            this.marcaSelTextBox.Name = "marcaSelTextBox";
+            this.marcaSelTextBox.Size = new System.Drawing.Size(100, 20);
+            this.marcaSelTextBox.TabIndex = 47;
             // 
-            // comboBox2
+            // turnoSelTextBox
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(101, 160);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(101, 21);
-            this.comboBox2.TabIndex = 53;
+            this.turnoSelTextBox.Enabled = false;
+            this.turnoSelTextBox.FormattingEnabled = true;
+            this.turnoSelTextBox.Location = new System.Drawing.Point(101, 160);
+            this.turnoSelTextBox.Name = "turnoSelTextBox";
+            this.turnoSelTextBox.Size = new System.Drawing.Size(101, 21);
+            this.turnoSelTextBox.TabIndex = 53;
             // 
             // label9
             // 
@@ -206,14 +208,16 @@
             this.label9.TabIndex = 42;
             this.label9.Text = "Marca:";
             // 
-            // button5
+            // limpiarSelButton
             // 
-            this.button5.Location = new System.Drawing.Point(75, 290);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 52;
-            this.button5.Text = "Limpiar";
-            this.button5.UseVisualStyleBackColor = true;
+            this.limpiarSelButton.Enabled = false;
+            this.limpiarSelButton.Location = new System.Drawing.Point(75, 290);
+            this.limpiarSelButton.Name = "limpiarSelButton";
+            this.limpiarSelButton.Size = new System.Drawing.Size(75, 23);
+            this.limpiarSelButton.TabIndex = 52;
+            this.limpiarSelButton.Text = "Limpiar";
+            this.limpiarSelButton.UseVisualStyleBackColor = true;
+            this.limpiarSelButton.Click += new System.EventHandler(this.limpiarSelButton_Click);
             // 
             // label8
             // 
@@ -224,15 +228,16 @@
             this.label8.TabIndex = 43;
             this.label8.Text = "Modelo:";
             // 
-            // button7
+            // modificarSelButton
             // 
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(169, 290);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 51;
-            this.button7.Text = "Modificar";
-            this.button7.UseVisualStyleBackColor = true;
+            this.modificarSelButton.Enabled = false;
+            this.modificarSelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modificarSelButton.Location = new System.Drawing.Point(169, 290);
+            this.modificarSelButton.Name = "modificarSelButton";
+            this.modificarSelButton.Size = new System.Drawing.Size(75, 23);
+            this.modificarSelButton.TabIndex = 51;
+            this.modificarSelButton.Text = "Modificar";
+            this.modificarSelButton.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
@@ -243,12 +248,13 @@
             this.label7.TabIndex = 44;
             this.label7.Text = "Patente:";
             // 
-            // textBox5
+            // choferSelTextBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(101, 200);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 50;
+            this.choferSelTextBox.Enabled = false;
+            this.choferSelTextBox.Location = new System.Drawing.Point(101, 200);
+            this.choferSelTextBox.Name = "choferSelTextBox";
+            this.choferSelTextBox.Size = new System.Drawing.Size(100, 20);
+            this.choferSelTextBox.TabIndex = 50;
             // 
             // label6
             // 
@@ -259,12 +265,13 @@
             this.label6.TabIndex = 45;
             this.label6.Text = "Turno:";
             // 
-            // textBox4
+            // patenteSelTextBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(101, 120);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 49;
+            this.patenteSelTextBox.Enabled = false;
+            this.patenteSelTextBox.Location = new System.Drawing.Point(101, 120);
+            this.patenteSelTextBox.Name = "patenteSelTextBox";
+            this.patenteSelTextBox.Size = new System.Drawing.Size(100, 20);
+            this.patenteSelTextBox.TabIndex = 49;
             // 
             // label5
             // 
@@ -275,67 +282,71 @@
             this.label5.TabIndex = 46;
             this.label5.Text = "Chofer:";
             // 
-            // textBox6
+            // modeloSelTextBox
             // 
-            this.textBox6.Location = new System.Drawing.Point(101, 80);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 48;
+            this.modeloSelTextBox.Enabled = false;
+            this.modeloSelTextBox.Location = new System.Drawing.Point(101, 80);
+            this.modeloSelTextBox.Name = "modeloSelTextBox";
+            this.modeloSelTextBox.Size = new System.Drawing.Size(100, 20);
+            this.modeloSelTextBox.TabIndex = 48;
             // 
-            // button1
+            // limpiarButton
             // 
-            this.button1.Location = new System.Drawing.Point(14, 131);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Limpiar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.limpiarButton.Location = new System.Drawing.Point(14, 131);
+            this.limpiarButton.Name = "limpiarButton";
+            this.limpiarButton.Size = new System.Drawing.Size(75, 23);
+            this.limpiarButton.TabIndex = 7;
+            this.limpiarButton.Text = "Limpiar";
+            this.limpiarButton.UseVisualStyleBackColor = true;
+            this.limpiarButton.Click += new System.EventHandler(this.limpiarButton_Click);
             // 
-            // button4
+            // seleccionarButton
             // 
-            this.button4.Location = new System.Drawing.Point(284, 347);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "Seleccionar";
-            this.button4.UseVisualStyleBackColor = true;
+            this.seleccionarButton.Location = new System.Drawing.Point(284, 347);
+            this.seleccionarButton.Name = "seleccionarButton";
+            this.seleccionarButton.Size = new System.Drawing.Size(75, 23);
+            this.seleccionarButton.TabIndex = 11;
+            this.seleccionarButton.Text = "Seleccionar";
+            this.seleccionarButton.UseVisualStyleBackColor = true;
+            this.seleccionarButton.Click += new System.EventHandler(this.seleccionarButton_Click);
             // 
-            // button2
+            // buscarButton
             // 
-            this.button2.Location = new System.Drawing.Point(284, 131);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Buscar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buscarButton.Location = new System.Drawing.Point(284, 131);
+            this.buscarButton.Name = "buscarButton";
+            this.buscarButton.Size = new System.Drawing.Size(75, 23);
+            this.buscarButton.TabIndex = 8;
+            this.buscarButton.Text = "Buscar";
+            this.buscarButton.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // cancelarButton
             // 
-            this.button3.Location = new System.Drawing.Point(14, 347);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Cancelar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.cancelarButton.Location = new System.Drawing.Point(14, 347);
+            this.cancelarButton.Name = "cancelarButton";
+            this.cancelarButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelarButton.TabIndex = 10;
+            this.cancelarButton.Text = "Cancelar";
+            this.cancelarButton.UseVisualStyleBackColor = true;
+            this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
             // 
-            // dataGridView1
+            // automovilesGrid
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(14, 164);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(345, 162);
-            this.dataGridView1.TabIndex = 9;
+            this.automovilesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.automovilesGrid.Location = new System.Drawing.Point(14, 164);
+            this.automovilesGrid.Name = "automovilesGrid";
+            this.automovilesGrid.Size = new System.Drawing.Size(345, 162);
+            this.automovilesGrid.TabIndex = 9;
             // 
             // ListadoModAutomovil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(679, 381);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.limpiarButton);
+            this.Controls.Add(this.seleccionarButton);
+            this.Controls.Add(this.buscarButton);
+            this.Controls.Add(this.cancelarButton);
+            this.Controls.Add(this.automovilesGrid);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "ListadoModAutomovil";
@@ -344,7 +355,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.automovilesGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -356,29 +367,29 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox marcaComboBox;
+        private System.Windows.Forms.TextBox choferTextBox;
+        private System.Windows.Forms.TextBox patenteTextBox;
+        private System.Windows.Forms.TextBox modeloTextBox;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.CheckBox habilitadoCheckBox;
+        private System.Windows.Forms.TextBox marcaSelTextBox;
+        private System.Windows.Forms.ComboBox turnoSelTextBox;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button limpiarSelButton;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button modificarSelButton;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox choferSelTextBox;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox patenteSelTextBox;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox modeloSelTextBox;
+        private System.Windows.Forms.Button limpiarButton;
+        private System.Windows.Forms.Button seleccionarButton;
+        private System.Windows.Forms.Button buscarButton;
+        private System.Windows.Forms.Button cancelarButton;
+        private System.Windows.Forms.DataGridView automovilesGrid;
 
     }
 }

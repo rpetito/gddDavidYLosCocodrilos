@@ -33,14 +33,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.horaInicioComboBox = new System.Windows.Forms.ComboBox();
+            this.horaFinComboBox = new System.Windows.Forms.ComboBox();
+            this.descripcionTextBox = new System.Windows.Forms.TextBox();
+            this.kilometroTextBox = new System.Windows.Forms.TextBox();
+            this.baseTextBox = new System.Windows.Forms.TextBox();
+            this.cancelarButton = new System.Windows.Forms.Button();
+            this.limpiarButton = new System.Windows.Forms.Button();
+            this.crearButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -88,84 +88,86 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Precio base del turno ($):";
             // 
-            // comboBox1
+            // horaInicioComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(149, 25);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 5;
+            this.horaInicioComboBox.FormattingEnabled = true;
+            this.horaInicioComboBox.Location = new System.Drawing.Point(149, 25);
+            this.horaInicioComboBox.Name = "horaInicioComboBox";
+            this.horaInicioComboBox.Size = new System.Drawing.Size(121, 21);
+            this.horaInicioComboBox.TabIndex = 5;
             // 
-            // comboBox2
+            // horaFinComboBox
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(149, 65);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 6;
+            this.horaFinComboBox.FormattingEnabled = true;
+            this.horaFinComboBox.Location = new System.Drawing.Point(149, 65);
+            this.horaFinComboBox.Name = "horaFinComboBox";
+            this.horaFinComboBox.Size = new System.Drawing.Size(121, 21);
+            this.horaFinComboBox.TabIndex = 6;
             // 
-            // textBox1
+            // descripcionTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(149, 105);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 20);
-            this.textBox1.TabIndex = 7;
+            this.descripcionTextBox.Location = new System.Drawing.Point(149, 105);
+            this.descripcionTextBox.Name = "descripcionTextBox";
+            this.descripcionTextBox.Size = new System.Drawing.Size(121, 20);
+            this.descripcionTextBox.TabIndex = 7;
             // 
-            // textBox2
+            // kilometroTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(149, 145);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(123, 20);
-            this.textBox2.TabIndex = 8;
+            this.kilometroTextBox.Location = new System.Drawing.Point(149, 145);
+            this.kilometroTextBox.Name = "kilometroTextBox";
+            this.kilometroTextBox.Size = new System.Drawing.Size(123, 20);
+            this.kilometroTextBox.TabIndex = 8;
             // 
-            // textBox3
+            // baseTextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(149, 185);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(123, 20);
-            this.textBox3.TabIndex = 9;
+            this.baseTextBox.Location = new System.Drawing.Point(149, 185);
+            this.baseTextBox.Name = "baseTextBox";
+            this.baseTextBox.Size = new System.Drawing.Size(123, 20);
+            this.baseTextBox.TabIndex = 9;
             // 
-            // button1
+            // cancelarButton
             // 
-            this.button1.Location = new System.Drawing.Point(7, 234);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Cancelar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.cancelarButton.Location = new System.Drawing.Point(7, 234);
+            this.cancelarButton.Name = "cancelarButton";
+            this.cancelarButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelarButton.TabIndex = 10;
+            this.cancelarButton.Text = "Cancelar";
+            this.cancelarButton.UseVisualStyleBackColor = true;
+            this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
             // 
-            // button2
+            // limpiarButton
             // 
-            this.button2.Location = new System.Drawing.Point(102, 234);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Limpiar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.limpiarButton.Location = new System.Drawing.Point(102, 234);
+            this.limpiarButton.Name = "limpiarButton";
+            this.limpiarButton.Size = new System.Drawing.Size(75, 23);
+            this.limpiarButton.TabIndex = 11;
+            this.limpiarButton.Text = "Limpiar";
+            this.limpiarButton.UseVisualStyleBackColor = true;
+            this.limpiarButton.Click += new System.EventHandler(this.limpiarButton_Click);
             // 
-            // button3
+            // crearButton
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(197, 234);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 12;
-            this.button3.Text = "Crear";
-            this.button3.UseVisualStyleBackColor = true;
+            this.crearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.crearButton.Location = new System.Drawing.Point(197, 234);
+            this.crearButton.Name = "crearButton";
+            this.crearButton.Size = new System.Drawing.Size(75, 23);
+            this.crearButton.TabIndex = 12;
+            this.crearButton.Text = "Crear";
+            this.crearButton.UseVisualStyleBackColor = true;
             // 
             // NuevoTurno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 269);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.crearButton);
+            this.Controls.Add(this.limpiarButton);
+            this.Controls.Add(this.cancelarButton);
+            this.Controls.Add(this.baseTextBox);
+            this.Controls.Add(this.kilometroTextBox);
+            this.Controls.Add(this.descripcionTextBox);
+            this.Controls.Add(this.horaFinComboBox);
+            this.Controls.Add(this.horaInicioComboBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -185,13 +187,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox horaInicioComboBox;
+        private System.Windows.Forms.ComboBox horaFinComboBox;
+        private System.Windows.Forms.TextBox descripcionTextBox;
+        private System.Windows.Forms.TextBox kilometroTextBox;
+        private System.Windows.Forms.TextBox baseTextBox;
+        private System.Windows.Forms.Button cancelarButton;
+        private System.Windows.Forms.Button limpiarButton;
+        private System.Windows.Forms.Button crearButton;
     }
 }

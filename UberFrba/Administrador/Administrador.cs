@@ -16,5 +16,17 @@ namespace UberFrba.Administrador
         {
             InitializeComponent();
         }
+
+        private void cancelarButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void limpiarButton_Click(object sender, EventArgs e)
+        {
+            usuarioTextBox.Clear();
+            contraseniaTextBox.Clear();
+            repetirTextBox.Clear();
+        }
     }
 }

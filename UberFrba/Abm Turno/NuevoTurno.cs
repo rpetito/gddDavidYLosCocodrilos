@@ -16,5 +16,19 @@ namespace UberFrba.Abm_Turno
         {
             InitializeComponent();
         }
+
+        private void cancelarButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void limpiarButton_Click(object sender, EventArgs e)
+        {
+            horaInicioComboBox.ResetText();
+            horaFinComboBox.ResetText();
+            descripcionTextBox.Clear();
+            kilometroTextBox.Clear();
+            baseTextBox.Clear();
+        }
     }
 }

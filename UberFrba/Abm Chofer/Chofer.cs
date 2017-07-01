@@ -17,19 +17,19 @@ namespace UberFrba.Abm_Chofer
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void nuevoButton_Click(object sender, EventArgs e)
         {
             NuevoChofer chofer = new NuevoChofer();
             chofer.ShowDialog();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void bajaButton_Click(object sender, EventArgs e)
         {
             ListadoBajaChofer bajaChofer = new ListadoBajaChofer();
             bajaChofer.ShowDialog();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void modificacionButton_Click(object sender, EventArgs e)
         {
             ListadoModChofer modChofer = new ListadoModChofer();
             modChofer.ShowDialog();

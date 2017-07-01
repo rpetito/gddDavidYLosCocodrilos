@@ -17,19 +17,19 @@ namespace UberFrba.Abm_Turno
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void nuevoButton_Click(object sender, EventArgs e)
         {
             NuevoTurno turno = new NuevoTurno();
             turno.ShowDialog();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void bajaButton_Click(object sender, EventArgs e)
         {
             ListadoBajaTurno bajaTurno = new ListadoBajaTurno();
             bajaTurno.ShowDialog();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void modificacionButton_Click(object sender, EventArgs e)
         {
             ListadoModTurno modTurno = new ListadoModTurno();
             modTurno.ShowDialog();

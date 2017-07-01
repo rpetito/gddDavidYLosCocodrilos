@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.fechaTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.busquedaChoferButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.turnoComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.viajesGrid = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.totalTextBox = new System.Windows.Forms.TextBox();
+            this.cancelarButton = new System.Windows.Forms.Button();
+            this.limpiarButton = new System.Windows.Forms.Button();
+            this.rendirButton = new System.Windows.Forms.Button();
+            this.choferTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viajesGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -55,12 +55,12 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Fecha:";
             // 
-            // dateTimePicker1
+            // fechaTimePicker
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(58, 16);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 1;
+            this.fechaTimePicker.Location = new System.Drawing.Point(58, 16);
+            this.fechaTimePicker.Name = "fechaTimePicker";
+            this.fechaTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.fechaTimePicker.TabIndex = 1;
             // 
             // label2
             // 
@@ -71,15 +71,15 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Chofer:";
             // 
-            // button1
+            // busquedaChoferButton
             // 
-            this.button1.Location = new System.Drawing.Point(229, 41);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(29, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.busquedaChoferButton.Location = new System.Drawing.Point(229, 41);
+            this.busquedaChoferButton.Name = "busquedaChoferButton";
+            this.busquedaChoferButton.Size = new System.Drawing.Size(29, 23);
+            this.busquedaChoferButton.TabIndex = 3;
+            this.busquedaChoferButton.Text = "...";
+            this.busquedaChoferButton.UseVisualStyleBackColor = true;
+            this.busquedaChoferButton.Click += new System.EventHandler(this.busquedaChoferButton_Click);
             // 
             // label3
             // 
@@ -90,17 +90,17 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Turno:";
             // 
-            // comboBox1
+            // turnoComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(59, 70);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(29, 21);
-            this.comboBox1.TabIndex = 5;
+            this.turnoComboBox.FormattingEnabled = true;
+            this.turnoComboBox.Location = new System.Drawing.Point(59, 70);
+            this.turnoComboBox.Name = "turnoComboBox";
+            this.turnoComboBox.Size = new System.Drawing.Size(41, 21);
+            this.turnoComboBox.TabIndex = 5;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.viajesGrid);
             this.groupBox1.Location = new System.Drawing.Point(15, 98);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(243, 173);
@@ -108,13 +108,13 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Viajes";
             // 
-            // dataGridView1
+            // viajesGrid
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 19);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(231, 148);
-            this.dataGridView1.TabIndex = 0;
+            this.viajesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.viajesGrid.Location = new System.Drawing.Point(6, 19);
+            this.viajesGrid.Name = "viajesGrid";
+            this.viajesGrid.Size = new System.Drawing.Size(231, 148);
+            this.viajesGrid.TabIndex = 0;
             // 
             // label4
             // 
@@ -125,71 +125,73 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Total:";
             // 
-            // textBox1
+            // totalTextBox
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(158, 277);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 8;
+            this.totalTextBox.Enabled = false;
+            this.totalTextBox.Location = new System.Drawing.Point(158, 277);
+            this.totalTextBox.Name = "totalTextBox";
+            this.totalTextBox.Size = new System.Drawing.Size(100, 20);
+            this.totalTextBox.TabIndex = 8;
             // 
-            // button2
+            // cancelarButton
             // 
-            this.button2.Location = new System.Drawing.Point(12, 316);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Cancelar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.cancelarButton.Location = new System.Drawing.Point(12, 316);
+            this.cancelarButton.Name = "cancelarButton";
+            this.cancelarButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelarButton.TabIndex = 9;
+            this.cancelarButton.Text = "Cancelar";
+            this.cancelarButton.UseVisualStyleBackColor = true;
+            this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
             // 
-            // button3
+            // limpiarButton
             // 
-            this.button3.Location = new System.Drawing.Point(105, 316);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Limpiar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.limpiarButton.Location = new System.Drawing.Point(105, 316);
+            this.limpiarButton.Name = "limpiarButton";
+            this.limpiarButton.Size = new System.Drawing.Size(75, 23);
+            this.limpiarButton.TabIndex = 10;
+            this.limpiarButton.Text = "Limpiar";
+            this.limpiarButton.UseVisualStyleBackColor = true;
+            this.limpiarButton.Click += new System.EventHandler(this.limpiarButton_Click);
             // 
-            // button4
+            // rendirButton
             // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(200, 316);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "Rendir";
-            this.button4.UseVisualStyleBackColor = true;
+            this.rendirButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rendirButton.Location = new System.Drawing.Point(200, 316);
+            this.rendirButton.Name = "rendirButton";
+            this.rendirButton.Size = new System.Drawing.Size(75, 23);
+            this.rendirButton.TabIndex = 11;
+            this.rendirButton.Text = "Rendir";
+            this.rendirButton.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // choferTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(59, 44);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(164, 20);
-            this.textBox2.TabIndex = 12;
+            this.choferTextBox.Location = new System.Drawing.Point(59, 44);
+            this.choferTextBox.Name = "choferTextBox";
+            this.choferTextBox.Size = new System.Drawing.Size(164, 20);
+            this.choferTextBox.TabIndex = 12;
             // 
             // Rendicion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(289, 351);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.choferTextBox);
+            this.Controls.Add(this.rendirButton);
+            this.Controls.Add(this.limpiarButton);
+            this.Controls.Add(this.cancelarButton);
+            this.Controls.Add(this.totalTextBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.turnoComboBox);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.busquedaChoferButton);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.fechaTimePicker);
             this.Controls.Add(this.label1);
             this.Name = "Rendicion";
             this.Text = "Rendición";
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viajesGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,18 +200,18 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker fechaTimePicker;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button busquedaChoferButton;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox turnoComboBox;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView viajesGrid;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox totalTextBox;
+        private System.Windows.Forms.Button cancelarButton;
+        private System.Windows.Forms.Button limpiarButton;
+        private System.Windows.Forms.Button rendirButton;
+        private System.Windows.Forms.TextBox choferTextBox;
     }
 }

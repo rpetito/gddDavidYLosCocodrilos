@@ -1,6 +1,6 @@
 ﻿namespace UberFrba.Abm_Cliente
 {
-    partial class ListadoBajaCliente
+    partial class BuscadorClientes
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.limpiarButton = new System.Windows.Forms.Button();
+            this.seleccionarButton = new System.Windows.Forms.Button();
+            this.buscarButton = new System.Windows.Forms.Button();
+            this.cancelarButton = new System.Windows.Forms.Button();
+            this.clientesGrid = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.nombreTextBox = new System.Windows.Forms.TextBox();
             this.dniTextBox = new System.Windows.Forms.TextBox();
@@ -35,14 +40,56 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.limpiarButton = new System.Windows.Forms.Button();
-            this.eliminarButton = new System.Windows.Forms.Button();
-            this.buscarButton = new System.Windows.Forms.Button();
-            this.cancelarButton = new System.Windows.Forms.Button();
-            this.clientesGrid = new System.Windows.Forms.DataGridView();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clientesGrid)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // limpiarButton
+            // 
+            this.limpiarButton.Location = new System.Drawing.Point(13, 129);
+            this.limpiarButton.Name = "limpiarButton";
+            this.limpiarButton.Size = new System.Drawing.Size(75, 23);
+            this.limpiarButton.TabIndex = 22;
+            this.limpiarButton.Text = "Limpiar";
+            this.limpiarButton.UseVisualStyleBackColor = true;
+            this.limpiarButton.Click += new System.EventHandler(this.limpiarButton_Click);
+            // 
+            // seleccionarButton
+            // 
+            this.seleccionarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.seleccionarButton.Location = new System.Drawing.Point(260, 345);
+            this.seleccionarButton.Name = "seleccionarButton";
+            this.seleccionarButton.Size = new System.Drawing.Size(98, 23);
+            this.seleccionarButton.TabIndex = 26;
+            this.seleccionarButton.Text = "Seleccionar";
+            this.seleccionarButton.UseVisualStyleBackColor = true;
+            // 
+            // buscarButton
+            // 
+            this.buscarButton.Location = new System.Drawing.Point(283, 129);
+            this.buscarButton.Name = "buscarButton";
+            this.buscarButton.Size = new System.Drawing.Size(75, 23);
+            this.buscarButton.TabIndex = 23;
+            this.buscarButton.Text = "Buscar";
+            this.buscarButton.UseVisualStyleBackColor = true;
+            // 
+            // cancelarButton
+            // 
+            this.cancelarButton.Location = new System.Drawing.Point(13, 345);
+            this.cancelarButton.Name = "cancelarButton";
+            this.cancelarButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelarButton.TabIndex = 25;
+            this.cancelarButton.Text = "Cancelar";
+            this.cancelarButton.UseVisualStyleBackColor = true;
+            this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
+            // 
+            // clientesGrid
+            // 
+            this.clientesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.clientesGrid.Location = new System.Drawing.Point(13, 162);
+            this.clientesGrid.Name = "clientesGrid";
+            this.clientesGrid.Size = new System.Drawing.Size(345, 162);
+            this.clientesGrid.TabIndex = 24;
             // 
             // groupBox1
             // 
@@ -53,10 +100,10 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(13, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(345, 106);
-            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros de Búsqueda";
             // 
@@ -111,75 +158,33 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre:";
             // 
-            // limpiarButton
-            // 
-            this.limpiarButton.Location = new System.Drawing.Point(12, 129);
-            this.limpiarButton.Name = "limpiarButton";
-            this.limpiarButton.Size = new System.Drawing.Size(75, 23);
-            this.limpiarButton.TabIndex = 10;
-            this.limpiarButton.Text = "Limpiar";
-            this.limpiarButton.UseVisualStyleBackColor = true;
-            this.limpiarButton.Click += new System.EventHandler(this.limpiarButton_Click);
-            // 
-            // eliminarButton
-            // 
-            this.eliminarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.eliminarButton.Location = new System.Drawing.Point(282, 345);
-            this.eliminarButton.Name = "eliminarButton";
-            this.eliminarButton.Size = new System.Drawing.Size(75, 23);
-            this.eliminarButton.TabIndex = 14;
-            this.eliminarButton.Text = "Eliminar";
-            this.eliminarButton.UseVisualStyleBackColor = true;
-            // 
-            // buscarButton
-            // 
-            this.buscarButton.Location = new System.Drawing.Point(282, 129);
-            this.buscarButton.Name = "buscarButton";
-            this.buscarButton.Size = new System.Drawing.Size(75, 23);
-            this.buscarButton.TabIndex = 11;
-            this.buscarButton.Text = "Buscar";
-            this.buscarButton.UseVisualStyleBackColor = true;
-            // 
-            // cancelarButton
-            // 
-            this.cancelarButton.Location = new System.Drawing.Point(12, 345);
-            this.cancelarButton.Name = "cancelarButton";
-            this.cancelarButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelarButton.TabIndex = 13;
-            this.cancelarButton.Text = "Cancelar";
-            this.cancelarButton.UseVisualStyleBackColor = true;
-            this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
-            // 
-            // clientesGrid
-            // 
-            this.clientesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.clientesGrid.Location = new System.Drawing.Point(12, 162);
-            this.clientesGrid.Name = "clientesGrid";
-            this.clientesGrid.Size = new System.Drawing.Size(345, 162);
-            this.clientesGrid.TabIndex = 12;
-            // 
-            // ListadoBajaCliente
+            // BuscadorClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(371, 381);
             this.Controls.Add(this.limpiarButton);
-            this.Controls.Add(this.eliminarButton);
+            this.Controls.Add(this.seleccionarButton);
             this.Controls.Add(this.buscarButton);
             this.Controls.Add(this.cancelarButton);
             this.Controls.Add(this.clientesGrid);
             this.Controls.Add(this.groupBox1);
-            this.Name = "ListadoBajaCliente";
-            this.Text = "Baja de Cliente";
+            this.Name = "BuscadorClientes";
+            this.Text = "Buscador de Clientes";
+            ((System.ComponentModel.ISupportInitialize)(this.clientesGrid)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.clientesGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private System.Windows.Forms.Button limpiarButton;
+        private System.Windows.Forms.Button seleccionarButton;
+        private System.Windows.Forms.Button buscarButton;
+        private System.Windows.Forms.Button cancelarButton;
+        private System.Windows.Forms.DataGridView clientesGrid;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox nombreTextBox;
         private System.Windows.Forms.TextBox dniTextBox;
@@ -187,11 +192,5 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button limpiarButton;
-        private System.Windows.Forms.Button eliminarButton;
-        private System.Windows.Forms.Button buscarButton;
-        private System.Windows.Forms.Button cancelarButton;
-        private System.Windows.Forms.DataGridView clientesGrid;
-
     }
 }

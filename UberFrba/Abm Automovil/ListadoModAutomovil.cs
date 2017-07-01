@@ -17,14 +17,40 @@ namespace UberFrba.Abm_Automovil
             InitializeComponent();
         }
 
-        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        private void limpiarButton_Click(object sender, EventArgs e)
         {
-
+            marcaComboBox.ResetText();
+            patenteTextBox.Clear();
+            modeloTextBox.Clear();
+            choferTextBox.Clear();
+            automovilesGrid.ClearSelection();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void cancelarButton_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        private void limpiarSelButton_Click(object sender, EventArgs e)
+        {
+            marcaSelTextBox.Clear();
+            modeloSelTextBox.Clear();
+            patenteSelTextBox.Clear();
+            turnoSelTextBox.ResetText();
+            choferSelTextBox.Clear();
+            habilitadoCheckBox.Checked = false;
+        }
+
+        private void seleccionarButton_Click(object sender, EventArgs e)
+        {
+            marcaSelTextBox.Enabled = true;
+            modeloSelTextBox.Enabled = true;
+            patenteSelTextBox.Enabled = true;
+            turnoSelTextBox.Enabled = true;
+            choferSelTextBox.Enabled = true;
+            habilitadoCheckBox.Enabled = true;
+            limpiarSelButton.Enabled = true;
+            modificarSelButton.Enabled = true;
         }
     }
 }

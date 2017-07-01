@@ -29,23 +29,23 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.repetirTextBox = new System.Windows.Forms.TextBox();
+            this.usuarioTextBox = new System.Windows.Forms.TextBox();
+            this.contraseniaTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.crearButton = new System.Windows.Forms.Button();
+            this.limpiarButton = new System.Windows.Forms.Button();
+            this.cancelarButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.repetirTextBox);
+            this.groupBox1.Controls.Add(this.usuarioTextBox);
+            this.groupBox1.Controls.Add(this.contraseniaTextBox);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
@@ -56,26 +56,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cuenta";
             // 
-            // textBox1
+            // repetirTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(115, 68);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 125;
+            this.repetirTextBox.Location = new System.Drawing.Point(115, 68);
+            this.repetirTextBox.Name = "repetirTextBox";
+            this.repetirTextBox.Size = new System.Drawing.Size(100, 20);
+            this.repetirTextBox.TabIndex = 125;
             // 
-            // textBox2
+            // usuarioTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(115, 18);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 126;
+            this.usuarioTextBox.Location = new System.Drawing.Point(115, 18);
+            this.usuarioTextBox.Name = "usuarioTextBox";
+            this.usuarioTextBox.Size = new System.Drawing.Size(100, 20);
+            this.usuarioTextBox.TabIndex = 126;
             // 
-            // textBox3
+            // contraseniaTextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(115, 43);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 127;
+            this.contraseniaTextBox.Location = new System.Drawing.Point(115, 43);
+            this.contraseniaTextBox.Name = "contraseniaTextBox";
+            this.contraseniaTextBox.Size = new System.Drawing.Size(100, 20);
+            this.contraseniaTextBox.TabIndex = 127;
             // 
             // label3
             // 
@@ -104,42 +104,44 @@
             this.label2.TabIndex = 126;
             this.label2.Text = "Contraseña:";
             // 
-            // button3
+            // crearButton
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(211, 129);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 128;
-            this.button3.Text = "Crear";
-            this.button3.UseVisualStyleBackColor = true;
+            this.crearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.crearButton.Location = new System.Drawing.Point(211, 129);
+            this.crearButton.Name = "crearButton";
+            this.crearButton.Size = new System.Drawing.Size(75, 23);
+            this.crearButton.TabIndex = 128;
+            this.crearButton.Text = "Crear";
+            this.crearButton.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // limpiarButton
             // 
-            this.button2.Location = new System.Drawing.Point(110, 129);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 127;
-            this.button2.Text = "Limpiar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.limpiarButton.Location = new System.Drawing.Point(110, 129);
+            this.limpiarButton.Name = "limpiarButton";
+            this.limpiarButton.Size = new System.Drawing.Size(75, 23);
+            this.limpiarButton.TabIndex = 127;
+            this.limpiarButton.Text = "Limpiar";
+            this.limpiarButton.UseVisualStyleBackColor = true;
+            this.limpiarButton.Click += new System.EventHandler(this.limpiarButton_Click);
             // 
-            // button1
+            // cancelarButton
             // 
-            this.button1.Location = new System.Drawing.Point(12, 129);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 126;
-            this.button1.Text = "Cancelar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.cancelarButton.Location = new System.Drawing.Point(12, 129);
+            this.cancelarButton.Name = "cancelarButton";
+            this.cancelarButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelarButton.TabIndex = 126;
+            this.cancelarButton.Text = "Cancelar";
+            this.cancelarButton.UseVisualStyleBackColor = true;
+            this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
             // 
             // Administrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(300, 168);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.crearButton);
+            this.Controls.Add(this.limpiarButton);
+            this.Controls.Add(this.cancelarButton);
             this.Controls.Add(this.groupBox1);
             this.Name = "Administrador";
             this.Text = "Nuevo Administrador";
@@ -152,14 +154,14 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox repetirTextBox;
+        private System.Windows.Forms.TextBox usuarioTextBox;
+        private System.Windows.Forms.TextBox contraseniaTextBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button crearButton;
+        private System.Windows.Forms.Button limpiarButton;
+        private System.Windows.Forms.Button cancelarButton;
     }
 }

@@ -16,5 +16,16 @@ namespace UberFrba.Abm_Turno
         {
             InitializeComponent();
         }
+
+        private void limpiarButton_Click(object sender, EventArgs e)
+        {
+            descripcionTextBox.Clear();
+            turnosGrid.ClearSelection();
+        }
+
+        private void cancelarButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
