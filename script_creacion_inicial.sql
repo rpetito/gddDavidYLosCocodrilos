@@ -208,12 +208,6 @@ DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.BUSCAR_USUARIO
 IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.AGREGAR_AUTOMOVIL') IS NOT NULL
 DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.AGREGAR_AUTOMOVIL
 
-IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.AGREGAR_MARCA') IS NOT NULL
-DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.AGREGAR_MARCA
-
-IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.AGREGAR_MODELO') IS NOT NULL
-DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.AGREGAR_MODELO 
-
 IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.AGREGAR_VIAJE') IS NOT NULL
 DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.AGREGAR_VIAJE
 
@@ -237,6 +231,9 @@ DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.OBTENER_MARCAS
 
 IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.OBTENER_MODELOS') IS NOT NULL
 DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.OBTENER_MODELOS
+
+IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.OBTENER_TURNOS') IS NOT NULL
+DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.OBTENER_TURNOS
 
 IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.OBTENER_ROLES_PARA_USUARIO') IS NOT NULL
 DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.OBTENER_ROLES_PARA_USUARIO
@@ -447,16 +444,6 @@ CREATE TABLE DAVID_Y_LOS_COCODRILOS.ROL_USUARIO (
 
 
 ----------------------------------------
--------------TABLA MODELO---------------
-----------------------------------------
-CREATE TABLE DAVID_Y_LOS_COCODRILOS.MODELO (
-	MODELO_ID Int IDENTITY(1,1),
-	MODELO_DETALLE varchar(255),
-	primary key (MODELO_ID)
-);
-
-
-----------------------------------------
 -------------TABLA MARCA----------------
 ----------------------------------------
 CREATE TABLE DAVID_Y_LOS_COCODRILOS.MARCA (
@@ -464,6 +451,17 @@ CREATE TABLE DAVID_Y_LOS_COCODRILOS.MARCA (
 	MARCA_DETALLE varchar(255),
 	primary key (MARCA_ID)
 )
+
+----------------------------------------
+-------------TABLA MODELO---------------
+----------------------------------------
+CREATE TABLE DAVID_Y_LOS_COCODRILOS.MODELO (
+	MODELO_ID Int IDENTITY(1,1),
+	MODELO_MARCA Int ,
+	MODELO_DETALLE varchar(255),
+	primary key (MODELO_ID, MODELO_MARCA),
+	foreign key (MODELO_MARCA) references DAVID_Y_LOS_COCODRILOS.MARCA
+);
 
 
 -----------------------------------------
@@ -479,7 +477,7 @@ CREATE TABLE DAVID_Y_LOS_COCODRILOS.AUTOMOVIL (
 	primary key (AUTOMOVIL_PATENTE, AUTOMOVIL_CHOFER, AUTOMOVIL_TURNO),
 	foreign key (AUTOMOVIL_CHOFER) references DAVID_Y_LOS_COCODRILOS.CHOFER,
 	foreign key (AUTOMOVIL_MARCA) references DAVID_Y_LOS_COCODRILOS.MARCA,
-	foreign key (AUTOMOVIL_MODELO) references DAVID_Y_LOS_COCODRILOS.MODELO
+	foreign key (AUTOMOVIL_MODELO, AUTOMOVIL_MARCA) references DAVID_Y_LOS_COCODRILOS.MODELO
 );
 
 
@@ -927,25 +925,6 @@ GO
 
 
 -----------------------------------------------------
-----------------MIGRACION MODELO---------------------
------------------------------------------------------
-CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.MIGRACION_MODELO
-AS 
-BEGIN
-
-	INSERT INTO DAVID_Y_LOS_COCODRILOS.MODELO (
-		MODELO_DETALLE
-	)	SELECT distinct(m.Auto_Modelo)
-		FROM gd_esquema.Maestra m
-
-END
-GO
-
-EXEC('DAVID_Y_LOS_COCODRILOS.MIGRACION_MODELO')
-GO
-
-
------------------------------------------------------
 ----------------MIGRACION MARCA----------------------
 -----------------------------------------------------
 CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.MIGRACION_MARCA
@@ -961,6 +940,24 @@ END
 GO
 
 EXEC('DAVID_Y_LOS_COCODRILOS.MIGRACION_MARCA')
+GO
+
+-----------------------------------------------------
+----------------MIGRACION MODELO---------------------
+-----------------------------------------------------
+CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.MIGRACION_MODELO
+AS 
+BEGIN
+
+	INSERT INTO DAVID_Y_LOS_COCODRILOS.MODELO (
+		MODELO_MARCA, MODELO_DETALLE
+	)	SELECT distinct (SELECT MARCA_ID FROM DAVID_Y_LOS_COCODRILOS.MARCA WHERE MARCA_DETALLE = m.Auto_Marca), m.Auto_Modelo 
+		FROM gd_esquema.Maestra m
+
+END
+GO
+
+EXEC('DAVID_Y_LOS_COCODRILOS.MIGRACION_MODELO')
 GO
 
 
@@ -1683,20 +1680,6 @@ END
 GO
 
 
-/*TODO TRIGGER AUTOMOVIL*/
-
----------------------------------------
-----------------MARCA------------------
----------------------------------------
-CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.AGREGAR_MARCA
-(@DETALLE VARCHAR(255) = ' ')
-AS
-BEGIN
-	INSERT INTO DAVID_Y_LOS_COCODRILOS.MARCA (MARCA_DETALLE) VALUES (@DETALLE)
-END
-GO
-
-
 ---------------------------------------
 ------------OBTENER MARCAS-------------
 ---------------------------------------
@@ -1710,17 +1693,6 @@ BEGIN
 END
 GO
 
-
----------------------------------------
---------------AGREGAR MODELO-----------
----------------------------------------
-CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.AGREGAR_MODELO
-(@ID INT = 0, @DETALLE VARCHAR(255) = ' ')
-AS
-BEGIN
-	INSERT INTO DAVID_Y_LOS_COCODRILOS.MARCA VALUES (@DETALLE)
-END
-GO
 
 ---------------------------------------
 ------------OBTENER MODELOS------------
