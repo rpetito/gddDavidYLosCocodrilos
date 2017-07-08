@@ -28,33 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.eliminarButton = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
             this.cancelarButton = new System.Windows.Forms.Button();
             this.automovilesGrid = new System.Windows.Forms.DataGridView();
+            this.patenteColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.marcaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.modeloColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.turnoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.choferColumna = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eliminacionColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.buscarButton = new System.Windows.Forms.Button();
             this.limpiarButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.modeloComboBox = new System.Windows.Forms.ComboBox();
             this.marcaComboBox = new System.Windows.Forms.ComboBox();
             this.choferTextBox = new System.Windows.Forms.TextBox();
             this.patenteTextBox = new System.Windows.Forms.TextBox();
-            this.modeloTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.gD1C2017DataSet = new UberFrba.GD1C2017DataSet();
+            this.aUTOMOVILBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.aUTOMOVILTableAdapter = new UberFrba.GD1C2017DataSetTableAdapters.AUTOMOVILTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.automovilesGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gD1C2017DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aUTOMOVILBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // eliminarButton
-            // 
-            this.eliminarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.eliminarButton.Location = new System.Drawing.Point(282, 339);
-            this.eliminarButton.Name = "eliminarButton";
-            this.eliminarButton.Size = new System.Drawing.Size(75, 23);
-            this.eliminarButton.TabIndex = 11;
-            this.eliminarButton.Text = "Eliminar";
-            this.eliminarButton.UseVisualStyleBackColor = true;
             // 
             // cancelarButton
             // 
@@ -68,11 +69,57 @@
             // 
             // automovilesGrid
             // 
+            this.automovilesGrid.AllowUserToAddRows = false;
+            this.automovilesGrid.AllowUserToDeleteRows = false;
             this.automovilesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.automovilesGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.patenteColumn,
+            this.marcaColumn,
+            this.modeloColumn,
+            this.turnoColumn,
+            this.choferColumna,
+            this.eliminacionColumn});
             this.automovilesGrid.Location = new System.Drawing.Point(12, 163);
             this.automovilesGrid.Name = "automovilesGrid";
+            this.automovilesGrid.ReadOnly = true;
             this.automovilesGrid.Size = new System.Drawing.Size(345, 162);
             this.automovilesGrid.TabIndex = 9;
+            // 
+            // patenteColumn
+            // 
+            this.patenteColumn.HeaderText = "Patente";
+            this.patenteColumn.Name = "patenteColumn";
+            this.patenteColumn.ReadOnly = true;
+            // 
+            // marcaColumn
+            // 
+            this.marcaColumn.HeaderText = "Marca";
+            this.marcaColumn.Name = "marcaColumn";
+            this.marcaColumn.ReadOnly = true;
+            // 
+            // modeloColumn
+            // 
+            this.modeloColumn.HeaderText = "Modelo";
+            this.modeloColumn.Name = "modeloColumn";
+            this.modeloColumn.ReadOnly = true;
+            // 
+            // turnoColumn
+            // 
+            this.turnoColumn.HeaderText = "Turno";
+            this.turnoColumn.Name = "turnoColumn";
+            this.turnoColumn.ReadOnly = true;
+            // 
+            // choferColumna
+            // 
+            this.choferColumna.HeaderText = "Chofer";
+            this.choferColumna.Name = "choferColumna";
+            this.choferColumna.ReadOnly = true;
+            // 
+            // eliminacionColumn
+            // 
+            this.eliminacionColumn.HeaderText = "ELIMINAR";
+            this.eliminacionColumn.Name = "eliminacionColumn";
+            this.eliminacionColumn.ReadOnly = true;
             // 
             // buscarButton
             // 
@@ -82,6 +129,7 @@
             this.buscarButton.TabIndex = 8;
             this.buscarButton.Text = "Buscar";
             this.buscarButton.UseVisualStyleBackColor = true;
+            this.buscarButton.Click += new System.EventHandler(this.buscarButton_Click);
             // 
             // limpiarButton
             // 
@@ -95,10 +143,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.modeloComboBox);
             this.groupBox1.Controls.Add(this.marcaComboBox);
             this.groupBox1.Controls.Add(this.choferTextBox);
             this.groupBox1.Controls.Add(this.patenteTextBox);
-            this.groupBox1.Controls.Add(this.modeloTextBox);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
@@ -110,6 +158,14 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros de Búsqueda";
+            // 
+            // modeloComboBox
+            // 
+            this.modeloComboBox.FormattingEnabled = true;
+            this.modeloComboBox.Location = new System.Drawing.Point(57, 66);
+            this.modeloComboBox.Name = "modeloComboBox";
+            this.modeloComboBox.Size = new System.Drawing.Size(100, 21);
+            this.modeloComboBox.TabIndex = 7;
             // 
             // marcaComboBox
             // 
@@ -132,13 +188,6 @@
             this.patenteTextBox.Name = "patenteTextBox";
             this.patenteTextBox.Size = new System.Drawing.Size(100, 20);
             this.patenteTextBox.TabIndex = 5;
-            // 
-            // modeloTextBox
-            // 
-            this.modeloTextBox.Location = new System.Drawing.Point(57, 67);
-            this.modeloTextBox.Name = "modeloTextBox";
-            this.modeloTextBox.Size = new System.Drawing.Size(100, 20);
-            this.modeloTextBox.TabIndex = 4;
             // 
             // label4
             // 
@@ -180,12 +229,25 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Marca:";
             // 
+            // gD1C2017DataSet
+            // 
+            this.gD1C2017DataSet.DataSetName = "GD1C2017DataSet";
+            this.gD1C2017DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // aUTOMOVILBindingSource
+            // 
+            this.aUTOMOVILBindingSource.DataMember = "AUTOMOVIL";
+            this.aUTOMOVILBindingSource.DataSource = this.gD1C2017DataSet;
+            // 
+            // aUTOMOVILTableAdapter
+            // 
+            this.aUTOMOVILTableAdapter.ClearBeforeFill = true;
+            // 
             // ListadoBajaAutomovil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(369, 371);
-            this.Controls.Add(this.eliminarButton);
             this.Controls.Add(this.cancelarButton);
             this.Controls.Add(this.automovilesGrid);
             this.Controls.Add(this.buscarButton);
@@ -196,13 +258,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.automovilesGrid)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gD1C2017DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aUTOMOVILBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button eliminarButton;
         private System.Windows.Forms.Button cancelarButton;
         private System.Windows.Forms.DataGridView automovilesGrid;
         private System.Windows.Forms.Button buscarButton;
@@ -211,10 +273,19 @@
         private System.Windows.Forms.ComboBox marcaComboBox;
         private System.Windows.Forms.TextBox choferTextBox;
         private System.Windows.Forms.TextBox patenteTextBox;
-        private System.Windows.Forms.TextBox modeloTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox modeloComboBox;
+        private GD1C2017DataSet gD1C2017DataSet;
+        private System.Windows.Forms.BindingSource aUTOMOVILBindingSource;
+        private GD1C2017DataSetTableAdapters.AUTOMOVILTableAdapter aUTOMOVILTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn patenteColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn marcaColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn modeloColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn turnoColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn choferColumna;
+        private System.Windows.Forms.DataGridViewButtonColumn eliminacionColumn;
     }
 }

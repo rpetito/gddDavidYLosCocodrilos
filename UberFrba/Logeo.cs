@@ -20,19 +20,19 @@ namespace UberFrba
             SqlCommand cmd = new SqlCommand();
             SqlDataReader reader;
 
-            using (cmd = new SqlCommand(string.Format("select r.ROL_DETALLE from DAVID_Y_LOS_COCODRILOS.ROL r"),
-                                        Conexion) ) ;
-            reader = cmd.ExecuteReader();
+            //using (cmd = new SqlCommand(string.Format("select r.ROL_DETALLE from DAVID_Y_LOS_COCODRILOS.ROL r"),
+            //                            Conexion) ) ;
+            //reader = cmd.ExecuteReader();
             
-            while (reader.Read())
-            {
+            //while (reader.Read())
+            //{
 
-            comboBox1.Items.Add(reader.GetString(0));
+            //comboBox1.Items.Add(reader.GetString(0));
                 
-            }
+            //}
             
            
-            reader.Close();
+            //reader.Close();
 
         }
 
@@ -57,9 +57,7 @@ namespace UberFrba
         {
             String pUsername = userTextBox.Text;
             String pContrasenia = passwordTextBox.Text;
-            Int32 pRol = comboBox1.SelectedIndex + 1;
-            Int32 id = 0;
-            Int32 intentos = 0;
+
 
 
             try
@@ -68,6 +66,7 @@ namespace UberFrba
                 MessageBox.Show("estamos conectados");
                 SqlCommand loginUsuario = new SqlCommand();
                 SqlDataReader reader;
+                Int32 result;
                
 
                 using (loginUsuario = new SqlCommand("DAVID_Y_LOS_COCODRILOS.INGRESAR_USUARIO", Conexion))
@@ -78,33 +77,21 @@ namespace UberFrba
                     loginUsuario.Parameters["@username"].Value = pUsername;
                     loginUsuario.Parameters.Add("@password", SqlDbType.Char);
                     loginUsuario.Parameters["@password"].Value = pContrasenia;
-                    loginUsuario.Parameters.Add("@rol", SqlDbType.Int);
-                    loginUsuario.Parameters["@rol"].Value = pRol;
                 }
 
-                reader = loginUsuario.ExecuteReader();
+                //reader = loginUsuario.ExecuteReader();
+                result = (Int32) loginUsuario.ExecuteScalar();
 
-                bool v = reader.Read();
-                if (v)
+                if (result != 0)
                 {
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            Console.WriteLine("{0} {1}", reader.GetInt32(0), reader.GetString(1));
-                        }
-                        
-                    }
-                    DataTable dt = new DataTable();
-                    dt.Load(reader);
-                    
+                    MessageBox.Show("there was an issue!");
+                }
+                else
+                {
                     Menu menu = new Menu();
                     menu.ShowDialog(); ;
                 }
-                else {
-                    MessageBox.Show("Logeo incorrecto.", "Afuera");
-                }
-                reader.Close();
+               
             }
 
             catch (Exception ex)
