@@ -1682,7 +1682,7 @@ GO
 ---------------------------------------
 ----------- OBTENER AUTOMOVIL----------
 ---------------------------------------
-CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.AGREGAR_AUTOMOVIL
+CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.OBTENER_AUTOMOVIL
 (@PATENTE VARCHAR(10) ,@MARCA INT, @MODELO INT,  @CHOFER NUMERIC(18,0))
 AS
 BEGIN
@@ -1696,6 +1696,9 @@ BEGIN
 END
 GO
 
+---------------------------------------
+--------INHABILITADR AUTOMOVIL---------
+---------------------------------------
 
 
 ---------------------------------------
