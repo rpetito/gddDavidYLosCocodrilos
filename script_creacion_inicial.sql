@@ -124,6 +124,9 @@ DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.MIGRACION_AUTOMOVIL
 IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.MIGRACION_TURNO') IS NOT NULL
 DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.MIGRACION_TURNO
 
+IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.AGREGAR_TURNO') IS NOT NULL
+DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.AGREGAR_TURNO
+
 IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.MIGRACION_VIAJE') IS NOT NULL
 DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.MIGRACION_VIAJE
 
@@ -247,6 +250,9 @@ DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.INHABILITAR_AUTOMOVIL
 IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.OBTENER_ROLES_PARA_USUARIO') IS NOT NULL
 DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.OBTENER_ROLES_PARA_USUARIO
 
+IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.OBTENER_ROLES_PARA_USUARIO') IS NOT NULL
+DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.OBTENER_ROLES_PARA_USUARIO
+
 IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.ESTADISTICA_RECAUDACION') IS NOT NULL
 DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.ESTADISTICA_RECAUDACION
 
@@ -258,9 +264,6 @@ DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.ESTADISTICA_CLIENTES_CONSUMO
 
 IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.ESTADISTICA_CLIENTE_AUTOMOVIL') IS NOT NULL
 DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.ESTADISTICA_CLIENTE_AUTOMOVIL
-
-IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.OBTENER_VIAJE') IS NOT NULL
-DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.OBTENER_VIAJE
  
 
 --FUNCTIONS
@@ -309,35 +312,6 @@ EXEC('CREATE SCHEMA [DAVID_Y_LOS_COCODRILOS] AUTHORIZATION [gd]');
  
 
 GO
-
-
---###########################################################################
---###########################################################################
-----------------------------CREACION DE FUNCIONES----------------------------
---###########################################################################
---###########################################################################
-
-
---DADO UNA FECHA DE INICIO Y FIN DE UN TURNO, DEVUELVE SU EQUIVALENTE EN CHAR
-CREATE FUNCTION DAVID_Y_LOS_COCODRILOS.fGetTurno(@horaInicioTurno numeric(18,0), @horaFinTurno numeric(18,0))
-RETURNS char(1)
-AS
-BEGIN
-
-	DECLARE @turno char(1);
-
-	SET @turno = CASE
-					WHEN (@horaInicioTurno = 0 AND @horaFinTurno = 8) THEN '1'
-					WHEN (@horaInicioTurno = 8 AND @horaFinTurno = 16) THEN '2'
-					WHEN (@horaInicioTurno = 16 AND @horaFinTurno = 24) THEN '3'
-				 END
-
-	RETURN @turno
-
-END
-GO
-
-
 
 
 
@@ -478,28 +452,11 @@ CREATE TABLE DAVID_Y_LOS_COCODRILOS.MODELO (
 );
 
 
------------------------------------------
--------------TABLA AUTOMOVIL-------------
------------------------------------------
-CREATE TABLE DAVID_Y_LOS_COCODRILOS.AUTOMOVIL (
-	AUTOMOVIL_PATENTE varchar(10),
-	AUTOMOVIL_MARCA Int,
-	AUTOMOVIL_MODELO Int,
-	AUTOMOVIL_TURNO char(1),
-	AUTOMOVIL_CHOFER numeric(18,0),
-	AUTOMOVIL_HABILITADO bit,
-	primary key (AUTOMOVIL_PATENTE, AUTOMOVIL_CHOFER, AUTOMOVIL_TURNO),
-	foreign key (AUTOMOVIL_CHOFER) references DAVID_Y_LOS_COCODRILOS.CHOFER,
-	foreign key (AUTOMOVIL_MARCA) references DAVID_Y_LOS_COCODRILOS.MARCA,
-	foreign key (AUTOMOVIL_MODELO, AUTOMOVIL_MARCA) references DAVID_Y_LOS_COCODRILOS.MODELO
-);
-
-
 ----------------------------------------
 -------------TABLA TURNO----------------
 ----------------------------------------
 CREATE TABLE DAVID_Y_LOS_COCODRILOS.TURNO (
-	TURNO_ID char(1),
+	TURNO_ID INT IDENTITY(1,1),
 	TURNO_HORA_INICIO numeric(18,0),
 	TURNO_HORA_FIN numeric(18,0),
 	TURNO_DESCRIPCION varchar(255),
@@ -510,6 +467,23 @@ CREATE TABLE DAVID_Y_LOS_COCODRILOS.TURNO (
 );
 
 
+-----------------------------------------
+-------------TABLA AUTOMOVIL-------------
+-----------------------------------------
+CREATE TABLE DAVID_Y_LOS_COCODRILOS.AUTOMOVIL (
+	AUTOMOVIL_PATENTE varchar(10),
+	AUTOMOVIL_MARCA Int,
+	AUTOMOVIL_MODELO Int,
+	AUTOMOVIL_TURNO INT,
+	AUTOMOVIL_CHOFER numeric(18,0),
+	AUTOMOVIL_HABILITADO bit,
+	primary key (AUTOMOVIL_PATENTE, AUTOMOVIL_CHOFER, AUTOMOVIL_TURNO),
+	foreign key (AUTOMOVIL_CHOFER) references DAVID_Y_LOS_COCODRILOS.CHOFER,
+	foreign key (AUTOMOVIL_MARCA) references DAVID_Y_LOS_COCODRILOS.MARCA,
+	foreign key (AUTOMOVIL_MODELO, AUTOMOVIL_MARCA) references DAVID_Y_LOS_COCODRILOS.MODELO,
+	foreign key (AUTOMOVIL_TURNO) REFERENCES DAVID_Y_LOS_COCODRILOS.TURNO
+);
+
 ----------------------------------------
 -------------TABLA VIAJE----------------
 ----------------------------------------
@@ -518,7 +492,7 @@ CREATE TABLE DAVID_Y_LOS_COCODRILOS.VIAJE (
 	VIAJE_CHOFER numeric(18,0),
 	VIAJE_CLIENTE numeric(18,0),
 	VIAJE_AUTOMOVIL_PATENTE varchar(10),
-	VIAJE_TURNO char(1),
+	VIAJE_TURNO INT,
 	VIAJE_CANTIDAD_KM numeric(18,0),
 	VIAJE_FECHA_INICIO datetime,
 	VIAJE_FECHA_FIN datetime,
@@ -537,7 +511,7 @@ CREATE TABLE DAVID_Y_LOS_COCODRILOS.VIAJE_INCONSISTENCIAS (
 	VIAJE_CHOFER numeric(18,0),
 	VIAJE_CLIENTE numeric(18,0),
 	VIAJE_AUTOMOVIL_PATENTE varchar(10),
-	VIAJE_TURNO char(1),
+	VIAJE_TURNO INT,
 	VIAJE_CANTIDAD_KM numeric(18,0),
 	VIAJE_FECHA_INICIO datetime,
 	VIAJE_FECHA_FIN datetime,
@@ -556,7 +530,7 @@ CREATE TABLE DAVID_Y_LOS_COCODRILOS.RENDICION (
 	RENDICION_ID int IDENTITY(1,1),
 	RENDICION_FECHA datetime,
 	RENDICION_CHOFER numeric(18,0),
-	RENDICION_TURNO char(1),
+	RENDICION_TURNO INT,
 	RENDICION_IMPORTE numeric(18,2),
 	primary key (RENDICION_CHOFER, RENDICION_FECHA, RENDICION_TURNO),
 	foreign key (RENDICION_TURNO) references DAVID_Y_LOS_COCODRILOS.TURNO,
@@ -572,7 +546,7 @@ CREATE TABLE DAVID_Y_LOS_COCODRILOS.ITEM_RENDICION (
 	ITEMR_CHOFER numeric(18,0),
 	ITEMR_CLIENTE numeric(18,0),
 	ITEMR_FECHA datetime,
-	ITEMR_TURNO char(1),
+	ITEMR_TURNO INT,
 	ITEMR_FECHA_VIAJE datetime,
 	primary key(ITEMR_CHOFER, ITEMR_CLIENTE, ITEMR_FECHA, ITEMR_TURNO, ITEMR_FECHA_VIAJE),
 	foreign key (ITEMR_CHOFER, ITEMR_FECHA, ITEMR_TURNO) references DAVID_Y_LOS_COCODRILOS.RENDICION,
@@ -613,6 +587,19 @@ CREATE TABLE DAVID_Y_LOS_COCODRILOS.ITEM_FACTURA (
 
 GO
 
+--###########################################################################
+--###########################################################################
+----------------------------CREACION DE FUNCIONES----------------------------
+--###########################################################################
+--###########################################################################
+	CREATE FUNCTION DAVID_Y_LOS_COCODRILOS.fGetTurno
+	(@HORA_INICIO DATETIME, @HORA_FIN DATETIME)
+	RETURNS INT
+	AS
+	BEGIN
+		RETURN (SELECT TURNO_ID FROM DAVID_Y_LOS_COCODRILOS.TURNO WHERE TURNO_HORA_INICIO = @HORA_INICIO AND TURNO_HORA_FIN = @HORA_FIN)
+	END
+	GO
 
 
 
@@ -976,6 +963,33 @@ GO
 
 
 -----------------------------------------------------
+-----------------MIGRACION TURNOS--------------------
+-----------------------------------------------------
+CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.MIGRACION_TURNO 
+AS 
+BEGIN
+
+	INSERT INTO DAVID_Y_LOS_COCODRILOS.TURNO (
+		TURNO_HORA_INICIO,
+		TURNO_HORA_FIN,
+		TURNO_DESCRIPCION,
+		TURNO_VALOR_KILOMETRO,
+		TURNO_PRECIO_BASE,
+		TURNO_HABILITADO
+	)	(SELECT DISTINCT m.Turno_Hora_Inicio,
+				m.Turno_Hora_Fin,
+				m.Turno_Descripcion,
+				m.Turno_Valor_Kilometro,
+				m.Turno_Precio_Base,
+				1
+		FROM gd_esquema.Maestra m)
+END		
+GO
+
+EXEC('DAVID_Y_LOS_COCODRILOS.MIGRACION_TURNO')
+GO
+
+-----------------------------------------------------
 ----------------MIGRACION AUTOMOVIL------------------
 -----------------------------------------------------
 CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.MIGRACION_AUTOMOVIL 
@@ -1008,39 +1022,6 @@ GO
 
 EXEC('DAVID_Y_LOS_COCODRILOS.MIGRACION_AUTOMOVIL')
 GO
-
-
------------------------------------------------------
------------------MIGRACION TURNOS--------------------
------------------------------------------------------
-CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.MIGRACION_TURNO 
-AS 
-BEGIN
-
-	INSERT INTO DAVID_Y_LOS_COCODRILOS.TURNO (
-		TURNO_HORA_INICIO,
-		TURNO_HORA_FIN,
-		TURNO_DESCRIPCION,
-		TURNO_VALOR_KILOMETRO,
-		TURNO_PRECIO_BASE,
-		TURNO_HABILITADO,
-		TURNO_ID
-	)	SELECT	m.Turno_Hora_Inicio,
-				m.Turno_Hora_Fin,
-				m.Turno_Descripcion,
-				m.Turno_Valor_Kilometro,
-				m.Turno_Precio_Base,
-				1, 
-				DAVID_Y_LOS_COCODRILOS.fGetTurno(m.Turno_Hora_Inicio, m.Turno_Hora_Fin) 
-		FROM gd_esquema.Maestra m
-		GROUP BY m.Turno_Hora_Inicio, m.Turno_Hora_Fin, m.Turno_Descripcion, m.Turno_Valor_Kilometro, m.Turno_Precio_Base
-END		
-GO
-
-EXEC('DAVID_Y_LOS_COCODRILOS.MIGRACION_TURNO')
-GO
-
-
 -----------------------------------------------------
 ------------------MIGRACION VIAJE--------------------
 -----------------------------------------------------
@@ -1338,7 +1319,7 @@ BEGIN
 				END;
 		END;
 	ELSE
-		SET @status = 1001;
+		SET @status = 999;
 
 	IF(@status = 0)
 		SELECT r.USROL_USUARIO, r.USROL_ROL, rol.ROL_DETALLE
@@ -1799,6 +1780,35 @@ BEGIN
 END
 GO
 
+---------------------------------------
+-------------AGREGAR TURNO------------
+---------------------------------------
+CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.AGREGAR_TURNO
+(@HORA_INICIO TIME, @HORA_FIN TIME, @DESCRIPCION VARCHAR(255), @VALOR_KILOMETRO NUMERIC(18,2), @PRECIO_BASE NUMERIC(18,2))
+AS
+BEGIN
+	DECLARE @RESULTADO INT;
+
+	SELECT @RESULTADO  = (SELECT COUNT(*)
+						FROM DAVID_Y_LOS_COCODRILOS.TURNO
+						WHERE (	TURNO_HABILITADO = 1 
+									AND (	@HORA_INICIO BETWEEN TURNO_HORA_INICIO AND TURNO_HORA_FIN 
+									OR @HORA_FIN BETWEEN TURNO_HORA_INICIO AND TURNO_HORA_FIN 
+									OR TURNO_HORA_INICIO BETWEEN @HORA_INICIO AND @HORA_FIN) )
+								OR @HORA_INICIO = TURNO_HORA_INICIO AND @HORA_FIN = TURNO_HORA_FIN)
+
+	IF (@RESULTADO = 0)
+	BEGIN
+		INSERT INTO DAVID_Y_LOS_COCODRILOS.TURNO 
+			(TURNO_HORA_INICIO, TURNO_HORA_FIN, TURNO_DESCRIPCION, TURNO_VALOR_KILOMETRO, TURNO_PRECIO_BASE, TURNO_HABILITADO)
+		VALUES (@HORA_INICIO, @HORA_FIN, @DESCRIPCION, @VALOR_KILOMETRO, @PRECIO_BASE, 1)
+	END
+
+	SELECT @RESULTADO
+END
+GO
+
+
 
 ---------------------------------------
 -------------AGREGAR VIAJE-------------
@@ -1834,7 +1844,7 @@ GO
 ----------------RENDIR-----------------
 ---------------------------------------
 CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.RENDIR
-(@FECHA DATETIME, @CHOFER NUMERIC(18,0), @TURNO CHAR(1), @PORCENTAJE NUMERIC(18,0))
+(@FECHA DATE, @CHOFER NUMERIC(18,0), @TURNO CHAR(1), @PORCENTAJE NUMERIC(18,0))
 AS
 BEGIN
 	BEGIN TRANSACTION
