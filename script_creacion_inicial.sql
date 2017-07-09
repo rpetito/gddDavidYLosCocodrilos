@@ -1288,6 +1288,7 @@ AS
 BEGIN
 
 	DECLARE @status int = 999;
+	DECLARE @userDNI numeric(18,0);
 
 	IF EXISTS (	
 		SELECT u.USUARIO_USERNAME
@@ -1301,27 +1302,23 @@ BEGIN
 				WHERE u.USUARIO_USERNAME = @username) = @password
 					BEGIN
 						IF( DAVID_Y_LOS_COCODRILOS.CANT_INTENTOS_LOGIN_FALLIDOS(@username, @password) < 3)
-						
 							BEGIN
 								UPDATE DAVID_Y_LOS_COCODRILOS.USUARIO
 								SET USUARIO_INTENTOS_LOGIN = 0
 								WHERE USUARIO_USERNAME = @username
 
-								IF( @@ERROR <> 0)
-									SELECT r.USROL_USUARIO, r.USROL_ROL
-									FROM DAVID_Y_LOS_COCODRILOS.ROL_USUARIO r
-									WHERE r.USROL_USUARIO = (SELECT u.USUARIO_DNI
-															 FROM DAVID_Y_LOS_COCODRILOS.USUARIO u 
-															 WHERE u.USUARIO_USERNAME = @username
-															 )
-								ELSE 
-									SET @status = @@ERROR
-
+								SET @status = @@ERROR
 							END
-
 						ELSE
 							BEGIN
-								EXEC('DAVID_Y_LOS_COCODRILOS.INHABILITAR_USUARIO')
+
+								SET @userDNI = (SELECT u.USUARIO_DNI
+											    FROM DAVID_Y_LOS_COCODRILOS.USUARIO u 
+											    WHERE u.USUARIO_USERNAME = @username 
+													  AND u.USUARIO_PASSWORD = @password
+												)
+								
+								EXEC DAVID_Y_LOS_COCODRILOS.INHABILITAR_USUARIO @userDNI
 								SET @status = 999
 							END
 					END;
@@ -1331,14 +1328,21 @@ BEGIN
 					SET USUARIO_INTENTOS_LOGIN = USUARIO_INTENTOS_LOGIN + 1
 					WHERE USUARIO_USERNAME = @username
 
-					SET @status = 999;
+					SET @status = 1001;
 				END;
 		END;
 	ELSE
 		SET @status = 999;
 
-
-	SELECT @status;
+	IF(@status = 0)
+		SELECT r.USROL_USUARIO, r.USROL_ROL, rol.ROL_DETALLE
+		FROM DAVID_Y_LOS_COCODRILOS.ROL_USUARIO r JOIN DAVID_Y_LOS_COCODRILOS.ROL rol ON r.USROL_ROL = rol.ROL_ID
+		WHERE r.USROL_USUARIO = (SELECT u.USUARIO_DNI
+									FROM DAVID_Y_LOS_COCODRILOS.USUARIO u 
+									WHERE u.USUARIO_USERNAME = @username
+									);
+	ELSE
+		SELECT @status;
 
 END
 GO
