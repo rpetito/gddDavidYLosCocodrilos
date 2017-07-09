@@ -394,7 +394,7 @@ CREATE TABLE DAVID_Y_LOS_COCODRILOS.USUARIO (
 	USUARIO_CODPOS		varchar(10),
 	USUARIO_FNAC		datetime,
 	USUARIO_USERNAME	char(35),
-	USUARIO_PASSWORD	char(10) UNIQUE,
+	USUARIO_PASSWORD	char(10),
 	USUARIO_INTENTOS_LOGIN	int DEFAULT 0,
 	USUARIO_HABILITADO	int DEFAULT 1
 	primary key (USUARIO_DNI)
@@ -1299,7 +1299,16 @@ BEGIN
 								SET USUARIO_INTENTOS_LOGIN = 0
 								WHERE USUARIO_USERNAME = @username
 
-								SET @status = @@ERROR
+								IF( @@ERROR <> 0)
+									SELECT r.USROL_USUARIO, r.USROL_ROL
+									FROM DAVID_Y_LOS_COCODRILOS.ROL_USUARIO r
+									WHERE r.USROL_USUARIO = (SELECT u.USUARIO_DNI
+															 FROM DAVID_Y_LOS_COCODRILOS.USUARIO u 
+															 WHERE u.USUARIO_USERNAME = @username
+															 )
+								ELSE 
+									SET @status = @@ERROR
+
 							END
 
 						ELSE
@@ -1532,12 +1541,11 @@ END
 GO 
 
 
-
 -------------------------------------------------
 ------------USUARIO (CLIENTE Y CHOFER)-----------
 -------------------------------------------------
 CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.ALTA_USUARIO(
-	@rol char(1),
+	@rol int,
 	@nombre varchar(255),
 	@apellido varchar(255),
 	@dni numeric(18,0),
@@ -1556,57 +1564,82 @@ AS
 BEGIN
 
 	DECLARE @transactionName varchar(30) = 'altaUsuario';
-	DECLARE @result int = 0;
 
-	IF @telefono NOT IN (SELECT USUARIO_TEL
-						 FROM DAVID_Y_LOS_COCODRILOS.USUARIO)
+	BEGIN TRAN @transactionName
+	BEGIN TRY
+		IF( SELECT COUNT(*)
+			FROM DAVID_Y_LOS_COCODRILOS.USUARIO u
+			WHERE u.USUARIO_TEL = @telefono
+		) = 0
 
-		BEGIN TRAN @transactionName
-			INSERT INTO DAVID_Y_LOS_COCODRILOS.USUARIO (
-				USUARIO_NOMBRE,
-				USUARIO_APELLIDO,
-				USUARIO_DNI,
-				USUARIO_MAIL,
-				USUARIO_TEL,
-				USUARIO_DIR,
-				USUARIO_PISO,
-				USUARIO_DPTO,
-				USUARIO_LOCALIDAD,
-				USUARIO_CODPOS,
-				USUARIO_FNAC,
-				USUARIO_USERNAME,
-				USUARIO_PASSWORD
+			BEGIN
+				INSERT INTO DAVID_Y_LOS_COCODRILOS.USUARIO (
+					USUARIO_NOMBRE,
+					USUARIO_APELLIDO,
+					USUARIO_DNI,
+					USUARIO_MAIL,
+					USUARIO_TEL,
+					USUARIO_DIR,
+					USUARIO_PISO,
+					USUARIO_DPTO,
+					USUARIO_LOCALIDAD,
+					USUARIO_CODPOS,
+					USUARIO_FNAC,
+					USUARIO_USERNAME,
+					USUARIO_PASSWORD
+				) VALUES (
+					@nombre,
+					@apellido,
+					@dni,
+					@mail,
+					@telefono,
+					@direccion,
+					@piso,
+					@departamento,
+					@localidad,
+					@codPos,
+					@fechaNac,
+					@username,
+					@password
+				)
+			END
+
+		IF(@rol = 1)
+			INSERT INTO DAVID_Y_LOS_COCODRILOS.ADMINISTRADOR (
+				ADMIN_ID
 			) VALUES (
-				@nombre,
-				@apellido,
-				@dni,
-				@mail,
-				@telefono,
-				@direccion,
-				@piso,
-				@departamento,
-				@localidad,
-				@codPos,
-				@fechaNac,
-				@username,
-				@password
+				@dni
+			)
+		IF(@rol = 2)
+			INSERT INTO DAVID_Y_LOS_COCODRILOS.CLIENTE (
+				CLIENTE_ID
+			) VALUES (
+				@dni
+			)
+		IF(@rol = 3) 
+			INSERT INTO DAVID_Y_LOS_COCODRILOS.CHOFER (
+				CHOFER_ID
+			) VALUES (
+				@dni
 			)
 
-			INSERT INTO DAVID_Y_LOS_COCODRILOS.ROL_USUARIO (
-				USROL_USUARIO,
-				USROL_ROL
-			) VALUES (
-				@dni,
-				@rol
-			)
+		INSERT INTO DAVID_Y_LOS_COCODRILOS.ROL_USUARIO (
+			USROL_USUARIO,
+			USROL_ROL
+		) VALUES (
+			@dni,
+			@rol
+		)
 
-	COMMIT TRAN @transactionName
-	SET @result = @@ERROR
-
-	IF @@ERROR <> 0 
+		COMMIT TRAN @transactionName;
+	END TRY
+	BEGIN CATCH
+		PRINT ERROR_MESSAGE()
+		PRINT ERROR_NUMBER()
 		ROLLBACK TRAN @transactionName;
-
-	SELECT @result
+		SELECT -1;
+	END CATCH
+		
 
 END
 GO 
