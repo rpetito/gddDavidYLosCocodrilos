@@ -81,7 +81,8 @@ namespace UberFrba
 
                 if (result.HasRows)
                 {
-                    Usuario.IdUsuario = result.GetInt32(0);//Asumiendo que la primera columna es DNI (ID)
+                    Console.WriteLine(result.GetDecimal(0));
+                    Usuario.IdUsuario = (int) result.GetDecimal(0);//Asumiendo que la primera columna es DNI (ID)
                     if(result.HasRows.Equals(1))
                     {
                         Usuario.RolUsuario = result.GetInt32(1);
