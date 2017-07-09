@@ -52,6 +52,10 @@ namespace UberFrba
             return this.rolSeleccionado;
         }
         
+        public Rol getRolAtIndex(int index)
+        {
+            return this.roles[index];
+        }
 
     }
    
