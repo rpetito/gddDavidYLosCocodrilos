@@ -1332,7 +1332,7 @@ BEGIN
 				END;
 		END;
 	ELSE
-		SET @status = 999;
+		SET @status = 1001;
 
 	IF(@status = 0)
 		SELECT r.USROL_USUARIO, r.USROL_ROL, rol.ROL_DETALLE
