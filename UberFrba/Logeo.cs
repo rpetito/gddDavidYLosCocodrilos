@@ -121,6 +121,9 @@ namespace UberFrba
                         rolSeleccionado.ShowDialog();
                     }
                 }
+
+                Conexion.Close();
+              
             }
 
             catch (Exception ex)
@@ -128,7 +131,7 @@ namespace UberFrba
                 MessageBox.Show(ex.ToString(), "there was an issue!");
 
             }
-
+        
         }
     }
 }
