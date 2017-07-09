@@ -18,7 +18,6 @@ namespace UberFrba
             InitializeComponent();
             SqlConnection Conexion = BaseDeDatos.ObternerConexion();
             SqlCommand cmd = new SqlCommand();
-            SqlDataReader reader;
 
             //using (cmd = new SqlCommand(string.Format("select r.ROL_DETALLE from DAVID_Y_LOS_COCODRILOS.ROL r"),
             //                            Conexion) ) ;
@@ -65,8 +64,7 @@ namespace UberFrba
                 SqlConnection Conexion = BaseDeDatos.ObternerConexion();
                 MessageBox.Show("estamos conectados");
                 SqlCommand loginUsuario = new SqlCommand();
-                SqlDataReader reader;
-                Int32 result;
+                SqlDataReader result;
                
 
                 using (loginUsuario = new SqlCommand("DAVID_Y_LOS_COCODRILOS.INGRESAR_USUARIO", Conexion))
@@ -79,17 +77,34 @@ namespace UberFrba
                     loginUsuario.Parameters["@password"].Value = pContrasenia;
                 }
 
-                //reader = loginUsuario.ExecuteReader();
-                result = (Int32) loginUsuario.ExecuteScalar();
+                result =  loginUsuario.ExecuteReader();
 
-                if (result != 0)
+                if (result.HasRows)
                 {
-                    MessageBox.Show("there was an issue!");
+                    Usuario.IdUsuario = result.GetInt32(0);//Asumiendo que la primera columna es DNI (ID)
+                    if(result.HasRows.Equals(1))
+                    {
+                        Usuario.RolUsuario = result.GetInt32(1);
+                        Menu menu = new Menu();
+                        menu.ShowDialog(); 
+                    }
+                    else
+                    {
+                        SeleccionRol seleccionRol = new SeleccionRol();
+                  
+                        while (result.Read())
+                        {
+                        }
+
+
+                        seleccionRol.ShowDialog();
+                            
+                    }
                 }
                 else
                 {
-                    Menu menu = new Menu();
-                    menu.ShowDialog(); ;
+                    
+                    
                 }
                
             }

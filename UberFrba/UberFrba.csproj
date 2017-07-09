@@ -183,11 +183,18 @@
       <DependentUpon>Administrador.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseDeDatos.cs" />
+    <Compile Include="Usuario.cs" />
     <Compile Include="Facturacion\Facturacion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Facturacion\Facturacion.Designer.cs">
       <DependentUpon>Facturacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SeleccionRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SeleccionRol.Designer.cs">
+      <DependentUpon>SeleccionRol.cs</DependentUpon>
     </Compile>
     <Compile Include="GD1C2017DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -336,6 +343,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Rendicion Viajes\Rendicion.resx">
       <DependentUpon>Rendicion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SeleccionRol.resx">
+      <DependentUpon>SeleccionRol.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="GD1C2017DataSet.xsc">
       <DependentUpon>GD1C2017DataSet.xsd</DependentUpon>

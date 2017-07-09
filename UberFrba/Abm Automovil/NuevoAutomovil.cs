@@ -32,7 +32,7 @@ namespace UberFrba.Abm_Automovil
 
             while (marcasReader.Read())
             {
-                marcaComboBox.Items.Add(marcasReader.GetString(0));
+                marcaComboBox.Items.Add(marcasReader.GetInt32(0));
             }
             marcasReader.Close();
 
@@ -46,7 +46,7 @@ namespace UberFrba.Abm_Automovil
 
             while (modelosReader.Read())
             {
-                modeloComboBox.Items.Add(modelosReader.GetString(0));
+                modeloComboBox.Items.Add(modelosReader.GetInt32(0));
             }
             modelosReader.Close();
 
