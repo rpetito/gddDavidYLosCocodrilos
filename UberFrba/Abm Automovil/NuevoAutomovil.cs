@@ -13,6 +13,13 @@ namespace UberFrba.Abm_Automovil
 {
     public partial class NuevoAutomovil : Form
     {
+        String marca;
+        String modelo;
+        String patente;
+        String turno;
+        String chofer;
+        Int32 idMarca;
+        Int32 idModelo;
         public NuevoAutomovil()
         {
             InitializeComponent();
@@ -23,6 +30,14 @@ namespace UberFrba.Abm_Automovil
             SqlDataReader marcasReader;
             SqlDataReader modelosReader;
             SqlDataReader turnosReader;
+            marca = marcaComboBox.Text;
+            modelo = modeloComboBox.Text;
+            patente = patenteTextBox.Text;
+            turno = turnoComboBox.Text;
+            chofer = choferTextBox.Text;
+           
+            var dictMarcas = new Dictionary<int, String>();
+            var dictModelos = new Dictionary<int, String>();
 
             using (marcas = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_MARCAS", Conexion))
             {
@@ -32,8 +47,15 @@ namespace UberFrba.Abm_Automovil
 
             while (marcasReader.Read())
             {
-                marcaComboBox.Items.Add(marcasReader.GetInt32(0));
+                dictMarcas.Add(marcasReader.GetInt32(0), (marcasReader.GetString(1)));
             }
+
+            foreach (KeyValuePair<Int32, String> itemMarca in dictMarcas)
+            {
+                marcaComboBox.Items.Add(itemMarca.Value);
+            } 
+            idMarca = dictMarcas.FirstOrDefault(x => x.Value == marca).Key;
+
             marcasReader.Close();
 
 
@@ -46,8 +68,14 @@ namespace UberFrba.Abm_Automovil
 
             while (modelosReader.Read())
             {
-                modeloComboBox.Items.Add(modelosReader.GetInt32(0));
+                dictModelos.Add(modelosReader.GetInt32(0), (modelosReader.GetString(2)));
             }
+
+            foreach (KeyValuePair<Int32, String> itemModelo in dictModelos)
+            {
+                marcaComboBox.Items.Add(itemModelo.Value);
+            }
+            idModelo = dictModelos.FirstOrDefault(x => x.Value == modelo).Key;
             modelosReader.Close();
 
 
@@ -64,7 +92,7 @@ namespace UberFrba.Abm_Automovil
                 turnoComboBox.Items.Add(turnosReader.GetString(0));
             }
             turnosReader.Close();
-
+            Conexion.Close();
         }
 
         private void cancelarButton_Click(object sender, EventArgs e)
@@ -79,6 +107,31 @@ namespace UberFrba.Abm_Automovil
             patenteTextBox.Clear();
             turnoComboBox.ResetText();
             choferTextBox.Clear();
+        }
+
+        private void crearButton_Click(object sender, EventArgs e)
+        {
+
+            SqlConnection Conexion = BaseDeDatos.ObternerConexion();
+            SqlCommand crear = new SqlCommand();
+
+
+            using (crear = new SqlCommand("DAVID_Y_LOS_COCODRILOS.AGREGAR_AUTOMOVIL", Conexion))
+            {
+                crear.CommandType = CommandType.StoredProcedure;
+                crear.Parameters.Add("@patente", SqlDbType.Char);
+                crear.Parameters["@patente"].Value = patente;
+                crear.Parameters.Add("@marca", SqlDbType.Int);
+                crear.Parameters["@marca"].Value = idMarca;
+                crear.Parameters.Add("@modelo", SqlDbType.Int);
+                crear.Parameters["@modelo"].Value = idModelo;
+                crear.Parameters.Add("@turno", SqlDbType.Char);
+                crear.Parameters["@turno"].Value = turno;
+                crear.Parameters.Add("@chofer", SqlDbType.Int);
+                crear.Parameters["@chofer"].Value = chofer;
+
+            }
+            Conexion.Close();
         }
     }
 }

@@ -79,35 +79,31 @@ namespace UberFrba
 
                 result =  loginUsuario.ExecuteReader();
 
-                if (result.HasRows)
+                Usuario.IdUsuario = (int)result.GetDecimal(0);//Asumiendo que la primera columna es DNI (ID)
+                if (result.VisibleFieldCount == 3)
                 {
-                    Console.WriteLine(result.GetDecimal(0));
-                    Usuario.IdUsuario = (int) result.GetDecimal(0);//Asumiendo que la primera columna es DNI (ID)
-                    if(result.HasRows.Equals(1))
+                    Usuario.RolUsuario = result.GetInt32(1);
+                    int i;
+                    for (i = 0; result.Read(); i++) ;
+                    if (i == 1)
                     {
-                        Usuario.RolUsuario = result.GetInt32(1);
                         Menu menu = new Menu();
-                        menu.ShowDialog(); 
-                    }
-                    else
+                        menu.ShowDialog();
+                    } else
                     {
-                        SeleccionRol seleccionRol = new SeleccionRol();
-                  
-                        while (result.Read())
-                        {
-                        }
-
-
-                        seleccionRol.ShowDialog();
-                            
+                        SeleccionRol rolSeleccionado = new SeleccionRol();
+                        rolSeleccionado.ShowDialog();
                     }
                 }
                 else
                 {
-                    
-                    
+                    if (result.GetInt32(0) == 999)
+                        MessageBox.Show("Usuario inhabilitado");
+                    else
+                        MessageBox.Show("Usuario o Contraseña incorrecto/s");
                 }
-               
+
+
             }
 
             catch (Exception ex)
