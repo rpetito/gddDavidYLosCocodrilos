@@ -70,7 +70,6 @@
             this.Controls.Add(this.seleccionarButton);
             this.Name = "SeleccionRol";
             this.Text = "Selección de Rol";
-            this.Load += new System.EventHandler(this.SeleccionRol_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

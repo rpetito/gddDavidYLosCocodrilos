@@ -183,6 +183,7 @@
       <DependentUpon>Administrador.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseDeDatos.cs" />
+    <Compile Include="Rol.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Facturacion\Facturacion.cs">
       <SubType>Form</SubType>

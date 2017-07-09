@@ -15,30 +15,9 @@ namespace UberFrba
     {
         public SeleccionRol()
         {
-            InitializeComponent();
-            SqlConnection Conexion = BaseDeDatos.ObternerConexion();
-            SqlCommand cmd = new SqlCommand();
-            SqlDataReader reader;
-            List<int> Roles;
-
-            using (cmd = new SqlCommand("DAVID_Y_LOS_COCODRILOS.",
-                                        Conexion)) ;
-            reader = cmd.ExecuteReader();
-
-            while (reader.Read())
-            {
-
-                rolComboBox.Items.Add(reader.GetString(1));
-
-            }
-
-
-            reader.Close();
+            
         }
+        
 
-        private void SeleccionRol_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
