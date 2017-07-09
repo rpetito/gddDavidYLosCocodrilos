@@ -96,7 +96,7 @@ namespace UberFrba
                     }
                     else
                     {
-                        if (result.GetInt32(0) == 999)
+                        if (result.GetInt32(0) == 0)
                             MessageBox.Show("Usuario inhabilitado", "hola");
                         else
                             MessageBox.Show("Usuario o Contraseña incorrecto/s");

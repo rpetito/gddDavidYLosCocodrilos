@@ -15,7 +15,7 @@ namespace UberFrba
     {
         public SeleccionRol()
         {
-            
+            //rolComboBox.Items.Add();
         }
         
 
