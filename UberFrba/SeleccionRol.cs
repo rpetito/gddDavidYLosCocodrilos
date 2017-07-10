@@ -16,29 +16,18 @@ namespace UberFrba
         public SeleccionRol()
         {
             InitializeComponent();
-            SqlConnection Conexion = BaseDeDatos.ObternerConexion();
-            SqlCommand cmd = new SqlCommand();
-            SqlDataReader reader;
-            List<int> Roles;
-
-            using (cmd = new SqlCommand("DAVID_Y_LOS_COCODRILOS.",
-                                        Conexion)) ;
-            reader = cmd.ExecuteReader();
-
-            while (reader.Read())
-            {
-
-                rolComboBox.Items.Add(reader.GetString(1));
-
+            foreach(Rol r in Usuario.getInstance().getRoles()) {
+                rolComboBox.Items.Add(r.getDetalle());
             }
-
-
-            reader.Close();
         }
 
-        private void SeleccionRol_Load(object sender, EventArgs e)
+        private void seleccionarButton_Click(object sender, EventArgs e)
         {
+            Rol selectedRol = Usuario.getInstance().getRolAtIndex(rolComboBox.SelectedIndex);
+            Usuario.getInstance().setRolSeleccionado(selectedRol);
 
+            Menu menu = new Menu();
+            menu.ShowDialog();
         }
     }
 }

@@ -42,6 +42,7 @@
             this.seleccionarButton.TabIndex = 0;
             this.seleccionarButton.Text = "Seleccionar";
             this.seleccionarButton.UseVisualStyleBackColor = true;
+            this.seleccionarButton.Click += new System.EventHandler(this.seleccionarButton_Click);
             // 
             // rolComboBox
             // 
@@ -70,7 +71,6 @@
             this.Controls.Add(this.seleccionarButton);
             this.Name = "SeleccionRol";
             this.Text = "Selección de Rol";
-            this.Load += new System.EventHandler(this.SeleccionRol_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

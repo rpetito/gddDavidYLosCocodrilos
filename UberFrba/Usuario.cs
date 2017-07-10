@@ -6,25 +6,57 @@ using System.Threading.Tasks;
 
 namespace UberFrba
 {
-    static class Usuario
+    class Usuario
     {
-        private static Int32 idUsuario = -1;
-        private static Int32 rolUsuarioSeleccionado = -1;
+        public static Usuario instance = null;
 
+        private Decimal dni = -1;
+        private List<Rol> roles = new List<Rol>();
+        private Rol rolSeleccionado = null;
 
-        public static Int32 IdUsuario
+        public static Usuario getInstance()
         {
-            get { return idUsuario; }
-            set { idUsuario = value; }
-            
+            if (instance == null)
+            {
+                instance = new Usuario();
+            }
+
+            return instance;
         }
 
-        public static Int32 RolUsuario
-        {
-            get { return rolUsuarioSeleccionado; }
-            set { rolUsuarioSeleccionado = value; }
 
+        public void setDNI(Decimal dni)
+        {
+            this.dni = dni;
         }
+
+        public void addRol(Rol rol)
+        {
+            if (!this.roles.Contains(rol)) {
+                this.roles.Add(rol);
+            }
+        }
+
+        public List<Rol> getRoles()
+        {
+            return this.roles;
+        }
+
+        public void setRolSeleccionado(Rol rol)
+        {
+            this.rolSeleccionado = rol;
+        }
+
+        public Rol getRolSeleccionado()
+        {
+            return this.rolSeleccionado;
+        }
+        
+        public Rol getRolAtIndex(int index)
+        {
+            return this.roles[index];
+        }
+
     }
    
 }

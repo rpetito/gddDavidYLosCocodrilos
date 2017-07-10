@@ -79,35 +79,51 @@ namespace UberFrba
 
                 result =  loginUsuario.ExecuteReader();
 
-                if (result.HasRows)
+                Boolean success = true;
+
+                while (result.Read())
                 {
-                    Console.WriteLine(result.GetDecimal(0));
-                    Usuario.IdUsuario = (int) result.GetDecimal(0);//Asumiendo que la primera columna es DNI (ID)
-                    if(result.HasRows.Equals(1))
+                    if (result.VisibleFieldCount == 3)
                     {
-                        Usuario.RolUsuario = result.GetInt32(1);
-                        Menu menu = new Menu();
-                        menu.ShowDialog(); 
+                        Usuario.getInstance().setDNI(result.GetDecimal(0));
+
+                        Rol rol = new Rol();
+                        rol.setID(result.GetInt32(1));
+                        rol.setDetalle(result.GetString(2));
+
+                        Usuario.getInstance().addRol(rol);
+                       
                     }
                     else
                     {
-                        SeleccionRol seleccionRol = new SeleccionRol();
-                  
-                        while (result.Read())
-                        {
-                        }
+                        if (result.GetInt32(0) == 0)
+                            MessageBox.Show("Usuario inhabilitado", "hola");
+                        else
+                            MessageBox.Show("Usuario o Contraseña incorrecto/s");
+
+                        success = false;
+                    }
 
 
-                        seleccionRol.ShowDialog();
-                            
+                }
+
+                if (success)
+                {
+                    if (Usuario.getInstance().getRoles().Count != 1)
+                    {
+                        Usuario.getInstance().setRolSeleccionado(Usuario.getInstance().getRoles()[0]);
+                        Menu menu = new Menu();
+                        menu.ShowDialog();
+                    }
+                    else
+                    {
+                        SeleccionRol rolSeleccionado = new SeleccionRol();
+                        rolSeleccionado.ShowDialog();
                     }
                 }
-                else
-                {
-                    
-                    
-                }
-               
+
+                Conexion.Close();
+              
             }
 
             catch (Exception ex)
@@ -115,7 +131,7 @@ namespace UberFrba
                 MessageBox.Show(ex.ToString(), "there was an issue!");
 
             }
-
+        
         }
     }
 }
