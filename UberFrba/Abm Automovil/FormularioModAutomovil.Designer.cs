@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cancelarButton = new System.Windows.Forms.Button();
             this.habilitadoCheckBox = new System.Windows.Forms.CheckBox();
             this.marcaSelTextBox = new System.Windows.Forms.TextBox();
             this.turnoSelTextBox = new System.Windows.Forms.ComboBox();
@@ -42,7 +43,6 @@
             this.patenteSelTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.modeloSelTextBox = new System.Windows.Forms.TextBox();
-            this.cancelarButton = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,10 +69,19 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Automóvil seleccionado";
             // 
+            // cancelarButton
+            // 
+            this.cancelarButton.Location = new System.Drawing.Point(6, 290);
+            this.cancelarButton.Name = "cancelarButton";
+            this.cancelarButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelarButton.TabIndex = 55;
+            this.cancelarButton.Text = "Cancelar";
+            this.cancelarButton.UseVisualStyleBackColor = true;
+            this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
+            // 
             // habilitadoCheckBox
             // 
             this.habilitadoCheckBox.AutoSize = true;
-            this.habilitadoCheckBox.Enabled = false;
             this.habilitadoCheckBox.Location = new System.Drawing.Point(51, 240);
             this.habilitadoCheckBox.Name = "habilitadoCheckBox";
             this.habilitadoCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -83,7 +92,6 @@
             // 
             // marcaSelTextBox
             // 
-            this.marcaSelTextBox.Enabled = false;
             this.marcaSelTextBox.Location = new System.Drawing.Point(101, 40);
             this.marcaSelTextBox.Name = "marcaSelTextBox";
             this.marcaSelTextBox.Size = new System.Drawing.Size(100, 20);
@@ -91,7 +99,6 @@
             // 
             // turnoSelTextBox
             // 
-            this.turnoSelTextBox.Enabled = false;
             this.turnoSelTextBox.FormattingEnabled = true;
             this.turnoSelTextBox.Location = new System.Drawing.Point(101, 160);
             this.turnoSelTextBox.Name = "turnoSelTextBox";
@@ -109,7 +116,6 @@
             // 
             // limpiarSelButton
             // 
-            this.limpiarSelButton.Enabled = false;
             this.limpiarSelButton.Location = new System.Drawing.Point(98, 290);
             this.limpiarSelButton.Name = "limpiarSelButton";
             this.limpiarSelButton.Size = new System.Drawing.Size(75, 23);
@@ -129,7 +135,6 @@
             // 
             // modificarSelButton
             // 
-            this.modificarSelButton.Enabled = false;
             this.modificarSelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.modificarSelButton.Location = new System.Drawing.Point(190, 290);
             this.modificarSelButton.Name = "modificarSelButton";
@@ -149,7 +154,6 @@
             // 
             // choferSelTextBox
             // 
-            this.choferSelTextBox.Enabled = false;
             this.choferSelTextBox.Location = new System.Drawing.Point(101, 200);
             this.choferSelTextBox.Name = "choferSelTextBox";
             this.choferSelTextBox.Size = new System.Drawing.Size(100, 20);
@@ -166,7 +170,6 @@
             // 
             // patenteSelTextBox
             // 
-            this.patenteSelTextBox.Enabled = false;
             this.patenteSelTextBox.Location = new System.Drawing.Point(101, 120);
             this.patenteSelTextBox.Name = "patenteSelTextBox";
             this.patenteSelTextBox.Size = new System.Drawing.Size(100, 20);
@@ -183,21 +186,10 @@
             // 
             // modeloSelTextBox
             // 
-            this.modeloSelTextBox.Enabled = false;
             this.modeloSelTextBox.Location = new System.Drawing.Point(101, 80);
             this.modeloSelTextBox.Name = "modeloSelTextBox";
             this.modeloSelTextBox.Size = new System.Drawing.Size(100, 20);
             this.modeloSelTextBox.TabIndex = 48;
-            // 
-            // cancelarButton
-            // 
-            this.cancelarButton.Location = new System.Drawing.Point(6, 290);
-            this.cancelarButton.Name = "cancelarButton";
-            this.cancelarButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelarButton.TabIndex = 55;
-            this.cancelarButton.Text = "Cancelar";
-            this.cancelarButton.UseVisualStyleBackColor = true;
-            this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
             // 
             // FormularioModAutomovil
             // 

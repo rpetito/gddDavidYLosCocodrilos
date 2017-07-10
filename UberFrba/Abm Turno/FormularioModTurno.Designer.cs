@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cancelarButton = new System.Windows.Forms.Button();
             this.baseSelTextBox = new System.Windows.Forms.TextBox();
             this.kilometroSelTextBox = new System.Windows.Forms.TextBox();
             this.descripcionSelTextBox = new System.Windows.Forms.TextBox();
@@ -42,7 +43,6 @@
             this.habilitadoCheckBox = new System.Windows.Forms.CheckBox();
             this.limpiarSelButton = new System.Windows.Forms.Button();
             this.modificarSelButton = new System.Windows.Forms.Button();
-            this.cancelarButton = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,9 +69,18 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Turno seleccionado";
             // 
+            // cancelarButton
+            // 
+            this.cancelarButton.Location = new System.Drawing.Point(6, 276);
+            this.cancelarButton.Name = "cancelarButton";
+            this.cancelarButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelarButton.TabIndex = 11;
+            this.cancelarButton.Text = "Cancelar";
+            this.cancelarButton.UseVisualStyleBackColor = true;
+            this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
+            // 
             // baseSelTextBox
             // 
-            this.baseSelTextBox.Enabled = false;
             this.baseSelTextBox.Location = new System.Drawing.Point(140, 198);
             this.baseSelTextBox.Name = "baseSelTextBox";
             this.baseSelTextBox.Size = new System.Drawing.Size(123, 20);
@@ -79,7 +88,6 @@
             // 
             // kilometroSelTextBox
             // 
-            this.kilometroSelTextBox.Enabled = false;
             this.kilometroSelTextBox.Location = new System.Drawing.Point(140, 158);
             this.kilometroSelTextBox.Name = "kilometroSelTextBox";
             this.kilometroSelTextBox.Size = new System.Drawing.Size(123, 20);
@@ -87,7 +95,6 @@
             // 
             // descripcionSelTextBox
             // 
-            this.descripcionSelTextBox.Enabled = false;
             this.descripcionSelTextBox.Location = new System.Drawing.Point(140, 118);
             this.descripcionSelTextBox.Name = "descripcionSelTextBox";
             this.descripcionSelTextBox.Size = new System.Drawing.Size(121, 20);
@@ -95,7 +102,6 @@
             // 
             // horaFinSelComboBox
             // 
-            this.horaFinSelComboBox.Enabled = false;
             this.horaFinSelComboBox.FormattingEnabled = true;
             this.horaFinSelComboBox.Location = new System.Drawing.Point(140, 78);
             this.horaFinSelComboBox.Name = "horaFinSelComboBox";
@@ -104,7 +110,6 @@
             // 
             // horaInicioSelComboBox
             // 
-            this.horaInicioSelComboBox.Enabled = false;
             this.horaInicioSelComboBox.FormattingEnabled = true;
             this.horaInicioSelComboBox.Location = new System.Drawing.Point(140, 38);
             this.horaInicioSelComboBox.Name = "horaInicioSelComboBox";
@@ -159,7 +164,6 @@
             // habilitadoCheckBox
             // 
             this.habilitadoCheckBox.AutoSize = true;
-            this.habilitadoCheckBox.Enabled = false;
             this.habilitadoCheckBox.Location = new System.Drawing.Point(81, 236);
             this.habilitadoCheckBox.Name = "habilitadoCheckBox";
             this.habilitadoCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -170,7 +174,6 @@
             // 
             // limpiarSelButton
             // 
-            this.limpiarSelButton.Enabled = false;
             this.limpiarSelButton.Location = new System.Drawing.Point(103, 276);
             this.limpiarSelButton.Name = "limpiarSelButton";
             this.limpiarSelButton.Size = new System.Drawing.Size(75, 23);
@@ -181,7 +184,6 @@
             // 
             // modificarSelButton
             // 
-            this.modificarSelButton.Enabled = false;
             this.modificarSelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.modificarSelButton.Location = new System.Drawing.Point(195, 276);
             this.modificarSelButton.Name = "modificarSelButton";
@@ -189,16 +191,6 @@
             this.modificarSelButton.TabIndex = 51;
             this.modificarSelButton.Text = "Modificar";
             this.modificarSelButton.UseVisualStyleBackColor = true;
-            // 
-            // cancelarButton
-            // 
-            this.cancelarButton.Location = new System.Drawing.Point(6, 276);
-            this.cancelarButton.Name = "cancelarButton";
-            this.cancelarButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelarButton.TabIndex = 11;
-            this.cancelarButton.Text = "Cancelar";
-            this.cancelarButton.UseVisualStyleBackColor = true;
-            this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
             // 
             // FormularioModTurno
             // 

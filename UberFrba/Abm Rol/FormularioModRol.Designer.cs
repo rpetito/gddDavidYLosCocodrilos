@@ -73,7 +73,6 @@
             // habilitadoCheckBox
             // 
             this.habilitadoCheckBox.AutoSize = true;
-            this.habilitadoCheckBox.Enabled = false;
             this.habilitadoCheckBox.Location = new System.Drawing.Point(248, 29);
             this.habilitadoCheckBox.Name = "habilitadoCheckBox";
             this.habilitadoCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -96,7 +95,6 @@
             // 
             // limpiarSelButton
             // 
-            this.limpiarSelButton.Enabled = false;
             this.limpiarSelButton.Location = new System.Drawing.Point(19, 178);
             this.limpiarSelButton.Name = "limpiarSelButton";
             this.limpiarSelButton.Size = new System.Drawing.Size(75, 23);
@@ -107,7 +105,6 @@
             // 
             // seleccionarTodoButton
             // 
-            this.seleccionarTodoButton.Enabled = false;
             this.seleccionarTodoButton.Location = new System.Drawing.Point(194, 178);
             this.seleccionarTodoButton.Name = "seleccionarTodoButton";
             this.seleccionarTodoButton.Size = new System.Drawing.Size(104, 23);
@@ -118,7 +115,6 @@
             // funcionalidadesSelGrid
             // 
             this.funcionalidadesSelGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.funcionalidadesSelGrid.Enabled = false;
             this.funcionalidadesSelGrid.Location = new System.Drawing.Point(19, 30);
             this.funcionalidadesSelGrid.Name = "funcionalidadesSelGrid";
             this.funcionalidadesSelGrid.Size = new System.Drawing.Size(279, 142);
@@ -136,7 +132,6 @@
             // 
             // nombreSelTextBox
             // 
-            this.nombreSelTextBox.Enabled = false;
             this.nombreSelTextBox.Location = new System.Drawing.Point(84, 27);
             this.nombreSelTextBox.Name = "nombreSelTextBox";
             this.nombreSelTextBox.Size = new System.Drawing.Size(100, 20);
@@ -153,7 +148,6 @@
             // 
             // modificarSelButton
             // 
-            this.modificarSelButton.Enabled = false;
             this.modificarSelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.modificarSelButton.Location = new System.Drawing.Point(272, 299);
             this.modificarSelButton.Name = "modificarSelButton";
