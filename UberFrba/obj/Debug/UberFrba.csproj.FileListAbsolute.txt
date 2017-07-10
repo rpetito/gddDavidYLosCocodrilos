@@ -88,3 +88,6 @@ C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberF
 C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.exe
 C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.pdb
 C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.SeleccionRol.resources
+C:\Users\Rodrigo\Desktop\UTN\GDD\gddDavidYLosCocodrilos\UberFrba\bin\Debug\UberFrba.exe.config
+C:\Users\Rodrigo\Desktop\UTN\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.exe
+C:\Users\Rodrigo\Desktop\UTN\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.pdb
