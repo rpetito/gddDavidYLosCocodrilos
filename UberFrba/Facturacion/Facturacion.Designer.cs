@@ -40,8 +40,8 @@
             this.busquedaClienteButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.mesComboBox = new System.Windows.Forms.ComboBox();
-            this.anioTextBox = new System.Windows.Forms.TextBox();
+            this.anioLabel = new System.Windows.Forms.Label();
+            this.mesLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.viajesGrid)).BeginInit();
             this.SuspendLayout();
@@ -62,6 +62,7 @@
             this.facturarButton.TabIndex = 24;
             this.facturarButton.Text = "Facturar";
             this.facturarButton.UseVisualStyleBackColor = true;
+            this.facturarButton.Click += new System.EventHandler(this.facturarButton_Click);
             // 
             // limpiarButton
             // 
@@ -155,28 +156,31 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "Año:";
             // 
-            // mesComboBox
+            // anioLabel
             // 
-            this.mesComboBox.FormattingEnabled = true;
-            this.mesComboBox.Location = new System.Drawing.Point(86, 41);
-            this.mesComboBox.Name = "mesComboBox";
-            this.mesComboBox.Size = new System.Drawing.Size(121, 21);
-            this.mesComboBox.TabIndex = 26;
+            this.anioLabel.AutoSize = true;
+            this.anioLabel.Location = new System.Drawing.Point(134, 18);
+            this.anioLabel.Name = "anioLabel";
+            this.anioLabel.Size = new System.Drawing.Size(70, 13);
+            this.anioLabel.TabIndex = 26;
+            this.anioLabel.Text = "Año corriente";
             // 
-            // anioTextBox
+            // mesLabel
             // 
-            this.anioTextBox.Location = new System.Drawing.Point(86, 15);
-            this.anioTextBox.Name = "anioTextBox";
-            this.anioTextBox.Size = new System.Drawing.Size(120, 20);
-            this.anioTextBox.TabIndex = 27;
+            this.mesLabel.AutoSize = true;
+            this.mesLabel.Location = new System.Drawing.Point(134, 44);
+            this.mesLabel.Name = "mesLabel";
+            this.mesLabel.Size = new System.Drawing.Size(72, 13);
+            this.mesLabel.TabIndex = 27;
+            this.mesLabel.Text = "Mes Corriente";
             // 
             // Facturacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(289, 351);
-            this.Controls.Add(this.anioTextBox);
-            this.Controls.Add(this.mesComboBox);
+            this.Controls.Add(this.mesLabel);
+            this.Controls.Add(this.anioLabel);
             this.Controls.Add(this.clienteTextBox);
             this.Controls.Add(this.facturarButton);
             this.Controls.Add(this.limpiarButton);
@@ -211,7 +215,7 @@
         private System.Windows.Forms.Button busquedaClienteButton;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox mesComboBox;
-        private System.Windows.Forms.TextBox anioTextBox;
+        private System.Windows.Forms.Label anioLabel;
+        private System.Windows.Forms.Label mesLabel;
     }
 }
