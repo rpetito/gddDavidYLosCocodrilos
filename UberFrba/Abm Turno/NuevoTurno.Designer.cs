@@ -138,6 +138,7 @@
 			this.crearButton.TabIndex = 12;
 			this.crearButton.Text = "Crear";
 			this.crearButton.UseVisualStyleBackColor = true;
+			this.crearButton.Click += new System.EventHandler(this.crearButton_Click);
 			// 
 			// horaInicioTextBox
 			// 
@@ -145,7 +146,6 @@
 			this.horaInicioTextBox.Name = "horaInicioTextBox";
 			this.horaInicioTextBox.Size = new System.Drawing.Size(121, 20);
 			this.horaInicioTextBox.TabIndex = 13;
-			this.horaInicioTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
 			// 
 			// horaFin
 			// 
