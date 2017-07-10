@@ -109,7 +109,7 @@ namespace UberFrba
 
                 if (success)
                 {
-                    if (Usuario.getInstance().getRoles().Count != 1)
+                    if (Usuario.getInstance().getRoles().Count == 1)
                     {
                         Usuario.getInstance().setRolSeleccionado(Usuario.getInstance().getRoles()[0]);
                         Menu menu = new Menu();
