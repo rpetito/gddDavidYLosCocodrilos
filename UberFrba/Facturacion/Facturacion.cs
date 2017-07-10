@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace UberFrba.Facturacion
 {
@@ -15,6 +16,11 @@ namespace UberFrba.Facturacion
         public Facturacion()
         {
             InitializeComponent();
+            
+            var fecha = ConfigurationSettings.AppSettings["DateKey"];
+            var appDate = DateTime.Parse(fecha);
+            anioLabel.Text = appDate.Month.ToString();
+            mesLabel.Text = appDate.Year.ToString();
         }
 
         private void busquedaCliente_Click(object sender, EventArgs e)
@@ -25,8 +31,7 @@ namespace UberFrba.Facturacion
 
         private void limpiarButton_Click(object sender, EventArgs e)
         {
-            anioTextBox.Clear();
-            mesComboBox.ResetText();
+            
             clienteTextBox.Clear();
             viajesGrid.ClearSelection();
             totalTextBox.Clear();
@@ -35,6 +40,11 @@ namespace UberFrba.Facturacion
         private void cancelarButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void facturarButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
