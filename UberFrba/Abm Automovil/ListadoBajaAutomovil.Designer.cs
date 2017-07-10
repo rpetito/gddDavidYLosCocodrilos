@@ -80,6 +80,7 @@
             this.choferColumna,
             this.eliminacionColumn});
             this.automovilesGrid.Location = new System.Drawing.Point(12, 163);
+            this.automovilesGrid.MultiSelect = false;
             this.automovilesGrid.Name = "automovilesGrid";
             this.automovilesGrid.ReadOnly = true;
             this.automovilesGrid.Size = new System.Drawing.Size(345, 162);

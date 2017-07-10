@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace UberFrba.Abm_Chofer
         public ListadoModChofer()
         {
             InitializeComponent();
+            choferesGrid.Dock = DockStyle.Fill;
         }
 
         private void limpiarButton_Click(object sender, EventArgs e)
@@ -30,36 +32,50 @@ namespace UberFrba.Abm_Chofer
             this.Close();
         }
 
-        private void limpiarSelButton_Click(object sender, EventArgs e)
-        {
-            nombreSelTextBox.Clear();
-            apellidoSelTextBox.Clear();
-            dniSelTextBox.Clear();
-            nacimientoSelTextBox.Clear();
-            telefonoSelTextBox.Clear();
-            direccionSelTextBox.Clear();
-            localidadSelTextBox.Clear();
-            pisoSelTextBox.Clear();
-            departamentoSelTextBox.Clear();
-            mailSelTextBox.Clear();
-            habilitadoCheckBox.Checked = false;
-        }
-
         private void seleccionarButton_Click(object sender, EventArgs e)
         {
-            nombreSelTextBox.Enabled = true;
-            apellidoSelTextBox.Enabled = true;
-            dniSelTextBox.Enabled = true;
-            nacimientoSelTextBox.Enabled = true;
-            telefonoSelTextBox.Enabled = true;
-            direccionSelTextBox.Enabled = true;
-            localidadSelTextBox.Enabled = true;
-            pisoSelTextBox.Enabled = true;
-            departamentoSelTextBox.Enabled = true;
-            mailSelTextBox.Enabled = true;
-            habilitadoCheckBox.Enabled = true;
-            limpiarSelButton.Enabled = true;
-            modificarSelButton.Enabled = true;
+            //mandar la fila seleccionada al formulario
+            FormularioModChofer form = new FormularioModChofer();
+            form.ShowDialog();
+        }
+
+        private void buscarButton_Click(object sender, EventArgs e)
+        {
+            choferesGrid.DataSource = getChoferes();
+        }
+
+        private DataTable getChoferes()
+        {
+            DataTable dtChofer = new DataTable();
+            try
+            {
+                SqlConnection Conexion = BaseDeDatos.ObternerConexion();
+                SqlCommand buscarChofer = new SqlCommand();
+                SqlDataReader busqueda;
+
+
+                using (buscarChofer = new SqlCommand("DAVID_Y_LOS_COCODRILOS.BUSCAR_CHOFER", Conexion))
+                {
+                    buscarChofer.CommandType = CommandType.StoredProcedure;
+                    buscarChofer.Parameters.Add("@nombre", SqlDbType.Char);
+                    buscarChofer.Parameters["@nombre"].Value = nombreTextBox.Text;
+                    buscarChofer.Parameters.Add("@apellido", SqlDbType.Char);
+                    buscarChofer.Parameters["@apellido"].Value = apellidoTextBox.Text;
+                    buscarChofer.Parameters.Add("@dni", SqlDbType.Decimal);
+                    buscarChofer.Parameters["@dni"].Value = dniTextBox.Text;
+                }
+
+                busqueda = buscarChofer.ExecuteReader();
+                Conexion.Close();
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "there was an issue!");
+
+            }
+            return dtChofer;
         }
     }
 }

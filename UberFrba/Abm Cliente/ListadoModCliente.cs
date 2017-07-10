@@ -32,36 +32,9 @@ namespace UberFrba.Abm_Cliente
 
         private void seleccionarButton_Click(object sender, EventArgs e)
         {
-            nombreSelTextBox.Enabled = true;
-            apellidoSelTextBox.Enabled = true;
-            dniSelTextBox.Enabled = true;
-            nacimientoSelTextBox.Enabled = true;
-            telefonoSelTextBox.Enabled = true;
-            direccionSelTextBox.Enabled = true;
-            localidadSelTextBox.Enabled = true;
-            pisoSelTextBox.Enabled = true;
-            departamentoSelTextBox.Enabled = true;
-            codigoSelTextBox.Enabled = true;
-            mailSelTextBox.Enabled = true;
-            habilitadoCheckBox.Enabled = true;
-            limpiarSelButton.Enabled = true;
-            modificarSelButton.Enabled = true;
-        }
-
-        private void limpiarSelButton_Click(object sender, EventArgs e)
-        {
-            nombreSelTextBox.Clear();
-            apellidoSelTextBox.Clear();
-            dniSelTextBox.Clear();
-            nacimientoSelTextBox.Clear();
-            telefonoSelTextBox.Clear();
-            direccionSelTextBox.Clear();
-            localidadSelTextBox.Clear();
-            pisoSelTextBox.Clear();
-            departamentoSelTextBox.Clear();
-            codigoSelTextBox.Clear();
-            mailSelTextBox.Clear();
-            habilitadoCheckBox.Checked = false;
+            //mandar fila seleccionada al form
+            FormularioModCliente form = new FormularioModCliente();
+            form.ShowDialog();
         }
     }
 }

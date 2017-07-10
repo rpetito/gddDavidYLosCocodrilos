@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace UberFrba.Abm_Rol
 {
-    public partial class ListadoModRol : Form
+    public partial class FormularioModRol : Form
     {
-        public ListadoModRol()
+        public FormularioModRol()
         {
             InitializeComponent();
-        }
-
-        private void limpiarButton_Click(object sender, EventArgs e)
-        {
-            nombreTextBox.Clear();
-            rolesGrid.ClearSelection();
         }
 
         private void cancelarButton_Click(object sender, EventArgs e)
@@ -28,11 +22,10 @@ namespace UberFrba.Abm_Rol
             this.Close();
         }
 
-        private void seleccionarButton_Click(object sender, EventArgs e)
+        private void limpiarSelButton_Click(object sender, EventArgs e)
         {
-            //mandar seleccion al form
-            FormularioModRol form = new FormularioModRol();
-            form.ShowDialog();
+            nombreSelTextBox.Clear();
+            habilitadoCheckBox.Checked = false;
         }
     }
 }
