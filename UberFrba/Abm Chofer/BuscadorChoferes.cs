@@ -16,9 +16,8 @@ namespace UberFrba.Abm_Chofer
         public BuscadorChoferes()
         {
             InitializeComponent();
-            choferesGrid.DataSource = getChoferes();
         }
-
+		
         private void limpiarButton_Click(object sender, EventArgs e)
         {
             nombreTextBox.Clear();
@@ -34,20 +33,26 @@ namespace UberFrba.Abm_Chofer
 
         private void buscarButton_Click(object sender, EventArgs e)
         {
-            choferesGrid.DataSource = getChoferes();
+            getChoferes();
         }
 
         private DataTable getChoferes()
         {
-            DataTable dtChofer = new DataTable();
+            SqlConnection Conexion = BaseDeDatos.ObternerConexion();
+            SqlCommand buscarChofer = new SqlCommand();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter();
+            String dni;
             try
             {
-                SqlConnection Conexion = BaseDeDatos.ObternerConexion();
-                SqlCommand buscarChofer = new SqlCommand();
-                SqlDataReader busqueda;
+                if (string.IsNullOrWhiteSpace(dniTextBox.Text))
+                {
+                    dni = null;
+                }
+                else dni = dniTextBox.Text;
 
 
-                using (buscarChofer = new SqlCommand("DAVID_Y_LOS_COCODRILOS.BUSCAR_CHOFER", Conexion))
+                using (buscarChofer = new SqlCommand("DAVID_Y_LOS_COCODRILOS.BUSCAR_USUARIO", Conexion))
                 {
                     buscarChofer.CommandType = CommandType.StoredProcedure;
                     buscarChofer.Parameters.Add("@nombre", SqlDbType.Char);
@@ -55,12 +60,11 @@ namespace UberFrba.Abm_Chofer
                     buscarChofer.Parameters.Add("@apellido", SqlDbType.Char);
                     buscarChofer.Parameters["@apellido"].Value = apellidoTextBox.Text;
                     buscarChofer.Parameters.Add("@dni", SqlDbType.Decimal);
-                    buscarChofer.Parameters["@dni"].Value = dniTextBox.Text;
+                    buscarChofer.Parameters["@dni"].Value = dni;
+                    da.SelectCommand = buscarChofer;
+                    da.Fill(dt);
+                    choferesGrid.DataSource = dt;
                 }
-
-                busqueda = buscarChofer.ExecuteReader();
-                Conexion.Close();
-
             }
 
             catch (Exception ex)
@@ -68,7 +72,9 @@ namespace UberFrba.Abm_Chofer
                 MessageBox.Show(ex.ToString(), "there was an issue!");
 
             }
-            return dtChofer;
+            Conexion.Close();
+            return dt;
+
         }
 
         private void seleccionarButton_Click(object sender, EventArgs e)

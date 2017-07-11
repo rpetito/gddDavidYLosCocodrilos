@@ -38,15 +38,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.limpiarButton = new System.Windows.Forms.Button();
-            this.seleccionarButton = new System.Windows.Forms.Button();
             this.buscarButton = new System.Windows.Forms.Button();
             this.cancelarButton = new System.Windows.Forms.Button();
             this.automovilesGrid = new System.Windows.Forms.DataGridView();
-            this.patenteColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.marcaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.modeloColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.turnoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.choferColumna = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.automovilesGrid)).BeginInit();
             this.SuspendLayout();
@@ -149,16 +143,6 @@
             this.limpiarButton.UseVisualStyleBackColor = true;
             this.limpiarButton.Click += new System.EventHandler(this.limpiarButton_Click);
             // 
-            // seleccionarButton
-            // 
-            this.seleccionarButton.Location = new System.Drawing.Point(284, 347);
-            this.seleccionarButton.Name = "seleccionarButton";
-            this.seleccionarButton.Size = new System.Drawing.Size(75, 23);
-            this.seleccionarButton.TabIndex = 11;
-            this.seleccionarButton.Text = "Seleccionar";
-            this.seleccionarButton.UseVisualStyleBackColor = true;
-            this.seleccionarButton.Click += new System.EventHandler(this.seleccionarButton_Click);
-            // 
             // buscarButton
             // 
             this.buscarButton.Location = new System.Drawing.Point(284, 131);
@@ -184,48 +168,12 @@
             this.automovilesGrid.AllowUserToAddRows = false;
             this.automovilesGrid.AllowUserToDeleteRows = false;
             this.automovilesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.automovilesGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.patenteColumn,
-            this.marcaColumn,
-            this.modeloColumn,
-            this.turnoColumn,
-            this.choferColumna});
             this.automovilesGrid.Location = new System.Drawing.Point(14, 163);
             this.automovilesGrid.MultiSelect = false;
             this.automovilesGrid.Name = "automovilesGrid";
             this.automovilesGrid.ReadOnly = true;
             this.automovilesGrid.Size = new System.Drawing.Size(345, 162);
             this.automovilesGrid.TabIndex = 12;
-            // 
-            // patenteColumn
-            // 
-            this.patenteColumn.HeaderText = "Patente";
-            this.patenteColumn.Name = "patenteColumn";
-            this.patenteColumn.ReadOnly = true;
-            // 
-            // marcaColumn
-            // 
-            this.marcaColumn.HeaderText = "Marca";
-            this.marcaColumn.Name = "marcaColumn";
-            this.marcaColumn.ReadOnly = true;
-            // 
-            // modeloColumn
-            // 
-            this.modeloColumn.HeaderText = "Modelo";
-            this.modeloColumn.Name = "modeloColumn";
-            this.modeloColumn.ReadOnly = true;
-            // 
-            // turnoColumn
-            // 
-            this.turnoColumn.HeaderText = "Turno";
-            this.turnoColumn.Name = "turnoColumn";
-            this.turnoColumn.ReadOnly = true;
-            // 
-            // choferColumna
-            // 
-            this.choferColumna.HeaderText = "Chofer";
-            this.choferColumna.Name = "choferColumna";
-            this.choferColumna.ReadOnly = true;
             // 
             // ListadoModAutomovil
             // 
@@ -234,7 +182,6 @@
             this.ClientSize = new System.Drawing.Size(375, 381);
             this.Controls.Add(this.automovilesGrid);
             this.Controls.Add(this.limpiarButton);
-            this.Controls.Add(this.seleccionarButton);
             this.Controls.Add(this.buscarButton);
             this.Controls.Add(this.cancelarButton);
             this.Controls.Add(this.groupBox1);
@@ -258,16 +205,10 @@
         private System.Windows.Forms.TextBox choferTextBox;
         private System.Windows.Forms.TextBox patenteTextBox;
         private System.Windows.Forms.Button limpiarButton;
-        private System.Windows.Forms.Button seleccionarButton;
         private System.Windows.Forms.Button buscarButton;
         private System.Windows.Forms.Button cancelarButton;
         private System.Windows.Forms.ComboBox modeloComboBox;
         private System.Windows.Forms.DataGridView automovilesGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn patenteColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn marcaColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn modeloColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn turnoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn choferColumna;
 
     }
 }
