@@ -114,5 +114,21 @@ namespace UberFrba.Abm_Automovil
             Conexion.Close();
             return dt;
         }
+
+        private void automovilesGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0 && e.RowIndex >= 0)
+            {
+                AutomovilSeleccionado auto = new AutomovilSeleccionado();
+                auto.setMarca(this.automovilesGrid.CurrentRow.Cells[2].Value.ToString());
+                auto.setModelo(this.automovilesGrid.CurrentRow.Cells[3].Value.ToString());
+                auto.setPatente(this.automovilesGrid.CurrentRow.Cells[1].Value.ToString());
+                auto.setChofer(this.automovilesGrid.CurrentRow.Cells[5].Value.ToString());
+                auto.setTurno(this.automovilesGrid.CurrentRow.Cells[4].Value.ToString());
+
+                FormularioModAutomovil form = new FormularioModAutomovil();
+                form.ShowDialog();
+            }
+        }
     }
 }

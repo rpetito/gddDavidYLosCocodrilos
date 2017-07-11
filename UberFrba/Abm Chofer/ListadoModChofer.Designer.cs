@@ -149,8 +149,10 @@
             this.choferesGrid.MultiSelect = false;
             this.choferesGrid.Name = "choferesGrid";
             this.choferesGrid.ReadOnly = true;
+            this.choferesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.choferesGrid.Size = new System.Drawing.Size(345, 162);
             this.choferesGrid.TabIndex = 19;
+            this.choferesGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.choferesGrid_CellContentClick);
             // 
             // ListadoModChofer
             // 

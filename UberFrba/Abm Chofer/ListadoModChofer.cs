@@ -26,6 +26,17 @@ namespace UberFrba.Abm_Chofer
 
         }
 
+        private void choferesGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0 && e.RowIndex >= 0)
+            {
+                //guardar los datos seleccionados y mandarlos al form
+                FormularioModChofer form = new FormularioModChofer();
+                form.ShowDialog();
+            }
+        }
+
+
         private void limpiarButton_Click(object sender, EventArgs e)
         {
             nombreTextBox.Clear();
@@ -38,18 +49,6 @@ namespace UberFrba.Abm_Chofer
         {
             this.Close();
         }
-
-        //private void choferesGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    var senderGrid = (DataGridView)sender;
-
-        //    if (e.ColumnIndex == choferesGrid.Columns[0].Index && e.RowIndex >= 0)
-        //    {
-        //        FormularioModChofer form = new FormularioModChofer();
-        //        form.ShowDialog();
-        //    }
-        //}
-
 
         private void buscarButton_Click(object sender, EventArgs e)
         {

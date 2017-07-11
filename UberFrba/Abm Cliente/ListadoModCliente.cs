@@ -84,6 +84,16 @@ namespace UberFrba.Abm_Cliente
 
         }
 
+        private void clientesGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0 && e.RowIndex >= 0)
+            {
+                //guardar los datos seleccionados y mandarlos al form
+                FormularioModCliente form = new FormularioModCliente();
+                form.ShowDialog();
+            }
+        }
+
 
     }
 }

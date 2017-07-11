@@ -145,8 +145,10 @@
             this.clientesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.clientesGrid.Location = new System.Drawing.Point(19, 177);
             this.clientesGrid.Name = "clientesGrid";
+            this.clientesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.clientesGrid.Size = new System.Drawing.Size(345, 162);
             this.clientesGrid.TabIndex = 84;
+            this.clientesGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clientesGrid_CellContentClick);
             // 
             // ListadoModCliente
             // 

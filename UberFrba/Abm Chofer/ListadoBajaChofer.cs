@@ -82,5 +82,33 @@ namespace UberFrba.Abm_Chofer
             return dt;
 
         }
+
+        private void choferesGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0 && e.RowIndex >= 0)
+            {
+                //tirar un mensaje para confirmar si el usuario esta seguro
+                //si selecciona SI
+                Decimal dni = (Decimal)choferesGrid.SelectedCells[3].Value;
+                SqlConnection Conexion = BaseDeDatos.ObternerConexion();
+                SqlCommand eliminarChofer = new SqlCommand();
+
+                try
+                {
+                    using (eliminarChofer = new SqlCommand("DAVID_Y_LOS_COCODRILOS.INHABILITAR_USUARIO", Conexion))
+                    {
+                        eliminarChofer.CommandType = CommandType.StoredProcedure;
+                        eliminarChofer.Parameters.Add("@dni", SqlDbType.Decimal);
+                        eliminarChofer.Parameters["@dni"].Value = dni;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString(), "there was an issue!");
+
+                }
+                Conexion.Close();
+            }
+        }
     }
 }

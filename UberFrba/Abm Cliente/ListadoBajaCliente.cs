@@ -83,5 +83,33 @@ namespace UberFrba.Abm_Cliente
             return dt;
 
         }
+
+        private void clientesGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0 && e.RowIndex >= 0)
+            {
+                //tirar un mensaje para confirmar si el usuario esta seguro
+                //si selecciona SI
+                Decimal dni = (Decimal) clientesGrid.SelectedCells[3].Value;
+                SqlConnection Conexion = BaseDeDatos.ObternerConexion();
+                SqlCommand eliminarCliente = new SqlCommand();
+
+                try
+                {
+                    using (eliminarCliente = new SqlCommand("DAVID_Y_LOS_COCODRILOS.INHABILITAR_USUARIO", Conexion))
+                    {
+                        eliminarCliente.CommandType = CommandType.StoredProcedure;
+                        eliminarCliente.Parameters.Add("@dni", SqlDbType.Char);
+                        eliminarCliente.Parameters["@dni"].Value = dni;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString(), "there was an issue!");
+
+                }
+                Conexion.Close();
+            }
+        }
     }
 }

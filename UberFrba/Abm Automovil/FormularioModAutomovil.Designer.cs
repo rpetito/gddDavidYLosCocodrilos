@@ -142,6 +142,7 @@
             this.modificarSelButton.TabIndex = 51;
             this.modificarSelButton.Text = "Modificar";
             this.modificarSelButton.UseVisualStyleBackColor = true;
+            this.modificarSelButton.Click += new System.EventHandler(this.modificarSelButton_Click);
             // 
             // label7
             // 

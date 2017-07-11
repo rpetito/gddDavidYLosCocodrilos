@@ -15,6 +15,13 @@ namespace UberFrba.Abm_Automovil
         public FormularioModAutomovil()
         {
             InitializeComponent();
+            AutomovilSeleccionado auto = new AutomovilSeleccionado();
+            marcaSelTextBox.Text = auto.getMarca();
+            modeloSelTextBox.Text = auto.getModelo();
+            patenteSelTextBox.Text = auto.getPatente();
+            turnoSelTextBox.Text = auto.getTurno();
+            choferSelTextBox.Text = auto.getChofer();
+            //setear el valor del checkbox segun si esta habilitado o no
         }
 
         private void limpiarSelButton_Click(object sender, EventArgs e)
@@ -30,6 +37,11 @@ namespace UberFrba.Abm_Automovil
         private void cancelarButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void modificarSelButton_Click(object sender, EventArgs e)
+        {
+            //modificar la fila de la grid con los datos cambiados en esta pantalla
         }
     }
 }
