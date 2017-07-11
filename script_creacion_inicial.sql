@@ -677,7 +677,7 @@ BEGIN
 	FUNCIONALIDAD_DETALLE,
 	FUNCIONALIDAD_HABILITADO)
 	VALUES (
-		'ABM Administradores',
+		'Alta Administradores',
 		1
 	);
 
@@ -709,7 +709,7 @@ BEGIN
 	FUNCIONALIDAD_DETALLE,
 	FUNCIONALIDAD_HABILITADO)
 	VALUES (
-		'Rendicion de Viajes',
+		'Rendición de Viajes',
 		1
 	);
 
