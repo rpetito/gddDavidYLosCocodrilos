@@ -88,6 +88,7 @@ namespace UberFrba.Abm_Automovil
             SqlCommand buscarAutomovil = new SqlCommand();
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter();
+
             try
             {
                 using (buscarAutomovil = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_AUTOMOVIL", Conexion))

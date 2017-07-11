@@ -36,7 +36,6 @@
             this.dniTextBox = new System.Windows.Forms.TextBox();
             this.apellidoTextBox = new System.Windows.Forms.TextBox();
             this.nombreTextBox = new System.Windows.Forms.TextBox();
-            this.nacimientoTextBox = new System.Windows.Forms.TextBox();
             this.pisoTextBox = new System.Windows.Forms.TextBox();
             this.codigoTextBox = new System.Windows.Forms.TextBox();
             this.localidadTextBox = new System.Windows.Forms.TextBox();
@@ -60,12 +59,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.nacimientoDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.label15 = new System.Windows.Forms.Label();
+            this.rolComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cancelarButton
             // 
-            this.cancelarButton.Location = new System.Drawing.Point(12, 427);
+            this.cancelarButton.Location = new System.Drawing.Point(12, 468);
             this.cancelarButton.Name = "cancelarButton";
             this.cancelarButton.Size = new System.Drawing.Size(75, 23);
             this.cancelarButton.TabIndex = 22;
@@ -75,7 +77,7 @@
             // 
             // limpiarButton
             // 
-            this.limpiarButton.Location = new System.Drawing.Point(110, 427);
+            this.limpiarButton.Location = new System.Drawing.Point(110, 468);
             this.limpiarButton.Name = "limpiarButton";
             this.limpiarButton.Size = new System.Drawing.Size(75, 23);
             this.limpiarButton.TabIndex = 23;
@@ -86,12 +88,13 @@
             // crearButton
             // 
             this.crearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.crearButton.Location = new System.Drawing.Point(211, 427);
+            this.crearButton.Location = new System.Drawing.Point(211, 468);
             this.crearButton.Name = "crearButton";
             this.crearButton.Size = new System.Drawing.Size(75, 23);
             this.crearButton.TabIndex = 24;
             this.crearButton.Text = "Crear";
             this.crearButton.UseVisualStyleBackColor = true;
+            this.crearButton.Click += new System.EventHandler(this.crearButton_Click);
             // 
             // label6
             // 
@@ -129,13 +132,6 @@
             this.nombreTextBox.Name = "nombreTextBox";
             this.nombreTextBox.Size = new System.Drawing.Size(128, 20);
             this.nombreTextBox.TabIndex = 163;
-            // 
-            // nacimientoTextBox
-            // 
-            this.nacimientoTextBox.Location = new System.Drawing.Point(127, 111);
-            this.nacimientoTextBox.Name = "nacimientoTextBox";
-            this.nacimientoTextBox.Size = new System.Drawing.Size(128, 20);
-            this.nacimientoTextBox.TabIndex = 162;
             // 
             // pisoTextBox
             // 
@@ -277,7 +273,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(13, 317);
+            this.groupBox1.Location = new System.Drawing.Point(13, 358);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(242, 100);
             this.groupBox1.TabIndex = 168;
@@ -332,18 +328,44 @@
             this.label2.TabIndex = 126;
             this.label2.Text = "Contraseña:";
             // 
+            // nacimientoDatePicker
+            // 
+            this.nacimientoDatePicker.Location = new System.Drawing.Point(127, 111);
+            this.nacimientoDatePicker.Name = "nacimientoDatePicker";
+            this.nacimientoDatePicker.Size = new System.Drawing.Size(128, 20);
+            this.nacimientoDatePicker.TabIndex = 128;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(95, 324);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(26, 13);
+            this.label15.TabIndex = 169;
+            this.label15.Text = "Rol:";
+            // 
+            // rolComboBox
+            // 
+            this.rolComboBox.FormattingEnabled = true;
+            this.rolComboBox.Location = new System.Drawing.Point(127, 321);
+            this.rolComboBox.Name = "rolComboBox";
+            this.rolComboBox.Size = new System.Drawing.Size(128, 21);
+            this.rolComboBox.TabIndex = 170;
+            // 
             // NuevoCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(298, 462);
+            this.ClientSize = new System.Drawing.Size(298, 505);
+            this.Controls.Add(this.rolComboBox);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.nacimientoDatePicker);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.mailTextBox);
             this.Controls.Add(this.dniTextBox);
             this.Controls.Add(this.apellidoTextBox);
             this.Controls.Add(this.nombreTextBox);
-            this.Controls.Add(this.nacimientoTextBox);
             this.Controls.Add(this.pisoTextBox);
             this.Controls.Add(this.codigoTextBox);
             this.Controls.Add(this.localidadTextBox);
@@ -382,7 +404,6 @@
         private System.Windows.Forms.TextBox dniTextBox;
         private System.Windows.Forms.TextBox apellidoTextBox;
         private System.Windows.Forms.TextBox nombreTextBox;
-        private System.Windows.Forms.TextBox nacimientoTextBox;
         private System.Windows.Forms.TextBox pisoTextBox;
         private System.Windows.Forms.TextBox codigoTextBox;
         private System.Windows.Forms.TextBox localidadTextBox;
@@ -406,5 +427,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker nacimientoDatePicker;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox rolComboBox;
     }
 }

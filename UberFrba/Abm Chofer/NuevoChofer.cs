@@ -71,6 +71,8 @@ namespace UberFrba.Abm_Chofer
                     | string.IsNullOrWhiteSpace(nacimientoDatePicker.Text)
                     | string.IsNullOrWhiteSpace(telefonoTextBox.Text)
                     | string.IsNullOrWhiteSpace(direccionTextBox.Text)
+                    | string.IsNullOrWhiteSpace(pisoTextBox.Text)
+                    | string.IsNullOrWhiteSpace(departamentoTextBox.Text)
                     | string.IsNullOrWhiteSpace(localidadTextBox.Text)
                     | string.IsNullOrWhiteSpace(mailTextBox.Text)
                     | string.IsNullOrWhiteSpace(usuarioTextBox.Text)
@@ -94,7 +96,7 @@ namespace UberFrba.Abm_Chofer
                     {
                         crearChofer.CommandType = CommandType.StoredProcedure;
                         crearChofer.Parameters.Add("@rol", SqlDbType.Int);
-                        crearChofer.Parameters["@rol"].Value = rolComboBox.Text;
+                        crearChofer.Parameters["@rol"].Value = rolComboBox.Text;//rol no es int
                         crearChofer.Parameters.Add("@nombre", SqlDbType.Char);
                         crearChofer.Parameters["@nombre"].Value = nombreTextBox.Text;
                         crearChofer.Parameters.Add("@apellido", SqlDbType.Char);
