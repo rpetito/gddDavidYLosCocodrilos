@@ -47,5 +47,44 @@ namespace UberFrba.Listado_Estadistico
         {
             this.Close();
         }
+
+        private void comboBox_TipoListado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listado = (int)(comboBox_TipoListado.SelectedIndex + 1);
+        }
+
+        private void button_HacerConsulta_Click(object sender, EventArgs e)
+        {
+            if (listado == 1) {
+                this.dataGridView1.DataSource = EstadisticaController.getCaso1(anioSeleccionado,trimestreSeleccionado);
+            }
+
+            if (listado == 2)
+            {
+                this.dataGridView1.DataSource = EstadisticaController.getCaso2(anioSeleccionado, trimestreSeleccionado);
+            }
+
+            if (listado == 3)
+            {
+                this.dataGridView1.DataSource = EstadisticaController.getCaso3(anioSeleccionado, trimestreSeleccionado);
+
+            }
+
+            if (listado == 4)
+            {
+                this.dataGridView1.DataSource = EstadisticaController.getCaso4(anioSeleccionado, trimestreSeleccionado);
+            }
+
+        }
+
+
     }
+
+
+
+
+
+
+
+
 }

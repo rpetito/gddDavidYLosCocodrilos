@@ -160,6 +160,7 @@
             this.button_HacerConsulta.TabIndex = 18;
             this.button_HacerConsulta.Text = "Hacer consulta";
             this.button_HacerConsulta.UseVisualStyleBackColor = true;
+            this.button_HacerConsulta.Click += new System.EventHandler(this.button_HacerConsulta_Click);
             // 
             // dataGridView1
             // 
@@ -172,15 +173,11 @@
             // comboBox_TipoListado
             // 
             this.comboBox_TipoListado.FormattingEnabled = true;
-            this.comboBox_TipoListado.Items.AddRange(new object[] {
-            "Vendedores con mayor cantidad de productos no vendidos",
-            "Vendedores con mayor facturacion",
-            "Vendedores con mayores calificaciones",
-            "Clientes con mayor cantidad de publicaciones sin calificar"});
             this.comboBox_TipoListado.Location = new System.Drawing.Point(127, 60);
             this.comboBox_TipoListado.Name = "comboBox_TipoListado";
             this.comboBox_TipoListado.Size = new System.Drawing.Size(309, 21);
             this.comboBox_TipoListado.TabIndex = 17;
+            this.comboBox_TipoListado.SelectedIndexChanged += new System.EventHandler(this.comboBox_TipoListado_SelectedIndexChanged);
             // 
             // Form1
             // 
