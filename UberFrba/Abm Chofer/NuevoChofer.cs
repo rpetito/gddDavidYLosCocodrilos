@@ -47,7 +47,7 @@ namespace UberFrba.Abm_Chofer
             nombreTextBox.Clear();
             apellidoTextBox.Clear();
             dniTextBox.Clear();
-            nacimientoTextBox.Clear();
+            nacimientoDatePicker.ResetText();
             telefonoTextBox.Clear();
             direccionTextBox.Clear();
             localidadTextBox.Clear();
@@ -68,7 +68,7 @@ namespace UberFrba.Abm_Chofer
             if (string.IsNullOrWhiteSpace(nombreTextBox.Text)
                     | string.IsNullOrWhiteSpace(apellidoTextBox.Text)
                     | string.IsNullOrWhiteSpace(dniTextBox.Text)
-                    | string.IsNullOrWhiteSpace(nacimientoTextBox.Text)
+                    | string.IsNullOrWhiteSpace(nacimientoDatePicker.Text)
                     | string.IsNullOrWhiteSpace(telefonoTextBox.Text)
                     | string.IsNullOrWhiteSpace(direccionTextBox.Text)
                     | string.IsNullOrWhiteSpace(localidadTextBox.Text)
@@ -115,8 +115,8 @@ namespace UberFrba.Abm_Chofer
                         crearChofer.Parameters["@localidad"].Value = localidadTextBox.Text;
                         crearChofer.Parameters.Add("@codPos", SqlDbType.Int);
                         crearChofer.Parameters["@codPos"].Value = null;//turbio
-                        crearChofer.Parameters.Add("@fechaNac", SqlDbType.DateTime);
-                        crearChofer.Parameters["@fechaNac"].Value = nacimientoTextBox.Text;//hacer nacimientoTextBox datepicker?
+                        crearChofer.Parameters.Add("@fechaNac", SqlDbType.Date);
+                        crearChofer.Parameters["@fechaNac"].Value = nacimientoDatePicker.Text;
                         crearChofer.Parameters.Add("@username", SqlDbType.Char);
                         crearChofer.Parameters["@username"].Value = usuarioTextBox.Text;
                         crearChofer.Parameters.Add("@password", SqlDbType.Char);

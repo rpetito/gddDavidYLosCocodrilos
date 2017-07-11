@@ -16,7 +16,14 @@ namespace UberFrba.Abm_Chofer
         public ListadoModChofer()
         {
             InitializeComponent();
-            choferesGrid.Dock = DockStyle.Fill;
+            DataGridViewButtonColumn button = new DataGridViewButtonColumn();
+            button.HeaderText = "Seleccionar";
+            button.Name = "seleccionarButton";
+            button.Text = "Seleccionar";
+            button.UseColumnTextForButtonValue = true;
+            choferesGrid.Columns.Add(button);
+            button.Frozen = true;
+
         }
 
         private void limpiarButton_Click(object sender, EventArgs e)
@@ -32,29 +39,41 @@ namespace UberFrba.Abm_Chofer
             this.Close();
         }
 
-        private void seleccionarButton_Click(object sender, EventArgs e)
-        {
-            //mandar la fila seleccionada al formulario
-            FormularioModChofer form = new FormularioModChofer();
-            form.ShowDialog();
-        }
+        //private void choferesGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    var senderGrid = (DataGridView)sender;
+
+        //    if (e.ColumnIndex == choferesGrid.Columns[0].Index && e.RowIndex >= 0)
+        //    {
+        //        FormularioModChofer form = new FormularioModChofer();
+        //        form.ShowDialog();
+        //    }
+        //}
+
 
         private void buscarButton_Click(object sender, EventArgs e)
         {
-            choferesGrid.DataSource = getChoferes();
+            getChoferes();
+
         }
 
         private DataTable getChoferes()
         {
-            DataTable dtChofer = new DataTable();
+            SqlConnection Conexion = BaseDeDatos.ObternerConexion();
+            SqlCommand buscarChofer = new SqlCommand();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter();
+            String dni;
             try
             {
-                SqlConnection Conexion = BaseDeDatos.ObternerConexion();
-                SqlCommand buscarChofer = new SqlCommand();
-                SqlDataReader busqueda;
+                if (string.IsNullOrWhiteSpace(dniTextBox.Text))
+                {
+                    dni = null;
+                }
+                else dni = dniTextBox.Text;
+                
 
-
-                using (buscarChofer = new SqlCommand("DAVID_Y_LOS_COCODRILOS.BUSCAR_CHOFER", Conexion))
+                using (buscarChofer = new SqlCommand("DAVID_Y_LOS_COCODRILOS.BUSCAR_USUARIO", Conexion))
                 {
                     buscarChofer.CommandType = CommandType.StoredProcedure;
                     buscarChofer.Parameters.Add("@nombre", SqlDbType.Char);
@@ -62,12 +81,11 @@ namespace UberFrba.Abm_Chofer
                     buscarChofer.Parameters.Add("@apellido", SqlDbType.Char);
                     buscarChofer.Parameters["@apellido"].Value = apellidoTextBox.Text;
                     buscarChofer.Parameters.Add("@dni", SqlDbType.Decimal);
-                    buscarChofer.Parameters["@dni"].Value = dniTextBox.Text;
+                    buscarChofer.Parameters["@dni"].Value = dni;
+                    da.SelectCommand = buscarChofer;
+                    da.Fill(dt);
+                    choferesGrid.DataSource = dt;
                 }
-
-                busqueda = buscarChofer.ExecuteReader();
-                Conexion.Close();
-
             }
 
             catch (Exception ex)
@@ -75,7 +93,9 @@ namespace UberFrba.Abm_Chofer
                 MessageBox.Show(ex.ToString(), "there was an issue!");
 
             }
-            return dtChofer;
+            Conexion.Close();
+            return dt;
+
         }
     }
 }
