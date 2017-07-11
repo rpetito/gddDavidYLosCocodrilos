@@ -13,7 +13,7 @@ namespace UberFrba.Abm_Automovil
 {
     public partial class ListadoModAutomovil : Form
     {
-        SqlConnection Conexion = BaseDeDatos.ObternerConexion();
+
         SqlCommand busqueda = new SqlCommand();
         SqlCommand marcas = new SqlCommand();
         SqlCommand modelos = new SqlCommand();
@@ -21,9 +21,9 @@ namespace UberFrba.Abm_Automovil
         public ListadoModAutomovil()
         {
             InitializeComponent();
+            SqlConnection Conexion = BaseDeDatos.ObternerConexion();
             SqlDataReader marcasReader;
             SqlDataReader modelosReader;
-            automovilesGrid.Dock = DockStyle.Fill;
 
             using (marcas = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_MARCAS", Conexion))
             {
@@ -50,6 +50,15 @@ namespace UberFrba.Abm_Automovil
                 modeloComboBox.Items.Add(modelosReader.GetString(2));
             }
             modelosReader.Close();
+            Conexion.Close();
+
+            DataGridViewButtonColumn button = new DataGridViewButtonColumn();
+            button.HeaderText = "Seleccionar";
+            button.Name = "seleccionarButton";
+            button.Text = "Seleccionar";
+            button.UseColumnTextForButtonValue = true;
+            automovilesGrid.Columns.Add(button);
+            button.Frozen = true;
         }
 
         private void limpiarButton_Click(object sender, EventArgs e)
@@ -66,41 +75,43 @@ namespace UberFrba.Abm_Automovil
             this.Close();
         }
 
-        private void seleccionarButton_Click(object sender, EventArgs e)
-        {
-            //guardar datos de la fila seleccionada para mandarsela al formulario
-            FormularioModAutomovil form = new FormularioModAutomovil();
-            form.ShowDialog();
-        }
+
 
         private void buscarButton_Click(object sender, EventArgs e)
         {
-            automovilesGrid.DataSource = getAutomoviles();
+            getAutomoviles();
         }
 
         private DataTable getAutomoviles()
         {
-            DataTable dtAutomovil = new DataTable();
-
-            String marca = marcaComboBox.Text;
-            String modelo = modeloComboBox.Text;
-            String patente = patenteTextBox.Text;
-            String chofer = choferTextBox.Text;
-
-            using (busqueda = new SqlCommand("DAVID_Y_LOS_COCODRILOS.BUSCAR_AUTOMOVILES", Conexion))
+            SqlConnection Conexion = BaseDeDatos.ObternerConexion();
+            SqlCommand buscarAutomovil = new SqlCommand();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter();
+            try
             {
-                busqueda.CommandType = CommandType.StoredProcedure;
-                busqueda.Parameters.Add("@marca", SqlDbType.Char);
-                busqueda.Parameters["@marca"].Value = marca;
-                busqueda.Parameters.Add("@modelo", SqlDbType.Char);
-                busqueda.Parameters["@modelo"].Value = modelo;
-                busqueda.Parameters.Add("@patente", SqlDbType.Char);
-                busqueda.Parameters["@patente"].Value = patente;
-                busqueda.Parameters.Add("@chofer", SqlDbType.Char);
-                busqueda.Parameters["@chofer"].Value = chofer;
+                using (buscarAutomovil = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_AUTOMOVIL", Conexion))
+                {
+                    buscarAutomovil.CommandType = CommandType.StoredProcedure;
+                    buscarAutomovil.Parameters.Add("@marca", SqlDbType.Char);
+                    buscarAutomovil.Parameters["@marca"].Value = marcaComboBox.Text;
+                    buscarAutomovil.Parameters.Add("@modelo", SqlDbType.Char);
+                    buscarAutomovil.Parameters["@modelo"].Value = modeloComboBox.Text;
+                    buscarAutomovil.Parameters.Add("@patente", SqlDbType.Char);
+                    buscarAutomovil.Parameters["@patente"].Value = patenteTextBox.Text;
+                    buscarAutomovil.Parameters.Add("@chofer", SqlDbType.Char);
+                    buscarAutomovil.Parameters["@chofer"].Value = choferTextBox.Text;
+                    da.SelectCommand = buscarAutomovil;
+                    da.Fill(dt);
+                    automovilesGrid.DataSource = dt;
+                }
             }
-
-            return dtAutomovil;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "there was an issue!");
+            }
+            Conexion.Close();
+            return dt;
         }
     }
 }
