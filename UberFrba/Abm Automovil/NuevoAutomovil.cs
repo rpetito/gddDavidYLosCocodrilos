@@ -73,7 +73,7 @@ namespace UberFrba.Abm_Automovil
 
             foreach (KeyValuePair<Int32, String> itemModelo in dictModelos)
             {
-                marcaComboBox.Items.Add(itemModelo.Value);
+                modeloComboBox.Items.Add(itemModelo.Value);
             }
             idModelo = dictModelos.FirstOrDefault(x => x.Value == modelo).Key;
             modelosReader.Close();
@@ -89,7 +89,7 @@ namespace UberFrba.Abm_Automovil
 
             while (turnosReader.Read())
             {
-                turnoComboBox.Items.Add(turnosReader.GetString(0));
+                turnoComboBox.Items.Add(turnosReader.GetString(3));
             }
             turnosReader.Close();
             Conexion.Close();

@@ -127,3 +127,14 @@ C:\Users\Rodrigo\Desktop\UTN\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberF
 C:\Users\Rodrigo\Desktop\UTN\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.csproj.GenerateResource.Cache
 C:\Users\Rodrigo\Desktop\UTN\GDD\gddDavidYLosCocodrilos\UberFrba\bin\Debug\UberFrba.exe
 C:\Users\Rodrigo\Desktop\UTN\GDD\gddDavidYLosCocodrilos\UberFrba\bin\Debug\UberFrba.pdb
+C:\Users\admin\Desktop\Workspace\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.SeleccionRol.resources
+C:\Users\admin\Desktop\Workspace\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Automovil.FormularioModAutomovil.resources
+C:\Users\admin\Desktop\Workspace\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Chofer.FormularioModChofer.resources
+C:\Users\admin\Desktop\Workspace\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Cliente.FormularioModCliente.resources
+C:\Users\admin\Desktop\Workspace\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Rol.FormularioModRol.resources
+C:\Users\admin\Desktop\Workspace\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Turno.FormularioModTurno.resources
+C:\Users\Rodrigo\Desktop\UTN\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Automovil.FormularioModAutomovil.resources
+C:\Users\Rodrigo\Desktop\UTN\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Chofer.FormularioModChofer.resources
+C:\Users\Rodrigo\Desktop\UTN\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Cliente.FormularioModCliente.resources
+C:\Users\Rodrigo\Desktop\UTN\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Rol.FormularioModRol.resources
+C:\Users\Rodrigo\Desktop\UTN\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Turno.FormularioModTurno.resources
