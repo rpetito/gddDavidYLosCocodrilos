@@ -22,7 +22,7 @@ namespace UberFrba {
 					form = new Abm_Turno.Turno();
 					break;
 				case 3:
-					form = new Abm_Rol.Rol();
+					form = new Abm_Rol.MenuRol();
 					break;
 				case 4:
 					form = new Administrador.Administrador();

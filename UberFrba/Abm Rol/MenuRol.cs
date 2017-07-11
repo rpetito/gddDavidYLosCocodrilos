@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace UberFrba.Abm_Rol
 {
-    public partial class Rol : Form
+    public partial class MenuRol : Form
     {
-        public Rol()
+        public MenuRol()
         {
             InitializeComponent();
         }

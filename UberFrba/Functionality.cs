@@ -18,6 +18,17 @@ namespace UberFrba {
 		public String getDetalle() {
 			return this.detalle;
 		}
+
+		public void setID(Int32 id) {
+			this.id = id;
+		}
+
+		public void setDetalle(String detalle) {
+			this.detalle = detalle;
+		}
+
+
+	
 	
 	
 	}

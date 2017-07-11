@@ -1,6 +1,6 @@
 ﻿namespace UberFrba.Abm_Rol
 {
-    partial class Rol
+    partial class MenuRol
     {
         /// <summary>
         /// Required designer variable.
