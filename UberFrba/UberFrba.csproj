@@ -50,6 +50,12 @@
     <Compile Include="Abm Automovil\Automovil.Designer.cs">
       <DependentUpon>Automovil.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Automovil\FormularioModAutomovil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Automovil\FormularioModAutomovil.Designer.cs">
+      <DependentUpon>FormularioModAutomovil.cs</DependentUpon>
+    </Compile>
     <Compile Include="Abm Automovil\ListadoBajaAutomovil.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +85,12 @@
     </Compile>
     <Compile Include="Abm Chofer\Chofer.Designer.cs">
       <DependentUpon>Chofer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Chofer\FormularioModChofer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Chofer\FormularioModChofer.Designer.cs">
+      <DependentUpon>FormularioModChofer.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Chofer\ListadoModChofer.cs">
       <SubType>Form</SubType>
@@ -110,6 +122,12 @@
     <Compile Include="Abm Cliente\Clientes.Designer.cs">
       <DependentUpon>Clientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Cliente\FormularioModCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Cliente\FormularioModCliente.Designer.cs">
+      <DependentUpon>FormularioModCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Abm Cliente\ListadoBajaCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,11 +146,18 @@
     <Compile Include="Abm Cliente\NuevoCliente.Designer.cs">
       <DependentUpon>NuevoCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Rol\Rol.cs">
+    <Compile Include="Abm Rol\RolController.cs" />
+    <Compile Include="Abm Rol\FormularioModRol.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Rol\Rol.Designer.cs">
-      <DependentUpon>Rol.cs</DependentUpon>
+    <Compile Include="Abm Rol\FormularioModRol.Designer.cs">
+      <DependentUpon>FormularioModRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Rol\MenuRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Rol\MenuRol.Designer.cs">
+      <DependentUpon>MenuRol.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Rol\ListadoBajaRol.cs">
       <SubType>Form</SubType>
@@ -151,6 +176,12 @@
     </Compile>
     <Compile Include="Abm Rol\NuevoRol.Designer.cs">
       <DependentUpon>NuevoRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Turno\FormularioModTurno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Turno\FormularioModTurno.Designer.cs">
+      <DependentUpon>FormularioModTurno.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Turno\Turno.cs">
       <SubType>Form</SubType>
@@ -183,6 +214,11 @@
       <DependentUpon>Administrador.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseDeDatos.cs" />
+    <Compile Include="AutomovilSeleccionado.cs" />
+    <Compile Include="ChoferSeleccionado.cs" />
+    <Compile Include="Functionality.cs" />
+    <Compile Include="FunctionalityController.cs" />
+    <Compile Include="MenuController.cs" />
     <Compile Include="Rol.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Facturacion\Facturacion.cs">
@@ -249,6 +285,9 @@
     <EmbeddedResource Include="Abm Automovil\Automovil.resx">
       <DependentUpon>Automovil.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Abm Automovil\FormularioModAutomovil.resx">
+      <DependentUpon>FormularioModAutomovil.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Abm Automovil\ListadoBajaAutomovil.resx">
       <DependentUpon>ListadoBajaAutomovil.cs</DependentUpon>
     </EmbeddedResource>
@@ -263,6 +302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Chofer\Chofer.resx">
       <DependentUpon>Chofer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Chofer\FormularioModChofer.resx">
+      <DependentUpon>FormularioModChofer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Chofer\ListadoBajaChofer.resx">
       <DependentUpon>ListadoBajaChofer.cs</DependentUpon>
@@ -279,6 +321,9 @@
     <EmbeddedResource Include="Abm Cliente\Clientes.resx">
       <DependentUpon>Clientes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Abm Cliente\FormularioModCliente.resx">
+      <DependentUpon>FormularioModCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Abm Cliente\ListadoBajaCliente.resx">
       <DependentUpon>ListadoBajaCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -287,6 +332,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Cliente\NuevoCliente.resx">
       <DependentUpon>NuevoCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Rol\FormularioModRol.resx">
+      <DependentUpon>FormularioModRol.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Rol\ListadoBajaRol.resx">
       <DependentUpon>ListadoBajaRol.cs</DependentUpon>
@@ -297,8 +345,11 @@
     <EmbeddedResource Include="Abm Rol\NuevoRol.resx">
       <DependentUpon>NuevoRol.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Abm Rol\Rol.resx">
-      <DependentUpon>Rol.cs</DependentUpon>
+    <EmbeddedResource Include="Abm Rol\MenuRol.resx">
+      <DependentUpon>MenuRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Turno\FormularioModTurno.resx">
+      <DependentUpon>FormularioModTurno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Turno\ListadoBajaTurno.resx">
       <DependentUpon>ListadoBajaTurno.cs</DependentUpon>

@@ -28,26 +28,11 @@ namespace UberFrba.Abm_Turno
             this.Close();
         }
 
-        private void limpiarSelButton_Click(object sender, EventArgs e)
-        {
-            horaInicioSelComboBox.ResetText();
-            horaFinSelComboBox.ResetText();
-            descripcionSelTextBox.Clear();
-            kilometroSelTextBox.Clear();
-            baseSelTextBox.Clear();
-            habilitadoCheckBox.Checked = false;
-        }
-
         private void selecionarButton_Click(object sender, EventArgs e)
         {
-            horaInicioSelComboBox.Enabled = true;
-            horaFinSelComboBox.Enabled = true;
-            descripcionSelTextBox.Enabled = true;
-            kilometroSelTextBox.Enabled = true;
-            baseSelTextBox.Enabled = true;
-            habilitadoCheckBox.Enabled = true;
-            limpiarSelButton.Enabled = true;
-            modificarSelButton.Enabled = true;
+            //mandar datos seleccionados al form
+            FormularioModTurno form = new FormularioModTurno();
+            form.ShowDialog();
         }
     }
 }

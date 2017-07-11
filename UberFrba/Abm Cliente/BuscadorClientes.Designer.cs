@@ -72,6 +72,7 @@
             this.buscarButton.TabIndex = 23;
             this.buscarButton.Text = "Buscar";
             this.buscarButton.UseVisualStyleBackColor = true;
+            this.buscarButton.Click += new System.EventHandler(this.buscarButton_Click);
             // 
             // cancelarButton
             // 
@@ -88,6 +89,7 @@
             this.clientesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.clientesGrid.Location = new System.Drawing.Point(13, 162);
             this.clientesGrid.Name = "clientesGrid";
+            this.clientesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.clientesGrid.Size = new System.Drawing.Size(345, 162);
             this.clientesGrid.TabIndex = 24;
             // 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UberFrba
 {
-    class Rol {
+    public class Rol {
 
         Int32 id;
         String detalle;

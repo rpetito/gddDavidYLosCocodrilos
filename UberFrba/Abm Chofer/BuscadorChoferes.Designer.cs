@@ -32,7 +32,6 @@
             this.seleccionarButton = new System.Windows.Forms.Button();
             this.buscarButton = new System.Windows.Forms.Button();
             this.cancelarButton = new System.Windows.Forms.Button();
-            this.choferesGrid = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.nombreTextBox = new System.Windows.Forms.TextBox();
             this.dniTextBox = new System.Windows.Forms.TextBox();
@@ -40,8 +39,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.choferesGrid)).BeginInit();
+            this.choferesGrid = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.choferesGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // limpiarButton
@@ -57,12 +57,13 @@
             // seleccionarButton
             // 
             this.seleccionarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.seleccionarButton.Location = new System.Drawing.Point(283, 345);
+            this.seleccionarButton.Location = new System.Drawing.Point(267, 345);
             this.seleccionarButton.Name = "seleccionarButton";
-            this.seleccionarButton.Size = new System.Drawing.Size(75, 23);
+            this.seleccionarButton.Size = new System.Drawing.Size(91, 23);
             this.seleccionarButton.TabIndex = 26;
             this.seleccionarButton.Text = "Seleccionar";
             this.seleccionarButton.UseVisualStyleBackColor = true;
+            this.seleccionarButton.Click += new System.EventHandler(this.seleccionarButton_Click);
             // 
             // buscarButton
             // 
@@ -72,6 +73,7 @@
             this.buscarButton.TabIndex = 23;
             this.buscarButton.Text = "Buscar";
             this.buscarButton.UseVisualStyleBackColor = true;
+            this.buscarButton.Click += new System.EventHandler(this.buscarButton_Click);
             // 
             // cancelarButton
             // 
@@ -82,14 +84,6 @@
             this.cancelarButton.Text = "Cancelar";
             this.cancelarButton.UseVisualStyleBackColor = true;
             this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
-            // 
-            // choferesGrid
-            // 
-            this.choferesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.choferesGrid.Location = new System.Drawing.Point(13, 162);
-            this.choferesGrid.Name = "choferesGrid";
-            this.choferesGrid.Size = new System.Drawing.Size(345, 162);
-            this.choferesGrid.TabIndex = 24;
             // 
             // groupBox1
             // 
@@ -158,23 +152,36 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre:";
             // 
+            // choferesGrid
+            // 
+            this.choferesGrid.AllowUserToAddRows = false;
+            this.choferesGrid.AllowUserToDeleteRows = false;
+            this.choferesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.choferesGrid.Location = new System.Drawing.Point(12, 163);
+            this.choferesGrid.MultiSelect = false;
+            this.choferesGrid.Name = "choferesGrid";
+            this.choferesGrid.ReadOnly = true;
+            this.choferesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.choferesGrid.Size = new System.Drawing.Size(345, 162);
+            this.choferesGrid.TabIndex = 27;
+            // 
             // BuscadorChoferes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(371, 381);
+            this.Controls.Add(this.choferesGrid);
             this.Controls.Add(this.limpiarButton);
             this.Controls.Add(this.seleccionarButton);
             this.Controls.Add(this.buscarButton);
             this.Controls.Add(this.cancelarButton);
-            this.Controls.Add(this.choferesGrid);
             this.Controls.Add(this.groupBox1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "BuscadorChoferes";
             this.Text = "Buscador de Choferes";
-            ((System.ComponentModel.ISupportInitialize)(this.choferesGrid)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.choferesGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -185,7 +192,6 @@
         private System.Windows.Forms.Button seleccionarButton;
         private System.Windows.Forms.Button buscarButton;
         private System.Windows.Forms.Button cancelarButton;
-        private System.Windows.Forms.DataGridView choferesGrid;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox nombreTextBox;
         private System.Windows.Forms.TextBox dniTextBox;
@@ -193,5 +199,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView choferesGrid;
     }
 }

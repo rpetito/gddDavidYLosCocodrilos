@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,16 +13,59 @@ namespace UberFrba.Abm_Automovil
 {
     public partial class ListadoModAutomovil : Form
     {
+
+        SqlCommand busqueda = new SqlCommand();
+        SqlCommand marcas = new SqlCommand();
+        SqlCommand modelos = new SqlCommand();
+
         public ListadoModAutomovil()
         {
             InitializeComponent();
+            SqlConnection Conexion = BaseDeDatos.ObternerConexion();
+            SqlDataReader marcasReader;
+            SqlDataReader modelosReader;
+
+            using (marcas = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_MARCAS", Conexion))
+            {
+                marcas.CommandType = CommandType.StoredProcedure;
+            }
+            marcasReader = marcas.ExecuteReader();
+
+            while (marcasReader.Read())
+            {
+                marcaComboBox.Items.Add(marcasReader.GetString(1));
+            }
+            marcasReader.Close();
+
+
+
+            using (modelos = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_MODELOS", Conexion))
+            {
+                modelos.CommandType = CommandType.StoredProcedure;
+            }
+            modelosReader = modelos.ExecuteReader();
+
+            while (modelosReader.Read())
+            {
+                modeloComboBox.Items.Add(modelosReader.GetString(2));
+            }
+            modelosReader.Close();
+            Conexion.Close();
+
+            DataGridViewButtonColumn button = new DataGridViewButtonColumn();
+            button.HeaderText = "Seleccionar";
+            button.Name = "seleccionarButton";
+            button.Text = "Seleccionar";
+            button.UseColumnTextForButtonValue = true;
+            automovilesGrid.Columns.Add(button);
+            button.Frozen = true;
         }
 
         private void limpiarButton_Click(object sender, EventArgs e)
         {
             marcaComboBox.ResetText();
             patenteTextBox.Clear();
-            modeloTextBox.Clear();
+            modeloComboBox.ResetText();
             choferTextBox.Clear();
             automovilesGrid.ClearSelection();
         }
@@ -31,26 +75,60 @@ namespace UberFrba.Abm_Automovil
             this.Close();
         }
 
-        private void limpiarSelButton_Click(object sender, EventArgs e)
+
+
+        private void buscarButton_Click(object sender, EventArgs e)
         {
-            marcaSelTextBox.Clear();
-            modeloSelTextBox.Clear();
-            patenteSelTextBox.Clear();
-            turnoSelTextBox.ResetText();
-            choferSelTextBox.Clear();
-            habilitadoCheckBox.Checked = false;
+            getAutomoviles();
         }
 
-        private void seleccionarButton_Click(object sender, EventArgs e)
+        private DataTable getAutomoviles()
         {
-            marcaSelTextBox.Enabled = true;
-            modeloSelTextBox.Enabled = true;
-            patenteSelTextBox.Enabled = true;
-            turnoSelTextBox.Enabled = true;
-            choferSelTextBox.Enabled = true;
-            habilitadoCheckBox.Enabled = true;
-            limpiarSelButton.Enabled = true;
-            modificarSelButton.Enabled = true;
+            SqlConnection Conexion = BaseDeDatos.ObternerConexion();
+            SqlCommand buscarAutomovil = new SqlCommand();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter();
+
+            try
+            {
+                using (buscarAutomovil = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_AUTOMOVIL", Conexion))
+                {
+                    buscarAutomovil.CommandType = CommandType.StoredProcedure;
+                    buscarAutomovil.Parameters.Add("@marca", SqlDbType.Char);
+                    buscarAutomovil.Parameters["@marca"].Value = marcaComboBox.Text;
+                    buscarAutomovil.Parameters.Add("@modelo", SqlDbType.Char);
+                    buscarAutomovil.Parameters["@modelo"].Value = modeloComboBox.Text;
+                    buscarAutomovil.Parameters.Add("@patente", SqlDbType.Char);
+                    buscarAutomovil.Parameters["@patente"].Value = patenteTextBox.Text;
+                    buscarAutomovil.Parameters.Add("@chofer", SqlDbType.Char);
+                    buscarAutomovil.Parameters["@chofer"].Value = choferTextBox.Text;
+                    da.SelectCommand = buscarAutomovil;
+                    da.Fill(dt);
+                    automovilesGrid.DataSource = dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "there was an issue!");
+            }
+            Conexion.Close();
+            return dt;
+        }
+
+        private void automovilesGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0 && e.RowIndex >= 0)
+            {
+                AutomovilSeleccionado auto = new AutomovilSeleccionado();
+                auto.setMarca(this.automovilesGrid.CurrentRow.Cells[2].Value.ToString());
+                auto.setModelo(this.automovilesGrid.CurrentRow.Cells[3].Value.ToString());
+                auto.setPatente(this.automovilesGrid.CurrentRow.Cells[1].Value.ToString());
+                auto.setChofer(this.automovilesGrid.CurrentRow.Cells[5].Value.ToString());
+                auto.setTurno(this.automovilesGrid.CurrentRow.Cells[4].Value.ToString());
+
+                FormularioModAutomovil form = new FormularioModAutomovil();
+                form.ShowDialog();
+            }
         }
     }
 }

@@ -14,8 +14,6 @@ namespace UberFrba.Abm_Automovil
     public partial class ListadoBajaAutomovil : Form
     {
 
-        private BindingSource bindingSource1 = new BindingSource();
-        SqlConnection Conexion = BaseDeDatos.ObternerConexion();
         SqlCommand busqueda = new SqlCommand();
         SqlCommand marcas = new SqlCommand();
         SqlCommand modelos = new SqlCommand();
@@ -24,11 +22,9 @@ namespace UberFrba.Abm_Automovil
         public ListadoBajaAutomovil()
         {
             InitializeComponent();
+            SqlConnection Conexion = BaseDeDatos.ObternerConexion();
             SqlDataReader marcasReader;
             SqlDataReader modelosReader;
-
-
-            automovilesGrid.Dock = DockStyle.Fill;
 
             using (marcas = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_MARCAS", Conexion))
             {
@@ -38,7 +34,7 @@ namespace UberFrba.Abm_Automovil
 
             while (marcasReader.Read())
             {
-                marcaComboBox.Items.Add(marcasReader.GetString(0));
+                marcaComboBox.Items.Add(marcasReader.GetString(1));
             }
             marcasReader.Close();
 
@@ -52,9 +48,18 @@ namespace UberFrba.Abm_Automovil
 
             while (modelosReader.Read())
             {
-                modeloComboBox.Items.Add(modelosReader.GetString(0));
+                modeloComboBox.Items.Add(modelosReader.GetString(2));
             }
             modelosReader.Close();
+            Conexion.Close();
+
+            DataGridViewButtonColumn button = new DataGridViewButtonColumn();
+            button.HeaderText = "Eliminar";
+            button.Name = "eliminarButton";
+            button.Text = "Eliminar";
+            button.UseColumnTextForButtonValue = true;
+            automovilesGrid.Columns.Add(button);
+            button.Frozen = true;
 
         }
 
@@ -73,38 +78,70 @@ namespace UberFrba.Abm_Automovil
 
         private void buscarButton_Click(object sender, EventArgs e)
         {
-            automovilesGrid.DataSource = getAutomoviles();
+            getAutomoviles();
         }
 
         private DataTable getAutomoviles()
         {
             DataTable dtAutomovil = new DataTable();
-
-            String marca = marcaComboBox.Text;
-            String modelo = modeloComboBox.Text;
-            String patente = patenteTextBox.Text;
-            String chofer = choferTextBox.Text;
-
-            using (busqueda = new SqlCommand("DAVID_Y_LOS_COCODRILOS.BUSCAR_AUTOMOVILES", Conexion))
+            SqlConnection Conexion = BaseDeDatos.ObternerConexion();
+            SqlCommand buscarAutomovil = new SqlCommand();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter();
+            try
             {
-                busqueda.CommandType = CommandType.StoredProcedure;
-                busqueda.Parameters.Add("@marca", SqlDbType.Char);
-                busqueda.Parameters["@marca"].Value = marca;
-                busqueda.Parameters.Add("@modelo", SqlDbType.Char);
-                busqueda.Parameters["@modelo"].Value = modelo;
-                busqueda.Parameters.Add("@patente", SqlDbType.Char);
-                busqueda.Parameters["@patente"].Value = patente;
-                busqueda.Parameters.Add("@chofer", SqlDbType.Char);
-                busqueda.Parameters["@chofer"].Value = chofer;
+                using (buscarAutomovil = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_AUTOMOVIL", Conexion))
+                {
+                    buscarAutomovil.CommandType = CommandType.StoredProcedure;
+                    buscarAutomovil.Parameters.Add("@marca", SqlDbType.Char);
+                    buscarAutomovil.Parameters["@marca"].Value = marcaComboBox.Text;
+                    buscarAutomovil.Parameters.Add("@modelo", SqlDbType.Char);
+                    buscarAutomovil.Parameters["@modelo"].Value = modeloComboBox.Text;
+                    buscarAutomovil.Parameters.Add("@patente", SqlDbType.Char);
+                    buscarAutomovil.Parameters["@patente"].Value = patenteTextBox.Text;
+                    buscarAutomovil.Parameters.Add("@chofer", SqlDbType.Char);
+                    buscarAutomovil.Parameters["@chofer"].Value = choferTextBox.Text;
+                    da.SelectCommand = buscarAutomovil;
+                    da.Fill(dt);
+                    automovilesGrid.DataSource = dt;
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "there was an issue!");
 
-            DataGridViewButtonColumn eliminarButton = new DataGridViewButtonColumn();
-            eliminacionColumn.Text = "Eliminar";
-            eliminarButton.Name = "eliminarBoton";
-            eliminarButton.UseColumnTextForButtonValue = true;
-            automovilesGrid.Columns.Add(eliminacionColumn);
+            }
+            Conexion.Close();
+            return dt;
+        }
 
-            return dtAutomovil;
+        private void automovilesGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0 && e.RowIndex >= 0)
+            {
+                //tirar un mensaje para confirmar si el usuario esta seguro
+                //si selecciona SI
+                
+                String patente = (String) automovilesGrid.SelectedCells[1].Value;
+                SqlConnection Conexion = BaseDeDatos.ObternerConexion();
+                SqlCommand eliminarAutomovil = new SqlCommand();
+
+                try
+                {
+                    using (eliminarAutomovil = new SqlCommand("DAVID_Y_LOS_COCODRILOS.INHABILITAR_AUTOMOVIL", Conexion))
+                    {
+                        eliminarAutomovil.CommandType = CommandType.StoredProcedure;
+                        eliminarAutomovil.Parameters.Add("@patente", SqlDbType.Char);
+                        eliminarAutomovil.Parameters["@patente"].Value = patente;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString(), "there was an issue!");
+
+                }
+                Conexion.Close();
+            }
         }
     }
 }

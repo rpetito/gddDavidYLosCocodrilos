@@ -12,10 +12,16 @@ namespace UberFrba.Abm_Rol
 {
     public partial class ListadoBajaRol : Form
     {
+
+
+
         public ListadoBajaRol()
         {
             InitializeComponent();
+		
         }
+
+
 
         private void limpiarButton_Click(object sender, EventArgs e)
         {
@@ -23,9 +29,39 @@ namespace UberFrba.Abm_Rol
             rolesGrid.ClearSelection();
         }
 
+
         private void cancelarButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+
+		private void buscarButton_Click(object sender, EventArgs e) {
+			this.rolesGrid.DataSource = RolController.findAvailableRol(this.nombreTextBox.Text);
+		}
+
+		private void eliminarButton_Click(object sender, EventArgs e) {
+			if( rolesGrid.SelectedCells.Count == 3 ) {
+				Int32 selectedRol = (Int32) rolesGrid.SelectedCells[0].Value;
+				RolController.removeRol(selectedRol);
+			}
+			
+		}
+
+
+
+
+
+
     }
+
+
+
+
+
+
+
+
+
+
 }

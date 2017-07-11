@@ -73,7 +73,7 @@ namespace UberFrba.Abm_Automovil
 
             foreach (KeyValuePair<Int32, String> itemModelo in dictModelos)
             {
-                marcaComboBox.Items.Add(itemModelo.Value);
+                modeloComboBox.Items.Add(itemModelo.Value);
             }
             idModelo = dictModelos.FirstOrDefault(x => x.Value == modelo).Key;
             modelosReader.Close();
@@ -89,7 +89,7 @@ namespace UberFrba.Abm_Automovil
 
             while (turnosReader.Read())
             {
-                turnoComboBox.Items.Add(turnosReader.GetString(0));
+                turnoComboBox.Items.Add(turnosReader.GetString(3));
             }
             turnosReader.Close();
             Conexion.Close();
@@ -114,22 +114,38 @@ namespace UberFrba.Abm_Automovil
 
             SqlConnection Conexion = BaseDeDatos.ObternerConexion();
             SqlCommand crear = new SqlCommand();
-
-
-            using (crear = new SqlCommand("DAVID_Y_LOS_COCODRILOS.AGREGAR_AUTOMOVIL", Conexion))
+            if (string.IsNullOrWhiteSpace(marcaComboBox.Text)
+                   | string.IsNullOrWhiteSpace(modeloComboBox.Text)
+                   | string.IsNullOrWhiteSpace(patenteTextBox.Text)
+                   | string.IsNullOrWhiteSpace(turnoComboBox.Text)
+                   | string.IsNullOrWhiteSpace(choferTextBox.Text))
             {
-                crear.CommandType = CommandType.StoredProcedure;
-                crear.Parameters.Add("@patente", SqlDbType.Char);
-                crear.Parameters["@patente"].Value = patente;
-                crear.Parameters.Add("@marca", SqlDbType.Int);
-                crear.Parameters["@marca"].Value = idMarca;
-                crear.Parameters.Add("@modelo", SqlDbType.Int);
-                crear.Parameters["@modelo"].Value = idModelo;
-                crear.Parameters.Add("@turno", SqlDbType.Char);
-                crear.Parameters["@turno"].Value = turno;
-                crear.Parameters.Add("@chofer", SqlDbType.Int);
-                crear.Parameters["@chofer"].Value = chofer;
+                MessageBox.Show("Por Favor completa todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                try
+                {
+                    using (crear = new SqlCommand("DAVID_Y_LOS_COCODRILOS.AGREGAR_AUTOMOVIL", Conexion))
+                    {
+                        crear.CommandType = CommandType.StoredProcedure;
+                        crear.Parameters.Add("@patente", SqlDbType.Char);
+                        crear.Parameters["@patente"].Value = patente;
+                        crear.Parameters.Add("@marca", SqlDbType.Int);
+                        crear.Parameters["@marca"].Value = idMarca;
+                        crear.Parameters.Add("@modelo", SqlDbType.Int);
+                        crear.Parameters["@modelo"].Value = idModelo;
+                        crear.Parameters.Add("@turno", SqlDbType.Char);
+                        crear.Parameters["@turno"].Value = turno;
+                        crear.Parameters.Add("@chofer", SqlDbType.Int);
+                        crear.Parameters["@chofer"].Value = chofer;
 
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString(), "there was an issue!");
+                }
             }
             Conexion.Close();
         }

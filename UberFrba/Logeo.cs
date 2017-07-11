@@ -114,12 +114,12 @@ namespace UberFrba
                         Usuario.getInstance().setRolSeleccionado(Usuario.getInstance().getRoles()[0]);
                         Menu menu = new Menu();
                         menu.ShowDialog();
-                    }
-                    else
-                    {
-                        SeleccionRol rolSeleccionado = new SeleccionRol();
-                        rolSeleccionado.ShowDialog();
-                    }
+                    } else if( Usuario.getInstance().getRoles().Count > 0 ) {
+						SeleccionRol rolSeleccionado = new SeleccionRol();
+						rolSeleccionado.ShowDialog();
+					} else {
+						MessageBox.Show("El usuario no tiene roles disponibles");
+					}
                 }
 
                 Conexion.Close();

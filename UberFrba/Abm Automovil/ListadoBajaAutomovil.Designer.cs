@@ -31,12 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.cancelarButton = new System.Windows.Forms.Button();
             this.automovilesGrid = new System.Windows.Forms.DataGridView();
-            this.patenteColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.marcaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.modeloColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.turnoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.choferColumna = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eliminacionColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.buscarButton = new System.Windows.Forms.Button();
             this.limpiarButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -72,54 +66,14 @@
             this.automovilesGrid.AllowUserToAddRows = false;
             this.automovilesGrid.AllowUserToDeleteRows = false;
             this.automovilesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.automovilesGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.patenteColumn,
-            this.marcaColumn,
-            this.modeloColumn,
-            this.turnoColumn,
-            this.choferColumna,
-            this.eliminacionColumn});
             this.automovilesGrid.Location = new System.Drawing.Point(12, 163);
+            this.automovilesGrid.MultiSelect = false;
             this.automovilesGrid.Name = "automovilesGrid";
             this.automovilesGrid.ReadOnly = true;
+            this.automovilesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.automovilesGrid.Size = new System.Drawing.Size(345, 162);
             this.automovilesGrid.TabIndex = 9;
-            // 
-            // patenteColumn
-            // 
-            this.patenteColumn.HeaderText = "Patente";
-            this.patenteColumn.Name = "patenteColumn";
-            this.patenteColumn.ReadOnly = true;
-            // 
-            // marcaColumn
-            // 
-            this.marcaColumn.HeaderText = "Marca";
-            this.marcaColumn.Name = "marcaColumn";
-            this.marcaColumn.ReadOnly = true;
-            // 
-            // modeloColumn
-            // 
-            this.modeloColumn.HeaderText = "Modelo";
-            this.modeloColumn.Name = "modeloColumn";
-            this.modeloColumn.ReadOnly = true;
-            // 
-            // turnoColumn
-            // 
-            this.turnoColumn.HeaderText = "Turno";
-            this.turnoColumn.Name = "turnoColumn";
-            this.turnoColumn.ReadOnly = true;
-            // 
-            // choferColumna
-            // 
-            this.choferColumna.HeaderText = "Chofer";
-            this.choferColumna.Name = "choferColumna";
-            this.choferColumna.ReadOnly = true;
-            // 
-            // eliminacionColumn
-            // 
-            this.eliminacionColumn.HeaderText = "ELIMINAR";
-            this.eliminacionColumn.Name = "eliminacionColumn";
-            this.eliminacionColumn.ReadOnly = true;
+            this.automovilesGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.automovilesGrid_CellContentClick);
             // 
             // buscarButton
             // 
@@ -281,11 +235,5 @@
         private GD1C2017DataSet gD1C2017DataSet;
         private System.Windows.Forms.BindingSource aUTOMOVILBindingSource;
         private GD1C2017DataSetTableAdapters.AUTOMOVILTableAdapter aUTOMOVILTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn patenteColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn marcaColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn modeloColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn turnoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn choferColumna;
-        private System.Windows.Forms.DataGridViewButtonColumn eliminacionColumn;
     }
 }
