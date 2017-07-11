@@ -40,20 +40,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.choferesGrid = new System.Windows.Forms.DataGridView();
-            this.nombreColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.apellidoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dniColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mailColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefonoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.direccionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pisoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.departamentoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.localidadColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaNacColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usernameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contraseniaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.intentosColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.habilitadoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.choferesGrid)).BeginInit();
             this.SuspendLayout();
@@ -171,111 +157,13 @@
             this.choferesGrid.AllowUserToAddRows = false;
             this.choferesGrid.AllowUserToDeleteRows = false;
             this.choferesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.choferesGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nombreColumn,
-            this.apellidoColumn,
-            this.dniColumn,
-            this.mailColumn,
-            this.telefonoColumn,
-            this.direccionColumn,
-            this.pisoColumn,
-            this.departamentoColumn,
-            this.localidadColumn,
-            this.fechaNacColumn,
-            this.usernameColumn,
-            this.contraseniaColumn,
-            this.intentosColumn,
-            this.habilitadoColumn});
             this.choferesGrid.Location = new System.Drawing.Point(12, 163);
             this.choferesGrid.MultiSelect = false;
             this.choferesGrid.Name = "choferesGrid";
             this.choferesGrid.ReadOnly = true;
+            this.choferesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.choferesGrid.Size = new System.Drawing.Size(345, 162);
             this.choferesGrid.TabIndex = 27;
-            // 
-            // nombreColumn
-            // 
-            this.nombreColumn.HeaderText = "Nombre";
-            this.nombreColumn.Name = "nombreColumn";
-            this.nombreColumn.ReadOnly = true;
-            // 
-            // apellidoColumn
-            // 
-            this.apellidoColumn.HeaderText = "Apellido";
-            this.apellidoColumn.Name = "apellidoColumn";
-            this.apellidoColumn.ReadOnly = true;
-            // 
-            // dniColumn
-            // 
-            this.dniColumn.HeaderText = "DNI";
-            this.dniColumn.Name = "dniColumn";
-            this.dniColumn.ReadOnly = true;
-            // 
-            // mailColumn
-            // 
-            this.mailColumn.HeaderText = "Mail";
-            this.mailColumn.Name = "mailColumn";
-            this.mailColumn.ReadOnly = true;
-            // 
-            // telefonoColumn
-            // 
-            this.telefonoColumn.HeaderText = "Teléfono";
-            this.telefonoColumn.Name = "telefonoColumn";
-            this.telefonoColumn.ReadOnly = true;
-            // 
-            // direccionColumn
-            // 
-            this.direccionColumn.HeaderText = "Dirección";
-            this.direccionColumn.Name = "direccionColumn";
-            this.direccionColumn.ReadOnly = true;
-            // 
-            // pisoColumn
-            // 
-            this.pisoColumn.HeaderText = "Piso";
-            this.pisoColumn.Name = "pisoColumn";
-            this.pisoColumn.ReadOnly = true;
-            // 
-            // departamentoColumn
-            // 
-            this.departamentoColumn.HeaderText = "Departamento";
-            this.departamentoColumn.Name = "departamentoColumn";
-            this.departamentoColumn.ReadOnly = true;
-            // 
-            // localidadColumn
-            // 
-            this.localidadColumn.HeaderText = "Localidad";
-            this.localidadColumn.Name = "localidadColumn";
-            this.localidadColumn.ReadOnly = true;
-            // 
-            // fechaNacColumn
-            // 
-            this.fechaNacColumn.HeaderText = "Fecha de Nacimiento";
-            this.fechaNacColumn.Name = "fechaNacColumn";
-            this.fechaNacColumn.ReadOnly = true;
-            // 
-            // usernameColumn
-            // 
-            this.usernameColumn.HeaderText = "Username";
-            this.usernameColumn.Name = "usernameColumn";
-            this.usernameColumn.ReadOnly = true;
-            // 
-            // contraseniaColumn
-            // 
-            this.contraseniaColumn.HeaderText = "Contraseña";
-            this.contraseniaColumn.Name = "contraseniaColumn";
-            this.contraseniaColumn.ReadOnly = true;
-            // 
-            // intentosColumn
-            // 
-            this.intentosColumn.HeaderText = "Intentos de Logeo";
-            this.intentosColumn.Name = "intentosColumn";
-            this.intentosColumn.ReadOnly = true;
-            // 
-            // habilitadoColumn
-            // 
-            this.habilitadoColumn.HeaderText = "Habilitado";
-            this.habilitadoColumn.Name = "habilitadoColumn";
-            this.habilitadoColumn.ReadOnly = true;
             // 
             // BuscadorChoferes
             // 
@@ -312,19 +200,5 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView choferesGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombreColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn apellidoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dniColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mailColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telefonoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn direccionColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pisoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn departamentoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn localidadColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechaNacColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn usernameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contraseniaColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn intentosColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn habilitadoColumn;
     }
 }

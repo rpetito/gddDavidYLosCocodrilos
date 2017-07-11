@@ -172,8 +172,10 @@
             this.automovilesGrid.MultiSelect = false;
             this.automovilesGrid.Name = "automovilesGrid";
             this.automovilesGrid.ReadOnly = true;
+            this.automovilesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.automovilesGrid.Size = new System.Drawing.Size(345, 162);
             this.automovilesGrid.TabIndex = 12;
+            this.automovilesGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.automovilesGrid_CellContentClick);
             // 
             // ListadoModAutomovil
             // 

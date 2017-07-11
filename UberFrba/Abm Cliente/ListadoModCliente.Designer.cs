@@ -36,7 +36,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.limpiarButton = new System.Windows.Forms.Button();
-            this.seleccionarButton = new System.Windows.Forms.Button();
             this.buscarButton = new System.Windows.Forms.Button();
             this.cancelarButton = new System.Windows.Forms.Button();
             this.clientesGrid = new System.Windows.Forms.DataGridView();
@@ -121,16 +120,6 @@
             this.limpiarButton.UseVisualStyleBackColor = true;
             this.limpiarButton.Click += new System.EventHandler(this.limpiarButton_Click);
             // 
-            // seleccionarButton
-            // 
-            this.seleccionarButton.Location = new System.Drawing.Point(289, 360);
-            this.seleccionarButton.Name = "seleccionarButton";
-            this.seleccionarButton.Size = new System.Drawing.Size(75, 23);
-            this.seleccionarButton.TabIndex = 86;
-            this.seleccionarButton.Text = "Seleccionar";
-            this.seleccionarButton.UseVisualStyleBackColor = true;
-            this.seleccionarButton.Click += new System.EventHandler(this.seleccionarButton_Click);
-            // 
             // buscarButton
             // 
             this.buscarButton.Location = new System.Drawing.Point(289, 144);
@@ -139,6 +128,7 @@
             this.buscarButton.TabIndex = 83;
             this.buscarButton.Text = "Buscar";
             this.buscarButton.UseVisualStyleBackColor = true;
+            this.buscarButton.Click += new System.EventHandler(this.buscarButton_Click);
             // 
             // cancelarButton
             // 
@@ -155,8 +145,10 @@
             this.clientesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.clientesGrid.Location = new System.Drawing.Point(19, 177);
             this.clientesGrid.Name = "clientesGrid";
+            this.clientesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.clientesGrid.Size = new System.Drawing.Size(345, 162);
             this.clientesGrid.TabIndex = 84;
+            this.clientesGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clientesGrid_CellContentClick);
             // 
             // ListadoModCliente
             // 
@@ -164,7 +156,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(386, 408);
             this.Controls.Add(this.limpiarButton);
-            this.Controls.Add(this.seleccionarButton);
             this.Controls.Add(this.buscarButton);
             this.Controls.Add(this.cancelarButton);
             this.Controls.Add(this.clientesGrid);
@@ -188,7 +179,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox nombreTextBox;
         private System.Windows.Forms.Button limpiarButton;
-        private System.Windows.Forms.Button seleccionarButton;
         private System.Windows.Forms.Button buscarButton;
         private System.Windows.Forms.Button cancelarButton;
         private System.Windows.Forms.DataGridView clientesGrid;

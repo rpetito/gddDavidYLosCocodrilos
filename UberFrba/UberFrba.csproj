@@ -214,6 +214,8 @@
       <DependentUpon>Administrador.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseDeDatos.cs" />
+    <Compile Include="AutomovilSeleccionado.cs" />
+    <Compile Include="ChoferSeleccionado.cs" />
     <Compile Include="Functionality.cs" />
     <Compile Include="FunctionalityController.cs" />
     <Compile Include="MenuController.cs" />

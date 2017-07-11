@@ -114,5 +114,34 @@ namespace UberFrba.Abm_Automovil
             Conexion.Close();
             return dt;
         }
+
+        private void automovilesGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0 && e.RowIndex >= 0)
+            {
+                //tirar un mensaje para confirmar si el usuario esta seguro
+                //si selecciona SI
+                
+                String patente = (String) automovilesGrid.SelectedCells[1].Value;
+                SqlConnection Conexion = BaseDeDatos.ObternerConexion();
+                SqlCommand eliminarAutomovil = new SqlCommand();
+
+                try
+                {
+                    using (eliminarAutomovil = new SqlCommand("DAVID_Y_LOS_COCODRILOS.INHABILITAR_AUTOMOVIL", Conexion))
+                    {
+                        eliminarAutomovil.CommandType = CommandType.StoredProcedure;
+                        eliminarAutomovil.Parameters.Add("@patente", SqlDbType.Char);
+                        eliminarAutomovil.Parameters["@patente"].Value = patente;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString(), "there was an issue!");
+
+                }
+                Conexion.Close();
+            }
+        }
     }
 }
