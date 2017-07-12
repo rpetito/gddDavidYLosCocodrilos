@@ -57,8 +57,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.rolComboBox = new System.Windows.Forms.ComboBox();
             this.nacimientoDatePicker = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -66,7 +64,7 @@
             // crearButton
             // 
             this.crearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.crearButton.Location = new System.Drawing.Point(202, 450);
+            this.crearButton.Location = new System.Drawing.Point(202, 428);
             this.crearButton.Name = "crearButton";
             this.crearButton.Size = new System.Drawing.Size(75, 23);
             this.crearButton.TabIndex = 49;
@@ -76,7 +74,7 @@
             // 
             // limpiarButton
             // 
-            this.limpiarButton.Location = new System.Drawing.Point(104, 450);
+            this.limpiarButton.Location = new System.Drawing.Point(104, 428);
             this.limpiarButton.Name = "limpiarButton";
             this.limpiarButton.Size = new System.Drawing.Size(75, 23);
             this.limpiarButton.TabIndex = 48;
@@ -86,7 +84,7 @@
             // 
             // cancelarButton
             // 
-            this.cancelarButton.Location = new System.Drawing.Point(12, 450);
+            this.cancelarButton.Location = new System.Drawing.Point(12, 428);
             this.cancelarButton.Name = "cancelarButton";
             this.cancelarButton.Size = new System.Drawing.Size(75, 23);
             this.cancelarButton.TabIndex = 47;
@@ -255,7 +253,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(19, 324);
+            this.groupBox1.Location = new System.Drawing.Point(19, 302);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(242, 100);
             this.groupBox1.TabIndex = 124;
@@ -310,23 +308,6 @@
             this.label2.TabIndex = 126;
             this.label2.Text = "Contraseña:";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(102, 300);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(26, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Rol:";
-            // 
-            // rolComboBox
-            // 
-            this.rolComboBox.FormattingEnabled = true;
-            this.rolComboBox.Location = new System.Drawing.Point(133, 297);
-            this.rolComboBox.Name = "rolComboBox";
-            this.rolComboBox.Size = new System.Drawing.Size(128, 21);
-            this.rolComboBox.TabIndex = 5;
-            // 
             // nacimientoDatePicker
             // 
             this.nacimientoDatePicker.Location = new System.Drawing.Point(133, 117);
@@ -338,10 +319,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(289, 491);
+            this.ClientSize = new System.Drawing.Size(289, 465);
             this.Controls.Add(this.nacimientoDatePicker);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.rolComboBox);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dniTextBox);
             this.Controls.Add(this.apellidoTextBox);
@@ -405,8 +384,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox rolComboBox;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker nacimientoDatePicker;
 
     }

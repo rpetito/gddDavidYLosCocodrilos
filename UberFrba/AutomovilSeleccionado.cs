@@ -8,11 +8,28 @@ namespace UberFrba
 {
     class AutomovilSeleccionado
     {
+        public static AutomovilSeleccionado instance = null;
         private String patente;
         private String marca;
         private String modelo;
-        private String turno;
-        private String chofer;
+        private Int32 turno;
+        private Decimal chofer;
+        private Int32 habilitado;
+
+        public static AutomovilSeleccionado getInstance()
+        {
+            if (instance == null)
+            {
+                instance = new AutomovilSeleccionado();
+            }
+
+            return instance;
+        }
+
+        public static void setInstance()
+        {
+            instance = null;
+        }
 
         public String getPatente() {
             return patente;
@@ -38,20 +55,28 @@ namespace UberFrba
             this.modelo = modelo;
         }
 
-        public String getTurno() {
+        public Int32 getTurno() {
             return turno;
         }
 
-        public void setTurno(String turno) {
+        public void setTurno(Int32 turno) {
             this.turno = turno;
         }
 
-        public String getChofer() {
+        public Decimal getChofer() {
             return chofer;
         }
 
-        public void setChofer(String chofer) {
+        public void setChofer(Decimal chofer) {
             this.chofer = chofer;
+        }
+
+        public Int32 getHabilitado() {
+            return habilitado;
+        }
+
+        public void setHabilitado(Int32 habilitado) {
+            this.habilitado = habilitado;
         }
     }
 }

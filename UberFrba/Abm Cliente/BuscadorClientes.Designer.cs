@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.limpiarButton = new System.Windows.Forms.Button();
-            this.seleccionarButton = new System.Windows.Forms.Button();
             this.buscarButton = new System.Windows.Forms.Button();
             this.cancelarButton = new System.Windows.Forms.Button();
             this.clientesGrid = new System.Windows.Forms.DataGridView();
@@ -53,16 +52,6 @@
             this.limpiarButton.Text = "Limpiar";
             this.limpiarButton.UseVisualStyleBackColor = true;
             this.limpiarButton.Click += new System.EventHandler(this.limpiarButton_Click);
-            // 
-            // seleccionarButton
-            // 
-            this.seleccionarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.seleccionarButton.Location = new System.Drawing.Point(260, 345);
-            this.seleccionarButton.Name = "seleccionarButton";
-            this.seleccionarButton.Size = new System.Drawing.Size(98, 23);
-            this.seleccionarButton.TabIndex = 26;
-            this.seleccionarButton.Text = "Seleccionar";
-            this.seleccionarButton.UseVisualStyleBackColor = true;
             // 
             // buscarButton
             // 
@@ -92,6 +81,7 @@
             this.clientesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.clientesGrid.Size = new System.Drawing.Size(345, 162);
             this.clientesGrid.TabIndex = 24;
+            this.clientesGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clientesGrid_CellContentClick);
             // 
             // groupBox1
             // 
@@ -166,7 +156,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(371, 381);
             this.Controls.Add(this.limpiarButton);
-            this.Controls.Add(this.seleccionarButton);
             this.Controls.Add(this.buscarButton);
             this.Controls.Add(this.cancelarButton);
             this.Controls.Add(this.clientesGrid);
@@ -183,7 +172,6 @@
         #endregion
 
         private System.Windows.Forms.Button limpiarButton;
-        private System.Windows.Forms.Button seleccionarButton;
         private System.Windows.Forms.Button buscarButton;
         private System.Windows.Forms.Button cancelarButton;
         private System.Windows.Forms.DataGridView clientesGrid;

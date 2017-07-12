@@ -16,25 +16,6 @@ namespace UberFrba.Abm_Cliente
         public NuevoCliente()
         {
             InitializeComponent();
-            SqlConnection Conexion = BaseDeDatos.ObternerConexion();
-            SqlCommand llenarRoles = new SqlCommand();
-            SqlDataReader rolReader;
-
-            using (llenarRoles = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_ROLES",
-                                        Conexion))
-            {
-                llenarRoles.CommandType = CommandType.StoredProcedure;
-            }
-
-            rolReader = llenarRoles.ExecuteReader();
-
-            while (rolReader.Read())
-            {
-                rolComboBox.Items.Add(rolReader.GetString(1));
-            }
-
-            rolReader.Close();
-            Conexion.Close();
         }
 
         private void cancelarButton_Click(object sender, EventArgs e)
@@ -55,7 +36,6 @@ namespace UberFrba.Abm_Cliente
             departamentoTextBox.Clear();
             codigoTextBox.Clear();
             mailTextBox.Clear();
-            rolComboBox.ResetText();
             usuarioTextBox.Clear();
             contraseniaTextBox.Clear();
             repetirTextBox.Clear();
@@ -79,8 +59,7 @@ namespace UberFrba.Abm_Cliente
                     | string.IsNullOrWhiteSpace(mailTextBox.Text)
                     | string.IsNullOrWhiteSpace(usuarioTextBox.Text)
                     | string.IsNullOrWhiteSpace(contraseniaTextBox.Text)
-                    | string.IsNullOrWhiteSpace(repetirTextBox.Text)
-                    | string.IsNullOrWhiteSpace(rolComboBox.Text))
+                    | string.IsNullOrWhiteSpace(repetirTextBox.Text))
             {
                 MessageBox.Show("Por Favor completa todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -98,7 +77,7 @@ namespace UberFrba.Abm_Cliente
                     {
                         crearCliente.CommandType = CommandType.StoredProcedure;
                         crearCliente.Parameters.Add("@rol", SqlDbType.Int);
-                        crearCliente.Parameters["@rol"].Value = rolComboBox.Text;//rol no es int
+                        crearCliente.Parameters["@rol"].Value = 2;
                         crearCliente.Parameters.Add("@nombre", SqlDbType.Char);
                         crearCliente.Parameters["@nombre"].Value = nombreTextBox.Text;
                         crearCliente.Parameters.Add("@apellido", SqlDbType.Char);
@@ -118,7 +97,7 @@ namespace UberFrba.Abm_Cliente
                         crearCliente.Parameters.Add("@localidad", SqlDbType.Char);
                         crearCliente.Parameters["@localidad"].Value = localidadTextBox.Text;
                         crearCliente.Parameters.Add("@codPos", SqlDbType.Int);
-                        crearCliente.Parameters["@codPos"].Value = null;//turbio
+                        crearCliente.Parameters["@codPos"].Value = codigoTextBox.Text;
                         crearCliente.Parameters.Add("@fechaNac", SqlDbType.Date);
                         crearCliente.Parameters["@fechaNac"].Value = nacimientoDatePicker.Text;
                         crearCliente.Parameters.Add("@username", SqlDbType.Char);

@@ -215,7 +215,7 @@
     </Compile>
     <Compile Include="BaseDeDatos.cs" />
     <Compile Include="AutomovilSeleccionado.cs" />
-    <Compile Include="ChoferSeleccionado.cs" />
+    <Compile Include="UsuarioSeleccionado.cs" />
     <Compile Include="Functionality.cs" />
     <Compile Include="FunctionalityController.cs" />
     <Compile Include="Listado Estadistico\EstadisticaController.cs" />

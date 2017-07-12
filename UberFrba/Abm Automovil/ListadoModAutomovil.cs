@@ -75,8 +75,6 @@ namespace UberFrba.Abm_Automovil
             this.Close();
         }
 
-
-
         private void buscarButton_Click(object sender, EventArgs e)
         {
             getAutomoviles();
@@ -91,16 +89,16 @@ namespace UberFrba.Abm_Automovil
 
             try
             {
-                using (buscarAutomovil = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_AUTOMOVIL", Conexion))
+                using (buscarAutomovil = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_AUTOMOVILES", Conexion))
                 {
                     buscarAutomovil.CommandType = CommandType.StoredProcedure;
+                    buscarAutomovil.Parameters.Add("@patente", SqlDbType.Char);
+                    buscarAutomovil.Parameters["@patente"].Value = patenteTextBox.Text;
                     buscarAutomovil.Parameters.Add("@marca", SqlDbType.Char);
                     buscarAutomovil.Parameters["@marca"].Value = marcaComboBox.Text;
                     buscarAutomovil.Parameters.Add("@modelo", SqlDbType.Char);
                     buscarAutomovil.Parameters["@modelo"].Value = modeloComboBox.Text;
-                    buscarAutomovil.Parameters.Add("@patente", SqlDbType.Char);
-                    buscarAutomovil.Parameters["@patente"].Value = patenteTextBox.Text;
-                    buscarAutomovil.Parameters.Add("@chofer", SqlDbType.Char);
+                    buscarAutomovil.Parameters.Add("@chofer", SqlDbType.Decimal);
                     buscarAutomovil.Parameters["@chofer"].Value = choferTextBox.Text;
                     da.SelectCommand = buscarAutomovil;
                     da.Fill(dt);
@@ -119,12 +117,13 @@ namespace UberFrba.Abm_Automovil
         {
             if (e.ColumnIndex == 0 && e.RowIndex >= 0)
             {
-                AutomovilSeleccionado auto = new AutomovilSeleccionado();
-                auto.setMarca(this.automovilesGrid.CurrentRow.Cells[2].Value.ToString());
-                auto.setModelo(this.automovilesGrid.CurrentRow.Cells[3].Value.ToString());
-                auto.setPatente(this.automovilesGrid.CurrentRow.Cells[1].Value.ToString());
-                auto.setChofer(this.automovilesGrid.CurrentRow.Cells[5].Value.ToString());
-                auto.setTurno(this.automovilesGrid.CurrentRow.Cells[4].Value.ToString());
+
+                AutomovilSeleccionado.getInstance().setMarca(this.automovilesGrid.CurrentRow.Cells[3].Value.ToString());
+                AutomovilSeleccionado.getInstance().setModelo(this.automovilesGrid.CurrentRow.Cells[4].Value.ToString());
+                AutomovilSeleccionado.getInstance().setPatente(this.automovilesGrid.CurrentRow.Cells[1].Value.ToString());
+                AutomovilSeleccionado.getInstance().setChofer((Decimal)this.automovilesGrid.CurrentRow.Cells[2].Value);
+                AutomovilSeleccionado.getInstance().setTurno((Int32)this.automovilesGrid.CurrentRow.Cells[5].Value);
+                AutomovilSeleccionado.getInstance().setHabilitado((Int32)this.automovilesGrid.CurrentRow.Cells[6].Value);
 
                 FormularioModAutomovil form = new FormularioModAutomovil();
                 form.ShowDialog();
