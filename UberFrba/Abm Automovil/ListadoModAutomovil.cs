@@ -122,7 +122,7 @@ namespace UberFrba.Abm_Automovil
                 AutomovilSeleccionado.getInstance().setModelo(this.automovilesGrid.CurrentRow.Cells[4].Value.ToString());
                 AutomovilSeleccionado.getInstance().setPatente(this.automovilesGrid.CurrentRow.Cells[1].Value.ToString());
                 AutomovilSeleccionado.getInstance().setChofer((Decimal)this.automovilesGrid.CurrentRow.Cells[2].Value);
-                AutomovilSeleccionado.getInstance().setTurno((Int32)this.automovilesGrid.CurrentRow.Cells[5].Value);
+                //AutomovilSeleccionado.getInstance().setTurno((Int32)this.automovilesGrid.CurrentRow.Cells[5].Value);
                 AutomovilSeleccionado.getInstance().setHabilitado((Int32)this.automovilesGrid.CurrentRow.Cells[6].Value);
 
                 FormularioModAutomovil form = new FormularioModAutomovil();

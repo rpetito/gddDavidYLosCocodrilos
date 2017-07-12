@@ -43,13 +43,19 @@
             this.label6 = new System.Windows.Forms.Label();
             this.patenteSelTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.turnosButton = new System.Windows.Forms.Button();
+            this.turnosTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.turnosButton);
             this.groupBox2.Controls.Add(this.modeloSelComboBox);
+            this.groupBox2.Controls.Add(this.turnosTextBox);
             this.groupBox2.Controls.Add(this.marcaSelComboBox);
+            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.cancelarButton);
             this.groupBox2.Controls.Add(this.habilitadoCheckBox);
             this.groupBox2.Controls.Add(this.turnoSelComboBox);
@@ -64,7 +70,7 @@
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(271, 328);
+            this.groupBox2.Size = new System.Drawing.Size(271, 354);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Automóvil seleccionado";
@@ -87,7 +93,7 @@
             // 
             // cancelarButton
             // 
-            this.cancelarButton.Location = new System.Drawing.Point(6, 290);
+            this.cancelarButton.Location = new System.Drawing.Point(6, 325);
             this.cancelarButton.Name = "cancelarButton";
             this.cancelarButton.Size = new System.Drawing.Size(75, 23);
             this.cancelarButton.TabIndex = 55;
@@ -98,7 +104,7 @@
             // habilitadoCheckBox
             // 
             this.habilitadoCheckBox.AutoSize = true;
-            this.habilitadoCheckBox.Location = new System.Drawing.Point(51, 240);
+            this.habilitadoCheckBox.Location = new System.Drawing.Point(51, 282);
             this.habilitadoCheckBox.Name = "habilitadoCheckBox";
             this.habilitadoCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.habilitadoCheckBox.Size = new System.Drawing.Size(73, 17);
@@ -125,7 +131,7 @@
             // 
             // limpiarSelButton
             // 
-            this.limpiarSelButton.Location = new System.Drawing.Point(98, 290);
+            this.limpiarSelButton.Location = new System.Drawing.Point(98, 325);
             this.limpiarSelButton.Name = "limpiarSelButton";
             this.limpiarSelButton.Size = new System.Drawing.Size(75, 23);
             this.limpiarSelButton.TabIndex = 52;
@@ -145,7 +151,7 @@
             // modificarSelButton
             // 
             this.modificarSelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modificarSelButton.Location = new System.Drawing.Point(190, 290);
+            this.modificarSelButton.Location = new System.Drawing.Point(190, 325);
             this.modificarSelButton.Name = "modificarSelButton";
             this.modificarSelButton.Size = new System.Drawing.Size(75, 23);
             this.modificarSelButton.TabIndex = 51;
@@ -194,11 +200,38 @@
             this.label5.TabIndex = 46;
             this.label5.Text = "Chofer:";
             // 
+            // turnosButton
+            // 
+            this.turnosButton.Location = new System.Drawing.Point(190, 239);
+            this.turnosButton.Name = "turnosButton";
+            this.turnosButton.Size = new System.Drawing.Size(28, 23);
+            this.turnosButton.TabIndex = 71;
+            this.turnosButton.Text = "...";
+            this.turnosButton.UseVisualStyleBackColor = true;
+            this.turnosButton.Click += new System.EventHandler(this.turnosButton_Click);
+            // 
+            // turnosTextBox
+            // 
+            this.turnosTextBox.Enabled = false;
+            this.turnosTextBox.Location = new System.Drawing.Point(101, 240);
+            this.turnosTextBox.Name = "turnosTextBox";
+            this.turnosTextBox.Size = new System.Drawing.Size(82, 20);
+            this.turnosTextBox.TabIndex = 70;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(52, 244);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.TabIndex = 69;
+            this.label1.Text = "Turnos:";
+            // 
             // FormularioModAutomovil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(295, 349);
+            this.ClientSize = new System.Drawing.Size(295, 378);
             this.Controls.Add(this.groupBox2);
             this.Name = "FormularioModAutomovil";
             this.Text = "FormularioModAutomovil";
@@ -225,5 +258,8 @@
         private System.Windows.Forms.Button cancelarButton;
         private System.Windows.Forms.ComboBox modeloSelComboBox;
         private System.Windows.Forms.ComboBox marcaSelComboBox;
+        private System.Windows.Forms.Button turnosButton;
+        private System.Windows.Forms.TextBox turnosTextBox;
+        private System.Windows.Forms.Label label1;
     }
 }

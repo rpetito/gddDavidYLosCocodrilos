@@ -12,7 +12,7 @@ namespace UberFrba
         private String patente;
         private String marca;
         private String modelo;
-        private Int32 turno;
+        private List<Int32> listaTurnos = new List<Int32>();
         private Decimal chofer;
         private Int32 habilitado;
 
@@ -55,12 +55,12 @@ namespace UberFrba
             this.modelo = modelo;
         }
 
-        public Int32 getTurno() {
-            return turno;
+        public List<Int32> getListaTurno() {
+            return listaTurnos;
         }
 
-        public void setTurno(Int32 turno) {
-            this.turno = turno;
+        public void setListaTurno(Int32 turno) {
+            this.listaTurnos.Add(turno);
         }
 
         public Decimal getChofer() {

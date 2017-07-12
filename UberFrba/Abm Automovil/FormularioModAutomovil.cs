@@ -13,6 +13,8 @@ namespace UberFrba.Abm_Automovil
 {
     public partial class FormularioModAutomovil : Form
     {
+        Int32 idMarca;
+        Int32 idModelo;
         public FormularioModAutomovil()
         {
             InitializeComponent();
@@ -23,8 +25,7 @@ namespace UberFrba.Abm_Automovil
             SqlDataReader marcasReader;
             SqlDataReader modelosReader;
             SqlDataReader turnosReader;
-            Int32 idMarca;
-            Int32 idModelo;
+
 
             var dictMarcas = new Dictionary<int, String>();
             var dictModelos = new Dictionary<int, String>();
@@ -68,26 +69,12 @@ namespace UberFrba.Abm_Automovil
             idModelo = dictModelos.FirstOrDefault(x => x.Value == modeloSelComboBox.Text).Key;
             modelosReader.Close();
 
-
-
-            using (turnos = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_TURNOS", Conexion))
-            {
-                turnos.CommandType = CommandType.StoredProcedure;
-            }
-
-            turnosReader = turnos.ExecuteReader();
-
-            while (turnosReader.Read())
-            {
-                turnoSelComboBox.Items.Add(turnosReader.GetString(3));
-            }
-            turnosReader.Close();
             Conexion.Close();
 
             marcaSelComboBox.Text = AutomovilSeleccionado.getInstance().getMarca().ToString();
             modeloSelComboBox.Text = AutomovilSeleccionado.getInstance().getModelo().ToString();
             patenteSelTextBox.Text = AutomovilSeleccionado.getInstance().getPatente();
-            turnoSelComboBox.Text = AutomovilSeleccionado.getInstance().getTurno().ToString();
+            turnosTextBox.Text = String.Join(" ", AutomovilSeleccionado.getInstance().getListaTurno());
             choferSelTextBox.Text = AutomovilSeleccionado.getInstance().getChofer().ToString();
             if (AutomovilSeleccionado.getInstance().getHabilitado() == 1)
                 habilitadoCheckBox.Checked = true;
@@ -101,7 +88,6 @@ namespace UberFrba.Abm_Automovil
             marcaSelComboBox.ResetText();
             modeloSelComboBox.ResetText();
             patenteSelTextBox.Clear();
-            turnoSelComboBox.ResetText();
             choferSelTextBox.Clear();
             habilitadoCheckBox.Checked = false;
         }
@@ -118,8 +104,8 @@ namespace UberFrba.Abm_Automovil
 
             if (string.IsNullOrWhiteSpace(patenteSelTextBox.Text)
                     | string.IsNullOrWhiteSpace(marcaSelComboBox.Text)
+                    | string.IsNullOrWhiteSpace(turnosTextBox.Text)
                     | string.IsNullOrWhiteSpace(modeloSelComboBox.Text)
-                    | string.IsNullOrWhiteSpace(turnoSelComboBox.Text)
                     | string.IsNullOrWhiteSpace(choferSelTextBox.Text))
             {
                 MessageBox.Show("Por Favor completa todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -133,8 +119,6 @@ namespace UberFrba.Abm_Automovil
                         habilitado = 1;
                     else habilitado = 0;
 
-                    Int32 selectedMarca = marcaSelComboBox.SelectedIndex;// creo que esta mal
-                    Int32 selectedModelo = modeloSelComboBox.SelectedIndex;// creo que esta mal
 
                     using (modificarAutomovil = new SqlCommand("DAVID_Y_LOS_COCODRILOS.MODIFICAR_AUTOMOVIL", Conexion))
                     {
@@ -142,9 +126,9 @@ namespace UberFrba.Abm_Automovil
                         modificarAutomovil.Parameters.Add("@patente", SqlDbType.Char);
                         modificarAutomovil.Parameters["@patente"].Value = patenteSelTextBox.Text;
                         modificarAutomovil.Parameters.Add("@marca", SqlDbType.Int);
-                        modificarAutomovil.Parameters["@marca"].Value = selectedMarca;
+                        modificarAutomovil.Parameters["@marca"].Value = idMarca;
                         modificarAutomovil.Parameters.Add("@modelo", SqlDbType.Int);
-                        modificarAutomovil.Parameters["@modelo"].Value = selectedModelo;
+                        modificarAutomovil.Parameters["@modelo"].Value = idModelo;
                         modificarAutomovil.Parameters.Add("@chofer", SqlDbType.Decimal);
                         modificarAutomovil.Parameters["@chofer"].Value = choferSelTextBox.Text;
                         modificarAutomovil.Parameters.Add("@habilitado", SqlDbType.Bit);
@@ -158,6 +142,30 @@ namespace UberFrba.Abm_Automovil
             }
             Conexion.Close();
             this.Close();
+        }
+
+        private void turnosButton_Click(object sender, EventArgs e)
+        {
+            Turno.setInstance();
+            ListadoTurnos listado = new ListadoTurnos();
+            listado.ShowDialog();
+            turnosTextBox.Text = String.Join(" ", Turno.getInstance().getListaTurnos());
+
+        }
+
+        static DataTable ConvertToDatatable(List<Int32> list)
+        {
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add("ID");
+            foreach (var item in list)
+            {
+                var row = dt.NewRow();
+                row["ID"] = item;
+                dt.Rows.Add(row);
+            }
+
+            return dt;
         }
     }
 }
