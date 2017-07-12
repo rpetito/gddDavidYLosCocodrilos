@@ -31,22 +31,9 @@ namespace UberFrba.Facturacion
             cliente.ShowDialog();
             clienteTextBox.Text = UsuarioSeleccionado.getInstance().getNombre() + " " + UsuarioSeleccionado.getInstance().getApellido();
 
-            SqlConnection Conexion = BaseDeDatos.ObternerConexion();
-            SqlCommand facturar = new SqlCommand();
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter();
+            //setear grid o eliminarla
 
-            using (facturar = new SqlCommand("DAVID_Y_LOS_COCODRILOS.BUSCAR_USUARIO", Conexion))
-            {
-                facturar.CommandType = CommandType.StoredProcedure;
-                facturar.Parameters.Add("@cliente", SqlDbType.Decimal);
-                facturar.Parameters["@cliente"].Value = UsuarioSeleccionado.getInstance().getDni();
-                facturar.Parameters.Add("@fecha", SqlDbType.Date);
-                facturar.Parameters["@fecha"].Value = DateTime.Parse(fecha);
-                da.SelectCommand = facturar;
-                da.Fill(dt);
-                viajesGrid.DataSource = dt;
-            }
+
         }
 
         private void limpiarButton_Click(object sender, EventArgs e)
@@ -63,7 +50,23 @@ namespace UberFrba.Facturacion
 
         private void facturarButton_Click(object sender, EventArgs e)
         {
+            SqlConnection Conexion = BaseDeDatos.ObternerConexion();
+            SqlCommand facturar = new SqlCommand();
 
+            using (facturar = new SqlCommand("DAVID_Y_LOS_COCODRILOS.FACTURAR", Conexion))
+            {
+                facturar.CommandType = CommandType.StoredProcedure;
+                facturar.Parameters.Add("@cliente", SqlDbType.Decimal);
+                facturar.Parameters["@cliente"].Value = UsuarioSeleccionado.getInstance().getDni();
+                facturar.Parameters.Add("@fecha", SqlDbType.Date);
+                facturar.Parameters["@fecha"].Value = DateTime.Parse(fecha);
+
+                facturar.ExecuteScalar();
+            }
+            Conexion.Close();
+            
+            DetalleFactura detalle = new DetalleFactura();
+            detalle.ShowDialog();
         }
     }
 }
