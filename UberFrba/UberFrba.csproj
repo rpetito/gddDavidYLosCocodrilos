@@ -218,6 +218,7 @@
     <Compile Include="UsuarioSeleccionado.cs" />
     <Compile Include="Functionality.cs" />
     <Compile Include="FunctionalityController.cs" />
+    <Compile Include="Listado Estadistico\EstadisticaController.cs" />
     <Compile Include="MenuController.cs" />
     <Compile Include="Rol.cs" />
     <Compile Include="Usuario.cs" />
