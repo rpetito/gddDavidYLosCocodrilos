@@ -49,6 +49,7 @@
             this.eliminarButton.TabIndex = 17;
             this.eliminarButton.Text = "Eliminar";
             this.eliminarButton.UseVisualStyleBackColor = true;
+            this.eliminarButton.Click += new System.EventHandler(this.eliminarButton_Click);
             // 
             // cancelarButton
             // 
@@ -76,6 +77,7 @@
             this.buscarButton.TabIndex = 14;
             this.buscarButton.Text = "Buscar";
             this.buscarButton.UseVisualStyleBackColor = true;
+            this.buscarButton.Click += new System.EventHandler(this.buscarButton_Click);
             // 
             // limpiarButton
             // 

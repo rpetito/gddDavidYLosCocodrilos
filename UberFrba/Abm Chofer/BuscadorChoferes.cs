@@ -85,8 +85,8 @@ namespace UberFrba.Abm_Chofer
                 using (buscarChofer = new SqlCommand("DAVID_Y_LOS_COCODRILOS.BUSCAR_USUARIO", Conexion))
                 {
                     buscarChofer.CommandType = CommandType.StoredProcedure;
-                   // buscarChofer.Parameters.Add("@rol", SqlDbType.Int);
-                  //  buscarChofer.Parameters["@rol"].Value = 3;
+                    buscarChofer.Parameters.Add("@rol", SqlDbType.Int);
+                    buscarChofer.Parameters["@rol"].Value = 3;
                     buscarChofer.Parameters.Add("@nombre", SqlDbType.Char);
                     buscarChofer.Parameters["@nombre"].Value = (object)nombre ?? DBNull.Value;
                     buscarChofer.Parameters.Add("@apellido", SqlDbType.Char);

@@ -61,6 +61,8 @@ namespace UberFrba.Abm_Chofer
                 using (buscarChofer = new SqlCommand("DAVID_Y_LOS_COCODRILOS.BUSCAR_USUARIO", Conexion))
                 {
                     buscarChofer.CommandType = CommandType.StoredProcedure;
+					buscarChofer.Parameters.Add("@rol", SqlDbType.Int);
+					buscarChofer.Parameters["@rol"].Value = 3;
                     buscarChofer.Parameters.Add("@nombre", SqlDbType.Char);
                     buscarChofer.Parameters["@nombre"].Value = nombreTextBox.Text;
                     buscarChofer.Parameters.Add("@apellido", SqlDbType.Char);
@@ -95,11 +97,17 @@ namespace UberFrba.Abm_Chofer
 
                 try
                 {
-                    using (eliminarChofer = new SqlCommand("DAVID_Y_LOS_COCODRILOS.INHABILITAR_USUARIO", Conexion))
+                    using (eliminarChofer = new SqlCommand("DAVID_Y_LOS_COCODRILOS.INHABILITAR_USUARIO_ROL_PARTICULAR", Conexion))
                     {
                         eliminarChofer.CommandType = CommandType.StoredProcedure;
+						eliminarChofer.Parameters.Add("@rol", SqlDbType.Int);
+						eliminarChofer.Parameters["@rol"].Value = 3;
                         eliminarChofer.Parameters.Add("@dni", SqlDbType.Decimal);
                         eliminarChofer.Parameters["@dni"].Value = dni;
+
+						eliminarChofer.ExecuteScalar();
+						this.Close();
+						
                     }
                 }
                 catch (Exception ex)

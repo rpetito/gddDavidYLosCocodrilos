@@ -62,6 +62,8 @@ namespace UberFrba.Abm_Cliente
                 using (buscarCliente = new SqlCommand("DAVID_Y_LOS_COCODRILOS.BUSCAR_USUARIO", Conexion))
                 {
                     buscarCliente.CommandType = CommandType.StoredProcedure;
+					buscarCliente.Parameters.Add("@rol", SqlDbType.Int);
+					buscarCliente.Parameters["@rol"].Value = 2;
                     buscarCliente.Parameters.Add("@nombre", SqlDbType.Char);
                     buscarCliente.Parameters["@nombre"].Value = nombreTextBox.Text;
                     buscarCliente.Parameters.Add("@apellido", SqlDbType.Char);
@@ -106,7 +108,7 @@ namespace UberFrba.Abm_Cliente
                 UsuarioSeleccionado.getInstance().setLocalidad(this.clientesGrid.CurrentRow.Cells[9].Value.ToString());
                 UsuarioSeleccionado.getInstance().setCodigoPostal(this.clientesGrid.CurrentRow.Cells[10].Value.ToString());
                 UsuarioSeleccionado.getInstance().setFechaNacimiento((DateTime)this.clientesGrid.CurrentRow.Cells[11].Value);
-                UsuarioSeleccionado.getInstance().setHabilitado((Int32)this.clientesGrid.CurrentRow.Cells[15].Value);
+                UsuarioSeleccionado.getInstance().setHabilitado((Int32)this.clientesGrid.CurrentRow.Cells[13].Value);
                 
                 FormularioModCliente form = new FormularioModCliente();
                 form.ShowDialog();
