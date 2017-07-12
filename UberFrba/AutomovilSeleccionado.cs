@@ -55,11 +55,11 @@ namespace UberFrba
             this.modelo = modelo;
         }
 
-        public List<Int32> getListaTurno() {
+        public List<Int32> getListaTurnos() {
             return listaTurnos;
         }
 
-        public void setListaTurno(Int32 turno) {
+        public void setListaTurnos(Int32 turno) {
             this.listaTurnos.Add(turno);
         }
 
