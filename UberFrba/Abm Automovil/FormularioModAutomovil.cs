@@ -129,6 +129,7 @@ namespace UberFrba.Abm_Automovil
                         modificarAutomovil.Parameters["@chofer"].Value = choferSelTextBox.Text;
                         modificarAutomovil.Parameters.Add("@habilitado", SqlDbType.Int);
                         modificarAutomovil.Parameters["@habilitado"].Value = habilitado;
+                        modificarAutomovil.ExecuteScalar();
                     }
                 }
                 catch (Exception ex)

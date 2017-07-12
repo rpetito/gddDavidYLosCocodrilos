@@ -31,7 +31,7 @@ namespace UberFrba.Facturacion
             cliente.ShowDialog();
             clienteTextBox.Text = UsuarioSeleccionado.getInstance().getNombre() + " " + UsuarioSeleccionado.getInstance().getApellido();
 
-
+            //setear grid o eliminarla
 
 
         }
@@ -52,22 +52,18 @@ namespace UberFrba.Facturacion
         {
             SqlConnection Conexion = BaseDeDatos.ObternerConexion();
             SqlCommand facturar = new SqlCommand();
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter();
-            
 
-
-            using (facturar = new SqlCommand("DAVID_Y_LOS_COCODRILOS.BUSCAR_USUARIO", Conexion))
+            using (facturar = new SqlCommand("DAVID_Y_LOS_COCODRILOS.FACTURAR", Conexion))
             {
                 facturar.CommandType = CommandType.StoredProcedure;
                 facturar.Parameters.Add("@cliente", SqlDbType.Decimal);
                 facturar.Parameters["@cliente"].Value = UsuarioSeleccionado.getInstance().getDni();
                 facturar.Parameters.Add("@fecha", SqlDbType.Date);
                 facturar.Parameters["@fecha"].Value = DateTime.Parse(fecha);
-                da.SelectCommand = facturar;
-                da.Fill(dt);
-                viajesGrid.DataSource = dt;
+
+                facturar.ExecuteScalar();
             }
+            Conexion.Close();
             
             DetalleFactura detalle = new DetalleFactura();
             detalle.ShowDialog();

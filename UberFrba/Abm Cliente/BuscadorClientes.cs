@@ -62,6 +62,8 @@ namespace UberFrba.Abm_Cliente
                 using (buscarCliente = new SqlCommand("DAVID_Y_LOS_COCODRILOS.BUSCAR_USUARIO", Conexion))
                 {
                     buscarCliente.CommandType = CommandType.StoredProcedure;
+                    buscarCliente.Parameters.Add("@rol", SqlDbType.Int);
+                    buscarCliente.Parameters["@rol"].Value = 2;
                     buscarCliente.Parameters.Add("@nombre", SqlDbType.Char);
                     buscarCliente.Parameters["@nombre"].Value = nombreTextBox.Text;
                     buscarCliente.Parameters.Add("@apellido", SqlDbType.Char);

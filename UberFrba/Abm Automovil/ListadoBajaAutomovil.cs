@@ -135,6 +135,8 @@ namespace UberFrba.Abm_Automovil
                         eliminarAutomovil.Parameters["@patente"].Value = patente;
                         eliminarAutomovil.Parameters.Add("@turno", SqlDbType.Int);
                         eliminarAutomovil.Parameters["@turno"].Value = this.automovilesGrid.CurrentRow.Cells[5].Value;
+                        eliminarAutomovil.ExecuteScalar();
+                        this.Close();
                     }
                 }
                 catch (Exception ex)
