@@ -11,12 +11,12 @@ using System.Data.SqlClient;
 
 namespace UberFrba.Listado_Estadistico
 {
-    public partial class Form1 : Form
+    public partial class Listado : Form
     {
         int anioSeleccionado;
         int trimestreSeleccionado;
         int listado;
-        public Form1()
+        public Listado()
         {
             InitializeComponent();
             comboBox_TipoListado.Items.Add("Choferes con mayor recaudacion");
@@ -33,8 +33,8 @@ namespace UberFrba.Listado_Estadistico
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            anioSeleccionado = 0;
-            trimestreSeleccionado = 0;
+            anioSeleccionado = 2014;
+            trimestreSeleccionado = 1;
             listado = -1;
         }
 
@@ -77,7 +77,12 @@ namespace UberFrba.Listado_Estadistico
 
         }
 
-
+        private void button_Limpiar_Click(object sender, EventArgs e)
+        {
+            comboBox_TipoListado.Text = "";
+            numericUpDown_Anio.ResetText();
+            numericUpDown_Mes.ResetText();
+        }
     }
 
 
