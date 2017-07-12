@@ -31,22 +31,23 @@
             this.crearButton = new System.Windows.Forms.Button();
             this.cancelarButton = new System.Windows.Forms.Button();
             this.limpiarButton = new System.Windows.Forms.Button();
-            this.turnoComboBox = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.choferTextBox = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.patenteTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.marcaComboBox = new System.Windows.Forms.ComboBox();
             this.modeloComboBox = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.turnosTextBox = new System.Windows.Forms.TextBox();
+            this.turnosButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // crearButton
             // 
             this.crearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.crearButton.Location = new System.Drawing.Point(197, 226);
+            this.crearButton.Location = new System.Drawing.Point(201, 243);
             this.crearButton.Name = "crearButton";
             this.crearButton.Size = new System.Drawing.Size(75, 23);
             this.crearButton.TabIndex = 10;
@@ -56,7 +57,7 @@
             // 
             // cancelarButton
             // 
-            this.cancelarButton.Location = new System.Drawing.Point(12, 226);
+            this.cancelarButton.Location = new System.Drawing.Point(16, 243);
             this.cancelarButton.Name = "cancelarButton";
             this.cancelarButton.Size = new System.Drawing.Size(75, 23);
             this.cancelarButton.TabIndex = 11;
@@ -66,21 +67,13 @@
             // 
             // limpiarButton
             // 
-            this.limpiarButton.Location = new System.Drawing.Point(105, 226);
+            this.limpiarButton.Location = new System.Drawing.Point(109, 243);
             this.limpiarButton.Name = "limpiarButton";
             this.limpiarButton.Size = new System.Drawing.Size(75, 23);
             this.limpiarButton.TabIndex = 12;
             this.limpiarButton.Text = "Limpiar";
             this.limpiarButton.UseVisualStyleBackColor = true;
             this.limpiarButton.Click += new System.EventHandler(this.limpiarButton_Click);
-            // 
-            // turnoComboBox
-            // 
-            this.turnoComboBox.FormattingEnabled = true;
-            this.turnoComboBox.Location = new System.Drawing.Point(112, 144);
-            this.turnoComboBox.Name = "turnoComboBox";
-            this.turnoComboBox.Size = new System.Drawing.Size(121, 21);
-            this.turnoComboBox.TabIndex = 63;
             // 
             // label9
             // 
@@ -111,19 +104,10 @@
             // 
             // choferTextBox
             // 
-            this.choferTextBox.Location = new System.Drawing.Point(112, 184);
+            this.choferTextBox.Location = new System.Drawing.Point(112, 144);
             this.choferTextBox.Name = "choferTextBox";
             this.choferTextBox.Size = new System.Drawing.Size(121, 20);
             this.choferTextBox.TabIndex = 62;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(68, 147);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 13);
-            this.label6.TabIndex = 57;
-            this.label6.Text = "Turno:";
             // 
             // patenteTextBox
             // 
@@ -135,7 +119,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(65, 187);
+            this.label5.Location = new System.Drawing.Point(65, 147);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 13);
             this.label5.TabIndex = 58;
@@ -157,19 +141,47 @@
             this.modeloComboBox.Size = new System.Drawing.Size(121, 21);
             this.modeloComboBox.TabIndex = 65;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(63, 187);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.TabIndex = 66;
+            this.label1.Text = "Turnos:";
+            // 
+            // turnosTextBox
+            // 
+            this.turnosTextBox.Enabled = false;
+            this.turnosTextBox.Location = new System.Drawing.Point(112, 184);
+            this.turnosTextBox.Name = "turnosTextBox";
+            this.turnosTextBox.Size = new System.Drawing.Size(82, 20);
+            this.turnosTextBox.TabIndex = 67;
+            // 
+            // turnosButton
+            // 
+            this.turnosButton.Location = new System.Drawing.Point(205, 182);
+            this.turnosButton.Name = "turnosButton";
+            this.turnosButton.Size = new System.Drawing.Size(28, 23);
+            this.turnosButton.TabIndex = 68;
+            this.turnosButton.Text = "...";
+            this.turnosButton.UseVisualStyleBackColor = true;
+            this.turnosButton.Click += new System.EventHandler(this.turnosButton_Click);
+            // 
             // NuevoAutomovil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(292, 277);
+            this.Controls.Add(this.turnosButton);
+            this.Controls.Add(this.turnosTextBox);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.modeloComboBox);
             this.Controls.Add(this.marcaComboBox);
-            this.Controls.Add(this.turnoComboBox);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.choferTextBox);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.patenteTextBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.limpiarButton);
@@ -187,15 +199,16 @@
         private System.Windows.Forms.Button crearButton;
         private System.Windows.Forms.Button cancelarButton;
         private System.Windows.Forms.Button limpiarButton;
-        private System.Windows.Forms.ComboBox turnoComboBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox choferTextBox;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox patenteTextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox marcaComboBox;
         private System.Windows.Forms.ComboBox modeloComboBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox turnosTextBox;
+        private System.Windows.Forms.Button turnosButton;
     }
 }
