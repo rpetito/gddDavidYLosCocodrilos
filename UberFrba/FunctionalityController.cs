@@ -133,6 +133,36 @@ namespace UberFrba {
 
 
 
+		public static DataTable getAllFunctionalities() { 
+		
+
+			SqlConnection sqlConnection = BaseDeDatos.ObternerConexion();
+			SqlCommand buscarFuncionlidades = null;
+			DataTable dataTable = new DataTable();
+			SqlDataAdapter dataAdapter = new SqlDataAdapter();
+
+			try {
+
+				using( buscarFuncionlidades = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_TODAS_LAS_FUNCIONALIDADES", sqlConnection) ) {
+			
+					dataAdapter.SelectCommand = buscarFuncionlidades;
+					dataAdapter.Fill(dataTable);
+				}
+
+				return dataTable;
+
+			} catch( Exception e ) {
+				throw;
+			} finally {
+				sqlConnection.Close();
+			}
+
+
+			
+		
+		}
+
+
 		
 
 
