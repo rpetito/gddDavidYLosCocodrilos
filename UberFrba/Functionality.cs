@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UberFrba {
 	
-	class Functionality {
+	public class Functionality {
 
 		private Int32 id;
 		private String detalle;
