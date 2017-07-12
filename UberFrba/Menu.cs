@@ -27,7 +27,7 @@ namespace UberFrba
 			SqlCommand getFunctionalities = new SqlCommand();
 			SqlDataReader result;
 
-			using( getFunctionalities = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_FUNCIONES_PARA_ROL", Conexion) ) {
+			using( getFunctionalities = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_FUNCIONES_HABILITADAS_PARA_ROL", Conexion) ) {
 
 				getFunctionalities.CommandType = CommandType.StoredProcedure;
 				getFunctionalities.Parameters.Add("@rol", SqlDbType.Int);

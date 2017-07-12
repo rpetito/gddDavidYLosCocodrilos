@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.fechaNacimientoSelDatePicker = new System.Windows.Forms.DateTimePicker();
             this.cancelarButton = new System.Windows.Forms.Button();
             this.habilitadoCheckBox = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -54,7 +55,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.modificarSelButton = new System.Windows.Forms.Button();
             this.limpiarSelButton = new System.Windows.Forms.Button();
-            this.fechaNacimientoSelDatePicker = new System.Windows.Forms.DateTimePicker();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,6 +93,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Cliente seleccionado";
             // 
+            // fechaNacimientoSelDatePicker
+            // 
+            this.fechaNacimientoSelDatePicker.Location = new System.Drawing.Point(124, 115);
+            this.fechaNacimientoSelDatePicker.Name = "fechaNacimientoSelDatePicker";
+            this.fechaNacimientoSelDatePicker.Size = new System.Drawing.Size(128, 20);
+            this.fechaNacimientoSelDatePicker.TabIndex = 147;
+            // 
             // cancelarButton
             // 
             this.cancelarButton.Location = new System.Drawing.Point(6, 351);
@@ -106,7 +113,6 @@
             // habilitadoCheckBox
             // 
             this.habilitadoCheckBox.AutoSize = true;
-            this.habilitadoCheckBox.Enabled = false;
             this.habilitadoCheckBox.Location = new System.Drawing.Point(66, 326);
             this.habilitadoCheckBox.Name = "habilitadoCheckBox";
             this.habilitadoCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -126,7 +132,6 @@
             // 
             // mailSelTextBox
             // 
-            this.mailSelTextBox.Enabled = false;
             this.mailSelTextBox.Location = new System.Drawing.Point(124, 295);
             this.mailSelTextBox.Name = "mailSelTextBox";
             this.mailSelTextBox.Size = new System.Drawing.Size(128, 20);
@@ -142,7 +147,6 @@
             // 
             // apellidoSelTextBox
             // 
-            this.apellidoSelTextBox.Enabled = false;
             this.apellidoSelTextBox.Location = new System.Drawing.Point(124, 55);
             this.apellidoSelTextBox.Name = "apellidoSelTextBox";
             this.apellidoSelTextBox.Size = new System.Drawing.Size(128, 20);
@@ -150,7 +154,6 @@
             // 
             // nombreSelTextBox
             // 
-            this.nombreSelTextBox.Enabled = false;
             this.nombreSelTextBox.Location = new System.Drawing.Point(124, 25);
             this.nombreSelTextBox.Name = "nombreSelTextBox";
             this.nombreSelTextBox.Size = new System.Drawing.Size(128, 20);
@@ -158,7 +161,6 @@
             // 
             // pisoSelTextBox
             // 
-            this.pisoSelTextBox.Enabled = false;
             this.pisoSelTextBox.Location = new System.Drawing.Point(152, 235);
             this.pisoSelTextBox.Name = "pisoSelTextBox";
             this.pisoSelTextBox.Size = new System.Drawing.Size(25, 20);
@@ -166,7 +168,6 @@
             // 
             // codigoSelTextBox
             // 
-            this.codigoSelTextBox.Enabled = false;
             this.codigoSelTextBox.Location = new System.Drawing.Point(152, 265);
             this.codigoSelTextBox.Name = "codigoSelTextBox";
             this.codigoSelTextBox.Size = new System.Drawing.Size(100, 20);
@@ -174,7 +175,6 @@
             // 
             // localidadSelTextBox
             // 
-            this.localidadSelTextBox.Enabled = false;
             this.localidadSelTextBox.Location = new System.Drawing.Point(152, 205);
             this.localidadSelTextBox.Name = "localidadSelTextBox";
             this.localidadSelTextBox.Size = new System.Drawing.Size(100, 20);
@@ -182,7 +182,6 @@
             // 
             // departamentoSelTextBox
             // 
-            this.departamentoSelTextBox.Enabled = false;
             this.departamentoSelTextBox.Location = new System.Drawing.Point(231, 235);
             this.departamentoSelTextBox.Name = "departamentoSelTextBox";
             this.departamentoSelTextBox.Size = new System.Drawing.Size(21, 20);
@@ -190,7 +189,6 @@
             // 
             // telefonoSelTextBox
             // 
-            this.telefonoSelTextBox.Enabled = false;
             this.telefonoSelTextBox.Location = new System.Drawing.Point(124, 145);
             this.telefonoSelTextBox.Name = "telefonoSelTextBox";
             this.telefonoSelTextBox.Size = new System.Drawing.Size(128, 20);
@@ -198,7 +196,6 @@
             // 
             // direccionSelTextBox
             // 
-            this.direccionSelTextBox.Enabled = false;
             this.direccionSelTextBox.Location = new System.Drawing.Point(124, 175);
             this.direccionSelTextBox.Name = "direccionSelTextBox";
             this.direccionSelTextBox.Size = new System.Drawing.Size(128, 20);
@@ -296,7 +293,6 @@
             // 
             // modificarSelButton
             // 
-            this.modificarSelButton.Enabled = false;
             this.modificarSelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.modificarSelButton.Location = new System.Drawing.Point(209, 350);
             this.modificarSelButton.Name = "modificarSelButton";
@@ -308,7 +304,6 @@
             // 
             // limpiarSelButton
             // 
-            this.limpiarSelButton.Enabled = false;
             this.limpiarSelButton.Location = new System.Drawing.Point(106, 351);
             this.limpiarSelButton.Name = "limpiarSelButton";
             this.limpiarSelButton.Size = new System.Drawing.Size(75, 23);
@@ -316,13 +311,6 @@
             this.limpiarSelButton.Text = "Limpiar";
             this.limpiarSelButton.UseVisualStyleBackColor = true;
             this.limpiarSelButton.Click += new System.EventHandler(this.limpiarSelButton_Click);
-            // 
-            // fechaNacimientoSelDatePicker
-            // 
-            this.fechaNacimientoSelDatePicker.Location = new System.Drawing.Point(124, 115);
-            this.fechaNacimientoSelDatePicker.Name = "fechaNacimientoSelDatePicker";
-            this.fechaNacimientoSelDatePicker.Size = new System.Drawing.Size(128, 20);
-            this.fechaNacimientoSelDatePicker.TabIndex = 147;
             // 
             // FormularioModCliente
             // 

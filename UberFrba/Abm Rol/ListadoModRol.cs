@@ -37,25 +37,34 @@ namespace UberFrba.Abm_Rol
         private void seleccionarButton_Click(object sender, EventArgs e)
         {
 			if( rolesGrid.SelectedCells.Count == 3 ) {
-				FormularioModRol form = new FormularioModRol(getSelectedRol(rolesGrid.SelectedCells));
-				form.ShowDialog();
+				using( var form = new FormularioModRol(getSelectedRol(rolesGrid.SelectedCells)) ) {
+					
+					var result = form.ShowDialog();
+
+					if( result == DialogResult.OK ) {
+						this.rolesGrid.DataSource = this.rolesGrid.DataSource = RolController.findAllRol(this.nombreTextBox.Text);
+					}
+
+				}
 			} else { 
 				MessageBox.Show("Debe seleccionar al menos un rol y sólo uno.");
 			}
         }
 
 		private void buscarButton_Click(object sender, EventArgs e) {
-			this.rolesGrid.DataSource = RolController.findAvailableRol(this.nombreTextBox.Text);
+			this.rolesGrid.DataSource = RolController.findAllRol(this.nombreTextBox.Text);
 		}
 
 
 		private Rol getSelectedRol(DataGridViewSelectedCellCollection selectedCells) {
 
-			Rol rol = new Rol();
-			rol.setID((Int32) selectedCells[0].Value);
-			rol.setDetalle((String) selectedCells[1].Value);
+			 Rol selectedRol = new Rol();
 
-			return rol;
+			selectedRol.setID((Int32) selectedCells[0].Value);
+			selectedRol.setDetalle((String) selectedCells[1].Value);
+			selectedRol.setHabilitado((Int32) selectedCells[2].Value);
+
+			return selectedRol;
 			
 		}
 

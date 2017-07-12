@@ -10,6 +10,8 @@ namespace UberFrba
 
         Int32 id;
         String detalle;
+		Boolean habilitado;
+
 
         public Int32 getID()
         {
@@ -30,6 +32,18 @@ namespace UberFrba
         {
             this.detalle = detalle;
         }
+
+		public void setHabilitado(Int32 habilitado) {
+			this.habilitado = habilitado == 1;
+		}
+
+		public void setHabilitado(Boolean habilitado) {
+			this.habilitado = habilitado;
+		}
+
+		public Boolean getHabilitado() {
+			return this.habilitado;
+		}
 
         // override object.Equals
         public override bool Equals(object obj)
