@@ -62,6 +62,8 @@ namespace UberFrba.Abm_Cliente
                 using (buscarCliente = new SqlCommand("DAVID_Y_LOS_COCODRILOS.BUSCAR_USUARIO", Conexion))
                 {
                     buscarCliente.CommandType = CommandType.StoredProcedure;
+					buscarCliente.Parameters.Add("@rol", SqlDbType.Int);
+					buscarCliente.Parameters["@rol"].Value = 2;
                     buscarCliente.Parameters.Add("@nombre", SqlDbType.Char);
                     buscarCliente.Parameters["@nombre"].Value = nombreTextBox.Text;
                     buscarCliente.Parameters.Add("@apellido", SqlDbType.Char);
@@ -71,6 +73,7 @@ namespace UberFrba.Abm_Cliente
                     da.SelectCommand = buscarCliente;
                     da.Fill(dt);
                     clientesGrid.DataSource = dt;
+
                 }
             }
 
@@ -96,11 +99,16 @@ namespace UberFrba.Abm_Cliente
 
                 try
                 {
-                    using (eliminarCliente = new SqlCommand("DAVID_Y_LOS_COCODRILOS.INHABILITAR_USUARIO", Conexion))
+                    using (eliminarCliente = new SqlCommand("DAVID_Y_LOS_COCODRILOS.INHABILITAR_USUARIO_ROL_PARTICULAR", Conexion))
                     {
                         eliminarCliente.CommandType = CommandType.StoredProcedure;
+						eliminarCliente.Parameters.Add("@rol", SqlDbType.Int);
+						eliminarCliente.Parameters["@rol"].Value = 2;
                         eliminarCliente.Parameters.Add("@dni", SqlDbType.Decimal);
                         eliminarCliente.Parameters["@dni"].Value = dni;
+
+						eliminarCliente.ExecuteScalar();
+						this.Close();
                     }
                 }
                 catch (Exception ex)

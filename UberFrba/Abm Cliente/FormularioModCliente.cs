@@ -81,9 +81,13 @@ namespace UberFrba.Abm_Cliente
                         habilitado = 1;
                     else habilitado = 0;
 
-                    using (modificarCliente = new SqlCommand("DAVID_Y_LOS_COCODRILOS.ALTA_USUARIO", Conexion))
+                    using (modificarCliente = new SqlCommand("DAVID_Y_LOS_COCODRILOS.MODIFICAR_USUARIO", Conexion))
                     {
                         modificarCliente.CommandType = CommandType.StoredProcedure;
+						modificarCliente.Parameters.Add("@rol", SqlDbType.Int);
+						modificarCliente.Parameters["@rol"].Value = 2;
+						modificarCliente.Parameters.Add("@dni", SqlDbType.Decimal);
+						modificarCliente.Parameters["@dni"].Value = this.dniSelTextBox.Text;
                         modificarCliente.Parameters.Add("@nombre", SqlDbType.Char);
                         modificarCliente.Parameters["@nombre"].Value = nombreSelTextBox.Text;
                         modificarCliente.Parameters.Add("@apellido", SqlDbType.Char);
@@ -104,6 +108,10 @@ namespace UberFrba.Abm_Cliente
                         modificarCliente.Parameters["@fechaNac"].Value = fechaNacimientoSelDatePicker.Text;
                         modificarCliente.Parameters.Add("@habilitado", SqlDbType.Int);
                         modificarCliente.Parameters["@habilitado"].Value = habilitado;
+						modificarCliente.Parameters.Add("@codPos", SqlDbType.VarChar);
+						modificarCliente.Parameters["@codPos"].Value = this.codigoSelTextBox.Text;
+
+						modificarCliente.ExecuteScalar();
                     }
                 }
                 catch (Exception ex)
