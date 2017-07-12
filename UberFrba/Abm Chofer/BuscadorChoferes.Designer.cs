@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.limpiarButton = new System.Windows.Forms.Button();
-            this.seleccionarButton = new System.Windows.Forms.Button();
             this.buscarButton = new System.Windows.Forms.Button();
             this.cancelarButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -53,17 +52,6 @@
             this.limpiarButton.Text = "Limpiar";
             this.limpiarButton.UseVisualStyleBackColor = true;
             this.limpiarButton.Click += new System.EventHandler(this.limpiarButton_Click);
-            // 
-            // seleccionarButton
-            // 
-            this.seleccionarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.seleccionarButton.Location = new System.Drawing.Point(267, 345);
-            this.seleccionarButton.Name = "seleccionarButton";
-            this.seleccionarButton.Size = new System.Drawing.Size(91, 23);
-            this.seleccionarButton.TabIndex = 26;
-            this.seleccionarButton.Text = "Seleccionar";
-            this.seleccionarButton.UseVisualStyleBackColor = true;
-            this.seleccionarButton.Click += new System.EventHandler(this.seleccionarButton_Click);
             // 
             // buscarButton
             // 
@@ -164,6 +152,7 @@
             this.choferesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.choferesGrid.Size = new System.Drawing.Size(345, 162);
             this.choferesGrid.TabIndex = 27;
+            this.choferesGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.choferesGrid_CellContentClick);
             // 
             // BuscadorChoferes
             // 
@@ -172,7 +161,6 @@
             this.ClientSize = new System.Drawing.Size(371, 381);
             this.Controls.Add(this.choferesGrid);
             this.Controls.Add(this.limpiarButton);
-            this.Controls.Add(this.seleccionarButton);
             this.Controls.Add(this.buscarButton);
             this.Controls.Add(this.cancelarButton);
             this.Controls.Add(this.groupBox1);
@@ -189,7 +177,6 @@
         #endregion
 
         private System.Windows.Forms.Button limpiarButton;
-        private System.Windows.Forms.Button seleccionarButton;
         private System.Windows.Forms.Button buscarButton;
         private System.Windows.Forms.Button cancelarButton;
         private System.Windows.Forms.GroupBox groupBox1;

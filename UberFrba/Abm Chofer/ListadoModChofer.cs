@@ -30,7 +30,25 @@ namespace UberFrba.Abm_Chofer
         {
             if (e.ColumnIndex == 0 && e.RowIndex >= 0)
             {
-                //guardar los datos seleccionados y mandarlos al form
+                UsuarioSeleccionado.getInstance().setNombre(this.choferesGrid.CurrentRow.Cells[1].Value.ToString());
+                UsuarioSeleccionado.getInstance().setApellido(this.choferesGrid.CurrentRow.Cells[2].Value.ToString());
+                UsuarioSeleccionado.getInstance().setDni((Decimal)this.choferesGrid.CurrentRow.Cells[3].Value);
+                UsuarioSeleccionado.getInstance().setMail(this.choferesGrid.CurrentRow.Cells[4].Value.ToString());
+                UsuarioSeleccionado.getInstance().setTelefono(this.choferesGrid.CurrentRow.Cells[5].Value.ToString());
+                UsuarioSeleccionado.getInstance().setDireccion(this.choferesGrid.CurrentRow.Cells[6].Value.ToString());
+
+                if(string.IsNullOrWhiteSpace(this.choferesGrid.CurrentRow.Cells[7].Value.ToString()))
+                    UsuarioSeleccionado.getInstance().setPiso(0);
+                else UsuarioSeleccionado.getInstance().setPiso((Int32)this.choferesGrid.CurrentRow.Cells[7].Value);
+
+                if (string.IsNullOrWhiteSpace(this.choferesGrid.CurrentRow.Cells[8].Value.ToString()))
+                    UsuarioSeleccionado.getInstance().setDepartamento("-");
+                else UsuarioSeleccionado.getInstance().setDepartamento(this.choferesGrid.CurrentRow.Cells[8].Value.ToString());
+
+                UsuarioSeleccionado.getInstance().setLocalidad(this.choferesGrid.CurrentRow.Cells[9].Value.ToString());
+                UsuarioSeleccionado.getInstance().setFechaNacimiento((DateTime)this.choferesGrid.CurrentRow.Cells[11].Value);
+                UsuarioSeleccionado.getInstance().setHabilitado((Int32)this.choferesGrid.CurrentRow.Cells[15].Value);
+                
                 FormularioModChofer form = new FormularioModChofer();
                 form.ShowDialog();
             }

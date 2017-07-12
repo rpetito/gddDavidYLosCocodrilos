@@ -90,16 +90,16 @@ namespace UberFrba.Abm_Automovil
             SqlDataAdapter da = new SqlDataAdapter();
             try
             {
-                using (buscarAutomovil = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_AUTOMOVIL", Conexion))
+                using (buscarAutomovil = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_AUTOMOVILES", Conexion))
                 {
                     buscarAutomovil.CommandType = CommandType.StoredProcedure;
+                    buscarAutomovil.Parameters.Add("@patente", SqlDbType.Char);
+                    buscarAutomovil.Parameters["@patente"].Value = patenteTextBox.Text;
                     buscarAutomovil.Parameters.Add("@marca", SqlDbType.Char);
                     buscarAutomovil.Parameters["@marca"].Value = marcaComboBox.Text;
                     buscarAutomovil.Parameters.Add("@modelo", SqlDbType.Char);
                     buscarAutomovil.Parameters["@modelo"].Value = modeloComboBox.Text;
-                    buscarAutomovil.Parameters.Add("@patente", SqlDbType.Char);
-                    buscarAutomovil.Parameters["@patente"].Value = patenteTextBox.Text;
-                    buscarAutomovil.Parameters.Add("@chofer", SqlDbType.Char);
+                    buscarAutomovil.Parameters.Add("@chofer", SqlDbType.Decimal);
                     buscarAutomovil.Parameters["@chofer"].Value = choferTextBox.Text;
                     da.SelectCommand = buscarAutomovil;
                     da.Fill(dt);

@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.fechaNacimientoSelDatePicker = new System.Windows.Forms.DateTimePicker();
             this.cancelarButton = new System.Windows.Forms.Button();
             this.habilitadoCheckBox = new System.Windows.Forms.CheckBox();
             this.dniSelTextBox = new System.Windows.Forms.TextBox();
             this.apellidoSelTextBox = new System.Windows.Forms.TextBox();
             this.nombreSelTextBox = new System.Windows.Forms.TextBox();
-            this.nacimientoSelTextBox = new System.Windows.Forms.TextBox();
             this.pisoSelTextBox = new System.Windows.Forms.TextBox();
             this.mailSelTextBox = new System.Windows.Forms.TextBox();
             this.localidadSelTextBox = new System.Windows.Forms.TextBox();
@@ -58,12 +58,12 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.fechaNacimientoSelDatePicker);
             this.groupBox2.Controls.Add(this.cancelarButton);
             this.groupBox2.Controls.Add(this.habilitadoCheckBox);
             this.groupBox2.Controls.Add(this.dniSelTextBox);
             this.groupBox2.Controls.Add(this.apellidoSelTextBox);
             this.groupBox2.Controls.Add(this.nombreSelTextBox);
-            this.groupBox2.Controls.Add(this.nacimientoSelTextBox);
             this.groupBox2.Controls.Add(this.pisoSelTextBox);
             this.groupBox2.Controls.Add(this.mailSelTextBox);
             this.groupBox2.Controls.Add(this.localidadSelTextBox);
@@ -84,14 +84,21 @@
             this.groupBox2.Controls.Add(this.limpiarSelButton);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(290, 374);
+            this.groupBox2.Size = new System.Drawing.Size(290, 401);
             this.groupBox2.TabIndex = 83;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Resultado de la Búsqueda";
             // 
+            // fechaNacimientoSelDatePicker
+            // 
+            this.fechaNacimientoSelDatePicker.Location = new System.Drawing.Point(126, 125);
+            this.fechaNacimientoSelDatePicker.Name = "fechaNacimientoSelDatePicker";
+            this.fechaNacimientoSelDatePicker.Size = new System.Drawing.Size(128, 20);
+            this.fechaNacimientoSelDatePicker.TabIndex = 105;
+            // 
             // cancelarButton
             // 
-            this.cancelarButton.Location = new System.Drawing.Point(6, 339);
+            this.cancelarButton.Location = new System.Drawing.Point(6, 364);
             this.cancelarButton.Name = "cancelarButton";
             this.cancelarButton.Size = new System.Drawing.Size(75, 23);
             this.cancelarButton.TabIndex = 104;
@@ -102,7 +109,7 @@
             // habilitadoCheckBox
             // 
             this.habilitadoCheckBox.AutoSize = true;
-            this.habilitadoCheckBox.Location = new System.Drawing.Point(67, 305);
+            this.habilitadoCheckBox.Location = new System.Drawing.Point(77, 311);
             this.habilitadoCheckBox.Name = "habilitadoCheckBox";
             this.habilitadoCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.habilitadoCheckBox.Size = new System.Drawing.Size(73, 17);
@@ -112,6 +119,7 @@
             // 
             // dniSelTextBox
             // 
+            this.dniSelTextBox.Enabled = false;
             this.dniSelTextBox.Location = new System.Drawing.Point(126, 95);
             this.dniSelTextBox.Name = "dniSelTextBox";
             this.dniSelTextBox.Size = new System.Drawing.Size(128, 20);
@@ -130,13 +138,6 @@
             this.nombreSelTextBox.Name = "nombreSelTextBox";
             this.nombreSelTextBox.Size = new System.Drawing.Size(128, 20);
             this.nombreSelTextBox.TabIndex = 100;
-            // 
-            // nacimientoSelTextBox
-            // 
-            this.nacimientoSelTextBox.Location = new System.Drawing.Point(126, 125);
-            this.nacimientoSelTextBox.Name = "nacimientoSelTextBox";
-            this.nacimientoSelTextBox.Size = new System.Drawing.Size(128, 20);
-            this.nacimientoSelTextBox.TabIndex = 99;
             // 
             // pisoSelTextBox
             // 
@@ -273,16 +274,17 @@
             // modificarSelButton
             // 
             this.modificarSelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modificarSelButton.Location = new System.Drawing.Point(209, 339);
+            this.modificarSelButton.Location = new System.Drawing.Point(209, 364);
             this.modificarSelButton.Name = "modificarSelButton";
             this.modificarSelButton.Size = new System.Drawing.Size(75, 23);
             this.modificarSelButton.TabIndex = 79;
             this.modificarSelButton.Text = "Modificar";
             this.modificarSelButton.UseVisualStyleBackColor = true;
+            this.modificarSelButton.Click += new System.EventHandler(this.modificarSelButton_Click);
             // 
             // limpiarSelButton
             // 
-            this.limpiarSelButton.Location = new System.Drawing.Point(106, 339);
+            this.limpiarSelButton.Location = new System.Drawing.Point(106, 364);
             this.limpiarSelButton.Name = "limpiarSelButton";
             this.limpiarSelButton.Size = new System.Drawing.Size(75, 23);
             this.limpiarSelButton.TabIndex = 78;
@@ -294,7 +296,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(312, 398);
+            this.ClientSize = new System.Drawing.Size(312, 424);
             this.Controls.Add(this.groupBox2);
             this.Name = "FormularioModChofer";
             this.Text = "FormularioModChofer";
@@ -312,7 +314,6 @@
         private System.Windows.Forms.TextBox dniSelTextBox;
         private System.Windows.Forms.TextBox apellidoSelTextBox;
         private System.Windows.Forms.TextBox nombreSelTextBox;
-        private System.Windows.Forms.TextBox nacimientoSelTextBox;
         private System.Windows.Forms.TextBox pisoSelTextBox;
         private System.Windows.Forms.TextBox mailSelTextBox;
         private System.Windows.Forms.TextBox localidadSelTextBox;
@@ -331,5 +332,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button modificarSelButton;
         private System.Windows.Forms.Button limpiarSelButton;
+        private System.Windows.Forms.DateTimePicker fechaNacimientoSelDatePicker;
     }
 }

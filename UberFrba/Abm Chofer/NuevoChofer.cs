@@ -16,25 +16,6 @@ namespace UberFrba.Abm_Chofer
         public NuevoChofer()
         {
             InitializeComponent();
-            SqlConnection Conexion = BaseDeDatos.ObternerConexion();
-            SqlCommand llenarRoles = new SqlCommand();
-            SqlDataReader rolReader;
-
-            using (llenarRoles = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_ROLES",
-                                        Conexion))
-            {
-                  llenarRoles.CommandType = CommandType.StoredProcedure;
-            }
-
-            rolReader = llenarRoles.ExecuteReader();
-
-            while (rolReader.Read())
-            {
-            rolComboBox.Items.Add(rolReader.GetString(1));
-            }
-
-            rolReader.Close();
-            Conexion.Close();
         }
 
         private void cancelarButton_Click(object sender, EventArgs e)
@@ -57,7 +38,6 @@ namespace UberFrba.Abm_Chofer
             usuarioTextBox.Clear();
             contraseniaTextBox.Clear();
             repetirTextBox.Clear();
-            rolComboBox.ResetText();
         }
 
         private void crearButton_Click(object sender, EventArgs e)
@@ -77,8 +57,7 @@ namespace UberFrba.Abm_Chofer
                     | string.IsNullOrWhiteSpace(mailTextBox.Text)
                     | string.IsNullOrWhiteSpace(usuarioTextBox.Text)
                     | string.IsNullOrWhiteSpace(contraseniaTextBox.Text)
-                    | string.IsNullOrWhiteSpace(repetirTextBox.Text)
-                    | string.IsNullOrWhiteSpace(rolComboBox.Text))
+                    | string.IsNullOrWhiteSpace(repetirTextBox.Text))
             {
                 MessageBox.Show("Por Favor completa todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -96,7 +75,7 @@ namespace UberFrba.Abm_Chofer
                     {
                         crearChofer.CommandType = CommandType.StoredProcedure;
                         crearChofer.Parameters.Add("@rol", SqlDbType.Int);
-                        crearChofer.Parameters["@rol"].Value = rolComboBox.Text;//rol no es int
+                        crearChofer.Parameters["@rol"].Value = 3;
                         crearChofer.Parameters.Add("@nombre", SqlDbType.Char);
                         crearChofer.Parameters["@nombre"].Value = nombreTextBox.Text;
                         crearChofer.Parameters.Add("@apellido", SqlDbType.Char);
