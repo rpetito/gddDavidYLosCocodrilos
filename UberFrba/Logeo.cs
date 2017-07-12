@@ -49,7 +49,7 @@ namespace UberFrba
             byte[] data = System.Text.Encoding.UTF8.GetBytes(password);
             byte[] hash = System.Security.Cryptography.SHA256.Create().ComputeHash(data);
 
-            return BitConverter.ToString(hash).Replace("-", string.Empty).ToLower();
+            return "0x" + BitConverter.ToString(hash).Replace("-", string.Empty).ToLower();
         }
 
 
