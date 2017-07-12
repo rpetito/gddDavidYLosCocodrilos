@@ -48,6 +48,7 @@
             // 
             // clienteTextBox
             // 
+            this.clienteTextBox.Enabled = false;
             this.clienteTextBox.Location = new System.Drawing.Point(86, 66);
             this.clienteTextBox.Name = "clienteTextBox";
             this.clienteTextBox.Size = new System.Drawing.Size(121, 20);
@@ -130,7 +131,7 @@
             // 
             // busquedaClienteButton
             // 
-            this.busquedaClienteButton.Location = new System.Drawing.Point(230, 66);
+            this.busquedaClienteButton.Location = new System.Drawing.Point(213, 63);
             this.busquedaClienteButton.Name = "busquedaClienteButton";
             this.busquedaClienteButton.Size = new System.Drawing.Size(29, 23);
             this.busquedaClienteButton.TabIndex = 16;

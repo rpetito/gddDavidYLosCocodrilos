@@ -133,6 +133,8 @@ namespace UberFrba.Abm_Automovil
                         eliminarAutomovil.CommandType = CommandType.StoredProcedure;
                         eliminarAutomovil.Parameters.Add("@patente", SqlDbType.Char);
                         eliminarAutomovil.Parameters["@patente"].Value = patente;
+                        eliminarAutomovil.Parameters.Add("@turno", SqlDbType.Int);
+                        eliminarAutomovil.Parameters["@turno"].Value = this.automovilesGrid.CurrentRow.Cells[5].Value;
                     }
                 }
                 catch (Exception ex)

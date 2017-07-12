@@ -47,7 +47,7 @@ namespace UberFrba.Abm_Chofer
 
                 UsuarioSeleccionado.getInstance().setLocalidad(this.choferesGrid.CurrentRow.Cells[9].Value.ToString());
                 UsuarioSeleccionado.getInstance().setFechaNacimiento((DateTime)this.choferesGrid.CurrentRow.Cells[11].Value);
-                UsuarioSeleccionado.getInstance().setHabilitado((Int32)this.choferesGrid.CurrentRow.Cells[15].Value);
+                UsuarioSeleccionado.getInstance().setHabilitado((Int32)this.choferesGrid.CurrentRow.Cells[13].Value);
                 
                 FormularioModChofer form = new FormularioModChofer();
                 form.ShowDialog();
@@ -93,6 +93,8 @@ namespace UberFrba.Abm_Chofer
                 using (buscarChofer = new SqlCommand("DAVID_Y_LOS_COCODRILOS.BUSCAR_USUARIO", Conexion))
                 {
                     buscarChofer.CommandType = CommandType.StoredProcedure;
+					buscarChofer.Parameters.Add("@rol", SqlDbType.Int);
+					buscarChofer.Parameters["@rol"].Value = 3;
                     buscarChofer.Parameters.Add("@nombre", SqlDbType.Char);
                     buscarChofer.Parameters["@nombre"].Value = nombreTextBox.Text;
                     buscarChofer.Parameters.Add("@apellido", SqlDbType.Char);

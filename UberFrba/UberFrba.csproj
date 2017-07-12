@@ -227,7 +227,19 @@
     </Compile>
     <Compile Include="BaseDeDatos.cs" />
     <Compile Include="AutomovilSeleccionado.cs" />
+    <Compile Include="Facturacion\DetalleFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Facturacion\DetalleFactura.Designer.cs">
+      <DependentUpon>DetalleFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="Turno.cs" />
+    <Compile Include="ListadoTurnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListadoTurnos.Designer.cs">
+      <DependentUpon>ListadoTurnos.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsuarioSeleccionado.cs" />
     <Compile Include="Functionality.cs" />
     <Compile Include="FunctionalityController.cs" />
@@ -380,11 +392,17 @@
     <EmbeddedResource Include="Administrador\Administrador.resx">
       <DependentUpon>Administrador.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Facturacion\DetalleFactura.resx">
+      <DependentUpon>DetalleFactura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Facturacion\Facturacion.resx">
       <DependentUpon>Facturacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Listado Estadistico\Listado.resx">
       <DependentUpon>Listado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListadoTurnos.resx">
+      <DependentUpon>ListadoTurnos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Logeo.resx">
       <DependentUpon>Logeo.cs</DependentUpon>

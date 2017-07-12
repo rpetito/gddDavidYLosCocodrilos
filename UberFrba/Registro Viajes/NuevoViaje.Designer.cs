@@ -40,13 +40,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.clienteBusquedaButton = new System.Windows.Forms.Button();
-            this.horaFinComboBox = new System.Windows.Forms.ComboBox();
-            this.horaInicioComboBox = new System.Windows.Forms.ComboBox();
             this.cancelarButton = new System.Windows.Forms.Button();
             this.limpiarButton = new System.Windows.Forms.Button();
             this.agregarButton = new System.Windows.Forms.Button();
             this.clienteTextBox = new System.Windows.Forms.TextBox();
             this.choferTextBox = new System.Windows.Forms.TextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
@@ -153,23 +153,6 @@
             this.clienteBusquedaButton.TabIndex = 11;
             this.clienteBusquedaButton.Text = "...";
             this.clienteBusquedaButton.UseVisualStyleBackColor = true;
-           // this.clienteBusquedaButton.Click += new System.EventHandler(this.clienteBusquedaButton_Click);
-            // 
-            // horaFinComboBox
-            // 
-            this.horaFinComboBox.FormattingEnabled = true;
-            this.horaFinComboBox.Location = new System.Drawing.Point(114, 165);
-            this.horaFinComboBox.Name = "horaFinComboBox";
-            this.horaFinComboBox.Size = new System.Drawing.Size(121, 21);
-            this.horaFinComboBox.TabIndex = 12;
-            // 
-            // horaInicioComboBox
-            // 
-            this.horaInicioComboBox.FormattingEnabled = true;
-            this.horaInicioComboBox.Location = new System.Drawing.Point(114, 135);
-            this.horaInicioComboBox.Name = "horaInicioComboBox";
-            this.horaInicioComboBox.Size = new System.Drawing.Size(121, 21);
-            this.horaInicioComboBox.TabIndex = 13;
             // 
             // cancelarButton
             // 
@@ -215,18 +198,32 @@
             this.choferTextBox.Size = new System.Drawing.Size(121, 20);
             this.choferTextBox.TabIndex = 18;
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(114, 132);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(194, 20);
+            this.dateTimePicker1.TabIndex = 19;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(114, 162);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(194, 20);
+            this.dateTimePicker2.TabIndex = 20;
+            // 
             // NuevoViaje
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(302, 274);
+            this.ClientSize = new System.Drawing.Size(364, 274);
+            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.choferTextBox);
             this.Controls.Add(this.clienteTextBox);
             this.Controls.Add(this.agregarButton);
             this.Controls.Add(this.limpiarButton);
             this.Controls.Add(this.cancelarButton);
-            this.Controls.Add(this.horaInicioComboBox);
-            this.Controls.Add(this.horaFinComboBox);
             this.Controls.Add(this.clienteBusquedaButton);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -260,12 +257,12 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button clienteBusquedaButton;
-        private System.Windows.Forms.ComboBox horaFinComboBox;
-        private System.Windows.Forms.ComboBox horaInicioComboBox;
         private System.Windows.Forms.Button cancelarButton;
         private System.Windows.Forms.Button limpiarButton;
         private System.Windows.Forms.Button agregarButton;
         private System.Windows.Forms.TextBox clienteTextBox;
         private System.Windows.Forms.TextBox choferTextBox;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
     }
 }

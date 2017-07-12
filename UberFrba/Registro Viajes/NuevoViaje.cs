@@ -39,8 +39,6 @@ namespace UberFrba.Registro_Viajes
             automovilTextBox.Clear();
             turnoComboBox.ResetText();
             kilometrosTextBox.Clear();
-            horaInicioComboBox.ResetText();
-            horaFinComboBox.ResetText();
             clienteTextBox.Clear();
         }
 

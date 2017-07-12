@@ -89,6 +89,14 @@ namespace UberFrba.Abm_Automovil
 
             try
             {
+                String cadenaChofer;
+                if (string.IsNullOrEmpty(choferTextBox.Text))
+                    cadenaChofer = null;
+                else
+                {
+                    cadenaChofer = choferTextBox.Text;
+                    Convert.ToDecimal(cadenaChofer);
+                }
                 using (buscarAutomovil = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_AUTOMOVILES", Conexion))
                 {
                     buscarAutomovil.CommandType = CommandType.StoredProcedure;
@@ -99,7 +107,7 @@ namespace UberFrba.Abm_Automovil
                     buscarAutomovil.Parameters.Add("@modelo", SqlDbType.Char);
                     buscarAutomovil.Parameters["@modelo"].Value = modeloComboBox.Text;
                     buscarAutomovil.Parameters.Add("@chofer", SqlDbType.Decimal);
-                    buscarAutomovil.Parameters["@chofer"].Value = choferTextBox.Text;
+                    buscarAutomovil.Parameters["@chofer"].Value = cadenaChofer;
                     da.SelectCommand = buscarAutomovil;
                     da.Fill(dt);
                     automovilesGrid.DataSource = dt;
@@ -122,12 +130,38 @@ namespace UberFrba.Abm_Automovil
                 AutomovilSeleccionado.getInstance().setModelo(this.automovilesGrid.CurrentRow.Cells[4].Value.ToString());
                 AutomovilSeleccionado.getInstance().setPatente(this.automovilesGrid.CurrentRow.Cells[1].Value.ToString());
                 AutomovilSeleccionado.getInstance().setChofer((Decimal)this.automovilesGrid.CurrentRow.Cells[2].Value);
-                AutomovilSeleccionado.getInstance().setTurno((Int32)this.automovilesGrid.CurrentRow.Cells[5].Value);
                 AutomovilSeleccionado.getInstance().setHabilitado((Int32)this.automovilesGrid.CurrentRow.Cells[6].Value);
-
+                //asignarTurnos();
                 FormularioModAutomovil form = new FormularioModAutomovil();
                 form.ShowDialog();
             }
         }
+
+        /*private void asignarTurnos() {
+
+            SqlConnection Conexion = BaseDeDatos.ObternerConexion();
+            SqlCommand buscarTurnos = new SqlCommand();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter();
+
+            using (buscarTurnos = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_TURNOS_AUTOMOVILES", Conexion))
+            {
+                buscarTurnos.CommandType = CommandType.StoredProcedure;
+                buscarTurnos.Parameters.Add("@patente", SqlDbType.Char);
+                buscarTurnos.Parameters["@patente"].Value = this.automovilesGrid.CurrentRow.Cells[1].Value.ToString();
+
+                da.SelectCommand = buscarTurnos;
+                da.Fill(dt);
+                automovilesGrid.DataSource = dt;
+            }
+
+            
+            foreach (DataTableReader row in dt.Rows)
+            {
+                Turno.getInstance().agregarAListaTurnos((Int32)dt.Rows[0][0]);   
+            }
+            Conexion.Close();
+
+        }*/
     }
 }
