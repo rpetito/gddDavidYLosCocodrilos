@@ -153,7 +153,7 @@
             this.clienteBusquedaButton.TabIndex = 11;
             this.clienteBusquedaButton.Text = "...";
             this.clienteBusquedaButton.UseVisualStyleBackColor = true;
-            this.clienteBusquedaButton.Click += new System.EventHandler(this.clienteBusquedaButton_Click);
+           // this.clienteBusquedaButton.Click += new System.EventHandler(this.clienteBusquedaButton_Click);
             // 
             // horaFinComboBox
             // 
