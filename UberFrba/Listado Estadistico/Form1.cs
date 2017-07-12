@@ -7,14 +7,84 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace UberFrba.Listado_Estadistico
 {
     public partial class Form1 : Form
     {
+        int anioSeleccionado;
+        int trimestreSeleccionado;
+        int listado;
         public Form1()
         {
             InitializeComponent();
+            comboBox_TipoListado.Items.Add("Choferes con mayor recaudacion");
+            comboBox_TipoListado.Items.Add("Choferes con el viaje más largo realizado");
+            comboBox_TipoListado.Items.Add("Clientes con mayor consumo");
+            comboBox_TipoListado.Items.Add("Cliente que utilizo más veces el mismo automóvil en los viajes que ha realizado");
+
         }
+
+        private void numericUpDown_Anio_ValueChanged(object sender, EventArgs e)
+        {
+            anioSeleccionado = (int)numericUpDown_Anio.Value;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            anioSeleccionado = 0;
+            trimestreSeleccionado = 0;
+            listado = -1;
+        }
+
+        private void numericUpDown_Mes_ValueChanged(object sender, EventArgs e)
+        {
+            trimestreSeleccionado = (int)numericUpDown_Mes.Value;
+        }
+
+        private void button_Volver_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void comboBox_TipoListado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listado = (int)(comboBox_TipoListado.SelectedIndex + 1);
+        }
+
+        private void button_HacerConsulta_Click(object sender, EventArgs e)
+        {
+            if (listado == 1) {
+                this.dataGridView1.DataSource = EstadisticaController.getCaso1(anioSeleccionado,trimestreSeleccionado);
+            }
+
+            if (listado == 2)
+            {
+                this.dataGridView1.DataSource = EstadisticaController.getCaso2(anioSeleccionado, trimestreSeleccionado);
+            }
+
+            if (listado == 3)
+            {
+                this.dataGridView1.DataSource = EstadisticaController.getCaso3(anioSeleccionado, trimestreSeleccionado);
+
+            }
+
+            if (listado == 4)
+            {
+                this.dataGridView1.DataSource = EstadisticaController.getCaso4(anioSeleccionado, trimestreSeleccionado);
+            }
+
+        }
+
+
     }
+
+
+
+
+
+
+
+
 }

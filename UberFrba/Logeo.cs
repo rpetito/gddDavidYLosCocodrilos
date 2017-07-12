@@ -18,6 +18,7 @@ namespace UberFrba
             InitializeComponent();
             SqlConnection Conexion = BaseDeDatos.ObternerConexion();
             SqlCommand cmd = new SqlCommand();
+            passwordTextBox.PasswordChar = '*';
 
             //using (cmd = new SqlCommand(string.Format("select r.ROL_DETALLE from DAVID_Y_LOS_COCODRILOS.ROL r"),
             //                            Conexion) ) ;
@@ -74,7 +75,8 @@ namespace UberFrba
                     loginUsuario.Parameters.Add("@username", SqlDbType.Char);
                     loginUsuario.Parameters["@username"].Value = pUsername;
                     loginUsuario.Parameters.Add("@password", SqlDbType.Char);
-                    loginUsuario.Parameters["@password"].Value = pContrasenia;
+                    String passHasheado = hashPassword(pContrasenia);
+                    loginUsuario.Parameters["@password"].Value = passHasheado;
                 }
 
                 result =  loginUsuario.ExecuteReader();

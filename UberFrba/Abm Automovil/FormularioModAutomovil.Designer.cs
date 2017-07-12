@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.modeloSelComboBox = new System.Windows.Forms.ComboBox();
+            this.marcaSelComboBox = new System.Windows.Forms.ComboBox();
             this.cancelarButton = new System.Windows.Forms.Button();
             this.habilitadoCheckBox = new System.Windows.Forms.CheckBox();
-            this.marcaSelTextBox = new System.Windows.Forms.TextBox();
-            this.turnoSelTextBox = new System.Windows.Forms.ComboBox();
+            this.turnoSelComboBox = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.limpiarSelButton = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -42,16 +43,16 @@
             this.label6 = new System.Windows.Forms.Label();
             this.patenteSelTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.modeloSelTextBox = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.modeloSelComboBox);
+            this.groupBox2.Controls.Add(this.marcaSelComboBox);
             this.groupBox2.Controls.Add(this.cancelarButton);
             this.groupBox2.Controls.Add(this.habilitadoCheckBox);
-            this.groupBox2.Controls.Add(this.marcaSelTextBox);
-            this.groupBox2.Controls.Add(this.turnoSelTextBox);
+            this.groupBox2.Controls.Add(this.turnoSelComboBox);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.limpiarSelButton);
             this.groupBox2.Controls.Add(this.label8);
@@ -61,13 +62,28 @@
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.patenteSelTextBox);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.modeloSelTextBox);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(271, 328);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Automóvil seleccionado";
+            // 
+            // modeloSelComboBox
+            // 
+            this.modeloSelComboBox.FormattingEnabled = true;
+            this.modeloSelComboBox.Location = new System.Drawing.Point(101, 80);
+            this.modeloSelComboBox.Name = "modeloSelComboBox";
+            this.modeloSelComboBox.Size = new System.Drawing.Size(100, 21);
+            this.modeloSelComboBox.TabIndex = 57;
+            // 
+            // marcaSelComboBox
+            // 
+            this.marcaSelComboBox.FormattingEnabled = true;
+            this.marcaSelComboBox.Location = new System.Drawing.Point(101, 40);
+            this.marcaSelComboBox.Name = "marcaSelComboBox";
+            this.marcaSelComboBox.Size = new System.Drawing.Size(101, 21);
+            this.marcaSelComboBox.TabIndex = 56;
             // 
             // cancelarButton
             // 
@@ -90,20 +106,13 @@
             this.habilitadoCheckBox.Text = "Habilitado";
             this.habilitadoCheckBox.UseVisualStyleBackColor = true;
             // 
-            // marcaSelTextBox
+            // turnoSelComboBox
             // 
-            this.marcaSelTextBox.Location = new System.Drawing.Point(101, 40);
-            this.marcaSelTextBox.Name = "marcaSelTextBox";
-            this.marcaSelTextBox.Size = new System.Drawing.Size(100, 20);
-            this.marcaSelTextBox.TabIndex = 47;
-            // 
-            // turnoSelTextBox
-            // 
-            this.turnoSelTextBox.FormattingEnabled = true;
-            this.turnoSelTextBox.Location = new System.Drawing.Point(101, 160);
-            this.turnoSelTextBox.Name = "turnoSelTextBox";
-            this.turnoSelTextBox.Size = new System.Drawing.Size(101, 21);
-            this.turnoSelTextBox.TabIndex = 53;
+            this.turnoSelComboBox.FormattingEnabled = true;
+            this.turnoSelComboBox.Location = new System.Drawing.Point(101, 160);
+            this.turnoSelComboBox.Name = "turnoSelComboBox";
+            this.turnoSelComboBox.Size = new System.Drawing.Size(101, 21);
+            this.turnoSelComboBox.TabIndex = 53;
             // 
             // label9
             // 
@@ -185,13 +194,6 @@
             this.label5.TabIndex = 46;
             this.label5.Text = "Chofer:";
             // 
-            // modeloSelTextBox
-            // 
-            this.modeloSelTextBox.Location = new System.Drawing.Point(101, 80);
-            this.modeloSelTextBox.Name = "modeloSelTextBox";
-            this.modeloSelTextBox.Size = new System.Drawing.Size(100, 20);
-            this.modeloSelTextBox.TabIndex = 48;
-            // 
             // FormularioModAutomovil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -210,8 +212,7 @@
 
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox habilitadoCheckBox;
-        private System.Windows.Forms.TextBox marcaSelTextBox;
-        private System.Windows.Forms.ComboBox turnoSelTextBox;
+        private System.Windows.Forms.ComboBox turnoSelComboBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button limpiarSelButton;
         private System.Windows.Forms.Label label8;
@@ -221,7 +222,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox patenteSelTextBox;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox modeloSelTextBox;
         private System.Windows.Forms.Button cancelarButton;
+        private System.Windows.Forms.ComboBox modeloSelComboBox;
+        private System.Windows.Forms.ComboBox marcaSelComboBox;
     }
 }

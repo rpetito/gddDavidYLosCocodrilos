@@ -99,7 +99,7 @@ namespace UberFrba.Abm_Cliente
                     using (eliminarCliente = new SqlCommand("DAVID_Y_LOS_COCODRILOS.INHABILITAR_USUARIO", Conexion))
                     {
                         eliminarCliente.CommandType = CommandType.StoredProcedure;
-                        eliminarCliente.Parameters.Add("@dni", SqlDbType.Char);
+                        eliminarCliente.Parameters.Add("@dni", SqlDbType.Decimal);
                         eliminarCliente.Parameters["@dni"].Value = dni;
                     }
                 }

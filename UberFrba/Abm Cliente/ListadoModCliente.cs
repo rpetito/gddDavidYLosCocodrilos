@@ -88,7 +88,26 @@ namespace UberFrba.Abm_Cliente
         {
             if (e.ColumnIndex == 0 && e.RowIndex >= 0)
             {
-                //guardar los datos seleccionados y mandarlos al form
+                UsuarioSeleccionado.getInstance().setNombre(this.clientesGrid.CurrentRow.Cells[1].Value.ToString());
+                UsuarioSeleccionado.getInstance().setApellido(this.clientesGrid.CurrentRow.Cells[2].Value.ToString());
+                UsuarioSeleccionado.getInstance().setDni((Decimal)this.clientesGrid.CurrentRow.Cells[3].Value);
+                UsuarioSeleccionado.getInstance().setMail(this.clientesGrid.CurrentRow.Cells[4].Value.ToString());
+                UsuarioSeleccionado.getInstance().setTelefono(this.clientesGrid.CurrentRow.Cells[5].Value.ToString());
+                UsuarioSeleccionado.getInstance().setDireccion(this.clientesGrid.CurrentRow.Cells[6].Value.ToString());
+
+                if (string.IsNullOrWhiteSpace(this.clientesGrid.CurrentRow.Cells[7].Value.ToString()))
+                    UsuarioSeleccionado.getInstance().setPiso(0);
+                else UsuarioSeleccionado.getInstance().setPiso((Int32)this.clientesGrid.CurrentRow.Cells[7].Value);
+
+                if (string.IsNullOrWhiteSpace(this.clientesGrid.CurrentRow.Cells[8].Value.ToString()))
+                    UsuarioSeleccionado.getInstance().setDepartamento("-");
+                else UsuarioSeleccionado.getInstance().setDepartamento(this.clientesGrid.CurrentRow.Cells[8].Value.ToString());
+
+                UsuarioSeleccionado.getInstance().setLocalidad(this.clientesGrid.CurrentRow.Cells[9].Value.ToString());
+                UsuarioSeleccionado.getInstance().setCodigoPostal(this.clientesGrid.CurrentRow.Cells[10].Value.ToString());
+                UsuarioSeleccionado.getInstance().setFechaNacimiento((DateTime)this.clientesGrid.CurrentRow.Cells[11].Value);
+                UsuarioSeleccionado.getInstance().setHabilitado((Int32)this.clientesGrid.CurrentRow.Cells[15].Value);
+                
                 FormularioModCliente form = new FormularioModCliente();
                 form.ShowDialog();
             }

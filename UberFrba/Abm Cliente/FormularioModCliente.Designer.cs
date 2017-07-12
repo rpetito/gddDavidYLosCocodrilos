@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cancelarButton = new System.Windows.Forms.Button();
             this.habilitadoCheckBox = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.mailSelTextBox = new System.Windows.Forms.TextBox();
             this.dniSelTextBox = new System.Windows.Forms.TextBox();
             this.apellidoSelTextBox = new System.Windows.Forms.TextBox();
             this.nombreSelTextBox = new System.Windows.Forms.TextBox();
-            this.nacimientoSelTextBox = new System.Windows.Forms.TextBox();
             this.pisoSelTextBox = new System.Windows.Forms.TextBox();
             this.codigoSelTextBox = new System.Windows.Forms.TextBox();
             this.localidadSelTextBox = new System.Windows.Forms.TextBox();
@@ -54,12 +54,13 @@
             this.label14 = new System.Windows.Forms.Label();
             this.modificarSelButton = new System.Windows.Forms.Button();
             this.limpiarSelButton = new System.Windows.Forms.Button();
-            this.cancelarButton = new System.Windows.Forms.Button();
+            this.fechaNacimientoSelDatePicker = new System.Windows.Forms.DateTimePicker();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.fechaNacimientoSelDatePicker);
             this.groupBox2.Controls.Add(this.cancelarButton);
             this.groupBox2.Controls.Add(this.habilitadoCheckBox);
             this.groupBox2.Controls.Add(this.label6);
@@ -67,7 +68,6 @@
             this.groupBox2.Controls.Add(this.dniSelTextBox);
             this.groupBox2.Controls.Add(this.apellidoSelTextBox);
             this.groupBox2.Controls.Add(this.nombreSelTextBox);
-            this.groupBox2.Controls.Add(this.nacimientoSelTextBox);
             this.groupBox2.Controls.Add(this.pisoSelTextBox);
             this.groupBox2.Controls.Add(this.codigoSelTextBox);
             this.groupBox2.Controls.Add(this.localidadSelTextBox);
@@ -92,6 +92,16 @@
             this.groupBox2.TabIndex = 82;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Cliente seleccionado";
+            // 
+            // cancelarButton
+            // 
+            this.cancelarButton.Location = new System.Drawing.Point(6, 351);
+            this.cancelarButton.Name = "cancelarButton";
+            this.cancelarButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelarButton.TabIndex = 83;
+            this.cancelarButton.Text = "Cancelar";
+            this.cancelarButton.UseVisualStyleBackColor = true;
+            this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
             // 
             // habilitadoCheckBox
             // 
@@ -145,14 +155,6 @@
             this.nombreSelTextBox.Name = "nombreSelTextBox";
             this.nombreSelTextBox.Size = new System.Drawing.Size(128, 20);
             this.nombreSelTextBox.TabIndex = 141;
-            // 
-            // nacimientoSelTextBox
-            // 
-            this.nacimientoSelTextBox.Enabled = false;
-            this.nacimientoSelTextBox.Location = new System.Drawing.Point(124, 115);
-            this.nacimientoSelTextBox.Name = "nacimientoSelTextBox";
-            this.nacimientoSelTextBox.Size = new System.Drawing.Size(128, 20);
-            this.nacimientoSelTextBox.TabIndex = 140;
             // 
             // pisoSelTextBox
             // 
@@ -302,6 +304,7 @@
             this.modificarSelButton.TabIndex = 79;
             this.modificarSelButton.Text = "Modificar";
             this.modificarSelButton.UseVisualStyleBackColor = true;
+            this.modificarSelButton.Click += new System.EventHandler(this.modificarSelButton_Click);
             // 
             // limpiarSelButton
             // 
@@ -314,15 +317,12 @@
             this.limpiarSelButton.UseVisualStyleBackColor = true;
             this.limpiarSelButton.Click += new System.EventHandler(this.limpiarSelButton_Click);
             // 
-            // cancelarButton
+            // fechaNacimientoSelDatePicker
             // 
-            this.cancelarButton.Location = new System.Drawing.Point(6, 351);
-            this.cancelarButton.Name = "cancelarButton";
-            this.cancelarButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelarButton.TabIndex = 83;
-            this.cancelarButton.Text = "Cancelar";
-            this.cancelarButton.UseVisualStyleBackColor = true;
-            this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
+            this.fechaNacimientoSelDatePicker.Location = new System.Drawing.Point(124, 115);
+            this.fechaNacimientoSelDatePicker.Name = "fechaNacimientoSelDatePicker";
+            this.fechaNacimientoSelDatePicker.Size = new System.Drawing.Size(128, 20);
+            this.fechaNacimientoSelDatePicker.TabIndex = 147;
             // 
             // FormularioModCliente
             // 
@@ -348,7 +348,6 @@
         private System.Windows.Forms.TextBox dniSelTextBox;
         private System.Windows.Forms.TextBox apellidoSelTextBox;
         private System.Windows.Forms.TextBox nombreSelTextBox;
-        private System.Windows.Forms.TextBox nacimientoSelTextBox;
         private System.Windows.Forms.TextBox pisoSelTextBox;
         private System.Windows.Forms.TextBox codigoSelTextBox;
         private System.Windows.Forms.TextBox localidadSelTextBox;
@@ -367,5 +366,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button modificarSelButton;
         private System.Windows.Forms.Button limpiarSelButton;
+        private System.Windows.Forms.DateTimePicker fechaNacimientoSelDatePicker;
     }
 }

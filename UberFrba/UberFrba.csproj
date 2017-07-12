@@ -227,9 +227,10 @@
     </Compile>
     <Compile Include="BaseDeDatos.cs" />
     <Compile Include="AutomovilSeleccionado.cs" />
-    <Compile Include="ChoferSeleccionado.cs" />
+    <Compile Include="UsuarioSeleccionado.cs" />
     <Compile Include="Functionality.cs" />
     <Compile Include="FunctionalityController.cs" />
+    <Compile Include="Listado Estadistico\EstadisticaController.cs" />
     <Compile Include="MenuController.cs" />
     <Compile Include="Rol.cs" />
     <Compile Include="Usuario.cs" />
@@ -386,6 +387,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Facturacion\Facturacion.resx">
       <DependentUpon>Facturacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listado Estadistico\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Logeo.resx">
       <DependentUpon>Logeo.cs</DependentUpon>

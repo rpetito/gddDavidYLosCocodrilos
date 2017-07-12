@@ -32,7 +32,6 @@ C:\Users\admin\Desktop\Workspace\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\U
 C:\Users\admin\Desktop\Workspace\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Rol.ListadoBajaRol.resources
 C:\Users\admin\Desktop\Workspace\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Rol.ListadoModRol.resources
 C:\Users\admin\Desktop\Workspace\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Rol.NuevoRol.resources
-C:\Users\admin\Desktop\Workspace\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Rol.Rol.resources
 C:\Users\admin\Desktop\Workspace\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Chofer.Chofer.resources
 C:\Users\admin\Desktop\Workspace\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Chofer.ListadoBajaChofer.resources
 C:\Users\admin\Desktop\Workspace\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Chofer.ListadoModChofer.resources
@@ -52,7 +51,6 @@ C:\Users\admin\Desktop\Workspace\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\U
 C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\bin\Debug\UberFrba.exe.config
 C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\bin\Debug\UberFrba.exe
 C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\bin\Debug\UberFrba.pdb
-C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.csprojResolveAssemblyReference.cache
 C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Automovil.Automovil.resources
 C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Automovil.ListadoBajaAutomovil.resources
 C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Automovil.ListadoModAutomovil.resources
@@ -70,7 +68,6 @@ C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberF
 C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Rol.ListadoBajaRol.resources
 C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Rol.ListadoModRol.resources
 C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Rol.NuevoRol.resources
-C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Rol.Rol.resources
 C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Turno.ListadoBajaTurno.resources
 C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Turno.ListadoModTurno.resources
 C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Turno.NuevoTurno.resources
@@ -137,6 +134,20 @@ C:\Users\Rodrigo\Desktop\UTN\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberF
 C:\Users\Rodrigo\Desktop\UTN\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.csproj.GenerateResource.Cache
 C:\Users\Rodrigo\Desktop\UTN\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.exe
 C:\Users\Rodrigo\Desktop\UTN\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.pdb
+<<<<<<< HEAD
 C:\Users\Rodrigo\Desktop\UTN\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Rol.AgregarFuncionalidadARol.resources
 C:\Users\Rodrigo\Desktop\UTN\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Rol.RemoverFuncionalidadARol.resources
 C:\Users\Rodrigo\Desktop\UTN\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.csprojResolveAssemblyReference.cache
+=======
+C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Automovil.FormularioModAutomovil.resources
+C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Chofer.FormularioModChofer.resources
+C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Cliente.FormularioModCliente.resources
+C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Rol.FormularioModRol.resources
+C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Rol.MenuRol.resources
+C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Turno.FormularioModTurno.resources
+C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.csprojResolveAssemblyReference.cache
+C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Listado_Estadistico.Form1.resources
+C:\Users\admin\Desktop\Workspace\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Rol.MenuRol.resources
+C:\Users\admin\Desktop\Workspace\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Listado_Estadistico.Form1.resources
+>>>>>>> 682ce9d88a4217e64a6bee48f609d84ed559ef76
+C:\Users\Rodrigo\Desktop\UTN\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Listado_Estadistico.Form1.resources

@@ -16,6 +16,13 @@ namespace UberFrba.Abm_Cliente
         public BuscadorClientes()
         {
             InitializeComponent();
+            DataGridViewButtonColumn button = new DataGridViewButtonColumn();
+            button.HeaderText = "Seleccionar";
+            button.Name = "seleccionarButton";
+            button.Text = "Seleccionar";
+            button.UseColumnTextForButtonValue = true;
+            clientesGrid.Columns.Add(button);
+            button.Frozen = true;
         }
 
         private void limpiarButton_Click(object sender, EventArgs e)
@@ -75,5 +82,17 @@ namespace UberFrba.Abm_Cliente
             Conexion.Close();
             return dt;
         }
+
+        private void clientesGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0 && e.RowIndex >= 0)
+            {
+                UsuarioSeleccionado.setInstance();
+                UsuarioSeleccionado.getInstance().setNombre(this.clientesGrid.CurrentRow.Cells[1].Value.ToString());
+                UsuarioSeleccionado.getInstance().setApellido(this.clientesGrid.CurrentRow.Cells[2].Value.ToString());
+                this.Close();
+            }
+        }
+        
     }
 }
