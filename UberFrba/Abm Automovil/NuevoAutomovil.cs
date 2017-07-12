@@ -128,6 +128,7 @@ namespace UberFrba.Abm_Automovil
                         crear.Parameters.Add("@chofer", SqlDbType.Decimal);
                         crear.Parameters["@chofer"].Value = chofer;
 
+                        crear.ExecuteScalar();
                     }
                 }
                 catch (Exception ex)

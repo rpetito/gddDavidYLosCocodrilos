@@ -49,25 +49,59 @@ namespace UberFrba.Abm_Cliente
             SqlCommand buscarCliente = new SqlCommand();
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter();
-            String dni;
+   
+            Decimal dni = 0;
+            String nombre;
+            String apellido;
+            String dniNulo;
             try
             {
                 if (string.IsNullOrWhiteSpace(dniTextBox.Text))
                 {
-                    dni = null;
+                    dniNulo = null;
                 }
-                else dni = dniTextBox.Text;
+                else
+                {
+                    dni = Convert.ToDecimal(dniTextBox.Text);
+                }
 
+                if (string.IsNullOrWhiteSpace(nombreTextBox.Text))
+                {
+                    nombre = null;
+                }
+                else
+                {
+                    nombre = nombreTextBox.Text;
+                }
 
+                if (string.IsNullOrWhiteSpace(apellidoTextBox.Text))
+                {
+                    apellido = null;
+                }
+                else
+                {
+                    apellido = apellidoTextBox.Text;
+                }
+               
                 using (buscarCliente = new SqlCommand("DAVID_Y_LOS_COCODRILOS.BUSCAR_USUARIO", Conexion))
                 {
                     buscarCliente.CommandType = CommandType.StoredProcedure;
+                    buscarCliente.Parameters.Add("@rol", SqlDbType.Int);
+                    buscarCliente.Parameters["@rol"].Value = 2;
                     buscarCliente.Parameters.Add("@nombre", SqlDbType.Char);
                     buscarCliente.Parameters["@nombre"].Value = nombreTextBox.Text;
                     buscarCliente.Parameters.Add("@apellido", SqlDbType.Char);
                     buscarCliente.Parameters["@apellido"].Value = apellidoTextBox.Text;
-                    buscarCliente.Parameters.Add("@dni", SqlDbType.Decimal);
-                    buscarCliente.Parameters["@dni"].Value = dni;
+                    if (string.IsNullOrWhiteSpace(dniTextBox.Text))
+                    {
+                        buscarCliente.Parameters.Add("@dni", SqlDbType.Char);
+                        buscarCliente.Parameters["@dni"].Value = DBNull.Value;
+                    }
+                    else
+                    {
+                        buscarCliente.Parameters.Add("@dni", SqlDbType.Decimal);
+                        buscarCliente.Parameters["@dni"].Value = dni;
+                    }
                     da.SelectCommand = buscarCliente;
                     da.Fill(dt);
                     clientesGrid.DataSource = dt;

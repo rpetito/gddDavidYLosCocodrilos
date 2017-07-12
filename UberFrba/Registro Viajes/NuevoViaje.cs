@@ -108,7 +108,8 @@ namespace UberFrba.Registro_Viajes
     
 
 
-        private void ClienteBusquedaButton_Click(object sender, EventArgs e)
+
+        private void clienteBusquedaButton_Click_1(object sender, EventArgs e)
         {
             Abm_Cliente.BuscadorClientes cliente = new Abm_Cliente.BuscadorClientes();
             cliente.ShowDialog();
