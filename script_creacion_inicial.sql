@@ -205,6 +205,9 @@ DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.ALTA_CLIENTE
 IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.INHABILITAR_USUARIO') IS NOT NULL
 DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.INHABILITAR_USUARIO
 
+IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.MODIFICAR_USUARIO') IS NOT NULL
+DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.MODIFICAR_USUARIO
+
 IF OBJECT_ID('DAVID_Y_LOS_COCODRILOS.ALTA_USUARIO') IS NOT NULL
 DROP PROCEDURE DAVID_Y_LOS_COCODRILOS.ALTA_USUARIO
 
@@ -1739,6 +1742,36 @@ BEGIN
 END
 GO 
 
+--nombre, apellido, fechnac, telefono, direccion, piso, dpto, localidad, mail y habilitado
+CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.MODIFICAR_USUARIO(
+	@dni numeric(18,0),
+	@nombre varchar(255),
+	@apellido varchar(255),
+	@fechaNac datetime,
+	@telefono char(18),
+	@direccion varchar(255),
+	@piso int,
+	@departamento char(10),
+	@localidad varchar(50),
+	@mail varchar(50) = NULL,
+	@habilitado bit,
+	@codpos varchar(10)
+) 
+AS
+BEGIN
+	UPDATE DAVID_Y_LOS_COCODRILOS.USUARIO SET	USUARIO_NOMBRE = @nombre,
+												USUARIO_APELLIDO = @apellido, 
+												USUARIO_MAIL = @mail,
+												USUARIO_TEL = @telefono,
+												USUARIO_DIR = @direccion,
+												USUARIO_PISO = @piso,
+												USUARIO_DPTO = @departamento,
+												USUARIO_LOCALIDAD = @localidad,
+												USUARIO_CODPOS = @codPos,
+												USUARIO_FNAC = @fechaNac
+	WHERE USUARIO_DNI = @dni
+END
+GO
 
 CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.INHABILITAR_USUARIO(@dni numeric(18,0)) 
 AS
