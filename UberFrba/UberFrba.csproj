@@ -146,6 +146,18 @@
     <Compile Include="Abm Cliente\NuevoCliente.Designer.cs">
       <DependentUpon>NuevoCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Rol\AgregarFuncionalidadARol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Rol\AgregarFuncionalidadARol.Designer.cs">
+      <DependentUpon>AgregarFuncionalidadARol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Rol\RemoverFuncionalidadARol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Rol\RemoverFuncionalidadARol.Designer.cs">
+      <DependentUpon>RemoverFuncionalidadARol.cs</DependentUpon>
+    </Compile>
     <Compile Include="Abm Rol\RolController.cs" />
     <Compile Include="Abm Rol\FormularioModRol.cs">
       <SubType>Form</SubType>
@@ -333,6 +345,9 @@
     <EmbeddedResource Include="Abm Cliente\NuevoCliente.resx">
       <DependentUpon>NuevoCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Abm Rol\AgregarFuncionalidadARol.resx">
+      <DependentUpon>AgregarFuncionalidadARol.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Abm Rol\FormularioModRol.resx">
       <DependentUpon>FormularioModRol.cs</DependentUpon>
     </EmbeddedResource>
@@ -347,6 +362,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Rol\MenuRol.resx">
       <DependentUpon>MenuRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Rol\RemoverFuncionalidadARol.resx">
+      <DependentUpon>RemoverFuncionalidadARol.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Turno\FormularioModTurno.resx">
       <DependentUpon>FormularioModTurno.cs</DependentUpon>

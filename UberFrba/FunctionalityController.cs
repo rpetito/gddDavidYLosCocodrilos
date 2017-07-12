@@ -27,13 +27,14 @@ namespace UberFrba {
 					dataAdapter.Fill(dataTable);
 				}
 
+				return dataTable;
+
 			} catch( Exception e ) {
 				throw;
+			} finally {
+				sqlConnection.Close();
 			}
 
-			sqlConnection.Close();
-
-			return dataTable;
 
 		}
 
@@ -44,7 +45,7 @@ namespace UberFrba {
 			SqlConnection sqlConnection = BaseDeDatos.ObternerConexion();
 			SqlCommand buscarFuncionlidades = null;
 
-			using( buscarFuncionlidades = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_FUNCIONES_PARA_ROL", sqlConnection) ) {
+			using( buscarFuncionlidades = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_FUNCIONES_HABILITADAS_PARA_ROL", sqlConnection) ) {
 				buscarFuncionlidades.CommandType = CommandType.StoredProcedure;
 				buscarFuncionlidades.Parameters.Add("@rol", SqlDbType.Int);
 				buscarFuncionlidades.Parameters["@rol"].Value = rol;
@@ -71,9 +72,73 @@ namespace UberFrba {
 			}
 
 
+		}
 
+
+		public static DataTable getAllFunctionalitiesForRol(Int32 rol) {
+
+			SqlConnection sqlConnection = BaseDeDatos.ObternerConexion();
+			SqlCommand buscarFuncionlidades = null;
+			DataTable dataTable = new DataTable();
+			SqlDataAdapter dataAdapter = new SqlDataAdapter();
+
+			try {
+
+				using( buscarFuncionlidades = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_TODAS_LAS_FUNCIONES_PARA_ROL", sqlConnection) ) {
+					buscarFuncionlidades.CommandType = CommandType.StoredProcedure;
+					buscarFuncionlidades.Parameters.Add("@rol", SqlDbType.Int);
+					buscarFuncionlidades.Parameters["@rol"].Value = rol;
+					dataAdapter.SelectCommand = buscarFuncionlidades;
+					dataAdapter.Fill(dataTable);
+				}
+
+				return dataTable;
+
+			} catch( Exception e ) {
+				throw;
+			} finally {
+				sqlConnection.Close();
+			}
 
 		}
+
+
+
+		public static DataTable getFunctionalitiesToAdd(Int32 rol) {
+
+			SqlConnection sqlConnection = BaseDeDatos.ObternerConexion();
+			SqlCommand buscarFuncionlidades = null;
+			DataTable dataTable = new DataTable();
+			SqlDataAdapter dataAdapter = new SqlDataAdapter();
+
+			try {
+
+				using( buscarFuncionlidades = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_FUNCIONALIDADES_NO_ASIGNADAS_A_ROL", sqlConnection) ) {
+					buscarFuncionlidades.CommandType = CommandType.StoredProcedure;
+					buscarFuncionlidades.Parameters.Add("@rol", SqlDbType.Int);
+					buscarFuncionlidades.Parameters["@rol"].Value = rol;
+					dataAdapter.SelectCommand = buscarFuncionlidades;
+					dataAdapter.Fill(dataTable);
+				}
+
+				return dataTable;
+
+			} catch( Exception e ) {
+				throw;
+			} finally {
+				sqlConnection.Close();
+			}
+
+		}
+
+
+
+		
+
+
+
+
+
 
 
 	}

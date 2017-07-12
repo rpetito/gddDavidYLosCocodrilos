@@ -29,27 +29,24 @@
         private void InitializeComponent()
         {
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.button2 = new System.Windows.Forms.Button();
+			this.button1 = new System.Windows.Forms.Button();
 			this.cancelarButton = new System.Windows.Forms.Button();
 			this.habilitadoCheckBox = new System.Windows.Forms.CheckBox();
-			this.groupBox3 = new System.Windows.Forms.GroupBox();
-			this.limpiarSelButton = new System.Windows.Forms.Button();
-			this.seleccionarTodoButton = new System.Windows.Forms.Button();
-			this.funcionalidadesSelGrid = new System.Windows.Forms.DataGridView();
-			this.checkBox1 = new System.Windows.Forms.CheckBox();
 			this.nombreSelTextBox = new System.Windows.Forms.TextBox();
 			this.label9 = new System.Windows.Forms.Label();
 			this.modificarSelButton = new System.Windows.Forms.Button();
+			this.functionalityText = new System.Windows.Forms.Label();
 			this.groupBox2.SuspendLayout();
-			this.groupBox3.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.funcionalidadesSelGrid)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// groupBox2
 			// 
+			this.groupBox2.Controls.Add(this.functionalityText);
+			this.groupBox2.Controls.Add(this.button2);
+			this.groupBox2.Controls.Add(this.button1);
 			this.groupBox2.Controls.Add(this.cancelarButton);
 			this.groupBox2.Controls.Add(this.habilitadoCheckBox);
-			this.groupBox2.Controls.Add(this.groupBox3);
-			this.groupBox2.Controls.Add(this.checkBox1);
 			this.groupBox2.Controls.Add(this.nombreSelTextBox);
 			this.groupBox2.Controls.Add(this.label9);
 			this.groupBox2.Controls.Add(this.modificarSelButton);
@@ -59,6 +56,26 @@
 			this.groupBox2.TabIndex = 11;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Rol seleccionado";
+			// 
+			// button2
+			// 
+			this.button2.Location = new System.Drawing.Point(34, 127);
+			this.button2.Name = "button2";
+			this.button2.Size = new System.Drawing.Size(287, 23);
+			this.button2.TabIndex = 57;
+			this.button2.Text = "Remover Funcionalidad";
+			this.button2.UseVisualStyleBackColor = true;
+			this.button2.Click += new System.EventHandler(this.removerButton_Click);
+			// 
+			// button1
+			// 
+			this.button1.Location = new System.Drawing.Point(34, 77);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(287, 23);
+			this.button1.TabIndex = 56;
+			this.button1.Text = "Agregar Funcionalidad";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.agregarButton_Click);
 			// 
 			// cancelarButton
 			// 
@@ -80,58 +97,6 @@
 			this.habilitadoCheckBox.TabIndex = 12;
 			this.habilitadoCheckBox.Text = "Habilitado";
 			this.habilitadoCheckBox.UseVisualStyleBackColor = true;
-			// 
-			// groupBox3
-			// 
-			this.groupBox3.Controls.Add(this.limpiarSelButton);
-			this.groupBox3.Controls.Add(this.seleccionarTodoButton);
-			this.groupBox3.Controls.Add(this.funcionalidadesSelGrid);
-			this.groupBox3.Location = new System.Drawing.Point(23, 66);
-			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(317, 218);
-			this.groupBox3.TabIndex = 12;
-			this.groupBox3.TabStop = false;
-			this.groupBox3.Text = "Funcionalidades";
-			// 
-			// limpiarSelButton
-			// 
-			this.limpiarSelButton.Location = new System.Drawing.Point(19, 178);
-			this.limpiarSelButton.Name = "limpiarSelButton";
-			this.limpiarSelButton.Size = new System.Drawing.Size(75, 23);
-			this.limpiarSelButton.TabIndex = 7;
-			this.limpiarSelButton.Text = "Limpiar";
-			this.limpiarSelButton.UseVisualStyleBackColor = true;
-			this.limpiarSelButton.Click += new System.EventHandler(this.limpiarSelButton_Click);
-			// 
-			// seleccionarTodoButton
-			// 
-			this.seleccionarTodoButton.Location = new System.Drawing.Point(194, 178);
-			this.seleccionarTodoButton.Name = "seleccionarTodoButton";
-			this.seleccionarTodoButton.Size = new System.Drawing.Size(104, 23);
-			this.seleccionarTodoButton.TabIndex = 8;
-			this.seleccionarTodoButton.Text = "Seleccionar Todo";
-			this.seleccionarTodoButton.UseVisualStyleBackColor = true;
-			// 
-			// funcionalidadesSelGrid
-			// 
-			this.funcionalidadesSelGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.funcionalidadesSelGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.funcionalidadesSelGrid.Location = new System.Drawing.Point(19, 30);
-			this.funcionalidadesSelGrid.Name = "funcionalidadesSelGrid";
-			this.funcionalidadesSelGrid.Size = new System.Drawing.Size(279, 142);
-			this.funcionalidadesSelGrid.TabIndex = 5;
-			this.funcionalidadesSelGrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.funcionalidadesSelGrid_DataBindingComplete);
-
-			// 
-			// checkBox1
-			// 
-			this.checkBox1.AutoSize = true;
-			this.checkBox1.Location = new System.Drawing.Point(75, 210);
-			this.checkBox1.Name = "checkBox1";
-			this.checkBox1.Size = new System.Drawing.Size(73, 17);
-			this.checkBox1.TabIndex = 54;
-			this.checkBox1.Text = "Habilitado";
-			this.checkBox1.UseVisualStyleBackColor = true;
 			// 
 			// nombreSelTextBox
 			// 
@@ -158,6 +123,16 @@
 			this.modificarSelButton.TabIndex = 51;
 			this.modificarSelButton.Text = "Modificar";
 			this.modificarSelButton.UseVisualStyleBackColor = true;
+			this.modificarSelButton.Click += new System.EventHandler(this.modificarSelButton_Click);
+			// 
+			// functionalityText
+			// 
+			this.functionalityText.AutoSize = true;
+			this.functionalityText.Location = new System.Drawing.Point(31, 185);
+			this.functionalityText.Name = "functionalityText";
+			this.functionalityText.Size = new System.Drawing.Size(35, 13);
+			this.functionalityText.TabIndex = 58;
+			this.functionalityText.Text = "label1";
 			// 
 			// FormularioModRol
 			// 
@@ -169,8 +144,6 @@
 			this.Text = "FormularioModRol";
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox2.PerformLayout();
-			this.groupBox3.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.funcionalidadesSelGrid)).EndInit();
 			this.ResumeLayout(false);
 
         }
@@ -179,14 +152,12 @@
 
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button cancelarButton;
-        private System.Windows.Forms.CheckBox habilitadoCheckBox;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button limpiarSelButton;
-        private System.Windows.Forms.Button seleccionarTodoButton;
-        private System.Windows.Forms.DataGridView funcionalidadesSelGrid;
-        private System.Windows.Forms.CheckBox checkBox1;
+		private System.Windows.Forms.CheckBox habilitadoCheckBox;
         private System.Windows.Forms.TextBox nombreSelTextBox;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button modificarSelButton;
+		private System.Windows.Forms.Button modificarSelButton;
+		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Label functionalityText;
     }
 }

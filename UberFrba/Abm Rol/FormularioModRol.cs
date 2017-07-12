@@ -13,15 +13,18 @@ namespace UberFrba.Abm_Rol
     public partial class FormularioModRol : Form
     {
 
-		private Rol rol;
-		private Boolean canBind = true;
+		public Rol rol;
+		private String functionalityAction;
+		private Functionality selectedFunctionality = new Functionality();
 
-		
+
 
         public FormularioModRol(Rol rol) {
             InitializeComponent();
+			this.functionalityText.Visible = false;
 			this.rol = rol;
-			fillFunctionalitiesTable();
+			this.habilitadoCheckBox.Checked = this.rol.getHabilitado();
+//			fillFunctionalitiesTable();
         }
 
 
@@ -39,6 +42,8 @@ namespace UberFrba.Abm_Rol
             habilitadoCheckBox.Checked = false;
         }
 
+
+		/*
 
 		private void fillFunctionalitiesTable() {
 			this.funcionalidadesSelGrid.DataSource = FunctionalityController.getAvailableFunctionalities();
@@ -59,6 +64,7 @@ namespace UberFrba.Abm_Rol
 			checkColumn.FalseValue = false;
 			checkColumn.HeaderText = "Funcionalidad Otorgada";
 			checkColumn.Width = 50;
+			checkColumn.ReadOnly = false;
 			checkColumn.FillWeight = 10;
 			this.funcionalidadesSelGrid.Columns.Add(checkColumn);
 		}
@@ -91,6 +97,75 @@ namespace UberFrba.Abm_Rol
 				}
 			}
 			return false;
+		}
+		 * 
+		 * */
+
+		private void agregarButton_Click(object sender, EventArgs e) {
+			using( var agregarForm = new AgregarFuncionalidadARol(rol) ) {
+
+				var result = agregarForm.ShowDialog();
+
+				if( agregarForm.DialogResult == DialogResult.OK ) {
+					this.functionalityAction = "Agregar";
+
+					this.selectedFunctionality.setID(agregarForm.selectedFunctionality.getID());
+					this.selectedFunctionality.setDetalle(agregarForm.selectedFunctionality.getDetalle());
+
+					this.functionalityText.Text = "Agregar funcionalidad: " + agregarForm.selectedFunctionality.getDetalle();
+					this.functionalityText.Visible = true;
+				}
+
+			}
+		}
+
+		private void removerButton_Click(object sender, EventArgs e) {
+			using( var removerForm = new RemoverFuncionalidadARol(rol) ) {
+
+				var result = removerForm.ShowDialog();
+
+				if( result == DialogResult.OK ) {
+					this.functionalityAction = "Remover";
+
+					this.selectedFunctionality.setID(removerForm.selectedFunctionality.getID());
+					this.selectedFunctionality.setDetalle(removerForm.selectedFunctionality.getDetalle());
+
+					this.functionalityText.Text = "Remover funcionalidad: " + removerForm.selectedFunctionality.getDetalle();
+					this.functionalityText.Visible = true;
+				}
+
+			}
+
+		}
+
+		private void modificarSelButton_Click(object sender, EventArgs e) {
+
+			if( !this.nombreSelTextBox.Text.Equals("")) {
+				RolController.changeRolName(rol.getID(), this.nombreSelTextBox.Text.ToString());
+			}
+
+			if( functionalityAction == "Remover" ) {
+				RolController.removeFunctionalityToRol(rol.getID(), selectedFunctionality.getID());
+			}
+
+			if( functionalityAction == "Agregar" ) {
+				RolController.addFunctionalityToRol(rol.getID(), selectedFunctionality.getID());
+			}
+
+			if( this.habilitadoCheckBox.Checked != rol.getHabilitado()) {
+				if( this.habilitadoCheckBox.Checked ) {
+					RolController.habilitarRol(rol.getID());
+				} else {
+					RolController.deshabilitarRol(rol.getID());
+				}
+				this.rol.setHabilitado(this.habilitadoCheckBox.Checked);
+			}
+
+			this.DialogResult = DialogResult.OK;
+			this.Close();
+
+
+		
 		}
 
 
