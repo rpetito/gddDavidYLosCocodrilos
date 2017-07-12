@@ -227,6 +227,13 @@
     </Compile>
     <Compile Include="BaseDeDatos.cs" />
     <Compile Include="AutomovilSeleccionado.cs" />
+    <Compile Include="Turno.cs" />
+    <Compile Include="ListadoTurnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListadoTurnos.Designer.cs">
+      <DependentUpon>ListadoTurnos.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsuarioSeleccionado.cs" />
     <Compile Include="Functionality.cs" />
     <Compile Include="FunctionalityController.cs" />
@@ -384,6 +391,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Listado Estadistico\Listado.resx">
       <DependentUpon>Listado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListadoTurnos.resx">
+      <DependentUpon>ListadoTurnos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Logeo.resx">
       <DependentUpon>Logeo.cs</DependentUpon>

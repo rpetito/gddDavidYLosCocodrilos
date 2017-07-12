@@ -29,12 +29,11 @@ namespace UberFrba.Abm_Automovil
             SqlCommand turnos = new SqlCommand();
             SqlDataReader marcasReader;
             SqlDataReader modelosReader;
-            SqlDataReader turnosReader;
             marca = marcaComboBox.Text;
             modelo = modeloComboBox.Text;
             patente = patenteTextBox.Text;
-            turno = turnoComboBox.Text;
             chofer = choferTextBox.Text;
+
            
             var dictMarcas = new Dictionary<int, String>();
             var dictModelos = new Dictionary<int, String>();
@@ -78,20 +77,6 @@ namespace UberFrba.Abm_Automovil
             idModelo = dictModelos.FirstOrDefault(x => x.Value == modelo).Key;
             modelosReader.Close();
 
-
-
-            using (turnos = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_TURNOS", Conexion))
-            {
-                turnos.CommandType = CommandType.StoredProcedure;
-            }
-
-            turnosReader = turnos.ExecuteReader();
-
-            while (turnosReader.Read())
-            {
-                turnoComboBox.Items.Add(turnosReader.GetString(3));
-            }
-            turnosReader.Close();
             Conexion.Close();
         }
 
@@ -105,7 +90,7 @@ namespace UberFrba.Abm_Automovil
             marcaComboBox.ResetText();
             modeloComboBox.ResetText();
             patenteTextBox.Clear();
-            turnoComboBox.ResetText();
+            turnosTextBox.Clear();
             choferTextBox.Clear();
         }
 
@@ -117,7 +102,7 @@ namespace UberFrba.Abm_Automovil
             if (string.IsNullOrWhiteSpace(marcaComboBox.Text)
                    | string.IsNullOrWhiteSpace(modeloComboBox.Text)
                    | string.IsNullOrWhiteSpace(patenteTextBox.Text)
-                   | string.IsNullOrWhiteSpace(turnoComboBox.Text)
+                   | string.IsNullOrWhiteSpace(turnosTextBox.Text)
                    | string.IsNullOrWhiteSpace(choferTextBox.Text))
             {
                 MessageBox.Show("Por Favor completa todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -126,6 +111,9 @@ namespace UberFrba.Abm_Automovil
             {
                 try
                 {
+                   List<Int32> tvp = new List<Int32> ();
+                   tvp = Turno.getInstance().getListaTurnos();
+
                     using (crear = new SqlCommand("DAVID_Y_LOS_COCODRILOS.AGREGAR_AUTOMOVIL", Conexion))
                     {
                         crear.CommandType = CommandType.StoredProcedure;
@@ -135,8 +123,8 @@ namespace UberFrba.Abm_Automovil
                         crear.Parameters["@marca"].Value = idMarca;
                         crear.Parameters.Add("@modelo", SqlDbType.Int);
                         crear.Parameters["@modelo"].Value = idModelo;
-                        crear.Parameters.Add("@turno", SqlDbType.Char);
-                        crear.Parameters["@turno"].Value = turno;
+                        SqlParameter tvparam = crear.Parameters.AddWithValue("@turnos", ConvertToDatatable(tvp));
+                        tvparam.SqlDbType = SqlDbType.Structured;
                         crear.Parameters.Add("@chofer", SqlDbType.Int);
                         crear.Parameters["@chofer"].Value = chofer;
 
@@ -148,6 +136,30 @@ namespace UberFrba.Abm_Automovil
                 }
             }
             Conexion.Close();
+        }
+
+        private void turnosButton_Click(object sender, EventArgs e)
+        {
+            Turno.setInstance();
+            ListadoTurnos listado = new ListadoTurnos();
+            listado.ShowDialog();
+            turnosTextBox.Text = String.Join(" ", Turno.getInstance().getListaTurnos());
+
+        }
+
+        static DataTable ConvertToDatatable(List<Int32> list)
+        {
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add("ID");
+            foreach (var item in list)
+            {
+                var row = dt.NewRow();
+                row["ID"] = item;
+                dt.Rows.Add(row);
+            }
+
+            return dt;
         }
     }
 }
