@@ -76,32 +76,34 @@ namespace UberFrba.Abm_Chofer
                         crearChofer.CommandType = CommandType.StoredProcedure;
                         crearChofer.Parameters.Add("@rol", SqlDbType.Int);
                         crearChofer.Parameters["@rol"].Value = 3;
-                        crearChofer.Parameters.Add("@nombre", SqlDbType.Char);
+                        crearChofer.Parameters.Add("@nombre", SqlDbType.VarChar);
                         crearChofer.Parameters["@nombre"].Value = nombreTextBox.Text;
-                        crearChofer.Parameters.Add("@apellido", SqlDbType.Char);
+                        crearChofer.Parameters.Add("@apellido", SqlDbType.VarChar);
                         crearChofer.Parameters["@apellido"].Value = apellidoTextBox.Text;
                         crearChofer.Parameters.Add("@dni", SqlDbType.Decimal);
                         crearChofer.Parameters["@dni"].Value = dniTextBox.Text;
-                        crearChofer.Parameters.Add("@mail", SqlDbType.Char);
+                        crearChofer.Parameters.Add("@mail", SqlDbType.VarChar);
                         crearChofer.Parameters["@mail"].Value = mailTextBox.Text;
                         crearChofer.Parameters.Add("@telefono", SqlDbType.Char);
                         crearChofer.Parameters["@telefono"].Value = telefonoTextBox.Text;
-                        crearChofer.Parameters.Add("@direccion", SqlDbType.Char);
+                        crearChofer.Parameters.Add("@direccion", SqlDbType.VarChar);
                         crearChofer.Parameters["@direccion"].Value = direccionTextBox.Text;
                         crearChofer.Parameters.Add("@piso", SqlDbType.Int);
                         crearChofer.Parameters["@piso"].Value = pisoTextBox.Text;
                         crearChofer.Parameters.Add("@departamento", SqlDbType.Char);
                         crearChofer.Parameters["@departamento"].Value = departamentoTextBox.Text;
-                        crearChofer.Parameters.Add("@localidad", SqlDbType.Char);
+                        crearChofer.Parameters.Add("@localidad", SqlDbType.VarChar);
                         crearChofer.Parameters["@localidad"].Value = localidadTextBox.Text;
-                        crearChofer.Parameters.Add("@codPos", SqlDbType.Int);
-                        crearChofer.Parameters["@codPos"].Value = null;//turbio
-                        crearChofer.Parameters.Add("@fechaNac", SqlDbType.Date);
-                        crearChofer.Parameters["@fechaNac"].Value = nacimientoDatePicker.Text;
+                        crearChofer.Parameters.Add("@codPos", SqlDbType.VarChar);
+                        crearChofer.Parameters["@codPos"].Value = "";
+                        crearChofer.Parameters.Add("@fechaNac", SqlDbType.DateTime);
+                        crearChofer.Parameters["@fechaNac"].Value = this.nacimientoDatePicker.Value.ToShortDateString();
                         crearChofer.Parameters.Add("@username", SqlDbType.Char);
                         crearChofer.Parameters["@username"].Value = usuarioTextBox.Text;
                         crearChofer.Parameters.Add("@password", SqlDbType.Char);
                         crearChofer.Parameters["@password"].Value = contraseniaTextBox.Text;
+
+						crearChofer.ExecuteScalar();
                     }
                 }
                 catch (Exception ex){
