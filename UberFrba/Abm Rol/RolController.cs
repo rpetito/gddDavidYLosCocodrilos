@@ -21,7 +21,7 @@ namespace UberFrba.Abm_Rol {
 
 			try {
 
-				using( buscarRol = new SqlCommand("DAVID_Y_LOS_COCODRILOS.BUSCAR_ROLES_HABILITADOS", sqlConnection) ) {
+				using( buscarRol = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_ROLES_HABILITADOS", sqlConnection) ) {
 
 					buscarRol.CommandType = CommandType.StoredProcedure;
 					buscarRol.Parameters.Add("@detalle", SqlDbType.VarChar);
@@ -33,9 +33,39 @@ namespace UberFrba.Abm_Rol {
 
 			} catch( Exception e ) {
 				throw;
+			} finally {
+				sqlConnection.Close();
 			}
 
-			sqlConnection.Close();
+			return dataTable;
+
+		}
+
+
+		public static DataTable findAllRol(String rolName) {
+
+			SqlConnection sqlConnection = BaseDeDatos.ObternerConexion();
+			SqlCommand buscarRol = null;
+			DataTable dataTable = new DataTable();
+			SqlDataAdapter dataAdapter = new SqlDataAdapter();
+
+			try {
+
+				using( buscarRol = new SqlCommand("DAVID_Y_LOS_COCODRILOS.OBTENER_TODOS_LOS_ROLES", sqlConnection) ) {
+
+					buscarRol.CommandType = CommandType.StoredProcedure;
+					buscarRol.Parameters.Add("@detalle", SqlDbType.VarChar);
+					buscarRol.Parameters["@detalle"].Value = rolName;
+
+					dataAdapter.SelectCommand = buscarRol;
+					dataAdapter.Fill(dataTable);
+				}
+
+			} catch( Exception e ) {
+				throw;
+			} finally {
+				sqlConnection.Close();
+			}
 
 			return dataTable;
 
@@ -60,10 +90,123 @@ namespace UberFrba.Abm_Rol {
 				return (Int32) removeRol.ExecuteScalar();
 			} catch( Exception e ) {
 				throw;
+			} finally {
+				sqlConnection.Close();
 			}
 
 
 		}
+
+
+
+		public static Int32 removeFunctionalityToRol(Int32 rol, Int32 func) {
+
+			SqlConnection sqlConnection = BaseDeDatos.ObternerConexion();
+			SqlCommand removerFunc = new SqlCommand("DAVID_Y_LOS_COCODRILOS.REMOVER_FUNCIONALIDAD_A_ROL", sqlConnection);
+
+			removerFunc.CommandType = CommandType.StoredProcedure;
+			removerFunc.Parameters.Add("@rol", SqlDbType.Int);
+			removerFunc.Parameters["@rol"].Value = rol;
+			removerFunc.Parameters.Add("@funcionalidad", SqlDbType.Int);
+			removerFunc.Parameters["@funcionalidad"].Value = func;
+
+			Int32 id = (Int32) removerFunc.ExecuteScalar();
+			sqlConnection.Close();
+			return id;
+
+		}
+
+
+		public static Int32 addFunctionalityToRol(Int32 rol, Int32 func) {
+
+			SqlConnection sqlConnection = BaseDeDatos.ObternerConexion();
+			SqlCommand addRol = new SqlCommand("DAVID_Y_LOS_COCODRILOS.AGREGAR_FUNCIONALIDAD_A_ROL", sqlConnection);
+
+			addRol.CommandType = CommandType.StoredProcedure;
+			addRol.Parameters.Add("@rol", SqlDbType.Int);
+			addRol.Parameters["@rol"].Value = rol;
+			addRol.Parameters.Add("@funcionalidad", SqlDbType.Int);
+			addRol.Parameters["@funcionalidad"].Value = func;
+
+			Int32 id = (Int32) addRol.ExecuteScalar();
+			sqlConnection.Close();
+
+			return id;
+
+
+		}
+
+
+		public static Int32 changeRolName(Int32 rol, String name) { 
+		
+			SqlConnection sqlConnection = BaseDeDatos.ObternerConexion();
+			SqlCommand changeName = new SqlCommand("DAVID_Y_LOS_COCODRILOS.MODIFICAR_NOMBRE_ROL", sqlConnection);
+
+			changeName.CommandType = CommandType.StoredProcedure;
+			changeName.Parameters.Add("@rol", SqlDbType.Int);
+			changeName.Parameters["@rol"].Value = rol;
+			changeName.Parameters.Add("@nuevoDetalle", SqlDbType.VarChar);
+			changeName.Parameters["@nuevoDetalle"].Value = name;
+
+			Int32 id = (Int32) changeName.ExecuteScalar();
+			sqlConnection.Close();
+			return id;
+
+		}
+
+
+
+		public static Int32 habilitarRol(Int32 rol) {
+
+			SqlConnection sqlConnection = BaseDeDatos.ObternerConexion();
+			SqlCommand habilitarRol = new SqlCommand("DAVID_Y_LOS_COCODRILOS.HABILITAR_ROL", sqlConnection);
+
+			habilitarRol.CommandType = CommandType.StoredProcedure;
+			habilitarRol.Parameters.Add("@rol", SqlDbType.Int);
+			habilitarRol.Parameters["@rol"].Value = rol;
+
+			Int32 id = (Int32) habilitarRol.ExecuteScalar();
+			sqlConnection.Close();
+
+			return id;
+
+		}
+
+
+		public static Int32 deshabilitarRol(Int32 rol) {
+
+			SqlConnection sqlConnection = BaseDeDatos.ObternerConexion();
+			SqlCommand deshabilitarRol = new SqlCommand("DAVID_Y_LOS_COCODRILOS.INHABILITAR_ROL", sqlConnection);
+
+			deshabilitarRol.CommandType = CommandType.StoredProcedure;
+			deshabilitarRol.Parameters.Add("@rol", SqlDbType.Int);
+			deshabilitarRol.Parameters["@rol"].Value = rol;
+
+			Int32 id = (Int32) deshabilitarRol.ExecuteScalar();
+			sqlConnection.Close();
+
+			return id;
+
+		}
+
+
+		public static Int32 crearRol(String nombre) {
+
+			SqlConnection sqlConnection = BaseDeDatos.ObternerConexion();
+			SqlCommand crearRol = new SqlCommand("DAVID_Y_LOS_COCODRILOS.ALTA_ROL", sqlConnection);
+
+			crearRol.CommandType = CommandType.StoredProcedure;
+			crearRol.Parameters.Add("@nombreRol", SqlDbType.VarChar);
+			crearRol.Parameters["@nombreRol"].Value = nombre;
+
+			Int32 id = Convert.ToInt32(crearRol.ExecuteScalar());
+			sqlConnection.Close();
+
+			return id;
+			
+		
+		}
+
 	
 	
 	
