@@ -17,11 +17,7 @@ namespace UberFrba.Registro_Viajes
             InitializeComponent();
         }
 
-        private void listadoButton_Click(object sender, EventArgs e)
-        {
-            ListadoViajes listadoViajes = new ListadoViajes();
-            listadoViajes.ShowDialog();
-        }
+
 
         private void nuevoButton_Click(object sender, EventArgs e)
         {

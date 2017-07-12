@@ -251,20 +251,14 @@
     <Compile Include="Logeo.Designer.cs">
       <DependentUpon>Logeo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Listado Estadistico\Form1.cs">
+    <Compile Include="Listado Estadistico\Listado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Listado Estadistico\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Listado Estadistico\Listado.Designer.cs">
+      <DependentUpon>Listado.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registro Viajes\ListadoViajes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Registro Viajes\ListadoViajes.Designer.cs">
-      <DependentUpon>ListadoViajes.cs</DependentUpon>
-    </Compile>
     <Compile Include="Registro Viajes\NuevoViaje.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -370,8 +364,8 @@
     <EmbeddedResource Include="Facturacion\Facturacion.resx">
       <DependentUpon>Facturacion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Listado Estadistico\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Listado Estadistico\Listado.resx">
+      <DependentUpon>Listado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Logeo.resx">
       <DependentUpon>Logeo.cs</DependentUpon>
@@ -388,9 +382,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Registro Viajes\ListadoViajes.resx">
-      <DependentUpon>ListadoViajes.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Registro Viajes\NuevoViaje.resx">
       <DependentUpon>NuevoViaje.cs</DependentUpon>
     </EmbeddedResource>

@@ -43,7 +43,7 @@ namespace UberFrba {
 					form = new Facturacion.Facturacion();
 					break;
 				case 10:
-					form = new Listado_Estadistico.Form1();
+					form = new Listado_Estadistico.Listado();
 					break;
 
 			}

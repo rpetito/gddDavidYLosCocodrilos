@@ -1,6 +1,6 @@
 ﻿namespace UberFrba.Listado_Estadistico
 {
-    partial class Form1
+    partial class Listado
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,6 @@
             this.numericUpDown_Anio = new System.Windows.Forms.NumericUpDown();
             this.label_Trimestre = new System.Windows.Forms.Label();
             this.label_TipoListado = new System.Windows.Forms.Label();
-            this.comboBox_Trimestre = new System.Windows.Forms.ComboBox();
             this.label_Anio = new System.Windows.Forms.Label();
             this.button_Volver = new System.Windows.Forms.Button();
             this.button_Limpiar = new System.Windows.Forms.Button();
@@ -46,7 +45,7 @@
             // 
             // numericUpDown_Mes
             // 
-            this.numericUpDown_Mes.Location = new System.Drawing.Point(317, 29);
+            this.numericUpDown_Mes.Location = new System.Drawing.Point(317, 31);
             this.numericUpDown_Mes.Maximum = new decimal(new int[] {
             4,
             0,
@@ -110,19 +109,6 @@
             this.label_TipoListado.TabIndex = 24;
             this.label_TipoListado.Text = "Tipo de listado";
             // 
-            // comboBox_Trimestre
-            // 
-            this.comboBox_Trimestre.FormattingEnabled = true;
-            this.comboBox_Trimestre.Items.AddRange(new object[] {
-            "1ro",
-            "2do",
-            "3ro",
-            "4to"});
-            this.comboBox_Trimestre.Location = new System.Drawing.Point(317, 29);
-            this.comboBox_Trimestre.Name = "comboBox_Trimestre";
-            this.comboBox_Trimestre.Size = new System.Drawing.Size(68, 21);
-            this.comboBox_Trimestre.TabIndex = 23;
-            // 
             // label_Anio
             // 
             this.label_Anio.AutoSize = true;
@@ -151,6 +137,7 @@
             this.button_Limpiar.TabIndex = 19;
             this.button_Limpiar.Text = "Limpiar";
             this.button_Limpiar.UseVisualStyleBackColor = true;
+            this.button_Limpiar.Click += new System.EventHandler(this.button_Limpiar_Click);
             // 
             // button_HacerConsulta
             // 
@@ -179,7 +166,7 @@
             this.comboBox_TipoListado.TabIndex = 17;
             this.comboBox_TipoListado.SelectedIndexChanged += new System.EventHandler(this.comboBox_TipoListado_SelectedIndexChanged);
             // 
-            // Form1
+            // Listado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -190,12 +177,11 @@
             this.Controls.Add(this.label_Trimestre);
             this.Controls.Add(this.comboBox_TipoListado);
             this.Controls.Add(this.label_TipoListado);
-            this.Controls.Add(this.comboBox_Trimestre);
             this.Controls.Add(this.label_Anio);
             this.Controls.Add(this.button_Volver);
             this.Controls.Add(this.button_Limpiar);
             this.Controls.Add(this.button_HacerConsulta);
-            this.Name = "Form1";
+            this.Name = "Listado";
             this.Text = "Listados Estadisticos";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Mes)).EndInit();
@@ -212,7 +198,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDown_Anio;
         private System.Windows.Forms.Label label_Trimestre;
         private System.Windows.Forms.Label label_TipoListado;
-        private System.Windows.Forms.ComboBox comboBox_Trimestre;
         private System.Windows.Forms.Label label_Anio;
         private System.Windows.Forms.Button button_Volver;
         private System.Windows.Forms.Button button_Limpiar;
