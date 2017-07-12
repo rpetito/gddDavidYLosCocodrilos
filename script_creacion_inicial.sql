@@ -709,7 +709,7 @@ BEGIN
 	--------CARGA USUARIO ADMIN --------
 	------------------------------------
 	INSERT	INTO DAVID_Y_LOS_COCODRILOS.USUARIO (USUARIO_DNI, USUARIO_USERNAME, USUARIO_PASSWORD)
-			VALUES(0, 'admin', 'e6b87050bfcb8143fcb8db0170a4dc9ed00d904ddd3e2a4ad1b1e8dc0fdc9be7');
+			VALUES(0, 'admin', HASHBYTES('SHA2_256', CONVERT(CHAR(100),'w23e')));
 	INSERT INTO DAVID_Y_LOS_COCODRILOS.ADMINISTRADOR(ADMIN_ID)
 			VALUES(0);
 	INSERT INTO DAVID_Y_LOS_COCODRILOS.ROL_USUARIO (USROL_USUARIO, USROL_ROL)
@@ -874,7 +874,7 @@ BEGIN
 				m.Cliente_Direccion,
 				m.Cliente_Fecha_Nac,
 				m.Cliente_Dni,
-				m.Cliente_Dni
+				HASHBYTES('SHA2_256', CONVERT(char(100),m.Cliente_Dni))
 		FROM gd_esquema.Maestra m
 		ORDER BY m.Cliente_Nombre
 		
@@ -909,7 +909,7 @@ BEGIN
 				m.Chofer_Direccion,
 				m.Chofer_Fecha_Nac,
 				m.Chofer_Dni,
-				m.Chofer_Dni
+				HASHBYTES('SHA2_256', CONVERT(char(100),m.Chofer_Dni))
 		FROM gd_esquema.Maestra m
 
 END
@@ -1346,7 +1346,7 @@ BEGIN
 	RETURN (SELECT u.USUARIO_INTENTOS_LOGIN
 			FROM DAVID_Y_LOS_COCODRILOS.USUARIO u
 			WHERE u.USUARIO_USERNAME = @username AND
-				  u.USUARIO_PASSWORD = @password
+				  u.USUARIO_PASSWORD = HASHBYTES('SHA2_256', @password)
 			)
 
 END
@@ -1375,7 +1375,7 @@ BEGIN
 		BEGIN
 			IF (SELECT u.USUARIO_PASSWORD
 				FROM DAVID_Y_LOS_COCODRILOS.USUARIO u
-				WHERE u.USUARIO_USERNAME = @username) = @password
+				WHERE u.USUARIO_USERNAME = @username) = HASHBYTES('SHA2_256', @password)
 					BEGIN
 						IF( DAVID_Y_LOS_COCODRILOS.CANT_INTENTOS_LOGIN_FALLIDOS(@username, @password) < 3)
 							BEGIN
