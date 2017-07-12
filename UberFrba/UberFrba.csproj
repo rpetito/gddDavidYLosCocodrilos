@@ -227,6 +227,12 @@
     </Compile>
     <Compile Include="BaseDeDatos.cs" />
     <Compile Include="AutomovilSeleccionado.cs" />
+    <Compile Include="Facturacion\DetalleFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Facturacion\DetalleFactura.Designer.cs">
+      <DependentUpon>DetalleFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="Turno.cs" />
     <Compile Include="ListadoTurnos.cs">
       <SubType>Form</SubType>
@@ -385,6 +391,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Administrador\Administrador.resx">
       <DependentUpon>Administrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Facturacion\DetalleFactura.resx">
+      <DependentUpon>DetalleFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Facturacion\Facturacion.resx">
       <DependentUpon>Facturacion.cs</DependentUpon>

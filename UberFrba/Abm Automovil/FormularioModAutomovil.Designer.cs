@@ -64,7 +64,7 @@
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(271, 328);
+            this.groupBox2.Size = new System.Drawing.Size(271, 324);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Automóvil seleccionado";
@@ -87,7 +87,7 @@
             // 
             // cancelarButton
             // 
-            this.cancelarButton.Location = new System.Drawing.Point(6, 290);
+            this.cancelarButton.Location = new System.Drawing.Point(6, 287);
             this.cancelarButton.Name = "cancelarButton";
             this.cancelarButton.Size = new System.Drawing.Size(75, 23);
             this.cancelarButton.TabIndex = 55;
@@ -125,7 +125,7 @@
             // 
             // limpiarSelButton
             // 
-            this.limpiarSelButton.Location = new System.Drawing.Point(98, 290);
+            this.limpiarSelButton.Location = new System.Drawing.Point(98, 287);
             this.limpiarSelButton.Name = "limpiarSelButton";
             this.limpiarSelButton.Size = new System.Drawing.Size(75, 23);
             this.limpiarSelButton.TabIndex = 52;
@@ -145,7 +145,7 @@
             // modificarSelButton
             // 
             this.modificarSelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modificarSelButton.Location = new System.Drawing.Point(190, 290);
+            this.modificarSelButton.Location = new System.Drawing.Point(190, 287);
             this.modificarSelButton.Name = "modificarSelButton";
             this.modificarSelButton.Size = new System.Drawing.Size(75, 23);
             this.modificarSelButton.TabIndex = 51;
@@ -198,7 +198,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(295, 349);
+            this.ClientSize = new System.Drawing.Size(295, 350);
             this.Controls.Add(this.groupBox2);
             this.Name = "FormularioModAutomovil";
             this.Text = "FormularioModAutomovil";
