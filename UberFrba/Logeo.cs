@@ -75,10 +75,6 @@ namespace UberFrba
                     loginUsuario.Parameters.Add("@username", SqlDbType.Char);
                     loginUsuario.Parameters["@username"].Value = pUsername;
                     loginUsuario.Parameters.Add("@password", SqlDbType.Char);
-<<<<<<< HEAD
-                    //String passHasheado = hashPassword(pContrasenia);
-=======
->>>>>>> 7089f262b778d59cdeec685f0795e2ee84fbaa23
                     loginUsuario.Parameters["@password"].Value = pContrasenia;
                 }
 
