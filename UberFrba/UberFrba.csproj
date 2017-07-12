@@ -233,6 +233,7 @@
     <Compile Include="Facturacion\DetalleFactura.Designer.cs">
       <DependentUpon>DetalleFactura.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListadoBusquedaFlowController.cs" />
     <Compile Include="Turno.cs" />
     <Compile Include="ListadoTurnos.cs">
       <SubType>Form</SubType>
@@ -240,6 +241,8 @@
     <Compile Include="ListadoTurnos.Designer.cs">
       <DependentUpon>ListadoTurnos.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsuarioController.cs" />
+    <Compile Include="UsuarioData.cs" />
     <Compile Include="UsuarioSeleccionado.cs" />
     <Compile Include="Functionality.cs" />
     <Compile Include="FunctionalityController.cs" />

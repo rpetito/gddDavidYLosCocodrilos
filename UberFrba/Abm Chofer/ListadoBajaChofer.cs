@@ -11,112 +11,43 @@ using System.Windows.Forms;
 
 namespace UberFrba.Abm_Chofer
 {
-    public partial class ListadoBajaChofer : Form
-    {
-        public ListadoBajaChofer()
-        {
-            InitializeComponent();
-            DataGridViewButtonColumn button = new DataGridViewButtonColumn();
-            button.HeaderText = "Eliminar";
-            button.Name = "eliminarButton";
-            button.Text = "Eliminar";
-            button.UseColumnTextForButtonValue = true;
-            choferesGrid.Columns.Add(button);
-            button.Frozen = true;
-        }
+	public partial class ListadoBajaChofer : Form {
+		public ListadoBajaChofer() {
+			InitializeComponent();
+			DataGridViewButtonColumn button = new DataGridViewButtonColumn();
+			button.HeaderText = "Eliminar";
+			button.Name = "eliminarButton";
+			button.Text = "Eliminar";
+			button.UseColumnTextForButtonValue = true;
+			choferesGrid.Columns.Add(button);
+			button.Frozen = true;
+		}
 
-        private void cancelarButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+		private void cancelarButton_Click(object sender, EventArgs e) {
+			this.Close();
+		}
 
-        private void limpiarButton_Click(object sender, EventArgs e)
-        {
-            nombreTextBox.Clear();
-            apellidoTextBox.Clear();
-            dniTextBox.Clear();
-        }
+		private void limpiarButton_Click(object sender, EventArgs e) {
+			nombreTextBox.Clear();
+			apellidoTextBox.Clear();
+			dniTextBox.Clear();
+		}
 
-        private void buscarButton_Click(object sender, EventArgs e)
-        {
-            getChoferes();
-        }
-
-        private DataTable getChoferes()
-        {
-            SqlConnection Conexion = BaseDeDatos.ObternerConexion();
-            SqlCommand buscarChofer = new SqlCommand();
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter();
-            String dni;
-            try
-            {
-                if (string.IsNullOrWhiteSpace(dniTextBox.Text))
-                {
-                    dni = null;
-                }
-                else dni = dniTextBox.Text;
+		private void buscarButton_Click(object sender, EventArgs e) {
+			UsuarioData usuario = new UsuarioData();
+			usuario.setDNI(this.dniTextBox.Text);
+			usuario.setNombre(this.nombreTextBox.Text);
+			usuario.setApellido(this.apellidoTextBox.Text);
+			this.choferesGrid.DataSource = UsuarioController.buscarUsuario(usuario, 3);
+		}
 
 
-                using (buscarChofer = new SqlCommand("DAVID_Y_LOS_COCODRILOS.BUSCAR_USUARIO", Conexion))
-                {
-                    buscarChofer.CommandType = CommandType.StoredProcedure;
-					buscarChofer.Parameters.Add("@rol", SqlDbType.Int);
-					buscarChofer.Parameters["@rol"].Value = 3;
-                    buscarChofer.Parameters.Add("@nombre", SqlDbType.Char);
-                    buscarChofer.Parameters["@nombre"].Value = nombreTextBox.Text;
-                    buscarChofer.Parameters.Add("@apellido", SqlDbType.Char);
-                    buscarChofer.Parameters["@apellido"].Value = apellidoTextBox.Text;
-                    buscarChofer.Parameters.Add("@dni", SqlDbType.Decimal);
-                    buscarChofer.Parameters["@dni"].Value = dni;
-                    da.SelectCommand = buscarChofer;
-                    da.Fill(dt);
-                    choferesGrid.DataSource = dt;
-                }
-            }
 
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString(), "there was an issue!");
+		private void choferesGrid_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+			UsuarioController.bajaUsuario(e, this.choferesGrid, 3);
+		}
 
-            }
-            Conexion.Close();
-            return dt;
+	}
 
-        }
 
-        private void choferesGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 0 && e.RowIndex >= 0)
-            {
-                //tirar un mensaje para confirmar si el usuario esta seguro
-                //si selecciona SI
-                Decimal dni = (Decimal)choferesGrid.SelectedCells[3].Value;
-                SqlConnection Conexion = BaseDeDatos.ObternerConexion();
-                SqlCommand eliminarChofer = new SqlCommand();
-
-                try
-                {
-                    using (eliminarChofer = new SqlCommand("DAVID_Y_LOS_COCODRILOS.INHABILITAR_USUARIO_ROL_PARTICULAR", Conexion))
-                    {
-                        eliminarChofer.CommandType = CommandType.StoredProcedure;
-						eliminarChofer.Parameters.Add("@rol", SqlDbType.Int);
-						eliminarChofer.Parameters["@rol"].Value = 3;
-                        eliminarChofer.Parameters.Add("@dni", SqlDbType.Decimal);
-                        eliminarChofer.Parameters["@dni"].Value = dni;
-
-						eliminarChofer.ExecuteScalar();
-						this.Close();
-						
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString(), "there was an issue!");
-
-                }
-                Conexion.Close();
-            }
-        }
-    }
 }

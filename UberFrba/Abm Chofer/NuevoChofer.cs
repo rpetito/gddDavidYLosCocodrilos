@@ -11,106 +11,89 @@ using System.Windows.Forms;
 
 namespace UberFrba.Abm_Chofer
 {
-    public partial class NuevoChofer : Form
-    {
-        public NuevoChofer()
-        {
-            InitializeComponent();
-        }
+	public partial class NuevoChofer : Form {
+		public NuevoChofer() {
+			InitializeComponent();
+		}
 
-        private void cancelarButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+		private void cancelarButton_Click(object sender, EventArgs e) {
+			this.Close();
+		}
 
-        private void limpiarButton_Click(object sender, EventArgs e)
-        {
-            nombreTextBox.Clear();
-            apellidoTextBox.Clear();
-            dniTextBox.Clear();
-            nacimientoDatePicker.ResetText();
-            telefonoTextBox.Clear();
-            direccionTextBox.Clear();
-            localidadTextBox.Clear();
-            pisoTextBox.Clear();
-            departamentoTextBox.Clear();
-            mailTextBox.Clear();
-            usuarioTextBox.Clear();
-            contraseniaTextBox.Clear();
-            repetirTextBox.Clear();
-        }
+		private void limpiarButton_Click(object sender, EventArgs e) {
+			nombreTextBox.Clear();
+			apellidoTextBox.Clear();
+			dniTextBox.Clear();
+			nacimientoDatePicker.ResetText();
+			telefonoTextBox.Clear();
+			direccionTextBox.Clear();
+			localidadTextBox.Clear();
+			pisoTextBox.Clear();
+			departamentoTextBox.Clear();
+			mailTextBox.Clear();
+			usuarioTextBox.Clear();
+			contraseniaTextBox.Clear();
+			repetirTextBox.Clear();
+		}
 
-        private void crearButton_Click(object sender, EventArgs e)
-        {
-            SqlConnection Conexion = BaseDeDatos.ObternerConexion();
-            SqlCommand crearChofer = new SqlCommand();
+		private void crearButton_Click(object sender, EventArgs e) {
+			SqlConnection Conexion = BaseDeDatos.ObternerConexion();
+			SqlCommand crearChofer = new SqlCommand();
 
-            if (string.IsNullOrWhiteSpace(nombreTextBox.Text)
-                    | string.IsNullOrWhiteSpace(apellidoTextBox.Text)
-                    | string.IsNullOrWhiteSpace(dniTextBox.Text)
-                    | string.IsNullOrWhiteSpace(nacimientoDatePicker.Text)
-                    | string.IsNullOrWhiteSpace(telefonoTextBox.Text)
-                    | string.IsNullOrWhiteSpace(direccionTextBox.Text)
-                    | string.IsNullOrWhiteSpace(pisoTextBox.Text)
-                    | string.IsNullOrWhiteSpace(departamentoTextBox.Text)
-                    | string.IsNullOrWhiteSpace(localidadTextBox.Text)
-                    | string.IsNullOrWhiteSpace(mailTextBox.Text)
-                    | string.IsNullOrWhiteSpace(usuarioTextBox.Text)
-                    | string.IsNullOrWhiteSpace(contraseniaTextBox.Text)
-                    | string.IsNullOrWhiteSpace(repetirTextBox.Text))
-            {
-                MessageBox.Show("Por Favor completa todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else if (contraseniaTextBox.Text != repetirTextBox.Text)
-            {
-                contraseniaTextBox.ResetText();
-                repetirTextBox.ResetText();
-                MessageBox.Show("No coinciden las contraseñas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                try
-                {
-                    using (crearChofer = new SqlCommand("DAVID_Y_LOS_COCODRILOS.ALTA_USUARIO", Conexion))
-                    {
-                        crearChofer.CommandType = CommandType.StoredProcedure;
-                        crearChofer.Parameters.Add("@rol", SqlDbType.Int);
-                        crearChofer.Parameters["@rol"].Value = 3;
-                        crearChofer.Parameters.Add("@nombre", SqlDbType.VarChar);
-                        crearChofer.Parameters["@nombre"].Value = nombreTextBox.Text;
-                        crearChofer.Parameters.Add("@apellido", SqlDbType.VarChar);
-                        crearChofer.Parameters["@apellido"].Value = apellidoTextBox.Text;
-                        crearChofer.Parameters.Add("@dni", SqlDbType.Decimal);
-                        crearChofer.Parameters["@dni"].Value = dniTextBox.Text;
-                        crearChofer.Parameters.Add("@mail", SqlDbType.VarChar);
-                        crearChofer.Parameters["@mail"].Value = mailTextBox.Text;
-                        crearChofer.Parameters.Add("@telefono", SqlDbType.Char);
-                        crearChofer.Parameters["@telefono"].Value = telefonoTextBox.Text;
-                        crearChofer.Parameters.Add("@direccion", SqlDbType.VarChar);
-                        crearChofer.Parameters["@direccion"].Value = direccionTextBox.Text;
-                        crearChofer.Parameters.Add("@piso", SqlDbType.Int);
-                        crearChofer.Parameters["@piso"].Value = pisoTextBox.Text;
-                        crearChofer.Parameters.Add("@departamento", SqlDbType.Char);
-                        crearChofer.Parameters["@departamento"].Value = departamentoTextBox.Text;
-                        crearChofer.Parameters.Add("@localidad", SqlDbType.VarChar);
-                        crearChofer.Parameters["@localidad"].Value = localidadTextBox.Text;
-                        crearChofer.Parameters.Add("@codPos", SqlDbType.VarChar);
-                        crearChofer.Parameters["@codPos"].Value = "";
-                        crearChofer.Parameters.Add("@fechaNac", SqlDbType.DateTime);
-                        crearChofer.Parameters["@fechaNac"].Value = this.nacimientoDatePicker.Value.ToShortDateString();
-                        crearChofer.Parameters.Add("@username", SqlDbType.Char);
-                        crearChofer.Parameters["@username"].Value = usuarioTextBox.Text;
-                        crearChofer.Parameters.Add("@password", SqlDbType.Char);
-                        crearChofer.Parameters["@password"].Value = contraseniaTextBox.Text;
+			if( string.IsNullOrWhiteSpace(nombreTextBox.Text)
+					| string.IsNullOrWhiteSpace(apellidoTextBox.Text)
+					| string.IsNullOrWhiteSpace(dniTextBox.Text)
+					| string.IsNullOrWhiteSpace(nacimientoDatePicker.Text)
+					| string.IsNullOrWhiteSpace(telefonoTextBox.Text)
+					| string.IsNullOrWhiteSpace(direccionTextBox.Text)
+					| string.IsNullOrWhiteSpace(pisoTextBox.Text)
+					| string.IsNullOrWhiteSpace(departamentoTextBox.Text)
+					| string.IsNullOrWhiteSpace(localidadTextBox.Text)
+					| string.IsNullOrWhiteSpace(mailTextBox.Text)
+					| string.IsNullOrWhiteSpace(usuarioTextBox.Text)
+					| string.IsNullOrWhiteSpace(contraseniaTextBox.Text)
+					| string.IsNullOrWhiteSpace(repetirTextBox.Text) ) {
+				MessageBox.Show("Por Favor completa todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			} else if( contraseniaTextBox.Text != repetirTextBox.Text ) {
+				contraseniaTextBox.ResetText();
+				repetirTextBox.ResetText();
+				MessageBox.Show("No coinciden las contraseñas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			} else {
+				UsuarioData usuario = new UsuarioData();
+				usuario.setNombre(this.nombreTextBox.Text);
+				usuario.setApellido(this.apellidoTextBox.Text);
+				usuario.setDNI(this.dniTextBox.Text);
+				usuario.setMail(this.mailTextBox.Text);
+				usuario.setTelefono(this.telefonoTextBox.Text);
+				usuario.setDireccion(this.direccionTextBox.Text);
+				usuario.setPiso(this.pisoTextBox.Text);
+				usuario.setDpto(this.departamentoTextBox.Text);
+				usuario.setLocalidad(this.localidadTextBox.Text);
+				usuario.setCodPos("");
+				usuario.setFechaNac(this.nacimientoDatePicker.Value.ToShortDateString());
+				usuario.setUserName(this.usuarioTextBox.Text);
+				usuario.setPassword(this.contraseniaTextBox.Text);
 
-						crearChofer.ExecuteScalar();
-                    }
-                }
-                catch (Exception ex){
-                    MessageBox.Show(ex.ToString(), "there was an issue!");
-                }
-            }
-            Conexion.Close();
-        }
-    }
+				UsuarioController.altaOModificarUsuario(usuario, 3, "ALTA_USUARIO");
+			}
+
+
+
+
+
+
+
+
+
+		}
+
+
+
+
+	}
+
+
+
+
+
 }
