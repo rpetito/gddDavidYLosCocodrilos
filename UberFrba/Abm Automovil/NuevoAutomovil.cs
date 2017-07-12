@@ -125,7 +125,7 @@ namespace UberFrba.Abm_Automovil
                         crear.Parameters["@modelo"].Value = idModelo;
                         SqlParameter tvparam = crear.Parameters.AddWithValue("@turnos", ConvertToDatatable(tvp));
                         tvparam.SqlDbType = SqlDbType.Structured;
-                        crear.Parameters.Add("@chofer", SqlDbType.Int);
+                        crear.Parameters.Add("@chofer", SqlDbType.Decimal);
                         crear.Parameters["@chofer"].Value = chofer;
 
                     }
