@@ -81,9 +81,13 @@ namespace UberFrba.Abm_Chofer
                         habilitado = 1;
                     else habilitado = 0;
 
-                    using (modificarChofer = new SqlCommand("DAVID_Y_LOS_COCODRILOS.ALTA_USUARIO", Conexion))
+                    using (modificarChofer = new SqlCommand("DAVID_Y_LOS_COCODRILOS.MODIFICAR_USUARIO", Conexion))
                     {
                         modificarChofer.CommandType = CommandType.StoredProcedure;
+						modificarChofer.Parameters.Add("@rol", SqlDbType.Int);
+						modificarChofer.Parameters["@rol"].Value = 3;
+						modificarChofer.Parameters.Add("@dni", SqlDbType.Decimal);
+						modificarChofer.Parameters["@dni"].Value = Convert.ToDecimal(dniSelTextBox.Text);
                         modificarChofer.Parameters.Add("@nombre", SqlDbType.Char);
                         modificarChofer.Parameters["@nombre"].Value = nombreSelTextBox.Text;
                         modificarChofer.Parameters.Add("@apellido", SqlDbType.Char);
@@ -104,7 +108,11 @@ namespace UberFrba.Abm_Chofer
                         modificarChofer.Parameters["@fechaNac"].Value = fechaNacimientoSelDatePicker.Text;
                         modificarChofer.Parameters.Add("@habilitado", SqlDbType.Int);
                         modificarChofer.Parameters["@habilitado"].Value = habilitado;
+						modificarChofer.Parameters.Add("@codPos", SqlDbType.VarChar);
+						modificarChofer.Parameters["@codPos"].Value = "";
                     }
+
+					modificarChofer.ExecuteScalar();
                 }
                 catch (Exception ex)
                 {

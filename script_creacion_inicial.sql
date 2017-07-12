@@ -1729,6 +1729,11 @@ GO
 -------------------------------------------------
 ------------USUARIO (CLIENTE Y CHOFER)-----------
 -------------------------------------------------
+
+
+--------------------------------
+---------AÑADIR USUARIO---------
+--------------------------------
 CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.ALTA_USUARIO(
 	@rol int,
 	@nombre varchar(255),
@@ -1829,8 +1834,13 @@ BEGIN
 END
 GO 
 
---nombre, apellido, fechnac, telefono, direccion, piso, dpto, localidad, mail y habilitado
+
+
+--------------------------------
+--------MODIFICAR USUARIO-------
+--------------------------------
 CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.MODIFICAR_USUARIO(
+	@rol int,
 	@dni numeric(18,0),
 	@nombre varchar(255),
 	@apellido varchar(255),
@@ -1842,24 +1852,74 @@ CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.MODIFICAR_USUARIO(
 	@localidad varchar(50),
 	@mail varchar(50) = NULL,
 	@habilitado bit,
-	@codpos varchar(10)
-) 
+	@codPos varchar(10)
+)
 AS
 BEGIN
-	UPDATE DAVID_Y_LOS_COCODRILOS.USUARIO SET	USUARIO_NOMBRE = @nombre,
-												USUARIO_APELLIDO = @apellido, 
-												USUARIO_MAIL = @mail,
-												USUARIO_TEL = @telefono,
-												USUARIO_DIR = @direccion,
-												USUARIO_PISO = @piso,
-												USUARIO_DPTO = @departamento,
-												USUARIO_LOCALIDAD = @localidad,
-												USUARIO_CODPOS = @codPos,
-												USUARIO_FNAC = @fechaNac
-	WHERE USUARIO_DNI = @dni
+
+	DECLARE @status int = 0;
+
+	IF (@rol = 2)
+		BEGIN
+			IF(SELECT COUNT(*)
+			   FROM DAVID_Y_LOS_COCODRILOS.CLIENTE c
+			   WHERE c.CLIENTE_ID = @dni) = 1
+					BEGIN
+						UPDATE DAVID_Y_LOS_COCODRILOS.USUARIO SET	USUARIO_NOMBRE = @nombre,
+																	USUARIO_APELLIDO = @apellido, 
+																	USUARIO_MAIL = @mail,
+																	USUARIO_TEL = @telefono,
+																	USUARIO_DIR = @direccion,
+																	USUARIO_PISO = @piso,
+																	USUARIO_DPTO = @departamento,
+																	USUARIO_LOCALIDAD = @localidad,
+																	USUARIO_FNAC = @fechaNac
+						WHERE USUARIO_DNI = @dni
+
+						SET @status = @@ERROR
+					END
+			ELSE
+				SET @status = 999
+		END 
+	ELSE 
+		BEGIN
+			IF(@rol = 3)
+				BEGIN
+					IF(SELECT COUNT(*)
+					   FROM DAVID_Y_LOS_COCODRILOS.CHOFER c
+					   WHERE c.CHOFER_ID = @dni) = 1
+						BEGIN
+							UPDATE DAVID_Y_LOS_COCODRILOS.USUARIO SET	USUARIO_NOMBRE = @nombre,
+																		USUARIO_APELLIDO = @apellido, 
+																		USUARIO_MAIL = @mail,
+																		USUARIO_TEL = @telefono,
+																		USUARIO_DIR = @direccion,
+																		USUARIO_PISO = @piso,
+																		USUARIO_DPTO = @departamento,
+																		USUARIO_LOCALIDAD = @localidad,
+																		USUARIO_FNAC = @fechaNac
+							WHERE USUARIO_DNI = @dni
+
+							SET @status = @@ERROR
+						END
+					ELSE
+						SET @status = 999
+				END
+			ELSE
+				SET @status = 999
+		END
+
+	SELECT @status
+
+
 END
 GO
 
+
+
+--------------------------------
+------INHABILITAR USUARIO-------
+--------------------------------
 CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.INHABILITAR_USUARIO(@dni numeric(18,0)) 
 AS
 BEGIN
@@ -1874,19 +1934,40 @@ END
 GO
 
 
-CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.BUSCAR_USUARIO(@nombre varchar(255), @apellido varchar(255), @dni numeric(18,0))
+--------------------------------
+---------BUSCAR USUARIO---------
+--------------------------------
+CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.BUSCAR_USUARIO(@rol int, @nombre varchar(255), @apellido varchar(255), @dni numeric(18,0))
 AS 
 BEGIN
 
-	SELECT *
-	FROM DAVID_Y_LOS_COCODRILOS.USUARIO u
-	WHERE	(@nombre is null or @nombre = u.USUARIO_NOMBRE) and
+	SELECT u.USUARIO_NOMBRE,
+			u.USUARIO_APELLIDO,
+			u.USUARIO_DNI,
+			u.USUARIO_MAIL,
+			u.USUARIO_TEL,
+			u.USUARIO_DIR,
+			u.USUARIO_PISO,
+			u.USUARIO_DPTO,
+			u.USUARIO_LOCALIDAD,
+			u.USUARIO_CODPOS,
+			u.USUARIO_FNAC, 
+			u.USUARIO_USERNAME,
+			u.USUARIO_HABILITADO
+	FROM DAVID_Y_LOS_COCODRILOS.USUARIO u JOIN DAVID_Y_LOS_COCODRILOS.ROL_USUARIO r ON u.USUARIO_DNI = r.USROL_USUARIO
+	WHERE	r.USROL_ROL = @rol and
+			(@nombre is null or @nombre = u.USUARIO_NOMBRE) and
 			(@apellido is null or @apellido = u.USUARIO_APELLIDO) and
 			(@dni is null or @dni = u.USUARIO_DNI)
+
 
 END
 GO
 
+
+-----------------------------------------
+------BUSCAR CCHOFERES HABILITADOS-------
+-----------------------------------------
 CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.OBTENER_CHOFERES_HABILITADOS
 AS 
 BEGIN
@@ -1927,9 +2008,8 @@ GO
 
 
 ---------------------------------------
------------ AGREGAR AUTOMOVIL----------
+------------AGREGAR AUTOMOVIL----------
 ---------------------------------------
-
 CREATE TYPE DAVID_Y_LOS_COCODRILOS.T_TURNOS
 AS TABLE
 (
@@ -1937,6 +2017,11 @@ AS TABLE
 );
 GO
 
+
+
+--------------------------------
+------AGREGAR AUTOMOVIL---------
+--------------------------------
 CREATE PROCEDURE DAVID_Y_LOS_COCODRILOS.AGREGAR_AUTOMOVIL
 (@PATENTE VARCHAR(10),@MARCA INT, @MODELO INT, @TURNO AS DAVID_Y_LOS_COCODRILOS.T_TURNOS READONLY , @CHOFER NUMERIC(18,0))
 AS
