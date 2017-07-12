@@ -67,7 +67,7 @@ namespace UberFrba.Abm_Chofer
                     buscarChofer.Parameters.Add("@apellido", SqlDbType.Char);
                     buscarChofer.Parameters["@apellido"].Value = apellidoTextBox.Text;
                     buscarChofer.Parameters.Add("@dni", SqlDbType.Decimal);
-                    buscarChofer.Parameters["@dni"].Value = dni;
+                    buscarChofer.Parameters["@dni"].Value = dni ;
                     da.SelectCommand = buscarChofer;
                     da.Fill(dt);
                     choferesGrid.DataSource = dt;
