@@ -154,3 +154,6 @@ C:\Users\Rodrigo\Desktop\UTN\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberF
 >>>>>>> bf29de91949d69ae4e8da9903304aa7fc1543a61
 C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Rol.AgregarFuncionalidadARol.resources
 C:\Users\Nicolas\Desktop\TP Uber Frba 1.0 - 1C 2017\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Rol.RemoverFuncionalidadARol.resources
+C:\Users\admin\Desktop\Workspace\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Rol.AgregarFuncionalidadARol.resources
+C:\Users\admin\Desktop\Workspace\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Abm_Rol.RemoverFuncionalidadARol.resources
+C:\Users\admin\Desktop\Workspace\GDD\gddDavidYLosCocodrilos\UberFrba\obj\Debug\UberFrba.Listado_Estadistico.Listado.resources

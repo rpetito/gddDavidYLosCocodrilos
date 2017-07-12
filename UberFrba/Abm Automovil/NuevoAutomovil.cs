@@ -126,6 +126,9 @@ namespace UberFrba.Abm_Automovil
             {
                 try
                 {
+                    //DataTable tvp = new DataTable();
+
+
                     using (crear = new SqlCommand("DAVID_Y_LOS_COCODRILOS.AGREGAR_AUTOMOVIL", Conexion))
                     {
                         crear.CommandType = CommandType.StoredProcedure;
@@ -135,8 +138,8 @@ namespace UberFrba.Abm_Automovil
                         crear.Parameters["@marca"].Value = idMarca;
                         crear.Parameters.Add("@modelo", SqlDbType.Int);
                         crear.Parameters["@modelo"].Value = idModelo;
-                        crear.Parameters.Add("@turno", SqlDbType.Char);
-                        crear.Parameters["@turno"].Value = turno;
+                       // SqlParameter tvparam = crear.Parameters.AddWithValue("@turnos", tvp);
+                        //tvparam.SqlDbType = SqlDbType.Structured;
                         crear.Parameters.Add("@chofer", SqlDbType.Int);
                         crear.Parameters["@chofer"].Value = chofer;
 
